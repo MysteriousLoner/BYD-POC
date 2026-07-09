@@ -1,0 +1,7 @@
+services:
+  byd-advisor:
+    build: .
+    container_name: byd-advisor
+    ports:
+      - "8082:80"
+    restart: unless-stopped
