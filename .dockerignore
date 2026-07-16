@@ -1,7 +1,7 @@
-Dockerfile
-docker-compose.yml
-.dockerignore
+node_modules
 .git
 .gitignore
-node_modules
-README.md
+*.md
+.DS_Store
+docker-compose.yml
+*.log

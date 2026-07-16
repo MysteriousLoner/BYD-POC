@@ -1,7 +1,13 @@
 services:
-  byd-advisor:
-    build: .
-    container_name: byd-advisor
+  byd-website:
+    build: ./website-with-chatbot
+    container_name: byd-website
     ports:
       - "8082:80"
     restart: unless-stopped
+    networks:
+      - byd-network
+
+networks:
+  byd-network:
+    driver: bridge
