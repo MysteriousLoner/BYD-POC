@@ -14,13 +14,6 @@
     const copyOnlyBtn = document.getElementById('rednoteCopyOnlyBtn');
     const preview = document.getElementById('rednoteNotePreview');
 
-    // RedNote URL schemes (tried in order)
-    const REDNOTE_SCHEMES = [
-        'xhsdiscover://',
-        'xiaohongshu://',
-        'xhs://'
-    ];
-
     // ===== Pre-written RedNote post content =====
     function getNoteContent() {
         const today = new Date().toLocaleDateString('en-MY', {
@@ -68,23 +61,34 @@ Ask about current promos & cashback offers! 💰
 
     // ===== Open RedNote App =====
     function openRedNote() {
-        // Try each URL scheme
-        for (const scheme of REDNOTE_SCHEMES) {
-            const link = document.createElement('a');
-            link.href = scheme;
-            link.style.display = 'none';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+        const ua = navigator.userAgent.toLowerCase();
+        const isIOS = /iphone|ipad|ipod/.test(ua);
+        const isAndroid = /android/.test(ua);
+
+        // Timestamp to track if app opened
+        const now = Date.now();
+
+        if (isAndroid) {
+            // Android: use intent for better reliability
+            const intentUrl = 'intent://#Intent;scheme=xhsdiscover;package=com.xingin.xhs;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.xingin.xhs;end';
+            window.location.href = intentUrl;
+        } else {
+            // iOS & others: direct scheme
+            window.location.href = 'xhsdiscover://';
         }
 
-        // Fallback: if app doesn't open within 2s, redirect to web
+        // Fallback: if app didn't open within 2.5s
         setTimeout(() => {
-            if (!document.hidden) {
-                // User is still here — app didn't open
-                window.open('https://www.xiaohongshu.com/explore', '_blank');
+            if (Date.now() - now < 2800 && !document.hidden) {
+                if (isAndroid) {
+                    window.open('https://play.google.com/store/apps/details?id=com.xingin.xhs', '_blank');
+                } else if (isIOS) {
+                    window.open('https://apps.apple.com/app/id741292507', '_blank');
+                } else {
+                    window.open('https://www.xiaohongshu.com/explore', '_blank');
+                }
             }
-        }, 2000);
+        }, 2500);
     }
 
     // ===== Toast Notification =====
