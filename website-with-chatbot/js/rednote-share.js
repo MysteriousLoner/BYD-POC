@@ -61,52 +61,31 @@ Ask about current promos & cashback offers! 💰
 
     // ===== Open RedNote App =====
     function openRedNote() {
+        const text = encodeURIComponent(getNoteContent());
         const ua = navigator.userAgent.toLowerCase();
         const isIOS = /iphone|ipad|ipod/.test(ua);
         const isAndroid = /android/.test(ua);
 
-        // Known RedNote/Xiaohongshu URL schemes
-        const schemes = [
-            'xhsdiscover://',      // primary
-            'xiaohongshu://',      // alternate
-            'xhs://',              // short form
-        ];
-
-        function tryScheme(index) {
-            if (index >= schemes.length) return;
-            const a = document.createElement('a');
-            a.href = schemes[index];
-            a.target = '_self';
-            a.style.display = 'none';
-            document.body.appendChild(a);
-            a.click();
-            setTimeout(() => document.body.removeChild(a), 100);
-
-            // If previous scheme didn't open app, try next
-            setTimeout(() => {
-                if (!document.hidden && index + 1 < schemes.length) {
-                    tryScheme(index + 1);
-                }
-            }, 400);
-        }
-
-        // Android: also try iframe after anchor clicks
         if (isAndroid) {
-            tryScheme(0);
-            setTimeout(() => {
-                if (!document.hidden) {
-                    const iframe = document.createElement('iframe');
-                    iframe.style.display = 'none';
-                    iframe.src = 'xhsdiscover://';
-                    document.body.appendChild(iframe);
-                    setTimeout(() => document.body.removeChild(iframe), 2000);
-                }
-            }, 1000);
+            // Android: use share intent targeting RedNote — most reliable method
+            // This opens RedNote directly with pre-filled text via Android's share system
+            const shareIntent =
+                'intent:#Intent;' +
+                'action=android.intent.action.SEND;' +
+                'type=text/plain;' +
+                'S.android.intent.extra.TEXT=' + text + ';' +
+                'package=com.xingin.xhs;' +
+                'end';
+            window.location.href = shareIntent;
+        } else if (isIOS) {
+            // iOS: URL scheme is the only way to target a specific app
+            window.location.href = 'xhsdiscover://';
         } else {
-            tryScheme(0);
+            // Desktop: try scheme, fallback to web
+            window.location.href = 'xhsdiscover://';
         }
 
-        // Fallback: if still here after 3s → app store
+        // Fallback: if still here after 3s → app store or web
         setTimeout(() => {
             if (!document.hidden) {
                 if (isAndroid) {
