@@ -8,6 +8,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -453,7 +454,46 @@
         </div>
     </footer>
 
+    <!-- ===== CHATBOT WIDGET ===== -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <button class="chatbot-toggle" id="chatbotToggle" aria-label="Chat with us">
+            <i class="fa-regular fa-comment-dots"></i>
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="chatbot-panel" id="chatbotPanel">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar"><i class="fa-solid fa-robot"></i></div>
+                <div class="chatbot-header-info">
+                    <h4>BYD Assistant</h4>
+                    <p>● Online — Ask about offers!</p>
+                </div>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="chatbot-message bot">
+                    Hello! 👋 I'm the BYD Malaysia assistant.<br><br>
+                    I can tell you about our <strong>current promotions, discounts, and cashback offers</strong> for any BYD model. Try asking:<br><br>
+                    • "What offers for BYD Seal?"<br>
+                    • "Any discount on Atto 3?"<br>
+                    • "Show me all promotions"
+                </div>
+            </div>
+            <div class="chatbot-quick-replies" id="chatbotQuickReplies">
+                <button class="chatbot-quick-btn" data-query="What offers for BYD Seal?">Seal Offers</button>
+                <button class="chatbot-quick-btn" data-query="Any discount on Atto 3?">Atto 3 Offers</button>
+                <button class="chatbot-quick-btn" data-query="Show me all promotions">All Promos</button>
+                <button class="chatbot-quick-btn" data-query="Where are the showrooms?">Showrooms</button>
+            </div>
+            <div class="chatbot-input-wrap">
+                <input type="text" id="chatbotInput" placeholder="Ask about BYD offers..." aria-label="Chat message">
+                <button class="chatbot-send-btn" id="chatbotSend" aria-label="Send message">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
 </body>
 </html>

@@ -280,10 +280,10 @@ function renderDashboard(): string {
             '<td>' + (s.contacts_today || 0) + '</td>' +
             '<td>' +
               (s.connected
-                ? '<button class="btn btn-danger btn-sm" onclick="disconnectSalesman(\'' + s.instance_id + '\')">Disconnect</button>'
-                : '<button class="btn btn-primary btn-sm" onclick="reconnectSalesman(\'' + s.instance_id + '\',\'' + s.name + '\',\'' + (s.phone || '') + '\')">Connect</button>') +
+                ? '<button class="btn btn-danger btn-sm" data-instance="' + s.instance_id + '" onclick="disconnectSalesman(this.dataset.instance)">Disconnect</button>'
+                : '<button class="btn btn-primary btn-sm" data-instance="' + s.instance_id + '" data-name="' + s.name + '" data-phone="' + (s.phone || '') + '" onclick="reconnectSalesman(this.dataset.instance,this.dataset.name,this.dataset.phone)">Connect</button>') +
               ' <button class="btn btn-outline btn-sm" onclick="viewDetails(' + s.id + ')">Details</button>' +
-              ' <button class="btn btn-danger btn-sm" onclick="deleteSalesman(\'' + s.instance_id + '\')">🗑</button>' +
+              ' <button class="btn btn-danger btn-sm" data-instance="' + s.instance_id + '" onclick="deleteSalesman(this.dataset.instance)">🗑</button>' +
             '</td>' +
             '</tr>';
         }

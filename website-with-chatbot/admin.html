@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYD Malaysia — Admin Panel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --bg-card: #111111;
+            --bg-input: #1a1a1a;
+            --border: #2a2a2a;
+            --text: #ffffff;
+            --text-dim: #777777;
+            --accent: #c41230;
+            --accent-hover: #e0143b;
+            --green: #22c55e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .admin-logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .admin-logo span {
+            font-weight: 400;
+            color: var(--text-dim);
+            font-size: 0.7rem;
+            margin-left: 0.25rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.5rem 1.25rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-radius: 2px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+        .btn-primary:hover { background: var(--accent-hover); }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-dim);
+            border: 1px solid var(--border);
+        }
+        .btn-outline:hover { color: var(--text); border-color: var(--text-dim); }
+
+        .btn-success {
+            background: var(--green);
+            color: #000;
+        }
+        .btn-success:hover { opacity: 0.9; }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 2px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(1rem);
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+        .toast.show { opacity: 1; transform: translateY(0); }
+        .toast.success { background: var(--green); color: #000; }
+        .toast.error { background: var(--accent); color: white; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-subtitle {
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .model-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            padding: 1.5rem;
+            transition: border-color 0.2s;
+        }
+
+        .model-card:hover { border-color: #444; }
+
+        .model-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .model-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-input);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--text-dim);
+        }
+
+        .model-card-name {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .model-card-type {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 0.4rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.6rem 0.75rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            border-radius: 2px;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .form-section-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin: 1.25rem 0 0.75rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .offer-type-badge {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            border-radius: 1px;
+        }
+
+        .badge-active { background: rgba(34,197,94,0.15); color: var(--green); }
+        .badge-inactive { background: rgba(119,119,119,0.15); color: var(--text-dim); }
+
+        .loading {
+            text-align: center;
+            padding: 4rem;
+            color: var(--text-dim);
+        }
+
+        .loading i { margin-right: 0.5rem; }
+
+        @media (max-width: 480px) {
+            .models-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .container { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="admin-header">
+        <div class="admin-logo">BYD<span>Admin</span></div>
+        <div class="admin-actions">
+            <a href="/" class="btn btn-outline" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Site</a>
+            <button class="btn btn-primary" onclick="saveAll()"><i class="fa-solid fa-floppy-disk"></i> Save All</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Offers & Promotions</h1>
+        <p class="page-subtitle">Configure discount and cashback offers for each BYD model. Changes take effect immediately on the website and chatbot.</p>
+
+        <div class="models-grid" id="modelsGrid">
+            <div class="loading"><i class="fa-solid fa-spinner fa-spin"></i> Loading offers...</div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        const MODELS = [
+            { model: 'seal', name: 'BYD Seal', type: 'Electric Sedan', icon: 'fa-car-side' },
+            { model: 'atto3', name: 'BYD Atto 3', type: 'Electric SUV', icon: 'fa-truck' },
+            { model: 'dolphin', name: 'BYD Dolphin', type: 'Electric Hatchback', icon: 'fa-car' },
+            { model: 'sealion6', name: 'BYD Sealion 6', type: 'Plug-in Hybrid SUV', icon: 'fa-truck-fast' },
+            { model: 'm6', name: 'BYD M6', type: 'Electric MPV', icon: 'fa-van-shuttle' },
+            { model: 'shark6', name: 'BYD Shark 6', type: 'Plug-in Hybrid Pickup', icon: 'fa-truck-pickup' }
+        ];
+
+        const DISCOUNT_TYPES = [
+            { value: 'cash', label: 'Cash Discount' },
+            { value: 'percentage', label: 'Percentage Off' },
+            { value: 'trade_in', label: 'Trade-in Bonus' },
+            { value: 'none', label: 'No Discount' }
+        ];
+
+        const CASHBACK_TYPES = [
+            { value: 'cash', label: 'Cash Rebate' },
+            { value: 'charging_credit', label: 'Charging Credit' },
+            { value: 'service_credit', label: 'Service Credit' },
+            { value: 'accessories', label: 'Accessories / Freebies' },
+            { value: 'none', label: 'No Cashback' }
+        ];
+
+        let offersData = [];
+
+        async function loadOffers() {
+            try {
+                const res = await fetch('/api/offers');
+                offersData = await res.json();
+                renderModels();
+            } catch (err) {
+                document.getElementById('modelsGrid').innerHTML =
+                    '<div class="loading" style="color:#c41230">Failed to load offers. Is the server running?</div>';
+            }
+        }
+
+        function renderModels() {
+            const grid = document.getElementById('modelsGrid');
+            grid.innerHTML = MODELS.map(m => {
+                const offer = offersData.find(o => o.model === m.model) || {
+                    discount: { amount: 0, type: 'none', description: '' },
+                    cashback: { amount: 0, type: 'none', description: '' },
+                    validUntil: '',
+                    terms: ''
+                };
+                const hasOffers = (offer.discount?.amount > 0 && offer.discount?.type !== 'none') ||
+                                  (offer.cashback?.amount > 0 && offer.cashback?.type !== 'none');
+
+                return `
+                <div class="model-card" data-model="${m.model}">
+                    <div class="model-card-header">
+                        <div class="model-icon"><i class="fa-solid ${m.icon}"></i></div>
+                        <div>
+                            <div class="model-card-name">${m.name}</div>
+                            <div class="model-card-type">${m.type}</div>
+                        </div>
+                        <div style="margin-left:auto">
+                            <span class="offer-type-badge ${hasOffers ? 'badge-active' : 'badge-inactive'}">
+                                ${hasOffers ? 'ACTIVE' : 'NO OFFERS'}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-section-title">💰 Discount</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Type</label>
+                            <select data-field="discount.type" data-model="${m.model}">
+                                ${DISCOUNT_TYPES.map(t => `
+                                    <option value="${t.value}" ${offer.discount?.type === t.value ? 'selected' : ''}>${t.label}</option>
+                                `).join('')}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Amount (RM)</label>
+                            <input type="number" data-field="discount.amount" data-model="${m.model}"
+                                   value="${offer.discount?.amount || 0}" min="0" step="100">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <input type="text" data-field="discount.description" data-model="${m.model}"
+                               value="${escapeHtml(offer.discount?.description || '')}"
+                               placeholder="e.g. RM 5,000 cash rebate">
+                    </div>
+
+                    <div class="form-section-title">🎁 Cashback / Bonus</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Type</label>
+                            <select data-field="cashback.type" data-model="${m.model}">
+                                ${CASHBACK_TYPES.map(t => `
+                                    <option value="${t.value}" ${offer.cashback?.type === t.value ? 'selected' : ''}>${t.label}</option>
+                                `).join('')}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Amount (RM)</label>
+                            <input type="number" data-field="cashback.amount" data-model="${m.model}"
+                                   value="${offer.cashback?.amount || 0}" min="0" step="100">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <input type="text" data-field="cashback.description" data-model="${m.model}"
+                               value="${escapeHtml(offer.cashback?.description || '')}"
+                               placeholder="e.g. RM 2,000 service credit">
+                    </div>
+
+                    <div class="form-section-title">📅 Validity</div>
+                    <div class="form-group">
+                        <label class="form-label">Valid Until</label>
+                        <input type="date" data-field="validUntil" data-model="${m.model}"
+                               value="${offer.validUntil || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Terms & Conditions</label>
+                        <textarea data-field="terms" data-model="${m.model}"
+                                  placeholder="Any terms or conditions...">${escapeHtml(offer.terms || '')}</textarea>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        async function saveAll() {
+            const cards = document.querySelectorAll('.model-card');
+            let saved = 0;
+            let errors = 0;
+
+            for (const card of cards) {
+                const model = card.dataset.model;
+                const data = {};
+
+                card.querySelectorAll('[data-field]').forEach(input => {
+                    const field = input.dataset.field;
+                    const value = input.value;
+                    const keys = field.split('.');
+                    if (keys.length === 2) {
+                        if (!data[keys[0]]) data[keys[0]] = {};
+                        data[keys[0]][keys[1]] = keys[1] === 'amount' ? parseInt(value) || 0 : value;
+                    } else {
+                        data[keys[0]] = value;
+                    }
+                });
+
+                try {
+                    const res = await fetch(`/api/offers/${model}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+                    if (res.ok) saved++;
+                    else errors++;
+                } catch {
+                    errors++;
+                }
+            }
+
+            showToast(errors === 0 ? 'success' : 'error',
+                errors === 0 ? `All ${saved} models saved successfully!` : `${saved} saved, ${errors} failed.`);
+        }
+
+        function showToast(type, message) {
+            const toast = document.getElementById('toast');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        loadOffers();
+    </script>
+</body>
+</html>
