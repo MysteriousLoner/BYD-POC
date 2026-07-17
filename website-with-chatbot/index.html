@@ -491,8 +491,40 @@
         </div>
     </div>
 
+    <!-- ===== REDNOTE SHARE MODAL ===== -->
+    <div class="rednote-modal" id="rednoteModal">
+        <div class="rednote-modal-overlay"></div>
+        <div class="rednote-modal-content">
+            <button class="rednote-modal-close" id="rednoteModalClose">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="rednote-modal-icon">📕</div>
+            <h3>Share on RedNote</h3>
+            <p class="rednote-modal-sub">Content is ready — just copy and paste into RedNote</p>
+            <div class="rednote-note-preview" id="rednoteNotePreview"></div>
+            <div class="rednote-modal-actions">
+                <button class="btn btn-primary" id="rednoteCopyBtn">
+                    <i class="fa-regular fa-copy"></i> Copy & Open RedNote
+                </button>
+                <button class="btn btn-outline" id="rednoteCopyOnlyBtn">
+                    <i class="fa-regular fa-clipboard"></i> Copy Only
+                </button>
+            </div>
+            <p class="rednote-modal-hint">
+                Opens RedNote app on your phone. Paste the copied content into a new post.
+            </p>
+        </div>
+    </div>
+
+    <!-- ===== REDNOTE FLOATING BUTTON ===== -->
+    <button class="rednote-float-btn" id="rednoteFloatBtn" aria-label="Share on RedNote">
+        <span>📕</span>
+        <span class="rednote-float-label">Share</span>
+    </button>
+
     <!-- Scripts -->
     <script src="js/main.js"></script>
     <script src="js/chatbot.js"></script>
+    <script src="js/rednote-share.js"></script>
 </body>
 </html>

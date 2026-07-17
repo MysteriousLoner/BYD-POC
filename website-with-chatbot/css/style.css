@@ -1220,6 +1220,173 @@ img {
     color: var(--color-black);
 }
 
+/* ===== RedNote Floating Button ===== */
+.rednote-float-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 5.5rem;
+    z-index: 2999;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #ff2442;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 20px rgba(255, 36, 66, 0.4);
+    transition: all var(--transition-smooth);
+    gap: 0;
+    line-height: 1;
+}
+
+.rednote-float-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 30px rgba(255, 36, 66, 0.6);
+}
+
+.rednote-float-label {
+    font-size: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: white;
+    margin-top: -2px;
+}
+
+/* ===== RedNote Modal ===== */
+.rednote-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-smooth);
+}
+
+.rednote-modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.rednote-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+}
+
+.rednote-modal-content {
+    position: relative;
+    z-index: 1;
+    background: var(--color-black-90);
+    border: 1px solid var(--color-black-60);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    width: 90%;
+    max-width: 440px;
+    text-align: center;
+}
+
+.rednote-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--color-white-50);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.rednote-modal-close:hover { color: var(--color-white); }
+
+.rednote-modal-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.rednote-modal-content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.rednote-modal-sub {
+    font-size: 0.8rem;
+    color: var(--color-white-50);
+    margin-bottom: 1.25rem;
+}
+
+.rednote-note-preview {
+    background: var(--color-black-80);
+    border: 1px solid var(--color-black-60);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--color-white-70);
+    text-align: left;
+    max-height: 200px;
+    overflow-y: auto;
+    white-space: pre-line;
+    margin-bottom: 1.25rem;
+    font-family: var(--font-primary);
+}
+
+.rednote-modal-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+}
+
+.rednote-modal-actions .btn {
+    font-size: 0.78rem;
+    padding: 0.65rem 1.25rem;
+}
+
+.rednote-modal-actions .btn-primary {
+    background: #ff2442;
+}
+
+.rednote-modal-actions .btn-primary:hover {
+    background: #e01e3a;
+    box-shadow: 0 8px 30px rgba(255, 36, 66, 0.3);
+}
+
+.rednote-modal-hint {
+    font-size: 0.7rem;
+    color: var(--color-white-30);
+    line-height: 1.4;
+}
+
+@media (max-width: 480px) {
+    .rednote-float-btn {
+        right: 5rem;
+        bottom: 1rem;
+        width: 48px;
+        height: 48px;
+        font-size: 1.1rem;
+    }
+    .rednote-modal-content {
+        padding: 2rem 1.25rem;
+    }
+}
+
 /* ===== Chatbot Widget ===== */
 .chatbot-widget {
     position: fixed;
