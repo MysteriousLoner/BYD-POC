@@ -107,8 +107,14 @@ function formatAllOffersSummary(offers) {
 
 // POST /api/chat
 router.post('/', (req, res) => {
-    const { message } = req.body;
-    if (!message) {
+    // Accept both { message } and { messages: [...] } formats
+    let message = req.body.message;
+    if (!message && Array.isArray(req.body.messages) && req.body.messages.length > 0) {
+        // Take the last user message
+        const lastMsg = req.body.messages[req.body.messages.length - 1];
+        message = lastMsg?.content || lastMsg?.text || '';
+    }
+    if (!message || typeof message !== 'string') {
         return res.status(400).json({ reply: 'Please send a message.' });
     }
 
