@@ -65,21 +65,33 @@ Ask about current promos & cashback offers! 💰
         const isIOS = /iphone|ipad|ipod/.test(ua);
         const isAndroid = /android/.test(ua);
 
-        // Timestamp to track if app opened
-        const now = Date.now();
+        // Schemes to try — RedNote uses xhsdiscover://
+        // The app may need a path like /post, /create, or just the scheme
+        const schemes = [
+            'xhsdiscover://post',
+            'xhsdiscover://create',
+            'xhsdiscover://'
+        ];
 
         if (isAndroid) {
-            // Android: use intent for better reliability
+            // Android intent is most reliable
             const intentUrl = 'intent://#Intent;scheme=xhsdiscover;package=com.xingin.xhs;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.xingin.xhs;end';
             window.location.href = intentUrl;
+        } else if (isIOS) {
+            // iOS: use an <a> tag for reliable scheme triggering
+            const a = document.createElement('a');
+            a.href = 'xhsdiscover://';
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(() => document.body.removeChild(a), 100);
         } else {
-            // iOS & others: direct scheme
             window.location.href = 'xhsdiscover://';
         }
 
-        // Fallback: if app didn't open within 2.5s
+        // Fallback after 2s: if still here, app didn't open
         setTimeout(() => {
-            if (Date.now() - now < 2800 && !document.hidden) {
+            if (!document.hidden) {
                 if (isAndroid) {
                     window.open('https://play.google.com/store/apps/details?id=com.xingin.xhs', '_blank');
                 } else if (isIOS) {
@@ -88,7 +100,7 @@ Ask about current promos & cashback offers! 💰
                     window.open('https://www.xiaohongshu.com/explore', '_blank');
                 }
             }
-        }, 2500);
+        }, 2000);
     }
 
     // ===== Toast Notification =====
@@ -144,10 +156,10 @@ Ask about current promos & cashback offers! 💰
         }
     });
 
-    // Copy & Open RedNote
+    // Copy & Open RedNote — must open synchronously in click handler
     copyBtn.addEventListener('click', () => {
-        copyToClipboard();
-        setTimeout(openRedNote, 300);
+        openRedNote();       // synchronous: must happen NOW for iOS to allow
+        copyToClipboard();   // async clipboard
     });
 
     // Copy Only
