@@ -65,31 +65,36 @@ Ask about current promos & cashback offers! 💰
         const isIOS = /iphone|ipad|ipod/.test(ua);
         const isAndroid = /android/.test(ua);
 
-        // Schemes to try — RedNote uses xhsdiscover://
-        // The app may need a path like /post, /create, or just the scheme
-        const schemes = [
-            'xhsdiscover://post',
-            'xhsdiscover://create',
-            'xhsdiscover://'
-        ];
+        // Use an <a> tag click — most reliable across all mobile browsers
+        const a = document.createElement('a');
+        a.href = 'xhsdiscover://';
+        a.style.display = 'none';
+        a.target = '_self';
+        document.body.appendChild(a);
 
+        // Android: also try with iframe as fallback
         if (isAndroid) {
-            // Android intent is most reliable
-            const intentUrl = 'intent://#Intent;scheme=xhsdiscover;package=com.xingin.xhs;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.xingin.xhs;end';
-            window.location.href = intentUrl;
-        } else if (isIOS) {
-            // iOS: use an <a> tag for reliable scheme triggering
-            const a = document.createElement('a');
-            a.href = 'xhsdiscover://';
-            a.style.display = 'none';
-            document.body.appendChild(a);
+            // First attempt: anchor click
             a.click();
-            setTimeout(() => document.body.removeChild(a), 100);
+
+            // Second attempt after short delay: iframe (works on some Android browsers)
+            setTimeout(() => {
+                if (!document.hidden) {
+                    const iframe = document.createElement('iframe');
+                    iframe.style.display = 'none';
+                    iframe.src = 'xhsdiscover://';
+                    document.body.appendChild(iframe);
+                    setTimeout(() => document.body.removeChild(iframe), 2000);
+                }
+            }, 500);
         } else {
-            window.location.href = 'xhsdiscover://';
+            // iOS & desktop: anchor click is sufficient
+            a.click();
         }
 
-        // Fallback after 2s: if still here, app didn't open
+        setTimeout(() => document.body.removeChild(a), 100);
+
+        // Fallback: if still here after 2.5s → app store
         setTimeout(() => {
             if (!document.hidden) {
                 if (isAndroid) {
@@ -100,7 +105,7 @@ Ask about current promos & cashback offers! 💰
                     window.open('https://www.xiaohongshu.com/explore', '_blank');
                 }
             }
-        }, 2000);
+        }, 2500);
     }
 
     // ===== Toast Notification =====
