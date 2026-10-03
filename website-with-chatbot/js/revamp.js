@@ -28,33 +28,43 @@ document.addEventListener('DOMContentLoaded', () => {
   async function loadSiteSettings() {
     try {
       const response = await fetch('/api/content/settings');
-      const { hero = {} } = await response.json();
+      const settings = await response.json();
+      const slides = (Array.isArray(settings.heroSlides) ? settings.heroSlides : settings.hero ? [{ ...settings.hero, priority: 1, published: true, duration: 7000, buttons: [] }] : [])
+        .filter(slide => slide.published !== false && slide.mediaUrl)
+        .sort((a, b) => (Number(a.priority) || 999) - (Number(b.priority) || 999));
       const heroMedia = document.querySelector('.hero-static-bg');
+      const hero = document.querySelector('.hero');
+      const content = document.querySelector('.hero-content');
       const eyebrow = document.querySelector('.hero-eyebrow');
       const title = document.querySelector('.hero-title');
       const description = document.querySelector('.hero-description');
-      if (eyebrow && hero.eyebrow) eyebrow.textContent = hero.eyebrow;
-      if (title && hero.headline) title.innerHTML = hero.headline.trim().split(/\s+/).map((part, index, all) => index === Math.ceil(all.length / 2) ? `<br>${escapeHtml(part)}` : escapeHtml(part)).join(' ');
-      if (description && hero.description) description.textContent = hero.description;
-      if (!heroMedia || !hero.mediaUrl) return;
-      if (hero.mediaType === 'video') {
-        heroMedia.className = 'hero-static-bg has-video';
-        const youtubeId = getYouTubeId(hero.mediaUrl);
-        heroMedia.innerHTML = youtubeId
-          ? `<iframe id="managedHeroYouTube" class="hero-managed-youtube" src="https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&controls=0&rel=0&modestbranding=1&playsinline=1&cc_load_policy=0&iv_load_policy=3&disablekb=1&enablejsapi=1" allow="autoplay; encrypted-media" title="Homepage background video"></iframe>`
-          : `<video class="hero-managed-video" autoplay muted loop playsinline preload="metadata"><source src="${escapeHtml(hero.mediaUrl)}"></video>`;
-        const youtubeFrame = document.getElementById('managedHeroYouTube');
-        if (youtubeFrame) {
-          const disableCaptions = () => {
-            youtubeFrame.contentWindow?.postMessage(JSON.stringify({ event: 'command', func: 'unloadModule', args: ['captions'] }), '*');
-            youtubeFrame.contentWindow?.postMessage(JSON.stringify({ event: 'command', func: 'setOption', args: ['captions', 'track', {}] }), '*');
-          };
-          youtubeFrame.addEventListener('load', () => { disableCaptions(); setTimeout(disableCaptions, 1200); setTimeout(disableCaptions, 3500); });
-        }
-      } else {
-        heroMedia.className = 'hero-static-bg managed-image';
-        heroMedia.style.setProperty('--managed-hero-image', `url("${String(hero.mediaUrl).replace(/["\\]/g, '')}")`);
-      }
+      const cta = document.querySelector('.hero-cta');
+      if (!heroMedia || !slides.length) return;
+      let active = 0, timer;
+      const controls = document.createElement('div'); controls.className = 'hero-slide-controls';
+      controls.innerHTML = `<button class="hero-slide-arrow previous" aria-label="Previous slide">‹</button><div class="hero-slide-dots">${slides.map((_, index) => `<button aria-label="Show slide ${index + 1}" data-index="${index}"></button>`).join('')}</div><button class="hero-slide-arrow next" aria-label="Next slide">›</button>`;
+      hero.appendChild(controls);
+      const showSlide = index => {
+        clearTimeout(timer); active = (index + slides.length) % slides.length; const slide = slides[active];
+        content.classList.add('hero-content-changing'); heroMedia.classList.add('hero-media-changing');
+        setTimeout(() => {
+          eyebrow.textContent = slide.eyebrow || ''; title.textContent = slide.headline || ''; description.textContent = slide.description || '';
+          cta.innerHTML = (slide.buttons || []).map(button => `<a href="${escapeHtml(button.href)}" class="btn ${button.style === 'outline' ? 'btn-outline' : 'btn-primary'}">${escapeHtml(button.label)}</a>`).join('');
+          heroMedia.innerHTML = ''; heroMedia.style.removeProperty('--managed-hero-image');
+          if (slide.mediaType === 'video') {
+            heroMedia.className = 'hero-static-bg has-video'; const youtubeId = getYouTubeId(slide.mediaUrl);
+            heroMedia.innerHTML = youtubeId ? `<iframe class="hero-managed-youtube" src="https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&controls=0&rel=0&modestbranding=1&playsinline=1&cc_load_policy=0&iv_load_policy=3&disablekb=1" allow="autoplay; encrypted-media" title="${escapeHtml(slide.headline)} background video"></iframe>` : `<video class="hero-managed-video" autoplay muted loop playsinline preload="metadata"><source src="${escapeHtml(slide.mediaUrl)}"></video>`;
+          } else {
+            heroMedia.className = 'hero-static-bg managed-image'; heroMedia.style.setProperty('--managed-hero-image', `url("${String(slide.mediaUrl).replace(/["\\]/g, '')}")`);
+          }
+          controls.querySelectorAll('.hero-slide-dots button').forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === active));
+          content.classList.remove('hero-content-changing'); heroMedia.classList.remove('hero-media-changing');
+          if (slides.length > 1) timer = setTimeout(() => showSlide(active + 1), Math.max(3000, Number(slide.duration) || 7000));
+        }, 220);
+      };
+      controls.querySelector('.previous').onclick = () => showSlide(active - 1); controls.querySelector('.next').onclick = () => showSlide(active + 1);
+      controls.querySelectorAll('.hero-slide-dots button').forEach(dot => dot.onclick = () => showSlide(Number(dot.dataset.index)));
+      controls.hidden = slides.length < 2; showSlide(0);
     } catch (error) { console.warn('Using default hero content'); }
   }
 

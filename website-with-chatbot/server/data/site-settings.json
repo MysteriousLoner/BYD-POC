@@ -1,9 +1,45 @@
 {
-  "hero": {
-    "mediaType": "video",
-    "mediaUrl": "https://youtu.be/OldTHqPji78?si=B3fLkTEgIOtBr16L",
-    "headline": "Electrify Your Journey",
-    "eyebrow": "Build Your Dreams",
-    "description": "Discover the full range of BYD electric and plug-in hybrid vehicles. Innovation that moves you - now in Malaysia."
-  }
+  "heroSlides": [
+    {
+      "id": "news-events",
+      "priority": 1,
+      "published": true,
+      "mediaType": "image",
+      "mediaUrl": "https://img.youtube.com/vi/KL6RTpCXJNI/maxresdefault.jpg",
+      "eyebrow": "Latest at Millennium Motors",
+      "headline": "News & Events",
+      "description": "Discover upcoming launches, showroom events and owner experiences.",
+      "duration": 7000,
+      "buttons": [
+        {
+          "label": "View Events",
+          "href": "#news",
+          "style": "primary"
+        }
+      ]
+    },
+    {
+      "id": "brand-video",
+      "priority": 2,
+      "published": true,
+      "mediaType": "video",
+      "mediaUrl": "https://youtu.be/OldTHqPji78?si=B3fLkTEgIOtBr16L",
+      "eyebrow": "Build Your Dreams",
+      "headline": "Electrify Your Journey",
+      "description": "Discover the full range of BYD electric and plug-in hybrid vehicles. Innovation that moves you - now in Malaysia.",
+      "duration": 12000,
+      "buttons": [
+        {
+          "label": "Explore Models",
+          "href": "#models",
+          "style": "primary"
+        },
+        {
+          "label": "Book a Test Drive",
+          "href": "#contact",
+          "style": "outline"
+        }
+      ]
+    }
+  ]
 }

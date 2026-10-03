@@ -74,6 +74,68 @@ router.delete('/models/:id', (req, res) => {
 router.get('/news', (_, res) => res.json(readJson('news.json')));
 
 router.get('/settings', (_, res) => res.json(readJson('site-settings.json', { hero: {} })));
+function normalizeSlide(body, current = {}) {
+  let buttons = current.buttons || [];
+  if (body.buttonsJson !== undefined) {
+    try { buttons = JSON.parse(body.buttonsJson); }
+    catch { throw new Error('Buttons are invalid') }
+  }
+  buttons = Array.isArray(buttons) ? buttons.slice(0, 4).map(button => ({
+    label: String(button.label || '').trim(),
+    href: String(button.href || '').trim(),
+    style: button.style === 'outline' ? 'outline' : 'primary'
+  })).filter(button => button.label && button.href) : [];
+  return {
+    ...current,
+    id: current.id || safeName(body.id || body.headline || `slide-${Date.now()}`).toLowerCase(),
+    eyebrow: String(body.eyebrow || ''),
+    headline: String(body.headline || ''),
+    description: String(body.description || ''),
+    mediaType: body.mediaType === 'video' ? 'video' : 'image',
+    mediaUrl: String(body.mediaUrl || current.mediaUrl || ''),
+    priority: Math.max(1, Number(body.priority) || 1),
+    duration: Math.max(3000, Math.min(30000, Number(body.duration) || 7000)),
+    published: body.published !== 'false',
+    buttons
+  };
+}
+function validateSlide(slide) {
+  if (!slide.headline) throw new Error('A slide headline is required');
+  if (!slide.mediaUrl) throw new Error('Please upload media or enter a media URL');
+  if (slide.mediaType === 'video' && !/(youtube\.com|youtu\.be|\.(mp4|webm)(\?.*)?$)/i.test(slide.mediaUrl)) {
+    throw new Error('Video slides require a YouTube link, uploaded MP4/WEBM, or a direct video URL');
+  }
+}
+router.post('/settings/hero-slides', heroUpload.single('mediaFile'), (req, res) => {
+  try {
+    const settings = readJson('site-settings.json', { heroSlides: [] });
+    const slides = Array.isArray(settings.heroSlides) ? settings.heroSlides : [];
+    const slide = normalizeSlide(req.body);
+    if (slides.some(item => item.id === slide.id)) slide.id = `${slide.id}-${Date.now()}`;
+    if (req.file) { slide.mediaUrl = `/uploads/${req.file.filename}`; slide.mediaType = req.file.mimetype.startsWith('video/') ? 'video' : 'image'; }
+    validateSlide(slide); slides.push(slide); settings.heroSlides = slides;
+    writeJson('site-settings.json', settings); res.status(201).json(slide);
+  } catch (error) { res.status(400).json({ error: error.message }); }
+});
+router.put('/settings/hero-slides/:id', heroUpload.single('mediaFile'), (req, res) => {
+  try {
+    const settings = readJson('site-settings.json', { heroSlides: [] });
+    const slides = Array.isArray(settings.heroSlides) ? settings.heroSlides : [];
+    const index = slides.findIndex(item => item.id === req.params.id);
+    if (index < 0) return res.status(404).json({ error: 'Slide not found' });
+    const slide = normalizeSlide(req.body, slides[index]);
+    if (req.file) { slide.mediaUrl = `/uploads/${req.file.filename}`; slide.mediaType = req.file.mimetype.startsWith('video/') ? 'video' : 'image'; }
+    validateSlide(slide); slides[index] = slide; settings.heroSlides = slides;
+    writeJson('site-settings.json', settings); res.json(slide);
+  } catch (error) { res.status(400).json({ error: error.message }); }
+});
+router.delete('/settings/hero-slides/:id', (req, res) => {
+  const settings = readJson('site-settings.json', { heroSlides: [] });
+  const slides = Array.isArray(settings.heroSlides) ? settings.heroSlides : [];
+  if (!slides.some(item => item.id === req.params.id)) return res.status(404).json({ error: 'Slide not found' });
+  settings.heroSlides = slides.filter(item => item.id !== req.params.id);
+  writeJson('site-settings.json', settings); res.status(204).end();
+});
 router.put('/settings/hero', heroUpload.single('mediaFile'), (req, res) => {
   const settings = readJson('site-settings.json', { hero: {} });
   const hero = { ...settings.hero, ...req.body };
