@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BYD Malaysia — Build Your Dreams</title>
+    <title>BYD Millennium Motors - Build Your Dreams</title>
     <meta name="description" content="Discover BYD's full range of electric and plug-in hybrid vehicles in Malaysia. Experience the future of mobility with BYD.">
+    <script>
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        window.scrollTo(0, 0);
+        window.addEventListener('beforeunload', () => window.scrollTo(0, 0));
+        window.addEventListener('load', () => {
+            if (!window.location.hash || window.location.hash === '#') {
+                requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }));
+            }
+        });
+    </script>
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/revamp.css">
+    <link rel="stylesheet" href="css/model-gallery.css">
+    <link rel="stylesheet" href="css/model-gallery-overrides.css">
+    <link rel="stylesheet" href="css/model-gallery-final.css?v=thumb-height-5">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,18 +32,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
+    <div class="brand-loader" id="brandLoader" aria-hidden="true"><div><strong>BYD</strong><span>Millennium Motors</span></div></div>
 
     <!-- ===== NAVIGATION ===== -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#" class="nav-logo">
                 <span class="logo-text">BYD</span>
-                <span class="logo-sub">Malaysia</span>
+                <span class="logo-sub">Millennium Motors</span>
             </a>
             <div class="nav-links">
                 <a href="#models" class="nav-link">Models</a>
+                <a href="#news" class="nav-link">News & Events</a>
+                <a href="#about" class="nav-link">About Us</a>
                 <a href="#technology" class="nav-link">Technology</a>
-                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#careers" class="nav-link">Careers</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Menu">
@@ -42,17 +59,10 @@
 
     <!-- ===== HERO SECTION ===== -->
     <section class="hero" id="hero">
-        <!-- YouTube Video Background -->
+        <!-- Static hero background: avoids third-party captions, controls and audio -->
         <div class="hero-video-wrapper">
             <div class="hero-video-overlay"></div>
-            <iframe
-                id="heroVideo"
-                src="https://www.youtube.com/embed/OldTHqPji78?autoplay=1&mute=1&loop=1&playlist=OldTHqPji78&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
-                frameborder="0"
-                allow="autoplay; encrypted-media"
-                allowfullscreen
-                class="hero-video-iframe">
-            </iframe>
+            <div class="hero-static-bg" role="img" aria-label="BYD electric vehicles on the road"></div>
         </div>
 
         <!-- Hero Content -->
@@ -84,6 +94,15 @@
         </div>
     </section>
 
+    <section class="revamp-section news-section" id="news">
+        <div class="section-header">
+            <p class="section-eyebrow">Latest at Millennium Motors</p>
+            <h2 class="section-title">News & Events</h2>
+            <p class="section-description">Explore our latest launches, owner experiences and upcoming showroom events.</p>
+        </div>
+        <div class="news-grid" id="newsGrid"><p class="content-loading">Loading latest stories...</p></div>
+    </section>
+
     <!-- ===== MODELS SECTION ===== -->
     <section class="models" id="models">
         <div class="section-header">
@@ -95,7 +114,7 @@
             </p>
         </div>
 
-        <div class="models-grid">
+        <div class="models-grid" id="modelsGrid">
             <!-- BYD Seal -->
             <div class="model-card" data-model="seal">
                 <div class="model-card-image">
@@ -375,6 +394,44 @@
         </div>
     </section>
 
+    <section class="revamp-section about-section" id="about">
+        <div class="about-layout">
+            <div class="about-copy">
+                <p class="section-eyebrow">About Us</p>
+                <h2>Driving Malaysia toward a cleaner, smarter future.</h2>
+                <p>BYD Millennium Motors brings world-leading new energy vehicle technology closer to Malaysian drivers through a customer-first retail and ownership experience.</p>
+                <div class="about-values"><span>Trusted local team</span><span>EV specialists</span><span>End-to-end support</span></div>
+            </div>
+            <div class="about-panel"><strong>Build Your Dreams</strong><p>From your first test drive to after-sales care, our team is here for every kilometre.</p><a href="#contact" class="btn btn-primary">Meet Our Team</a></div>
+        </div>
+    </section>
+
+    <section class="revamp-section forms-section" id="careers">
+        <div class="section-header light">
+            <p class="section-eyebrow">Connect with Us</p>
+            <h2 class="section-title">Your Next Journey Starts Here</h2>
+            <p class="section-description">Enquire about a vehicle or apply to join Millennium Motors.</p>
+        </div>
+        <div class="forms-grid">
+            <form class="lead-form" id="enquiryForm">
+                <div class="form-heading"><span>01</span><div><h3>Register Your Interest</h3><p>Our selected branch will contact you.</p></div></div>
+                <div class="field-row"><label>Full name<input name="name" required></label><label>Phone number<input name="phone" type="tel" required></label></div>
+                <label>Email<input name="email" type="email" required></label>
+                <div class="field-row"><label>Model<select name="model" id="enquiryModel" required><option value="">Select a model</option></select></label><label>Preferred branch<select name="branch" required><option value="">Select a branch</option><option>Millennium Motors - Cheras</option><option>Millennium Motors - Puchong</option><option>Millennium Motors - Kajang</option><option>Millennium Motors - Seremban</option></select></label></div>
+                <label>Message<textarea name="message" placeholder="Tell us how we can help"></textarea></label>
+                <button class="btn btn-primary" type="submit">Enquire Now</button><p class="form-status" aria-live="polite"></p>
+            </form>
+            <form class="lead-form" id="careerForm" enctype="multipart/form-data">
+                <div class="form-heading"><span>02</span><div><h3>Join Our Team</h3><p>Upload your résumé or related document.</p></div></div>
+                <div class="field-row"><label>Full name<input name="name" required></label><label>Email<input name="email" type="email" required></label></div>
+                <label>Position of interest<input name="position" placeholder="e.g. Sales Consultant" required></label>
+                <label class="file-drop">Résumé / supporting document<input name="resume" type="file" accept=".pdf,.doc,.docx" required><small>PDF, DOC or DOCX - maximum 8 MB</small></label>
+                <label>Short introduction<textarea name="message" placeholder="Tell us why you would like to join us"></textarea></label>
+                <button class="btn btn-primary" type="submit">Submit Application</button><p class="form-status" aria-live="polite"></p>
+            </form>
+        </div>
+    </section>
+
     <!-- ===== CTA SECTION ===== -->
     <section class="cta-section" id="contact">
         <div class="cta-content">
@@ -395,7 +452,7 @@
         <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-col footer-brand">
-                    <h3 class="footer-logo">BYD<span>Malaysia</span></h3>
+                    <h3 class="footer-logo">BYD<span>Millennium Motors</span></h3>
                     <p>
                         Build Your Dreams — the world's leading new energy vehicle
                         manufacturer, now in Malaysia through Sime Darby Motors.
@@ -405,6 +462,8 @@
                         <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
                         <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" aria-label="Xiaohongshu"><span class="social-text">XHS</span></a>
+                        <a href="#" aria-label="Google Reviews"><i class="fa-brands fa-google"></i></a>
                     </div>
                 </div>
 
@@ -524,6 +583,7 @@
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
+    <script src="js/revamp.js?v=gallery-4"></script>
     <script src="js/chatbot.js"></script>
     <script src="js/rednote-share.js"></script>
 </body>

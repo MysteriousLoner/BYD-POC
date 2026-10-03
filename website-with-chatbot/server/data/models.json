@@ -1,0 +1,52 @@
+[
+  {
+    "id": "seal",
+    "name": "BYD Seal",
+    "type": "Electric Sedan",
+    "price": "From RM 179,800",
+    "range": "570 km",
+    "acceleration": "3.8s 0-100 km/h",
+    "power": "390 kW",
+    "battery": "82.5 kWh Blade Battery",
+    "badge": "NEW",
+    "description": "A sleek, performance-focused electric sedan built on BYD's e-Platform 3.0.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/0/0d/BYD_Seal%2C_IAA_Open_Space_2023%2C_Munich_%28P1120203%29.jpg",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/0/0d/BYD_Seal%2C_IAA_Open_Space_2023%2C_Munich_%28P1120203%29.jpg",
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/BYD_Seal%2C_IAA_Open_Space_2023%2C_Munich_%28P1120203%29.jpg/1280px-BYD_Seal%2C_IAA_Open_Space_2023%2C_Munich_%28P1120203%29.jpg",
+      "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/BYD_Seal%2C_IAA_Open_Space_2023%2C_Munich_%28P1120204%29.jpg/1280px-BYD_Seal%2C_IAA_Open_Space_2023%2C_Munich_%28P1120204%29.jpg"
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=2pWlRrEr_y4",
+    "published": false
+  },
+  {
+    "id": "atto3",
+    "name": "BYD Atto 3",
+    "type": "Electric SUV",
+    "price": "From RM 149,800",
+    "range": "480 km",
+    "acceleration": "7.3s 0-100 km/h",
+    "power": "150 kW",
+    "battery": "60.48 kWh Blade Battery",
+    "badge": "POPULAR",
+    "description": "A versatile electric SUV combining expressive design, intelligent technology and everyday comfort.",
+    "image": "https://img.youtube.com/vi/KL6RTpCXJNI/maxresdefault.jpg",
+    "videoUrl": "https://www.youtube.com/watch?v=KL6RTpCXJNI",
+    "published": true
+  },
+  {
+    "id": "dolphin",
+    "name": "BYD Dolphin",
+    "type": "Electric Hatchback",
+    "price": "From RM 100,530",
+    "range": "427 km",
+    "acceleration": "7.0s 0-100 km/h",
+    "power": "150 kW",
+    "battery": "60.48 kWh Blade Battery",
+    "badge": "",
+    "description": "A compact and agile EV made for efficient, connected urban driving.",
+    "image": "https://img.youtube.com/vi/P7IkO21zz_Q/maxresdefault.jpg",
+    "videoUrl": "https://www.youtube.com/watch?v=vy0fle6Fx34",
+    "published": true
+  }
+]

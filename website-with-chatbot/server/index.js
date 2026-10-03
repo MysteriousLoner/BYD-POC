@@ -5,6 +5,7 @@ const fs = require('fs');
 
 const offersRouter = require('./routes/offers');
 const chatRouter = require('./routes/chat');
+const contentRouter = require('./routes/content');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,10 +16,12 @@ app.use(express.json());
 
 // Serve static files from parent directory
 app.use(express.static(path.join(__dirname, '..')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // API routes
 app.use('/api/offers', offersRouter);
 app.use('/api/chat', chatRouter);
+app.use('/api/content', contentRouter);
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -27,7 +30,7 @@ app.get('/api/health', (req, res) => {
 
 // Admin panel (protected by simple token in query)
 app.get('/admin', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'admin.html'));
+    res.sendFile(path.join(__dirname, '..', 'admin-dashboard.html'));
 });
 
 // SPA fallback — serve index.html for any non-API, non-file route
