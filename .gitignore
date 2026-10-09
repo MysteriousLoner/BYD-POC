@@ -4,3 +4,9 @@ node_modules/
 .env
 __pycache__/
 *.pyc
+*.sqlite*
+website-with-chatbot/server/runtime/
+website-with-chatbot/server/uploads/
+.env.*
+!.env.example
+backups/

@@ -1,110 +1,34 @@
-/**
- * BYD Malaysia — AI Chatbot Widget
- * Answers questions about offers, promotions, and BYD models
- */
-
-(function() {
-    'use strict';
-
-    const widget = document.getElementById('chatbotWidget');
-    const toggleBtn = document.getElementById('chatbotToggle');
-    const messagesEl = document.getElementById('chatbotMessages');
-    const inputEl = document.getElementById('chatbotInput');
-    const sendBtn = document.getElementById('chatbotSend');
-    const quickReplies = document.getElementById('chatbotQuickReplies');
-
-    let isOpen = false;
-
-    // ===== Toggle Chatbot =====
-    toggleBtn.addEventListener('click', () => {
-        isOpen = !isOpen;
-        if (isOpen) {
-            widget.classList.add('open');
-            inputEl.focus();
-        } else {
-            widget.classList.remove('open');
-        }
-    });
-
-    // ===== Send Message =====
-    function sendMessage() {
-        const message = inputEl.value.trim();
-        if (!message) return;
-
-        addMessage(message, 'user');
-        inputEl.value = '';
-        sendBtn.disabled = true;
-
-        const typingEl = addTypingIndicator();
-
-        fetch('/api/chat', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message })
-        })
-        .then(res => res.json())
-        .then(data => {
-            removeTypingIndicator(typingEl);
-            addMessage(data.reply, 'bot');
-        })
-        .catch(() => {
-            removeTypingIndicator(typingEl);
-            addMessage("Sorry, I'm having trouble connecting. Please try again later. 😔", 'bot');
-        });
-    }
-
-    sendBtn.addEventListener('click', sendMessage);
-
-    inputEl.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') sendMessage();
-    });
-
-    inputEl.addEventListener('input', () => {
-        sendBtn.disabled = !inputEl.value.trim();
-    });
-
-    sendBtn.disabled = true;
-
-    // ===== Quick Replies =====
-    quickReplies.addEventListener('click', (e) => {
-        const btn = e.target.closest('.chatbot-quick-btn');
-        if (!btn) return;
-        const query = btn.dataset.query;
-        inputEl.value = query;
-        sendMessage();
-    });
-
-    // ===== Helpers =====
-    function addMessage(text, type) {
-        const div = document.createElement('div');
-        div.className = `chatbot-message ${type}`;
-        div.innerHTML = formatMessage(text);
-        messagesEl.appendChild(div);
-        scrollToBottom();
-        return div;
-    }
-
-    function addTypingIndicator() {
-        const div = document.createElement('div');
-        div.className = 'chatbot-typing';
-        div.innerHTML = '<span></span><span></span><span></span>';
-        messagesEl.appendChild(div);
-        scrollToBottom();
-        return div;
-    }
-
-    function removeTypingIndicator(el) {
-        if (el && el.parentNode) el.parentNode.removeChild(el);
-    }
-
-    function scrollToBottom() {
-        messagesEl.scrollTop = messagesEl.scrollHeight;
-    }
-
-    function formatMessage(text) {
-        text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-        text = text.replace(/\n/g, '<br>');
-        return text;
-    }
-
+(() => {
+  'use strict';
+  const widget = document.getElementById('chatbotWidget'), toggle = document.getElementById('chatbotToggle'), messages = document.getElementById('chatbotMessages'), input = document.getElementById('chatbotInput'), send = document.getElementById('chatbotSend'), quick = document.getElementById('chatbotQuickReplies');
+  let busy = false, conversationId = null;
+  try { conversationId = sessionStorage.getItem('byd-conversation'); } catch (_) {}
+  input.maxLength = 1000;
+  messages.setAttribute('aria-live', 'polite'); messages.setAttribute('role', 'log');
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.onclick = () => { const open = widget.classList.toggle('open'); toggle.setAttribute('aria-expanded', String(open)); if (open) input.focus(); };
+  const notice = document.createElement('p'); notice.className = 'chatbot-privacy'; notice.textContent = 'Chats and your IP address are stored until manually deleted by an administrator. Messages are sent to our AI provider to generate replies. Please avoid sensitive personal information.';
+  document.querySelector('.chatbot-input-wrap').before(notice);
+  const header = document.querySelector('.chatbot-header-info p'); header.textContent = 'Sales information · English / BM / 中文';
+  messages.firstElementChild.textContent = 'Hello! Ask about our vehicles, current promotions, warranty, charging or branches. I answer using information published by our team.';
+  const reset = document.createElement('button'); reset.type = 'button'; reset.className = 'chatbot-quick-btn'; reset.textContent = 'New chat';
+  reset.onclick = () => { if (busy) return; conversationId = null; try { sessionStorage.removeItem('byd-conversation'); } catch (_) {} messages.replaceChildren(); add('How can I help you?', 'bot'); }; quick.append(reset);
+  function add(text, role) { const div = document.createElement('div'); div.className = 'chatbot-message ' + role; div.textContent = text; messages.append(div); messages.scrollTop = messages.scrollHeight; return div; }
+  function update() { send.disabled = busy || !input.value.trim(); quick.querySelectorAll('button').forEach(b => b.disabled = busy); }
+  async function submit() {
+    const message = input.value.trim(); if (!message || busy) return;
+    busy = true; input.value = ''; update(); add(message, 'user'); const typing = add('…', 'bot');
+    try {
+      const response = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message, conversationId }), signal: AbortSignal.timeout(22000) });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.reply || data.error || 'Unable to send. Please try again.');
+      conversationId = data.conversationId; try { sessionStorage.setItem('byd-conversation', conversationId); } catch (_) {}
+      typing.textContent = data.reply;
+      if (data.sources?.length) { const source = document.createElement('small'); source.className = 'chatbot-sources'; source.textContent = 'Sources: ' + data.sources.map(s => s.label).join(' · '); typing.append(source); }
+    } catch (error) { typing.textContent = error.name === 'TimeoutError' ? 'The reply took too long. Please try again.' : error.message; }
+    finally { busy = false; update(); messages.scrollTop = messages.scrollHeight; }
+  }
+  send.onclick = submit; input.addEventListener('keydown', event => { if (event.key === 'Enter' && !event.isComposing) submit(); }); input.oninput = update;
+  quick.addEventListener('click', event => { const button = event.target.closest('[data-query]'); if (button && !busy) { input.value = button.dataset.query; submit(); } });
+  update();
 })();

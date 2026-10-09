@@ -4,10 +4,9 @@ const path = require('path');
 const multer = require('multer');
 
 const router = express.Router();
-const dataDir = path.join(__dirname, '..', 'data');
-const uploadDir = path.join(__dirname, '..', 'uploads');
-const submissionsDir = path.join(dataDir, 'submissions');
-[uploadDir, submissionsDir].forEach(dir => fs.mkdirSync(dir, { recursive: true }));
+const { readJson, writeJson } = require('../database');
+const uploadDir = process.env.UPLOAD_DIR || path.join(__dirname, '..', 'uploads');
+fs.mkdirSync(uploadDir, { recursive: true });
 
 const safeName = value => String(value || '').replace(/[^a-zA-Z0-9._-]/g, '-');
 const storage = multer.diskStorage({
@@ -31,18 +30,22 @@ const heroUpload = multer({
   }
 });
 
-function readJson(name, fallback = []) {
-  try { return JSON.parse(fs.readFileSync(path.join(dataDir, name), 'utf8')); }
-  catch { return fallback; }
-}
-function writeJson(name, value) {
-  fs.writeFileSync(path.join(dataDir, name), JSON.stringify(value, null, 2));
-}
-
-router.get('/models', (_, res) => res.json(readJson('models.json')));
+router.get('/models', (req, res) => res.json(readJson('models.json').filter(v => req.admin || v.published === true)));
 const vehicleImages = upload.fields([{ name: 'imageFiles', maxCount: 8 }, { name: 'imageFile', maxCount: 1 }]);
+function safeUrl(value, allowAnchor = false) {
+  return !value || /^https?:\/\/[^\s"'<>]+$/i.test(value) || /^\/uploads\/[a-zA-Z0-9._-]+$/.test(value) || (allowAnchor && /^#[a-zA-Z0-9_-]+$/.test(value));
+}
+function validateVehicle(body) {
+  for (const field of ['name', 'type', 'price', 'description']) if (!body[field] || String(body[field]).length > 5000) throw new Error('Name, type, price and description are required (maximum 5,000 characters).');
+  for (const field of ['image', 'videoUrl']) if (!safeUrl(body[field])) throw new Error('Use a valid HTTP(S) media URL.');
+}
+router.use((req, res, next) => {
+  if (req.path.startsWith('/models') && !['GET', 'HEAD'].includes(req.method) && !req.admin) return res.sendStatus(401);
+  next();
+});
 
 router.post('/models', vehicleImages, (req, res) => {
+  validateVehicle(req.body);
   const models = readJson('models.json');
   const id = safeName(req.body.id || req.body.name).toLowerCase();
   if (!id || models.some(model => model.id === id)) return res.status(400).json({ error: 'A unique model name is required' });
@@ -53,6 +56,7 @@ router.post('/models', vehicleImages, (req, res) => {
   models.push(model); writeJson('models.json', models); res.status(201).json(model);
 });
 router.put('/models/:id', vehicleImages, (req, res) => {
+  validateVehicle(req.body);
   const models = readJson('models.json');
   const index = models.findIndex(model => model.id === req.params.id);
   if (index < 0) return res.status(404).json({ error: 'Model not found' });
@@ -73,7 +77,10 @@ router.delete('/models/:id', (req, res) => {
 
 router.get('/news', (_, res) => res.json(readJson('news.json')));
 
-router.get('/settings', (_, res) => res.json(readJson('site-settings.json', { hero: {} })));
+router.get('/settings', (req, res) => {
+  const settings = readJson('site-settings.json', { heroSlides: [] });
+  res.json({ heroSlides: settings.heroSlides.filter(slide => req.admin || slide.published === true) });
+});
 function normalizeSlide(body, current = {}) {
   let buttons = current.buttons || [];
   if (body.buttonsJson !== undefined) {
@@ -102,6 +109,7 @@ function normalizeSlide(body, current = {}) {
 function validateSlide(slide) {
   if (!slide.headline) throw new Error('A slide headline is required');
   if (!slide.mediaUrl) throw new Error('Please upload media or enter a media URL');
+  if (!safeUrl(slide.mediaUrl) || slide.buttons.some(b => !safeUrl(b.href, true))) throw new Error('Use safe HTTP(S) media URLs and HTTP(S) or section button links.');
   if (slide.mediaType === 'video' && !/(youtube\.com|youtu\.be|\.(mp4|webm)(\?.*)?$)/i.test(slide.mediaUrl)) {
     throw new Error('Video slides require a YouTube link, uploaded MP4/WEBM, or a direct video URL');
   }

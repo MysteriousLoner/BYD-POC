@@ -1,6 +1,6 @@
 const state={models:[],settings:{heroSlides:[]}};
 const $=selector=>document.querySelector(selector);
-const esc=value=>String(value||'').replace(/[&<>']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;'}[char]));
+const esc=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const getYouTubeId=url=>String(url||'').match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/)?.[1]||'';
 const sidebar=$('#adminSidebar');
 if(localStorage.getItem('byd-admin-sidebar')==='collapsed')sidebar.classList.add('collapsed');

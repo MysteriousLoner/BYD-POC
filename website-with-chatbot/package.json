@@ -5,11 +5,16 @@
   "main": "server/index.js",
   "scripts": {
     "start": "node server/index.js",
-    "dev": "node --watch server/index.js"
+    "dev": "node --watch server/index.js",
+    "test": "node --test test/*.test.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.0",
-    "multer": "^2.4.0"
+    "multer": "^2.4.0",
+    "openai": "^7.31.0"
+  },
+  "engines": {
+    "node": ">=24"
   }
 }

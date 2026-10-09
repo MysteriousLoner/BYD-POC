@@ -1,0 +1,9 @@
+[Unit]
+Description=BYD SQLite and upload backup
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/byd-poc/deploy-backup.sh
+UMask=0077
