@@ -71,6 +71,11 @@ if (!db.prepare('SELECT 1 FROM migrations WHERE version=1').get()) transaction((
   db.prepare('INSERT INTO migrations VALUES(1,?)').run(new Date().toISOString());
 });
 // Recover accepted requests interrupted by a process restart without losing their log.
+// One-time branch import. A later deletion must not recreate an entry.
+if (!db.prepare('SELECT 1 FROM migrations WHERE version=2').get()) transaction(() => {
+  if (!list('branches').length) seed('branches.json').forEach(branch => save('branches', branch));
+  db.prepare('INSERT INTO migrations VALUES(2,?)').run(new Date().toISOString());
+});
 function recoverIncompleteConversations() { transaction(() => {
   for (const conversation of db.prepare("SELECT id,language FROM chat_conversations WHERE status='pending'").all()) {
     const reply = { en: 'The previous request was interrupted. Please send your question again.', ms: 'Permintaan sebelumnya terganggu. Sila hantar soalan anda semula.', zh: '上一条请求被中断，请重新发送您的问题。' }[conversation.language] || 'Please send your question again.';

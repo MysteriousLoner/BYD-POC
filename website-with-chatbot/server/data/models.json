@@ -30,9 +30,34 @@
     "battery": "60.48 kWh Blade Battery",
     "badge": "POPULAR",
     "description": "A versatile electric SUV combining expressive design, intelligent technology and everyday comfort.",
-    "image": "https://img.youtube.com/vi/KL6RTpCXJNI/maxresdefault.jpg",
+    "image": "/assets/atto3-blue.webp",
     "videoUrl": "https://www.youtube.com/watch?v=KL6RTpCXJNI",
-    "published": true
+    "published": true,
+    "images": [
+      "/assets/atto3-blue.webp",
+      "/assets/atto3-white.webp",
+      "/assets/atto-cabin.webp"
+    ],
+    "colours": [
+      {
+        "id": "surf-blue",
+        "name": "Surf Blue",
+        "swatch": "#668cae",
+        "images": [
+          "/assets/atto3-blue.webp",
+          "/assets/atto-cabin.webp"
+        ]
+      },
+      {
+        "id": "ski-white",
+        "name": "Ski White",
+        "swatch": "#eeefeb",
+        "images": [
+          "/assets/atto3-white.webp",
+          "/assets/atto-cabin.webp"
+        ]
+      }
+    ]
   },
   {
     "id": "dolphin",
@@ -45,8 +70,30 @@
     "battery": "60.48 kWh Blade Battery",
     "badge": "",
     "description": "A compact and agile EV made for efficient, connected urban driving.",
-    "image": "https://img.youtube.com/vi/P7IkO21zz_Q/maxresdefault.jpg",
+    "image": "/assets/dolphin-blue.webp",
     "videoUrl": "https://www.youtube.com/watch?v=vy0fle6Fx34",
-    "published": true
+    "published": true,
+    "images": [
+      "/assets/dolphin-blue.webp",
+      "/assets/dolphin-white.webp"
+    ],
+    "colours": [
+      {
+        "id": "surf-blue",
+        "name": "Surf Blue",
+        "swatch": "#668cae",
+        "images": [
+          "/assets/dolphin-blue.webp"
+        ]
+      },
+      {
+        "id": "ski-white",
+        "name": "Ski White",
+        "swatch": "#eeefeb",
+        "images": [
+          "/assets/dolphin-white.webp"
+        ]
+      }
+    ]
   }
 ]

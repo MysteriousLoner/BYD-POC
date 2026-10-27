@@ -1,0 +1,53 @@
+[
+  {
+    "name": "atto3-blue",
+    "source": "https://millenniumautobyd.com.my/home/wp-content/uploads/2024/06/Productpage_Atto3-SurfBlue.png",
+    "output": "assets/atto3-blue.webp"
+  },
+  {
+    "name": "atto3-white",
+    "source": "https://millenniumautobyd.com.my/home/wp-content/uploads/2024/06/Productpage_Atto3-SkiWhite.png",
+    "output": "assets/atto3-white.webp"
+  },
+  {
+    "name": "dolphin-blue",
+    "source": "https://millenniumautobyd.com.my/home/wp-content/uploads/2024/06/Productpage_Dolphin_Premium_SurfBlue.png",
+    "output": "assets/dolphin-blue.webp"
+  },
+  {
+    "name": "dolphin-white",
+    "source": "https://millenniumautobyd.com.my/home/wp-content/uploads/2024/06/Productpage_Dolphin_Premium_SkiWhite.png",
+    "output": "assets/dolphin-white.webp"
+  },
+  {
+    "name": "dolphin-drive",
+    "source": "https://millenniumautobyd.com.my/home/wp-content/uploads/2024/06/Productpage_Dolphin_Gallery-03.jpg",
+    "output": "assets/dolphin-drive.webp"
+  },
+  {
+    "name": "showroom-hero",
+    "source": "https://millenniumautobyd.com.my/home/wp-content/uploads/2024/06/Productpage_Atto3_Gallery-03.jpg",
+    "output": "assets/showroom-hero.webp"
+  },
+  {
+    "name": "atto-cabin",
+    "source": "https://millenniumautobyd.com.my/home/wp-content/uploads/2024/06/Productpage_Atto3_Gallery-04-2.jpg",
+    "output": "assets/atto-cabin.webp"
+  },
+  {
+    "name": "seal-performance",
+    "source": "https://millenniumautobyd.com.my/home/wp-content/uploads/2025/09/BYD-Seal-Performance-Shark-Grey-side-scaled.jpg",
+    "output": "assets/seal-performance.webp"
+  },
+  {
+    "name": "BYD official logo",
+    "source": "https://www.byd.com/static_material/byd/overseas/public-icon/logo.svg",
+    "output": "assets/byd-logo.svg"
+  },
+  {
+    "name": "Sora variable font",
+    "source": "https://github.com/google/fonts/tree/main/ofl/sora",
+    "output": "assets/sora.ttf",
+    "license": "assets/Sora-OFL.txt"
+  }
+]

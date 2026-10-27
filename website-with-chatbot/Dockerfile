@@ -8,10 +8,12 @@ RUN npm ci --omit=dev
 
 # Copy static files
 COPY index.html ./
+COPY showroom.html ./
 COPY admin.html ./
 COPY admin-dashboard.html admin-login.html ./
 COPY css/ ./css/
 COPY js/ ./js/
+COPY assets/ ./assets/
 
 # Copy server
 COPY server/ ./server/

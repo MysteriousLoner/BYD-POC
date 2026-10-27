@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-27T08:27:04.565165+00:00",
+  "title": "Design System: BYD Millennium Motors",
+  "extensions": {
+    "colorMeta": {
+      "public-red": {
+        "role": "primary",
+        "displayName": "BYD red",
+        "canonical": "#bc2033"
+      },
+      "public-bg": {
+        "role": "neutral",
+        "displayName": "Showroom white",
+        "canonical": "#fff"
+      },
+      "public-ink": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "#17191d"
+      },
+      "admin-bg": {
+        "role": "neutral",
+        "displayName": "Manager charcoal",
+        "canonical": "#111214"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Hero display",
+        "purpose": "Vehicle-led home hero."
+      },
+      "headline": {
+        "displayName": "Section headline",
+        "purpose": "Public editorial sections."
+      }
+    },
+    "shadows": [
+      {
+        "name": "navigation",
+        "value": "0 20px 45px #0002",
+        "purpose": "Floating public menu."
+      },
+      {
+        "name": "chat",
+        "value": "0 16px 50px #0003",
+        "purpose": "Floating conversation panel."
+      }
+    ],
+    "motion": [
+      {
+        "name": "image-hover",
+        "value": "transform .4s ease",
+        "purpose": "Subtle discovery-card image scale; disabled under reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "medium",
+        "value": "900px"
+      },
+      {
+        "name": "phone",
+        "value": "650px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Public primary button",
+      "kind": "button",
+      "refersTo": "public-button-primary",
+      "description": "Graphite action for light public surfaces.",
+      "html": "<button class=\"ds-primary\">Explore model <span aria-hidden=\"true\">\u2197</span></button>",
+      "css": ".ds-primary{background:#17191d;color:#fff;border:1px solid #17191d;border-radius:5px;padding:12px 20px;min-height:48px;font:500 14px Sora,Arial,sans-serif;display:inline-flex;align-items:center;gap:24px}.ds-primary:hover{background:#a91c2d;border-color:#a91c2d}.ds-primary:focus-visible{outline:3px solid #a71b30;outline-offset:3px}"
+    },
+    {
+      "name": "Public secondary button",
+      "kind": "button",
+      "refersTo": "public-button-secondary",
+      "description": "Outlined secondary action.",
+      "html": "<button class=\"ds-secondary\">View details <span aria-hidden=\"true\">\u2197</span></button>",
+      "css": ".ds-secondary{background:transparent;color:#17191d;border:1px solid #22252a;border-radius:5px;padding:12px 20px;min-height:48px;font:500 14px Sora,Arial,sans-serif;display:inline-flex;gap:24px}.ds-secondary:hover{background:#eee}.ds-secondary:focus-visible{outline:3px solid #a71b30;outline-offset:3px}"
+    },
+    {
+      "name": "Public field",
+      "kind": "input",
+      "description": "Labelled light form field.",
+      "html": "<label class=\"ds-label\">Your name<input class=\"ds-field\" placeholder=\"Enter your name\"></label>",
+      "css": ".ds-label{display:grid;gap:8px;color:#17191d;font:500 13px Sora,Arial,sans-serif}.ds-field{min-height:48px;padding:12px 14px;background:#fff;color:#17191d;border:1px solid #95999f;border-radius:5px;font:400 16px Sora,Arial,sans-serif}.ds-field:focus-visible{outline:3px solid #a71b30;outline-offset:3px}"
+    },
+    {
+      "name": "Public navigation",
+      "kind": "nav",
+      "description": "Light menu with separated links.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Example navigation\"><small>Explore Millennium Motors</small><a href=\"#models\">Models <span>\u2192</span></a><a href=\"#contact\">Get in touch <span>\u2192</span></a></nav>",
+      "css": ".ds-nav{background:#fff;color:#17191d;padding:30px;font:400 19px Sora,Arial,sans-serif}.ds-nav small{display:block;color:#676b71;font-size:12px;padding-bottom:22px}.ds-nav a{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid #e3e3e1;text-decoration:none;color:inherit}.ds-nav a:hover{color:#bc2033}.ds-nav a:focus-visible{outline:3px solid #a71b30;outline-offset:3px}"
+    },
+    {
+      "name": "Model card",
+      "kind": "card",
+      "refersTo": "public-card",
+      "description": "Pale catalogue card with model facts and an action.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-photo\">Vehicle photograph</div><div class=\"ds-copy\"><h3>BYD model</h3><p>Electric SUV</p><a href=\"#model\">Explore model \u2197</a></div></article>",
+      "css": ".ds-card{background:#f3f3f1;border-radius:14px;overflow:hidden;color:#17191d;font:400 14px Sora,Arial,sans-serif}.ds-photo{height:140px;display:grid;place-items:center;background:#e8e9e8;color:#5d6168}.ds-copy{padding:24px}.ds-copy h3{font-size:23px;font-weight:500;margin:0 0 6px}.ds-copy p{color:#5d6168}.ds-copy a{color:inherit;text-underline-offset:5px}.ds-copy a:hover{color:#bc2033}.ds-copy a:focus-visible{outline:3px solid #a71b30;outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Open Road Showroom",
+    "overview": "An immersive vehicle-led public showroom opens into bright editorial sections. The existing dark manager remains a focused workspace.",
+    "keyCharacteristics": [
+      "Authentic vehicle imagery",
+      "Centered BYD identity over a full-height hero",
+      "Light public surfaces and graphite typography",
+      "Dark, compact manager controls"
+    ],
+    "rules": [
+      {
+        "name": "The Media First Rule",
+        "body": "Let imagery, white space and typography carry the public page; use red for meaningful emphasis and state.",
+        "section": "colors"
+      }
+    ],
+    "dos": [
+      "Do use authentic published media.",
+      "Do preserve visible focus and readable contrast."
+    ],
+    "donts": [
+      "Don't fabricate vehicle facts or digitally recolour cars.",
+      "Don't obscure important campaign artwork."
+    ]
+  }
+}

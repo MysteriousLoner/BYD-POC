@@ -42,8 +42,14 @@ function createApp(options = {}) {
   app.get(['/admin.html', '/admin-content.html'], (_, res) => res.redirect('/admin'));
   app.get('/', (_, res) => res.sendFile(path.join(root, 'index.html')));
   app.get('/index.html', (_, res) => res.sendFile(path.join(root, 'index.html')));
+  app.get(['/models', '/models/:id', '/compare', '/events', '/contact', '/careers'], (req, res) => {
+    if (req.params.id && !require('./database').list('vehicles').some(v => v.id === req.params.id && v.published === true)) {
+      return res.status(404).sendFile(path.join(root, 'showroom.html'));
+    }
+    res.sendFile(path.join(root, 'showroom.html'));
+  });
   // Serve only public assets, never application source, SQLite, or submissions.
-  for (const directory of ['css', 'js']) app.use('/' + directory, express.static(path.join(root, directory), { dotfiles: 'deny' }));
+  for (const directory of ['css', 'js', 'assets']) app.use('/' + directory, express.static(path.join(root, directory), { dotfiles: 'deny' }));
   app.use('/uploads', (req, res, next) => {
     if (!/\.(jpe?g|png|webp|mp4|webm)$/i.test(req.path)) return res.sendStatus(404);
     next();

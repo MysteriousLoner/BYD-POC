@@ -2,16 +2,19 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
+const sharp = require('sharp');
+const { randomUUID } = require('node:crypto');
+const vehicleContent = require('../vehicle-content');
 
 const router = express.Router();
-const { readJson, writeJson } = require('../database');
+const { readJson, writeJson, list } = require('../database');
 const uploadDir = process.env.UPLOAD_DIR || path.join(__dirname, '..', 'uploads');
 fs.mkdirSync(uploadDir, { recursive: true });
 
 const safeName = value => String(value || '').replace(/[^a-zA-Z0-9._-]/g, '-');
 const storage = multer.diskStorage({
   destination: (_, __, cb) => cb(null, uploadDir),
-  filename: (_, file, cb) => cb(null, `${Date.now()}-${safeName(file.originalname)}`)
+  filename: (_, file, cb) => cb(null, `${randomUUID()}-${safeName(file.originalname)}`)
 });
 const upload = multer({
   storage,
@@ -30,52 +33,79 @@ const heroUpload = multer({
   }
 });
 
-router.get('/models', (req, res) => res.json(readJson('models.json').filter(v => req.admin || v.published === true)));
-const vehicleImages = upload.fields([{ name: 'imageFiles', maxCount: 8 }, { name: 'imageFile', maxCount: 1 }]);
-function safeUrl(value, allowAnchor = false) {
-  return !value || /^https?:\/\/[^\s"'<>]+$/i.test(value) || /^\/uploads\/[a-zA-Z0-9._-]+$/.test(value) || (allowAnchor && /^#[a-zA-Z0-9_-]+$/.test(value));
-}
-function validateVehicle(body) {
-  for (const field of ['name', 'type', 'price', 'description']) if (!body[field] || String(body[field]).length > 5000) throw new Error('Name, type, price and description are required (maximum 5,000 characters).');
-  for (const field of ['image', 'videoUrl']) if (!safeUrl(body[field])) throw new Error('Use a valid HTTP(S) media URL.');
-}
+// All mutation routes in this router are mounted behind authentication and CSRF.
 router.use((req, res, next) => {
-  if (req.path.startsWith('/models') && !['GET', 'HEAD'].includes(req.method) && !req.admin) return res.sendStatus(401);
+  if (!['GET', 'HEAD'].includes(req.method) && !['/careers', '/enquiries'].includes(req.path) && !req.admin) return res.sendStatus(401);
   next();
 });
-
-router.post('/models', vehicleImages, (req, res) => {
-  validateVehicle(req.body);
-  const models = readJson('models.json');
-  const id = safeName(req.body.id || req.body.name).toLowerCase();
-  if (!id || models.some(model => model.id === id)) return res.status(400).json({ error: 'A unique model name is required' });
-  const files = [...(req.files?.imageFiles || []), ...(req.files?.imageFile || [])];
-  const uploadedImages = files.map(file => `/uploads/${file.filename}`);
-  const images = [...new Set([req.body.image, ...uploadedImages].filter(Boolean))];
-  const model = { ...req.body, id, image: images[0] || '', images, published: req.body.published !== 'false' };
-  models.push(model); writeJson('models.json', models); res.status(201).json(model);
+const imageUpload = multer({ storage, limits: { fileSize: 8 * 1024 * 1024, files: 32, fields: 100 }, fileFilter: (_, file, cb) => {
+  const valid = ['image/jpeg', 'image/png', 'image/webp'].includes(file.mimetype) && (['imageFile', 'imageFiles'].includes(file.fieldname) || /^colourImage_[a-z0-9-]+$/.test(file.fieldname));
+  cb(valid ? null : new Error('Use JPG, PNG or WEBP vehicle images.'), valid);
+}}).any();
+function cleanup(files) { for (const file of files || []) { try { fs.unlinkSync(file.path); } catch {} } }
+function safeUrl(value, allowAnchor = false) {
+  return !value || vehicleContent.safeUrl(value) || (allowAnchor && /^#[a-zA-Z0-9_-]+$/.test(value));
+}
+router.get('/models', (req, res) => res.json(readJson('models.json').filter(v => req.admin || v.published === true).map(vehicleContent.normalize)));
+router.get('/models/:id', (req, res) => {
+  const model = readJson('models.json').find(v => v.id === req.params.id && (req.admin || v.published === true));
+  res.status(model ? 200 : 404).json(model ? vehicleContent.normalize(model) : { error: 'This model is unavailable. Please explore our current line-up.' });
 });
-router.put('/models/:id', vehicleImages, (req, res) => {
-  validateVehicle(req.body);
-  const models = readJson('models.json');
-  const index = models.findIndex(model => model.id === req.params.id);
-  if (index < 0) return res.status(404).json({ error: 'Model not found' });
-  models[index] = { ...models[index], ...req.body, id: req.params.id, published: req.body.published !== 'false' };
-  const files = [...(req.files?.imageFiles || []), ...(req.files?.imageFile || [])];
-  const existingImages = Array.isArray(models[index].images) ? models[index].images : [models[index].image].filter(Boolean);
-  const uploadedImages = files.map(file => `/uploads/${file.filename}`);
-  const images = [...new Set([req.body.image, ...existingImages, ...uploadedImages].filter(Boolean))];
-  models[index].images = images;
-  models[index].image = images[0] || '';
-  writeJson('models.json', models); res.json(models[index]);
+for (const method of ['post', 'put']) router[method](method === 'post' ? '/models' : '/models/:id', imageUpload, (req, res) => {
+  try {
+    const models = readJson('models.json'), current = models.find(m => m.id === req.params.id);
+    if (method === 'put' && !current) { cleanup(req.files); return res.status(404).json({ error: 'Model not found.' }); }
+    const id = current?.id || safeName(req.body.id || req.body.name).toLowerCase();
+    if (!id || (!current && models.some(m => m.id === id))) throw new Error('A unique model name is required.');
+    const model = { ...vehicleContent.vehicle(req.body, current, req.files), id };
+    if (current) models[models.indexOf(current)] = model; else models.push(model);
+    writeJson('models.json', models); res.status(current ? 200 : 201).json(model);
+  } catch (error) { cleanup(req.files); res.status(400).json({ error: error.message }); }
 });
 router.delete('/models/:id', (req, res) => {
   const models = readJson('models.json');
-  writeJson('models.json', models.filter(model => model.id !== req.params.id));
-  res.status(204).end();
+  if (!models.some(m => m.id === req.params.id)) return res.status(404).json({ error: 'Model not found.' });
+  writeJson('models.json', models.filter(m => m.id !== req.params.id)); res.status(204).end();
 });
-
-router.get('/news', (_, res) => res.json(readJson('news.json')));
+router.get('/branches', (_, res) => res.json(list('branches').filter(b => b.published === true).map(b => ({ id: b.id, name: b.name, city: b.city }))));
+router.get('/news', (req, res) => res.json(readJson('news.json').filter(n => req.admin || n.published !== false)));
+const eventImage = multer({ storage, limits: { fileSize: 8 * 1024 * 1024 }, fileFilter: (_, file, cb) => {
+  const valid = ['image/jpeg', 'image/png', 'image/webp'].includes(file.mimetype);
+  cb(valid ? null : new Error('Use a JPG, PNG or WEBP event image.'), valid);
+}}).single('imageFile');
+for (const method of ['post', 'put']) router[method](method === 'post' ? '/news' : '/news/:id', eventImage, async (req, res, next) => {
+  try {
+    const items = readJson('news.json'), current = items.find(item => item.id === req.params.id);
+    if (method === 'put' && !current) { cleanup([req.file].filter(Boolean)); return res.status(404).json({ error: 'Event not found.' }); }
+    const title = String(req.body.title || '').trim(), summary = String(req.body.summary || '').trim(), date = String(req.body.date || '');
+    if (!title || title.length > 200 || !summary || summary.length > 5000) throw new Error('Enter a title (up to 200 characters) and summary (up to 5,000).');
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !Number.isFinite(Date.parse(date)) || new Date(date).toISOString().slice(0,10) !== date) throw new Error('Enter a valid event date.');
+    const category = req.body.category || 'Event';
+    if (!['Event', 'News', 'Article'].includes(category)) throw new Error('Choose Event, News or Article.');
+    const image = req.file ? `/uploads/${req.file.filename}` : req.body.image || current?.image;
+    if (!image || !vehicleContent.safeUrl(image)) throw new Error('Upload an image or enter a valid image URL.');
+    let imageDimensions = current?.image === image ? current.imageDimensions : null;
+    if (req.file) {
+      const meta = await sharp(req.file.path).metadata();
+      const rotated = [5,6,7,8].includes(meta.orientation);
+      imageDimensions = { width: rotated ? meta.height : meta.width, height: rotated ? meta.width : meta.height };
+    }
+    const item = { id: current?.id || randomUUID(), title, summary, date, category, image, imageDimensions, published: req.body.published !== false && req.body.published !== 'false' };
+    const latest = readJson('news.json');
+    if (current) {
+      const index = latest.findIndex(entry => entry.id === current.id);
+      if (index < 0) throw new Error('This story was deleted while saving. Reload the story list.');
+      latest[index] = item;
+    } else latest.push(item);
+    writeJson('news.json', latest);
+    res.status(current ? 200 : 201).json(item);
+  } catch (error) { cleanup([req.file].filter(Boolean)); res.status(400).json({ error: error.message }); }
+});
+router.delete('/news/:id', (req, res) => {
+  const items = readJson('news.json');
+  if (!items.some(item => item.id === req.params.id)) return res.status(404).json({ error: 'Event not found.' });
+  writeJson('news.json', items.filter(item => item.id !== req.params.id)); res.status(204).end();
+});
 
 router.get('/settings', (req, res) => {
   const settings = readJson('site-settings.json', { heroSlides: [] });
@@ -167,9 +197,14 @@ router.post('/enquiries', express.json(), (req, res) => {
 });
 
 router.post('/careers', upload.single('resume'), (req, res) => {
-  if (!req.file) return res.status(400).json({ error: 'Please attach a resume' });
+  const branch = list('branches').find(b => b.id === req.body.branchId && b.published === true);
+  const fail = message => { cleanup([req.file].filter(Boolean)); return res.status(400).json({ error: message }); };
+  if (!branch) return fail('Choose an available preferred branch. Refresh the branch list and try again.');
+  if (!req.file || !['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'].includes(req.file.mimetype)) return fail('Please attach a PDF, DOC or DOCX résumé.');
+  const fields = Object.fromEntries(['name', 'email', 'position', 'message'].map(key => [key, String(req.body[key] || '').trim()]));
+  if (!fields.name || !fields.position || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email) || Object.values(fields).some(v => v.length > 5000)) return fail('Enter your name, a valid email, and position of interest.');
   const records = readJson('submissions/careers.json');
-  records.push({ id: Date.now().toString(), createdAt: new Date().toISOString(), ...req.body, resume: `/uploads/${req.file.filename}` });
+  records.push({ ...fields, id: randomUUID(), createdAt: new Date().toISOString(), branchId: branch.id, branchName: branch.name, resume: `/uploads/${req.file.filename}` });
   writeJson('submissions/careers.json', records); res.status(201).json({ ok: true });
 });
 
