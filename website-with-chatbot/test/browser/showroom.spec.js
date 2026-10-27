@@ -23,19 +23,20 @@ test('catalogue colours change real images; details open and reload as independe
   await page.getByRole('link',{name:'Enquire about this model'}).click(); await expect(page.locator('#enquiryModel')).toHaveValue('BYD Atto 3');
   await page.goto('/models/seal'); await expect(page.getByRole('heading',{name:'Model unavailable.'})).toBeVisible();
 });
-test('comparison persists, supports replacement and handles unavailable or incomplete selections',async ({page}) => {
-  await page.goto('/'); await page.locator('[data-car=atto3] [data-compare]').check(); await page.locator('[data-car=dolphin] [data-compare]').check();
-  await page.locator('#comparisonTray').getByRole('link',{name:'Compare cars'}).click(); await expect(page).toHaveURL(/models=atto3,dolphin/); await expect(page.locator('.compare-rows')).toContainText('480 km'); await expect(page.locator('.compare-rows')).toContainText('427 km');
+test('dedicated comparison supports selection, replacement and navigation',async ({page}) => {
+  await page.goto('/models'); await expect(page.locator('[data-compare], #comparisonTray')).toHaveCount(0);
+  await page.getByRole('link',{name:'Compare models'}).click();
+  await page.locator('[data-slot="0"]').selectOption('atto3'); await page.locator('[data-slot="1"]').selectOption('dolphin');
+  await expect(page).toHaveURL(/models=atto3,dolphin/); await expect(page.locator('.compare-rows')).toContainText('480 km'); await expect(page.locator('.compare-rows')).toContainText('427 km');
   await expect(page.locator('[data-slot="1"] option[value=atto3]')).toHaveAttribute('disabled','');
   await page.locator('[data-slot="1"]').selectOption(''); await expect(page.locator('.compare-rows')).toContainText('Choose a second vehicle');
-  await page.locator('[data-slot="1"]').selectOption('dolphin'); await page.reload(); await expect(page.locator('[data-slot="1"]')).toHaveValue('dolphin');
+  await page.locator('[data-slot="1"]').selectOption('dolphin'); await page.goto('/'); await page.goto('/compare'); await expect(page.locator('[data-slot="1"]')).toHaveValue('dolphin');
   await page.goto('/compare?models=seal,atto3'); await expect(page.locator('.compare-heading')).toContainText('unavailable model was removed'); await expect(page.locator('[data-slot="0"]')).toHaveValue('atto3');
   await page.goto('/compare?models=atto3,atto3'); await expect(page.locator('.compare-rows')).toContainText('Choose a second vehicle');
 });
-test('mobile navigation, menu Escape, and chatbot stay usable above the comparison tray',async ({page}) => {
+test('mobile navigation and chatbot remain usable',async ({page}) => {
   await page.setViewportSize({width:390,height:844}); await page.goto('/'); await page.getByRole('button',{name:'Menu'}).click(); await expect(page.locator('#mainNav')).toBeVisible(); await page.keyboard.press('Escape'); await expect(page.locator('#mainNav')).not.toBeVisible();
-  await page.locator('[data-car=atto3] [data-compare]').check(); await page.evaluate(() => window.scrollTo(0,0)); await page.getByRole('button',{name:'Menu',exact:true}).click(); await page.locator('#chatbotToggle').click();
-  const tray = await page.locator('#comparisonTray').boundingBox(), widget = await page.locator('#chatbotToggle').boundingBox(); expect(widget.y+widget.height).toBeLessThan(tray.y);
+  await page.getByRole('button',{name:'Menu',exact:true}).click(); await page.locator('#chatbotToggle').click();
   const panel = await page.locator('#chatbotPanel').boundingBox(); expect(panel.x).toBeGreaterThanOrEqual(0); expect(panel.y).toBeGreaterThanOrEqual(0);
   await page.keyboard.press('Escape'); await expect(page.locator('#chatbotWidget')).not.toHaveClass(/open/);
 });
@@ -144,24 +145,6 @@ test('scroll motion respects reduced motion',async ({page})=>{
   await page.emulateMedia({reducedMotion:'reduce'}); await page.reload(); await page.evaluate(()=>window.scrollTo(0,300));
   await expect(page.locator('#heroBackground')).not.toHaveAttribute('style',/--hero-shift/);
   await expect(page.getByRole('button',{name:'Resume news and events slideshow'})).toBeVisible();
-});
-
-test('comparison tray can be hidden and never covers forms',async ({page})=>{
-  await page.setViewportSize({width:390,height:844}); await page.goto('/models');
-  await page.locator('[data-car=atto3] [data-compare]').check();
-  await expect(page.locator('#comparisonTray')).toBeVisible();
-  await page.getByRole('button',{name:'Hide comparison bar'}).click();
-  await expect(page.locator('#comparisonTray')).toBeHidden();
-  await expect(page.locator('[data-car=atto3] [data-compare]')).toBeChecked();
-  await page.goto('/contact'); await expect(page.locator('#comparisonTray')).toBeHidden();
-  await page.goto('/models'); await expect(page.locator('[data-car=atto3] [data-compare]')).toBeChecked();
-});
-
-test('hero controls remain accessible above active comparison tray',async ({page})=>{
-  await page.setViewportSize({width:390,height:844}); await page.goto('/');
-  await page.locator('[data-car=atto3] [data-compare]').check(); await page.evaluate(()=>window.scrollTo(0,0));
-  const dots=await page.locator('#heroControls').boundingBox(), tray=await page.locator('#comparisonTray').boundingBox();
-  expect(dots.y+dots.height).toBeLessThanOrEqual(tray.y);
 });
 
 test('carousel retains keyboard focus when pointer leaves',async ({page})=>{

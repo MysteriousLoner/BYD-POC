@@ -4,7 +4,7 @@
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
   const { normalize, comparison } = CatalogueData;
   const storageKey = 'byd-comparison';
-  let models = [], selected = [], announcementTimer, trayDismissed = false;
+  let models = [], selected = [], announcementTimer;
   try { const saved = JSON.parse(localStorage.getItem(storageKey) || '[]'); if (Array.isArray(saved)) selected = [...new Set(saved.filter(v => typeof v === 'string'))].slice(0, 2); } catch {}
   async function api(url) {
     const response = await fetch(url, { signal: AbortSignal.timeout(15000) });
@@ -15,29 +15,6 @@
   function announce(message) { $('#siteAnnouncement').textContent = message; clearTimeout(announcementTimer); announcementTimer = setTimeout(() => $('#siteAnnouncement').textContent = '', 5000); }
   function saveSelection() {
     try { localStorage.setItem(storageKey, JSON.stringify(selected)); } catch {}
-    renderTray();
-    document.querySelectorAll('[data-compare]').forEach(input => input.checked = selected.includes(input.dataset.compare));
-  }
-  function renderTray() {
-    const tray = $('#comparisonTray'), items = selected.map(id => models.find(m => m.id === id)).filter(Boolean);
-    tray.hidden = !items.length || trayDismissed || !['/', '/index.html', '/models'].includes(location.pathname) && !location.pathname.startsWith('/models/');
-    document.body.classList.toggle('has-comparison', !tray.hidden);
-    if (tray.hidden) return;
-    tray.innerHTML = `<span class="tray-count">${items.length} of 2 selected <button type="button" data-hide-tray aria-label="Hide comparison bar">Hide</button></span><div class="tray-models">${items.map(model => `<div class="tray-item"><strong>${escape(model.name)}</strong><button type="button" data-remove="${escape(model.id)}" aria-label="Remove ${escape(model.name)} from comparison">Remove</button></div>`).join('')}</div><a class="button primary" href="/compare?models=${selected.map(encodeURIComponent).join(',')}">${items.length === 2 ? 'Compare cars' : 'Choose second car'} <span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a>`;
-    tray.querySelector('[data-hide-tray]').onclick = () => { trayDismissed = true; renderTray(); };
-    tray.querySelectorAll('[data-remove]').forEach(button => button.onclick = () => { selected = selected.filter(id => id !== button.dataset.remove); saveSelection(); });
-  }
-  function compareControl(model) { return `<label class="compare-toggle"><input type="checkbox" data-compare="${escape(model.id)}" ${selected.includes(model.id) ? 'checked' : ''}>Compare<span class="sr-only"> ${escape(model.name)}</span></label>`; }
-  function bindComparison(container) {
-    container.querySelectorAll('[data-compare]').forEach(input => input.onchange = () => {
-      const id = input.dataset.compare;
-      trayDismissed = false;
-      if (input.checked && !selected.includes(id)) {
-        if (selected.length === 2) { input.checked = false; announce('You have selected two cars. Remove one from the comparison bar to choose another.'); return; }
-        selected.push(id);
-      } else selected = selected.filter(value => value !== id);
-      saveSelection();
-    });
   }
   function swatches(model) {
     return model.colours.length ? `<div class="model-colours" role="group" aria-label="${escape(model.name)} exterior colour">${model.colours.map((colour, index) => `<button type="button" class="swatch" style="--swatch:${/^#[0-9a-f]{6}$/i.test(colour.swatch) ? colour.swatch : '#cccccc'}" data-colour="${index}" aria-label="${escape(colour.name)}" aria-pressed="${index === 0}"></button>`).join('')}<span class="colour-label">${escape(model.colours[0].name)}</span></div>` : '';
@@ -45,7 +22,7 @@
   function imageFor(model) { return model.colours[0]?.images[0] || model.images[0] || '/assets/placeholder.svg'; }
   function modelCard(model) {
     const facts = model.specifications.filter(spec => spec.value).slice(0, 2);
-    return `<article class="model-card" data-car="${escape(model.id)}"><a class="car-photo" href="/models/${encodeURIComponent(model.id)}" aria-label="Explore ${escape(model.name)}"><img src="${escape(imageFor(model))}" alt="${escape(model.name + (model.colours[0] ? ' in ' + model.colours[0].name : ''))}" width="720" height="400" loading="lazy">${model.badge ? `<span class="model-badge">${escape(model.badge)}</span>` : ''}</a><div class="model-card-content"><div class="model-card-top"><div><h3><a href="/models/${encodeURIComponent(model.id)}">${escape(model.name)}</a></h3><p class="model-type">${escape(model.type)}</p></div><p class="model-price">${escape(model.price)}</p></div>${swatches(model)}${facts.length ? `<div class="model-facts">${facts.map(spec => `<div><small>${escape(spec.label)}</small>${escape([spec.value, spec.unit].filter(Boolean).join(' '))}</div>`).join('')}</div>` : '<p class="model-type">Explore this vehicle’s details.</p>'}<div class="model-actions"><a class="text-link" href="/models/${encodeURIComponent(model.id)}">Explore model <span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a>${compareControl(model)}</div></div></article>`;
+    return `<article class="model-card" data-car="${escape(model.id)}"><a class="car-photo" href="/models/${encodeURIComponent(model.id)}" aria-label="Explore ${escape(model.name)}"><img src="${escape(imageFor(model))}" alt="${escape(model.name + (model.colours[0] ? ' in ' + model.colours[0].name : ''))}" width="720" height="400" loading="lazy">${model.badge ? `<span class="model-badge">${escape(model.badge)}</span>` : ''}</a><div class="model-card-content"><div class="model-card-top"><div><h3><a href="/models/${encodeURIComponent(model.id)}">${escape(model.name)}</a></h3><p class="model-type">${escape(model.type)}</p></div><p class="model-price">${escape(model.price)}</p></div>${swatches(model)}${facts.length ? `<div class="model-facts">${facts.map(spec => `<div><small>${escape(spec.label)}</small>${escape([spec.value, spec.unit].filter(Boolean).join(' '))}</div>`).join('')}</div>` : '<p class="model-type">Explore this vehicle’s details.</p>'}<div class="model-actions"><a class="text-link" href="/models/${encodeURIComponent(model.id)}">Explore model <span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a></div></div></article>`;
   }
   function bindColours(container, model, change) {
     container.querySelectorAll('[data-colour]').forEach(button => button.onclick = () => {
@@ -93,7 +70,7 @@
         const model = models.find(m => m.id === card.dataset.car);
         bindColours(card, model, colour => { const img = card.querySelector('img'); img.src = colour.images[0]; img.alt = `${model.name} in ${colour.name}`; });
       });
-      bindComparison($('#modelsGrid')); bindImages($('#modelsGrid'));
+      bindImages($('#modelsGrid'));
       const select = $('#enquiryModel');
       if (!select) return;
       select.innerHTML = '<option value="">Choose a model</option>' + models.map(model => `<option value="${escape(model.name)}">${escape(model.name)}</option>`).join('');
@@ -239,7 +216,7 @@
     try {
       const [model] = await Promise.all([api('/api/content/models/' + encodeURIComponent(id)).then(normalize), loadModels()]);
       document.title = `${model.name} | BYD Millennium Motors`;
-      main.innerHTML = `<section class="section detail-section"><div class="breadcrumb"><a href="/models">Our models</a><span aria-hidden="true">/</span><span>${escape(model.name)}</span></div><div class="detail-header"><div><h1>${escape(model.name)}</h1><p>${escape(model.type)}</p></div><strong class="detail-price">${escape(model.price)}</strong></div><div class="detail-layout"><div class="vehicle-gallery"><div class="gallery-stage"><img id="detailImage" src="${escape(imageFor(model))}" alt="${escape(model.name)}" width="960" height="600" fetchpriority="high"></div><div class="gallery-thumbs" role="group" aria-label="Vehicle gallery"></div></div><div class="detail-copy"><p>${escape(model.description)}</p>${model.colours.length ? '<h2>Choose your colour.</h2>' : ''}${swatches(model)}<a class="button primary" href="/contact?model=${encodeURIComponent(model.id)}">Enquire about this model <span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a>${model.videoUrl ? `<a class="button secondary" href="${escape(model.videoUrl)}" target="_blank" rel="noopener">Watch model video <span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a>` : ''}${compareControl(model)}</div></div></section><section class="section specification-section"><h2>Every detail, considered.</h2><div id="detailSpecs"></div></section>`;
+      main.innerHTML = `<section class="section detail-section"><div class="breadcrumb"><a href="/models">Our models</a><span aria-hidden="true">/</span><span>${escape(model.name)}</span></div><div class="detail-header"><div><h1>${escape(model.name)}</h1><p>${escape(model.type)}</p></div><strong class="detail-price">${escape(model.price)}</strong></div><div class="detail-layout"><div class="vehicle-gallery"><div class="gallery-stage"><img id="detailImage" src="${escape(imageFor(model))}" alt="${escape(model.name)}" width="960" height="600" fetchpriority="high"></div><div class="gallery-thumbs" role="group" aria-label="Vehicle gallery"></div></div><div class="detail-copy"><p>${escape(model.description)}</p>${model.colours.length ? '<h2>Choose your colour.</h2>' : ''}${swatches(model)}<a class="button primary" href="/contact?model=${encodeURIComponent(model.id)}">Enquire about this model <span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a>${model.videoUrl ? `<a class="button secondary" href="${escape(model.videoUrl)}" target="_blank" rel="noopener">Watch model video <span aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a>` : ''}</div></div></section><section class="section specification-section"><h2>Every detail, considered.</h2><div id="detailSpecs"></div></section>`;
       const groups = new Map();
       model.specifications.forEach(spec => { const group = spec.group || 'Specifications'; if (!groups.has(group)) groups.set(group, []); groups.get(group).push(spec); });
       $('#detailSpecs').innerHTML = [...groups].map(([group, specs]) => `<section class="spec-group"><h3>${escape(group)}</h3><dl>${specs.map(spec => `<div class="spec-row"><dt>${escape(spec.label)}</dt><dd>${escape([spec.value, spec.unit].filter(Boolean).join(' ') || 'Not specified')}</dd></div>`).join('')}</dl></section>`).join('') || '<p class="empty-state">More specifications are on their way. Ask our team for details.</p>';
@@ -250,7 +227,7 @@
         bindImages(main);
       }
       gallery(model.colours[0]?.images || model.images, model.colours[0]?.name);
-      bindColours($('.detail-copy'), model, colour => gallery(colour.images, colour.name)); bindComparison(main); bindImages(main);
+      bindColours($('.detail-copy'), model, colour => gallery(colour.images, colour.name)); bindImages(main);
     } catch (error) { main.innerHTML = `<div class="section empty-state"><h1>Model unavailable.</h1><p>${escape(error.message)}</p><a class="button primary" href="/models">Explore current models</a></div>`; }
   }
   async function comparePage() {

@@ -115,7 +115,7 @@ Public content is centered at up to 1320px and 90% viewport width, with section 
 
 ## Elevation & Depth
 
-Public sections are predominantly flat: tonal shifts, image crops and fine rules separate content. Gradients protect white text over images; menu, chat and comparison tray use shadows when floating above content. The dark manager uses tonal layering and borders for hierarchy. The news hero photograph moves with scroll; reduced motion removes the movement. Image-card hover uses a subtle 0.4s scale.
+Public sections are predominantly flat: tonal shifts, image crops and fine rules separate content. Gradients protect white text over images; menu and chat use shadows when floating above content. The dark manager uses tonal layering and borders for hierarchy. The news hero photograph moves with scroll; reduced motion removes the movement. Image-card hover uses a subtle 0.4s scale.
 
 ## Shapes
 
@@ -127,7 +127,7 @@ Public cards and media stages have generous 14px corners; controls use 5px corne
 Public primary buttons are graphite with white text, changing to red on hover; secondary buttons are outlined and lighten on hover. The hero action is white with graphite text. Underlined text links use a directional arrow and a 44px minimum interaction height. Manager primary buttons remain red. Public focus uses a 3px red outline; manager focus uses a warm 2px outline.
 
 ### Cards and media
-Discovery cards overlay model names on large photographs with a bottom gradient. Catalogue cards pair contained vehicle photos with model, price, colour, key facts and comparison action. The news hero and light campaign stages use direct-selection dot controls and a separate pause button; campaign artwork remains contained with a separate caption; editorial news cards place text below cropped imagery.
+Discovery cards overlay model names on large photographs with a bottom gradient. Catalogue cards pair contained vehicle photos with model, price, colour, key facts and a link to model details. Comparison is available from the dedicated comparison page. The news hero and light campaign stages use direct-selection dot controls and a separate pause button; campaign artwork remains contained with a separate caption; editorial news cards place text below cropped imagery.
 
 ### Inputs and navigation
 Public fields use white backgrounds, grey borders and at least 48px height; focused forms sit on pale panels. The public header overlays the home hero and becomes a white bar on interior routes. Menu opens a light, vertically listed navigation panel; chat opens from navigation. The dark manager uses its own compact sidebar or mobile drawer and dark fields.
