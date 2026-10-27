@@ -68,8 +68,7 @@
     return models;
   }
   function showroomPhoto(model) {
-    const verified = { atto3: '/assets/showroom-hero.webp', dolphin: '/assets/dolphin-drive.webp' };
-    return verified[model.id] || model.images[0] || model.colours[0]?.images[0] || '';
+    return model.images[0] || model.colours[0]?.images[0] || '';
   }
   function renderHome(entries) {
     const background = $('#heroBackground'), title = $('#heroTitle'), action = $('#heroAction'), featured = $('#featuredGrid');

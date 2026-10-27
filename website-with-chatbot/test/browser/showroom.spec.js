@@ -171,3 +171,10 @@ test('carousel retains keyboard focus when pointer leaves',async ({page})=>{
   await page.locator('.showroom-hero').dispatchEvent('mouseenter'); await page.locator('.showroom-hero').dispatchEvent('mouseleave');
   await page.waitForTimeout(7300); await expect(dot).toBeFocused(); await expect(page.locator('#heroTitle')).toHaveText('Focus one');
 });
+
+test('featured photography follows the managed model image',async ({page})=>{
+ const records=await(await page.request.get('/api/content/models')).json();
+ const atto=records.find(model=>model.id==='atto3'); atto.images=['/assets/dolphin-drive.webp'];
+ await page.route('**/api/content/models',route=>route.fulfill({contentType:'application/json',body:JSON.stringify([atto])}));
+ await page.goto('/'); await expect(page.locator('#featuredGrid img')).toHaveAttribute('src','/assets/dolphin-drive.webp');
+});
