@@ -7,7 +7,7 @@
   const warning = el('p', 'This admin connection uses HTTP. Passwords and conversations are not encrypted in transit.', 'transport-warning'); warning.hidden = location.protocol === 'https:'; main.prepend(warning);
   const logout = button('Sign out', async () => { await fetch('/api/admin/logout', { method: 'POST' }); location.assign('/admin/login'); });
   nav.parentElement.append(logout);
-  const titles = { promotions: 'Promotions', knowledge: 'Sales Knowledge', branches: 'Branches', conversations: 'Conversations' };
+  const titles = { promotions: 'Promotions', branches: 'Branches', knowledge: 'Sales Knowledge', conversations: 'Conversations' };
   let active = '', generation = 0;
   async function api(url, options) {
     const response = await fetch('/api/admin/' + url, options);
@@ -152,7 +152,9 @@
     await load();
   }
   for (const [kind, title] of Object.entries(titles)) {
-    const b = button(title, () => openPage(kind), 'nav-item'); b.dataset.manager = kind; nav.append(b);
+    if (kind === 'knowledge') nav.append(el('span', 'Assistant', 'nav-group-label'));
+    const b = button('', () => openPage(kind), 'nav-item'); b.title = title; b.dataset.manager = kind;
+    const icon = el('span', undefined, 'nav-icon'); icon.innerHTML = BYDIcons[{promotions:'campaign',branches:'branch',knowledge:'document',conversations:'conversation'}[kind]]; b.append(icon,el('span',title,'nav-label')); nav.append(b);
   }
   document.querySelectorAll('[data-page]').forEach(b => b.addEventListener('click', () => { active = ''; generation++; document.getElementById('topAction').hidden = false; }));
 })();

@@ -14,7 +14,7 @@ async function fixture(width,height,orientation) {
   let img = sharp({create:{width,height,channels:3,background:'#668cae'}}); if(orientation) img=img.withMetadata({orientation}); return img.jpeg().toBuffer();
 }
 test('catalogue colours change real images; details open and reload as independent pages',async ({page}) => {
-  await page.goto('/');
+  await page.goto('/models');
   const card = page.locator('[data-car=atto3]'); await expect(card).toBeVisible(); const image = card.locator('img'); await expect(image).toHaveAttribute('src','/assets/atto3-blue.webp');
   await card.getByRole('button',{name:'Ski White'}).click(); await expect(image).toHaveAttribute('src','/assets/atto3-white.webp'); await expect(card.locator('.colour-label')).toHaveText('Ski White');
   await card.getByRole('link',{name:'Explore model',exact:true}).click(); await expect(page).toHaveURL(/\/models\/atto3$/); await expect(page.getByRole('heading',{name:'BYD Atto 3',exact:true})).toBeVisible();
@@ -63,13 +63,13 @@ test('event image warnings account for orientation and remain advisory when savi
     await form.locator('[name=imageFile]').setInputFiles({name:'orientation.jpg',mimeType:'image/jpeg',buffer:await fixture(width,height,orientation)});
     await expect(page.locator('#eventImageDimensions')).toContainText('px'); if (warning) await expect(page.locator('#eventOrientationWarning')).toBeVisible(); else await expect(page.locator('#eventOrientationWarning')).toBeHidden();
   }
-  await form.getByLabel('Story title').fill('Browser orientation fixture'); await form.getByLabel('Summary').fill('Browser test only.'); await form.getByLabel('Published',{exact:true}).uncheck(); await form.getByRole('button',{name:'Save story'}).click();
+  await form.getByLabel('Story title').fill('Browser orientation fixture'); await form.getByLabel('Summary').fill('Browser test only.'); await form.locator('[name=published]').uncheck(); await form.getByRole('button',{name:'Save story'}).click();
   await expect(page.locator('.event-admin-row').filter({hasText:'Browser orientation fixture'})).toBeVisible();
   await page.locator('.event-admin-row').filter({hasText:'Browser orientation fixture'}).getByRole('button',{name:'Edit',exact:true}).click(); await expect(page.locator('#eventOrientationWarning')).toBeVisible();
   page.once('dialog',dialog => dialog.accept()); await page.locator('.event-admin-row').filter({hasText:'Browser orientation fixture'}).getByRole('button',{name:'Delete',exact:true}).click(); await expect(page.locator('.event-admin-row').filter({hasText:'Browser orientation fixture'})).toHaveCount(0);
 });
 test('loading failures and empty states offer recovery without stale fabricated content',async ({page}) => {
-  await page.route('**/api/content/models',route => route.fulfill({status:503,contentType:'application/json',body:'{"error":"Unavailable"}'})); await page.goto('/'); await expect(page.locator('#modelsGrid')).toContainText('couldn’t load'); await page.unroute('**/api/content/models'); await page.getByRole('button',{name:'Reload models'}).click(); await expect(page.locator('[data-car=atto3]')).toBeVisible();
+  await page.route('**/api/content/models',route => route.fulfill({status:503,contentType:'application/json',body:'{"error":"Unavailable"}'})); await page.goto('/'); await expect(page.locator('#featuredGrid')).toContainText('couldn’t load'); await page.unroute('**/api/content/models'); await page.getByRole('button',{name:'Reload models'}).click(); await expect(page.locator('#featuredGrid .featured-card')).toHaveCount(2);
   await page.route('**/api/content/news',route => route.fulfill({contentType:'application/json',body:'[]'})); await page.goto('/events'); await expect(page.locator('#newsGrid')).toContainText('No stories here yet');
   await page.route('**/api/content/branches',route => route.fulfill({contentType:'application/json',body:'[]'})); await page.goto('/careers'); await expect(page.locator('#careerForm [name=branchId]')).toBeDisabled(); await expect(page.locator('#careerForm button[type=submit]')).toBeDisabled();
 });
@@ -77,8 +77,8 @@ test('responsive route and editor captures across requested widths',async ({page
   test.setTimeout(180000); fs.mkdirSync(reviewDir,{recursive:true}); const errors=[]; page.on('pageerror',error=>errors.push(error.message));
   for (const width of [360,390,605,768,1440]) {
     await page.setViewportSize({width,height:width===1440?1000:844});
-    for (const [route,name,ready] of [['/','home','[data-car=dolphin]'],['/models','models','[data-car=atto3]'],['/models/atto3','model','#detailSpecs'],['/compare?models=atto3,dolphin','compare','.comparison-row'],['/events','events','.event-card'],['/contact','contact','#enquiryModel'],['/careers','careers','[name=branchId]'],['/admin/login','login','#loginForm']]) {
-      await page.goto(route); await expect(page.locator(ready).first()).toBeVisible(); await settleImages(page); if(route==='/') await page.getByRole('button',{name:'Pause campaigns',exact:true}).click(); await page.mouse.move(0,0); await page.evaluate(()=>window.scrollTo(0,0));
+    for (const [route,name,ready] of [['/','home','#featuredGrid .featured-card'],['/models','models','[data-car=atto3]'],['/models/atto3','model','#detailSpecs'],['/compare?models=atto3,dolphin','compare','.comparison-row'],['/events','events','.event-card'],['/contact','contact','#enquiryModel'],['/careers','careers','[name=branchId]'],['/admin/login','login','#loginForm']]) {
+      await page.goto(route); await expect(page.locator(ready).first()).toBeVisible(); await settleImages(page); if(route==='/') await page.getByRole('button',{name:'Pause homepage slideshow',exact:true}).click(); await page.mouse.move(0,0); await page.evaluate(()=>window.scrollTo(0,0));
       expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${route} overflow ${width}`).toBe(true);
       await page.screenshot({path:path.join(reviewDir,`${name}-${width}.png`),fullPage:true,animations:'disabled'});
     }
@@ -97,10 +97,10 @@ test('mobile admin drawer traps focus, closes on selection and restores the menu
 test('campaigns respect order and duration with pause, intact portraits and video controls',async ({page})=>{
   await page.route('**/campaign-portrait.jpg',async route=>route.fulfill({contentType:'image/jpeg',body:await fixture(450,800)}));
   const slides=[{id:'portrait',published:true,priority:1,duration:3000,headline:'Portrait campaign fixture',mediaType:'image',mediaUrl:'/campaign-portrait.jpg',buttons:[{label:'Ask our team',href:'#contact'}]},{id:'video',published:true,priority:2,duration:3000,headline:'Video campaign fixture',mediaType:'video',mediaUrl:'https://youtu.be/OldTHqPji78',buttons:[]}];
-  await page.route('**/api/content/settings',route=>route.fulfill({contentType:'application/json',body:JSON.stringify({heroSlides:slides})})); await page.goto('/'); await expect(page.locator('#campaignContent h2')).toHaveText('Portrait campaign fixture'); await expect(page.getByRole('link',{name:'Ask our team'})).toHaveAttribute('href','/contact'); await page.setViewportSize({width:390,height:844}); await settleImages(page); expect(await page.locator('#campaignMedia img').evaluate(img=>getComputedStyle(img).objectFit)).toBe('contain'); await page.screenshot({path:path.join(reviewDir,'campaign-portrait-390.png'),fullPage:false});
-  await page.getByRole('button',{name:'Pause campaigns',exact:true}).click(); await page.waitForTimeout(3200); await expect(page.locator('#campaignContent h2')).toHaveText('Portrait campaign fixture');
-  await page.getByRole('button',{name:'Show campaign 2: Video campaign fixture'}).click(); await page.getByRole('button',{name:'Play Video campaign fixture'}).click(); await expect(page.locator('#campaignMedia iframe')).toHaveAttribute('src',/youtube-nocookie/); await page.screenshot({path:path.join(reviewDir,'campaign-video-390.png')});
-  await page.getByRole('button',{name:'Show campaign 1: Portrait campaign fixture'}).click(); await page.getByRole('button',{name:'Resume campaigns',exact:true}).click(); await page.locator('.campaign-stage').scrollIntoViewIfNeeded(); await page.evaluate(() => document.activeElement.blur()); await page.mouse.move(0,0); await expect(page.locator('#campaignContent h2')).toHaveText('Video campaign fixture',{timeout:6000});
+  await page.route('**/api/content/settings',route=>route.fulfill({contentType:'application/json',body:JSON.stringify({heroSlides:slides})})); await page.goto('/'); await expect(page.locator('#heroTitle')).toHaveText('Portrait campaign fixture'); await expect(page.getByRole('link',{name:'Ask our team'})).toHaveAttribute('href','/contact'); await page.setViewportSize({width:390,height:844}); await settleImages(page); expect(await page.locator('#heroBackground img').evaluate(img=>getComputedStyle(img).objectFit)).toBe('contain'); await page.screenshot({path:path.join(reviewDir,'campaign-portrait-390.png'),fullPage:false});
+  await page.getByRole('button',{name:'Pause homepage slideshow',exact:true}).click(); await page.waitForTimeout(3200); await expect(page.locator('#heroTitle')).toHaveText('Portrait campaign fixture');
+  await page.getByRole('button',{name:'Show slide 2: Video campaign fixture'}).click(); await page.getByRole('button',{name:'Play Video campaign fixture'}).click(); await expect(page.locator('#heroBackground iframe')).toHaveAttribute('src',/youtube-nocookie/); await page.screenshot({path:path.join(reviewDir,'campaign-video-390.png')});
+  await page.getByRole('button',{name:'Show slide 1: Portrait campaign fixture'}).click(); await page.getByRole('button',{name:'Resume homepage slideshow',exact:true}).click(); await page.locator('.showroom-hero').scrollIntoViewIfNeeded(); await page.evaluate(() => document.activeElement.blur()); await page.mouse.move(0,0); await expect(page.locator('#heroTitle')).toHaveText('Video campaign fixture',{timeout:6000});
 });
 test('single, empty, missing media and long specification states remain usable',async ({page})=>{
   const records=await (await page.request.get('/api/content/models')).json(); records[0].image='/assets/missing.jpg'; records[0].images=['/assets/missing.jpg']; records[0].colours=[]; records[0].specifications=[{key:'long',label:'A specification label that wraps over several lines',value:'A very long specification value with details for mobile comparison',group:'Dimensions'}];
@@ -121,38 +121,36 @@ test('shared admin surfaces retain usable layouts',async ({page})=>{
 });
 
 test('campaign editor previews media changes without overlay or autoplay',async({page})=>{
- await login(page);await adminNav(page,'[data-page=hero]');const form=page.locator('#heroForm');await form.locator('[name=mediaUrl]').fill('/assets/dolphin-drive.webp');await expect(page.locator('#previewMedia>img')).toHaveAttribute('src','/assets/dolphin-drive.webp');
+ await login(page);await adminNav(page,'[data-page=hero]');const form=page.locator('#heroForm');await page.getByText('Preview slide',{exact:true}).click();await form.locator('[name=mediaUrl]').fill('/assets/dolphin-drive.webp');await expect(page.locator('#previewMedia>img')).toHaveAttribute('src','/assets/dolphin-drive.webp');
  await form.locator('[name=mediaType][value=video]').check();await form.locator('[name=mediaUrl]').fill('/uploads/fixture.mp4');await expect(page.locator('#previewMedia video')).toHaveAttribute('controls','');await expect(page.locator('#previewMedia video')).not.toHaveAttribute('autoplay');await expect(page.locator('#mediaGuidance')).toContainText('Videos start when visitors press play');
  await form.locator('[name=mediaUrl]').fill('https://youtu.be/OldTHqPji78');await expect(page.locator('#previewMedia .preview-video-play')).toBeVisible();await expect(page.locator('#previewMedia iframe')).toHaveCount(0);
 });
 
 
-test('homepage news slideshow supports dots, pause and empty fallback',async ({page})=>{
-  const stories=[{id:'one',title:'Story one',summary:'First update',image:'/assets/dolphin-drive.webp',category:'News',date:'2026-09-20'},{id:'two',title:'Story two',summary:'Second update',image:'/assets/atto-cabin.webp',category:'Event',date:'2026-09-19'}];
-  await page.route('**/api/content/news',route=>route.fulfill({contentType:'application/json',body:JSON.stringify(stories)}));
-  await page.goto('/'); await expect(page.locator('#heroTitle')).toHaveText('Story one');
-  await expect(page.locator('#heroAction')).toHaveAttribute('href','/events');
-  await page.getByRole('button',{name:'Show slide 2: Story two'}).click(); await expect(page.locator('#heroTitle')).toHaveText('Story two');
-  await expect(page.getByRole('button',{name:'Show slide 2: Story two'})).toHaveAttribute('aria-pressed','true');
-  await page.getByRole('button',{name:'Pause news and events slideshow'}).click();
-  await expect(page.getByRole('button',{name:'Resume news and events slideshow'})).toHaveAttribute('aria-pressed','true');
-  await page.unroute('**/api/content/news'); await page.route('**/api/content/news',route=>route.fulfill({contentType:'application/json',body:'[]'}));
-  await page.goto('/'); await expect(page.locator('#heroTitle')).toHaveText('News & events.'); await expect(page.locator('#heroControls')).toBeHidden();
+test('homepage uses configured campaign order, destinations and fallback without duplicate sections',async ({page})=>{
+  const slides=[{id:'two',headline:'Second slide',published:true,priority:2,mediaType:'image',mediaUrl:'/assets/atto-cabin.webp',duration:9000,buttons:[{label:'Discover more',href:'/models/atto3'}]},{id:'hidden',headline:'Hidden slide',published:false,priority:0,mediaType:'image',mediaUrl:'/assets/atto-cabin.webp'},{id:'one',headline:'First slide',published:true,priority:1,mediaType:'image',mediaUrl:'/assets/dolphin-drive.webp',duration:3000,buttons:[{label:'Discover more',href:'#contact'}]}];
+  await page.route('**/api/content/settings',route=>route.fulfill({contentType:'application/json',body:JSON.stringify({heroSlides:slides})}));
+  await page.goto('/'); await expect(page.locator('#heroTitle')).toHaveText('First slide'); await expect(page.locator('#heroAction')).toHaveAttribute('href','/contact');
+  await page.getByRole('button',{name:'Show slide 2: Second slide'}).click(); await expect(page.locator('#heroAction')).toHaveAttribute('href','/models/atto3');
+  await expect(page.locator('.hero-controls .slide-dot')).toHaveCount(2); await expect(page.locator('.catalogue-section,.campaigns-section,.events-section,.contact-banner')).toHaveCount(0);
+  await expect(page.getByRole('link',{name:'Explore and compare models',exact:true})).toHaveAttribute('href','/models');
+  await page.unroute('**/api/content/settings');await page.route('**/api/content/settings',route=>route.fulfill({contentType:'application/json',body:'{"heroSlides":[]}'}));await page.reload();await expect(page.locator('#heroTitle')).toHaveText('Discover your next BYD.');await expect(page.locator('#heroControls')).toBeHidden();
+  await page.unroute('**/api/content/settings');await page.route('**/api/content/settings',route=>route.fulfill({status:503,contentType:'application/json',body:'{}'}));await page.reload();await expect(page.getByRole('button',{name:'Retry slides'})).toBeVisible();
 });
 test('scroll motion respects reduced motion',async ({page})=>{
   await page.goto('/'); await page.evaluate(()=>window.scrollTo(0,300));
   await expect.poll(()=>page.locator('#heroBackground').evaluate(el=>el.style.getPropertyValue('--hero-shift'))).not.toBe('0px');
   await page.emulateMedia({reducedMotion:'reduce'}); await page.reload(); await page.evaluate(()=>window.scrollTo(0,300));
   await expect(page.locator('#heroBackground')).not.toHaveAttribute('style',/--hero-shift/);
-  await expect(page.getByRole('button',{name:'Resume news and events slideshow'})).toBeVisible();
+  await expect(page.getByRole('button',{name:'Resume homepage slideshow'})).toBeVisible();
 });
 
 test('carousel retains keyboard focus when pointer leaves',async ({page})=>{
-  const stories=[{id:'one',title:'Focus one',date:'2026-09-20'},{id:'two',title:'Focus two',date:'2026-09-19'}];
-  await page.route('**/api/content/news',route=>route.fulfill({contentType:'application/json',body:JSON.stringify(stories)}));
+  const slides=[{id:'one',headline:'Focus one',published:true,duration:3000,priority:1,mediaType:'image',mediaUrl:'/assets/atto-cabin.webp'},{id:'two',headline:'Focus two',published:true,duration:3000,priority:2,mediaType:'image',mediaUrl:'/assets/atto-cabin.webp'}];
+  await page.route('**/api/content/settings',route=>route.fulfill({contentType:'application/json',body:JSON.stringify({heroSlides:slides})}));
   await page.goto('/'); const dot=page.getByRole('button',{name:'Show slide 1: Focus one'}); await dot.focus();
   await page.locator('.showroom-hero').dispatchEvent('mouseenter'); await page.locator('.showroom-hero').dispatchEvent('mouseleave');
-  await page.waitForTimeout(7300); await expect(dot).toBeFocused(); await expect(page.locator('#heroTitle')).toHaveText('Focus one');
+  await page.waitForTimeout(3300); await expect(dot).toBeFocused(); await expect(page.locator('#heroTitle')).toHaveText('Focus one');
 });
 
 test('featured photography follows the managed model image',async ({page})=>{
@@ -160,4 +158,42 @@ test('featured photography follows the managed model image',async ({page})=>{
  const atto=records.find(model=>model.id==='atto3'); atto.images=['/assets/dolphin-drive.webp'];
  await page.route('**/api/content/models',route=>route.fulfill({contentType:'application/json',body:JSON.stringify([atto])}));
  await page.goto('/'); await expect(page.locator('#featuredGrid img')).toHaveAttribute('src','/assets/dolphin-drive.webp');
+});
+
+
+test('admin slide editing exposes labels, preserves hidden state and saves order on phones',async({page})=>{
+ await page.setViewportSize({width:390,height:844});await login(page);await adminNav(page,'[data-page=hero]');
+ const first=await page.locator('.slide-card-copy strong').first().textContent();await page.locator('.slide-list-card').first().getByRole('button',{name:'Move down: '+first,exact:true}).click();await expect(page.locator('#slideOrderMessage')).toHaveText('Slide order saved.');await expect(page.locator('.slide-card-copy strong').nth(1)).toHaveText(first);
+ await page.locator('.slide-list-card').nth(1).getByRole('button',{name:'Edit',exact:true}).click();await expect(page.locator('#heroForm [name=headline]')).toBeFocused();await expect(page.locator('#heroForm [name=headline]')).toBeInViewport();
+ const form=page.locator('#heroForm');await expect(form.getByLabel('Destination',{exact:true}).first()).toBeVisible();await form.locator('[name=published]').uncheck();await form.getByRole('button',{name:'Save slide',exact:true}).click();await expect(page.locator('#heroMessage')).toContainText('saved as hidden');
+ await form.locator('[name=published]').check();await form.getByRole('button',{name:'Save slide',exact:true}).click();await expect(page.locator('#heroMessage')).toContainText('visible on the homepage');
+ await page.locator('.slide-list-card').nth(1).getByRole('button',{name:'Move up: '+first,exact:true}).click();await expect(page.locator('.slide-card-copy strong').first()).toHaveText(first);
+});
+
+test('staff browse enquiries and applications, retain search results and privately download resumes',async({page})=>{
+ await page.setViewportSize({width:390,height:844});
+ await page.request.post('/api/content/enquiries',{data:{name:'Inbox Visitor',email:'inbox@example.test',phone:'0123456789',branch:'cheras',model:'BYD Atto 3',message:'Please call after lunch.'}});
+ await login(page);await page.getByRole('button',{name:'Browse enquiries',exact:true}).click();await page.getByLabel('Search name, contact details, model or branch').fill('Inbox Visitor');await page.getByRole('button',{name:'Search',exact:true}).click();
+ await page.locator('.submission-row').first().click();await expect(page.locator('.submission-fields')).toContainText('Please call after lunch.');await expect(page.locator('.submission-fields')).toContainText('BYD Cheras');await page.getByRole('button',{name:'Back to results'}).click();await expect(page.getByLabel('Search name, contact details, model or branch')).toHaveValue('Inbox Visitor');
+ await adminNav(page,'[data-submissions=careers]');await expect(page.locator('.submission-results')).not.toContainText('Loading submissions');await page.getByLabel('Search name, email, position or branch').fill('Browser Applicant');await page.getByRole('button',{name:'Search',exact:true}).click();await page.locator('.submission-row').first().click();await expect(page.locator('.submission-fields')).toContainText('BYD Cheras');
+ const downloadPromise=page.waitForEvent('download');await page.getByRole('button',{name:'Download résumé',exact:true}).click();const download=await downloadPromise;expect(download.suggestedFilename()).toMatch(/resume-Browser-Applicant\.pdf/);await expect(page.locator('.submission-resume')).toContainText('Résumé downloaded');
+ fs.mkdirSync(reviewDir,{recursive:true});await page.screenshot({path:path.join(reviewDir,'admin-application-390.png'),fullPage:true,animations:'disabled'});
+ await adminNav(page,'[data-submissions=enquiries]');await expect(page.getByLabel('Search name, contact details, model or branch')).toHaveValue('Inbox Visitor');await page.screenshot({path:path.join(reviewDir,'admin-enquiries-390.png'),fullPage:true,animations:'disabled'});
+ await page.setViewportSize({width:1440,height:1000});await page.screenshot({path:path.join(reviewDir,'admin-enquiries-1440.png'),fullPage:true,animations:'disabled'});
+});
+
+
+test('native video pauses rotation, single slides hide dots and broken media retains its action',async({page})=>{
+ await page.route('**/fixture.webm',route=>route.fulfill({contentType:'video/webm',body:fs.readFileSync(path.join(__dirname,'../fixtures/slide.webm'))}));
+ let slides=[{id:'native',headline:'Native video',published:true,priority:1,duration:3000,mediaType:'video',mediaUrl:'/fixture.webm',buttons:[{label:'Discover more',href:'/careers'}]},{id:'still',headline:'Still image',published:true,priority:2,mediaType:'image',mediaUrl:'/assets/atto-cabin.webp'}];
+ await page.route('**/api/content/settings',route=>route.fulfill({contentType:'application/json',body:JSON.stringify({heroSlides:slides})}));await page.goto('/');const video=page.locator('#heroBackground video');await expect(video).toHaveAttribute('controls','');await expect(video).not.toHaveAttribute('autoplay');await video.evaluate(el=>el.play());await expect(page.getByRole('button',{name:'Resume homepage slideshow'})).toBeVisible();await page.waitForTimeout(3200);await expect(page.locator('#heroTitle')).toHaveText('Native video');
+ slides=[{...slides[0],mediaType:'image',mediaUrl:'/missing-artwork.jpg'}];await page.reload();await expect(page.locator('#heroMediaStatus')).toContainText('media is unavailable');await expect(page.locator('#heroControls')).toBeHidden();await expect(page.locator('#heroAction')).toHaveAttribute('href','/careers');
+});
+
+test('submission layouts, legacy missing fields and retry states remain usable at each width',async({page})=>{
+ await login(page);
+ await page.route('**/api/admin/submissions/enquiries?*',route=>route.fulfill({contentType:'application/json',body:JSON.stringify({items:[{id:'legacy',name:'A customer name that wraps on a narrow phone',email:'long-email-address-for-layout@example.test',model:'BYD SEALION 7',branchName:'A branch name retained from the original submission'}],total:26,page:1,limit:25})}));
+ await page.route('**/api/admin/submissions/enquiries/legacy',route=>route.fulfill({contentType:'application/json',body:JSON.stringify({id:'legacy',name:'Legacy customer',message:'A saved message that remains readable when it wraps across multiple lines.',branchName:'Original branch'})}));
+ for(const width of [360,390,605,768,1440]){await page.setViewportSize({width,height:900});await adminNav(page,'[data-submissions=enquiries]');await expect(page.locator('.submission-row')).toBeVisible();await expect(page.getByRole('button',{name:'Next',exact:true})).toBeEnabled();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await page.screenshot({path:path.join(reviewDir,`submission-list-${width}.png`),fullPage:true,animations:'disabled'});await page.locator('.submission-row').click();await expect(page.locator('.submission-fields')).toContainText('Not provided');await expect(page.locator('.submission-detail-heading')).toContainText('Date unavailable');expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await page.screenshot({path:path.join(reviewDir,`submission-detail-${width}.png`),fullPage:true,animations:'disabled'});}
+ await page.unroute('**/api/admin/submissions/enquiries?*');await page.route('**/api/admin/submissions/enquiries?*',route=>route.fulfill({status:503,contentType:'application/json',body:'{"error":"Please retry the list."}'}));await adminNav(page,'[data-submissions=enquiries]');await expect(page.getByRole('button',{name:'Retry submissions'})).toBeVisible();
 });

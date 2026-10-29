@@ -4,6 +4,7 @@ const auth = require('./auth');
 const router = express.Router();
 auth.routes(router);
 router.use(auth.authenticate, auth.csrf);
+router.use('/submissions', require('./submissions'));
 const collections = { promotions: 'promotions', branches: 'branches', knowledge: 'knowledge_entries' };
 const text = (value, max = 5000) => String(value || '').trim().slice(0, max);
 function validate(kind, body, id) {

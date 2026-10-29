@@ -48,8 +48,8 @@
     return model.images[0] || model.colours[0]?.images[0] || '';
   }
   function renderHome(entries) {
-    const background = $('#heroBackground'), title = $('#heroTitle'), action = $('#heroAction'), featured = $('#featuredGrid');
-    if (!background || !featured) return;
+    const featured = $('#featuredGrid');
+    if (!featured) return;
     const model = entries[0];
     if (model) {
       const about = $('.about-photo');
@@ -57,13 +57,13 @@
       if (about && aboutSrc) { const photo = document.createElement('img'); photo.src = aboutSrc; photo.alt = model.name; photo.loading = 'lazy'; photo.onerror = () => { about.hidden = true; }; about.append(photo); about.hidden = false; }
     }
     featured.innerHTML = entries.slice(0,3).map(item => `<a class="featured-card" href="/models/${encodeURIComponent(item.id)}"><img src="${escape(showroomPhoto(item) || '/assets/placeholder.svg')}" alt="" loading="lazy"><span class="featured-card-title">${escape(item.name)}<span aria-hidden="true">→</span></span></a>`).join('');
-    if (!entries.length) featured.closest('.featured-section').hidden = true;
+    if (!entries.length) featured.innerHTML = '<p class="empty-state">Our line-up is being updated. Please contact our team for current availability.</p>';
     bindImages(featured);
   }
   async function catalogue() {
     try {
       await loadModels();
-      if (location.pathname === '/' || location.pathname === '/index.html') renderHome(models);
+      if (location.pathname === '/' || location.pathname === '/index.html') { renderHome(models); return; }
       $('#modelsGrid').classList.toggle('single-model', models.length === 1); $('#modelsGrid').classList.toggle('two-models', models.length === 2);
       $('#modelsGrid').innerHTML = models.length ? models.slice(0, location.pathname === '/' ? 3 : models.length).map(modelCard).join('') : '<p class="empty-state">Our line-up is being updated. Please contact our team for current availability.</p>';
       $('#modelsGrid').querySelectorAll('[data-car]').forEach(card => {
@@ -77,47 +77,16 @@
       const requested = new URLSearchParams(location.search).get('model'), model = models.find(m => m.id === requested);
       if (model) select.value = model.name;
     } catch {
-      if ($('#featuredGrid')) $('#featuredGrid').closest('.featured-section').hidden = true;
-      $('#modelsGrid').innerHTML = '<div class="empty-state"><p>We couldn’t load the models. Please try again.</p><button class="button secondary" id="retryModels">Reload models</button></div>';
+      const grid = $('#modelsGrid') || $('#featuredGrid');
+      grid.innerHTML = '<div class="empty-state"><p>We couldn’t load the models. Please try again.</p><button class="button secondary" id="retryModels">Reload models</button></div>';
       $('#retryModels').onclick = catalogue;
     }
-  }
-  function newsHero(items) {
-    const stage = $('.showroom-hero'), background = $('#heroBackground'), controls = $('#heroControls');
-    if (!stage || !background || !controls) return;
-    const stories = items.filter(item => item.title);
-    if (!stories.length) { controls.hidden = true; return; }
-    let index = 0, timer, paused = matchMedia('(prefers-reduced-motion: reduce)').matches, focused = false, hovering = false, onscreen = true;
-    const duration = 7000;
-    function schedule() { clearTimeout(timer); if (!paused && !focused && !hovering && onscreen && !document.hidden && stories.length > 1) timer = setTimeout(() => render((index + 1) % stories.length), duration); }
-    function render(next) {
-      index = next; const item = stories[index];
-      $('#heroTitle').textContent = item.title;
-      $('#heroDescription').textContent = item.summary || item.category || 'News and events from Millennium Motors.';
-      $('#heroAction').href = '/events'; $('#heroAction').innerHTML = 'Discover more <span aria-hidden="true">→</span>';
-      background.replaceChildren();
-      if (item.image) { const img = document.createElement('img'); img.alt = ''; img.src = item.image; img.fetchPriority = index === 0 ? 'high' : 'auto'; img.onload = () => { img.classList.toggle('hero-portrait', img.naturalWidth <= img.naturalHeight); }; img.onerror = () => img.remove(); background.append(img); }
-      controls.hidden = stories.length < 2;
-      if (stories.length > 1) {
-        controls.innerHTML = `<div class="slide-dots" role="group" aria-label="Choose a news and events slide">${stories.map((story,i) => `<button class="slide-dot" type="button" data-hero-slide="${i}" aria-label="Show slide ${i+1}: ${escape(story.title)}" aria-pressed="${i === index}"><span></span></button>`).join('')}</div><button class="slide-pause" type="button" id="pauseHero" aria-label="${paused ? 'Resume' : 'Pause'} news and events slideshow" aria-pressed="${paused}">${paused ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7z"/></svg>' : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>'}</button>`;
-        controls.querySelectorAll('[data-hero-slide]').forEach(button => button.onclick = () => { const i = Number(button.dataset.heroSlide); render(i); controls.querySelector(`[data-hero-slide="${i}"]`).focus(); });
-        $('#pauseHero').onclick = () => { paused = !paused; render(index); $('#pauseHero').focus(); };
-      }
-      schedule();
-    }
-    stage.addEventListener('focusin', () => { focused = true; schedule(); });
-    stage.addEventListener('focusout', event => { if (!stage.contains(event.relatedTarget)) { focused = false; schedule(); } });
-    stage.addEventListener('mouseenter', () => { hovering = true; schedule(); });
-    stage.addEventListener('mouseleave', () => { hovering = false; schedule(); });
-    document.addEventListener('visibilitychange', schedule);
-    if ('IntersectionObserver' in window) new IntersectionObserver(entries => { onscreen = entries[0].isIntersecting; schedule(); }, {threshold:0.05}).observe(stage);
-    render(0);
   }
   function scrollMotion() {
     const stage = $('.showroom-hero'), background = $('#heroBackground');
     if (!stage || !background || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     let pending = false;
-    function update() { pending = false; const rect = stage.getBoundingClientRect(); const distance = Math.max(0, Math.min(rect.height, -rect.top)); background.style.setProperty('--hero-shift', `${Math.round(distance * .12)}px`); }
+    function update() { pending = false; const rect = stage.getBoundingClientRect(); const distance = Math.max(0, Math.min(rect.height, -rect.top)); background.style.setProperty('--hero-shift', `${Math.round(Math.min(16, distance * .025))}px`); }
     window.addEventListener('scroll', () => { if (!pending) { pending = true; requestAnimationFrame(update); } }, {passive:true});
     update();
   }
@@ -129,7 +98,6 @@
     const grid = $('#newsGrid');
     try {
       const items = (await api('/api/content/news')).sort((a,b) => String(b.date).localeCompare(String(a.date)));
-      if (!isPage) newsHero(items);
       const render = category => { const filtered = items.filter(item => !category || item.category === category); grid.innerHTML = (isPage ? filtered : filtered.slice(0,3)).map(eventCard).join('') || '<p class="empty-state">No stories here yet. Check back soon.</p>'; bindImages(grid); };
       render('');
       if (isPage) document.querySelectorAll('[data-category]').forEach(button => button.onclick = () => { document.querySelectorAll('[data-category]').forEach(b => b.setAttribute('aria-pressed', String(b === button))); render(button.dataset.category); });
@@ -183,33 +151,62 @@
     try { const url = new URL(href, location.origin); if (url.origin === location.origin && ['/', '/index.html'].includes(url.pathname) && destinations[url.hash.slice(1)]) return destinations[url.hash.slice(1)] + (url.search || ''); } catch {}
     return href;
   }
-  async function campaigns() {
-    const media = $('#campaignMedia'), content = $('#campaignContent'), controls = $('#campaignControls');
-    let slides = [], index = 0, timer, paused = matchMedia('(prefers-reduced-motion:reduce)').matches, focused = false, hovering = false, onscreen = !('IntersectionObserver' in window);
-    function schedule() { clearTimeout(timer); if (!paused && !focused && !hovering && onscreen && slides.length > 1 && !document.hidden) timer = setTimeout(() => render((index + 1) % slides.length), Math.max(3000, Number(slides[index].duration) || 7000)); }
-    function render(next) {
-      clearTimeout(timer); index = next; const slide = slides[index];
-      content.innerHTML = `<h2>${escape(slide.headline)}</h2>${slide.eyebrow ? `<p class="campaign-support">${escape(slide.eyebrow)}</p>` : ''}${slide.description ? `<p>${escape(slide.description)}</p>` : ''}<div class="campaign-buttons">${(slide.buttons || []).map(button => `<a class="button ${button.style === 'outline' ? 'secondary' : 'primary'}" href="${escape(routeHref(button.href))}">${escape(button.label)} <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"/></svg></a>`).join('')}</div>`;
-      const id = youtube(slide.mediaUrl);
-      media.innerHTML = slide.mediaType === 'video' ? (id ? `<button type="button" class="video-poster" id="playCampaign" aria-label="Play ${escape(slide.headline)}"><img src="https://i.ytimg.com/vi/${id}/maxresdefault.jpg" alt="" onerror="this.src='/assets/showroom-hero.webp';this.onerror=null"><span>Play film <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 10 7-10 7Z"/></svg></span></button>` : `<video controls preload="metadata" playsinline src="${escape(slide.mediaUrl)}"></video>`) : `<img src="${escape(slide.mediaUrl)}" alt="${escape(slide.headline)}" fetchpriority="high">`;
-      if ($('#playCampaign')) $('#playCampaign').onclick = () => { paused = true; media.innerHTML = `<iframe title="${escape(slide.headline)}" src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`; renderControls(); schedule(); };
-      const video = media.querySelector('video'); if (video) { video.onplay = () => { paused = true; renderControls(); schedule(); }; }
-      renderControls(); bindImages(media); schedule();
+  async function campaignHero() {
+    const stage = $('.showroom-hero'), media = $('#heroBackground'), controls = $('#heroControls'), status = $('#heroMediaStatus');
+    const title = $('#heroTitle'), description = $('#heroDescription'), action = $('#heroAction');
+    let slides = [], index = 0, timer, paused = matchMedia('(prefers-reduced-motion:reduce)').matches, focused = false, hovering = false, onscreen = true;
+    const resizeCopy = () => stage.style.setProperty('--hero-copy-space', `${Math.ceil($('.hero-content').getBoundingClientRect().height) + 112}px`);
+    if ('ResizeObserver' in window) new ResizeObserver(resizeCopy).observe($('.hero-content'));
+    function schedule() {
+      clearTimeout(timer);
+      if (!paused && !focused && !hovering && onscreen && !document.hidden && slides.length > 1) timer = setTimeout(() => render((index + 1) % slides.length), Math.max(3000, Math.min(30000, Number(slides[index].duration) || 7000)));
     }
     function renderControls() {
-      controls.innerHTML = `<div class="slide-dots" role="group" aria-label="Choose a campaign">${slides.map((slide,i) => `<button class="slide-dot" type="button" data-campaign-slide="${i}" aria-label="Show campaign ${i+1}: ${escape(slide.headline)}" aria-pressed="${i === index}"><span></span></button>`).join('')}</div><button class="slide-pause" type="button" id="pauseCampaign" aria-label="${paused ? 'Resume' : 'Pause'} campaigns" aria-pressed="${paused}" ${slides.length < 2 ? 'disabled' : ''}>${paused ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7z"/></svg>' : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>'}</button>`;
-      controls.querySelectorAll('[data-campaign-slide]').forEach(button => button.onclick = () => { const i = Number(button.dataset.campaignSlide); render(i); controls.querySelector(`[data-campaign-slide="${i}"]`).focus(); });
-      $('#pauseCampaign').onclick = () => { paused = !paused; renderControls(); $('#pauseCampaign').focus(); schedule(); };
+      controls.hidden = slides.length < 2;
+      controls.innerHTML = `<div class="slide-dots" role="group" aria-label="Choose a homepage slide">${slides.map((slide,i) => `<button class="slide-dot" type="button" data-hero-slide="${i}" aria-label="Show slide ${i+1}: ${escape(slide.headline)}" aria-pressed="${i === index}"><span></span></button>`).join('')}</div><button class="slide-pause" type="button" id="pauseHero" aria-label="${paused ? 'Resume' : 'Pause'} homepage slideshow" aria-pressed="${paused}">${paused ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7z"/></svg>' : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>'}</button>`;
+      controls.querySelectorAll('[data-hero-slide]').forEach(button => button.onclick = () => { const i = Number(button.dataset.heroSlide); render(i); controls.querySelector(`[data-hero-slide="${i}"]`).focus(); });
+      $('#pauseHero').onclick = () => { paused = !paused; renderControls(); $('#pauseHero').focus(); schedule(); };
     }
-    const stage = $('.campaign-stage');
+    function unavailable() { media.replaceChildren(); status.textContent = 'This slide’s media is unavailable. You can still follow its link or choose another slide.'; }
+    function pauseForVideo() { paused = true; renderControls(); schedule(); }
+    function render(next) {
+      clearTimeout(timer); index = next;
+      const slide = slides[index], buttons = (slide.buttons || []).filter(button => button.label && button.href);
+      title.textContent = slide.headline; description.textContent = slide.description || slide.eyebrow || ''; description.hidden = !description.textContent;
+      action.textContent = buttons[0]?.label || 'Discover more'; action.href = routeHref(buttons[0]?.href || '/events');
+      let extras = $('#heroExtraActions'); if (!extras) { extras = document.createElement('div'); extras.id = 'heroExtraActions'; extras.className = 'hero-extra-actions'; action.after(extras); }
+      extras.innerHTML = buttons.slice(1).map(button => `<a href="${escape(routeHref(button.href))}" class="hero-secondary-action">${escape(button.label)}</a>`).join('');
+      status.textContent = ''; media.replaceChildren();
+      const id = youtube(slide.mediaUrl);
+      if (slide.mediaType === 'video' && id) {
+        const play = document.createElement('button'); play.type = 'button'; play.className = 'hero-video-poster'; play.setAttribute('aria-label', 'Play ' + slide.headline);
+        play.innerHTML = `<img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt=""><span>Play video ${BYDIcons.right}</span>`;
+        play.querySelector('img').onerror = event => event.target.remove();
+        play.onclick = () => { pauseForVideo(); const iframe = document.createElement('iframe'); iframe.title = slide.headline; iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1`; iframe.allow = 'autoplay; encrypted-media; picture-in-picture'; iframe.allowFullscreen = true; media.replaceChildren(iframe); iframe.focus(); };
+        media.append(play);
+      } else if (slide.mediaType === 'video') {
+        const video = document.createElement('video'); video.src = slide.mediaUrl; video.controls = true; video.playsInline = true; video.preload = 'metadata'; video.setAttribute('aria-label', slide.headline); video.onplay = pauseForVideo; video.onerror = () => { if (media.contains(video)) unavailable(); }; media.append(video);
+      } else if (slide.mediaUrl) {
+        const img = document.createElement('img'); img.alt = ''; img.src = slide.mediaUrl; img.fetchPriority = index === 0 ? 'high' : 'auto'; img.onerror = () => { if (media.contains(img)) unavailable(); }; media.append(img);
+      } else unavailable();
+      renderControls(); resizeCopy(); schedule();
+    }
+    function fallback(error) {
+      media.replaceChildren(); controls.hidden = true;
+      description.hidden = false; title.textContent = 'Discover your next BYD.'; description.textContent = 'Explore the BYD line-up at Millennium Motors.'; action.href = '/models'; action.textContent = 'Explore and compare models';
+      if (error) { status.textContent = 'Homepage slides couldn’t load. '; const retry = document.createElement('button'); retry.type = 'button'; retry.textContent = 'Retry slides'; retry.onclick = load; status.append(retry); }
+      else status.textContent = '';
+      resizeCopy();
+    }
+    async function load() {
+      try { const settings = await api('/api/content/settings'); slides = (settings.heroSlides || []).filter(slide => slide.published === true).sort((a,b) => Number(a.priority) - Number(b.priority)); if (slides.length) render(0); else fallback(false); }
+      catch { fallback(true); }
+    }
     stage.addEventListener('focusin', () => { focused = true; schedule(); }); stage.addEventListener('focusout', event => { if (!stage.contains(event.relatedTarget)) { focused = false; schedule(); } });
-    stage.addEventListener('mouseenter', () => { hovering = true; schedule(); }); stage.addEventListener('mouseleave', () => { hovering = false; schedule(); });
+    if (matchMedia('(hover:hover)').matches) { stage.addEventListener('mouseenter', () => { hovering = true; schedule(); }); stage.addEventListener('mouseleave', () => { hovering = false; schedule(); }); }
     document.addEventListener('visibilitychange', schedule);
     if ('IntersectionObserver' in window) new IntersectionObserver(entries => { onscreen = entries[0].isIntersecting; schedule(); }, {threshold:0.05}).observe(stage);
-    try { const settings = await api('/api/content/settings'); slides = (settings.heroSlides || []).filter(slide => slide.published !== false).sort((a,b) => Number(a.priority) - Number(b.priority)); }
-    catch { media.innerHTML = ''; content.innerHTML = '<p>Campaigns are temporarily unavailable. Please try again later.</p>'; controls.hidden = true; return; }
-    if (!slides.length) { media.innerHTML = ''; content.innerHTML = '<p>There are no current campaigns. Check back soon.</p>'; controls.hidden = true; return; }
-    render(0);
+    await load();
   }
   async function detail() {
     const main = $('#main'), id = decodeURIComponent(location.pathname.split('/').pop());
@@ -284,5 +281,5 @@
     document.title = 'News & events | BYD Millennium Motors';
     $('#main').innerHTML = '<section class="section"><div class="breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>News & events</span></div><div class="compare-heading"><h1>Life in motion.</h1><p>News, events and experiences from Millennium Motors.</p></div><div class="event-filters" role="group" aria-label="Filter stories"><button data-category="" aria-pressed="true">All stories</button><button data-category="Event" aria-pressed="false">Events</button><button data-category="News" aria-pressed="false">News</button><button data-category="Article" aria-pressed="false">Articles</button></div><div class="event-grid" id="newsGrid" aria-live="polite"><p class="empty-state">Loading stories…</p></div></section>';
     news(true); loadModels().catch(() => {});
-  } else { catalogue(); news(); campaigns(); scrollMotion(); }
+  } else { catalogue(); campaignHero(); scrollMotion(); }
 })();

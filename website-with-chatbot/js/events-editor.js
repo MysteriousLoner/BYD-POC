@@ -4,7 +4,7 @@
   const button = (label, action, cls = 'secondary') => { const node = el('button', label, cls); node.type = 'button'; node.onclick = action; return node; };
   const nav = document.querySelector('.sidebar nav'), section = el('section', undefined, 'page manager-page');
   section.id = 'eventsPage'; document.querySelector('.admin-main').append(section);
-  const navButton = button('News & Events', openPage, 'nav-item'); navButton.dataset.editor = 'events'; nav.append(navButton);
+  const navButton = button('', openPage, 'nav-item'); navButton.title = 'News & Events'; navButton.dataset.editor = 'events'; const navIcon = el('span', undefined, 'nav-icon'); navIcon.innerHTML = BYDIcons.document; navButton.append(navIcon, el('span', 'News & Events', 'nav-label')); nav.append(navButton);
   let records = [], editing = '', objectUrl, previewGeneration = 0, loadGeneration = 0;
   async function api(url = '', options = {}) {
     const response = await fetch('/api/content/news' + url, options), data = response.status === 204 ? null : await response.json();

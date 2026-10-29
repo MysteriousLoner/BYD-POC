@@ -79,7 +79,7 @@ components:
 
 **Creative North Star: "The Open Road Showroom"**
 
-The public showroom opens with a cinematic, full-height vehicle photograph and a quiet, centered BYD identity. Its editorial journey moves into bright, generous spaces where authentic cars and dealership media lead. Graphite type and restrained red accents keep the brand present without competing with the imagery. The user pinned the Porsche-inspired composition; the BYD identity and published media make it specific to Millennium Motors.
+The public showroom opens with a full-height campaign slideshow and a quiet, centered BYD identity. Admin-managed artwork or video is contained above its headline and links so promotional copy and QR codes remain visible. Its editorial journey moves into bright, generous spaces where authentic cars and dealership media lead. Graphite type and restrained red accents keep the brand present without competing with the imagery. The user pinned the Porsche-inspired composition; the BYD identity and published media make it specific to Millennium Motors.
 
 Staff operate in the existing dark manager: charcoal panels, warm light text, clear fields and red primary actions. This distinction is intentional. `css/tokens.css` defines the dark base; `css/showroom.css` overrides it for public pages. The surface brief records page-level composition and content behavior.
 
@@ -105,17 +105,17 @@ Staff operate in the existing dark manager: charcoal panels, warm light text, cl
 
 **Display and body font:** Sora, with Arial and sans-serif fallbacks. The self-hosted font uses compact tracking for headings and measured, readable body text.
 
-- **Display:** The home hero uses responsive 36–70px story titles; on phones it uses 32–48px. White copy sits over the darkened image.
+- **Display:** The home hero uses responsive 36–70px story titles; on phones it uses 32–48px. White copy sits on the charcoal stage below the media; mobile titles use 34px type.
 - **Headline:** Section headings scale from 30–46px; supporting copy is generally 15px.
 - **Body and labels:** Body text is 15px at 1.65 line height; labels are commonly 13px. Forms retain 16px input text.
 
 ## Layout
 
-Public content is centered at up to 1320px and 90% viewport width, with section padding scaling from 64px to 112px. The hero uses 100svh, a 740px desktop minimum and 1100px maximum, with copy anchored near the lower edge. A centered logo balances Menu at left and Contact at right. Cards use three columns where space and content permit; at 900px model grids become two columns, and at 650px they become one. On phones the hero has a 620px minimum, header labels hide, and the hero action spans the content width. Comparison values remain two columns.
+Public content is centered at up to 1320px and 90% viewport width, with section padding scaling from 64px to 112px. The hero uses 100svh with a 740px minimum that expands for longer copy, reserving separate space for media, text and dot controls. A centered logo balances Menu at left and Contact at right. Cards use three columns where space and content permit; at 900px model grids become two columns, and at 650px they become one. On phones header labels hide, the hero action spans the content width, and complete campaign media remains visible above the caption. Comparison values remain two columns.
 
 ## Elevation & Depth
 
-Public sections are predominantly flat: tonal shifts, image crops and fine rules separate content. Gradients protect white text over images; menu and chat use shadows when floating above content. The dark manager uses tonal layering and borders for hierarchy. The news hero photograph moves with scroll; reduced motion removes the movement. Image-card hover uses a subtle 0.4s scale.
+Public sections are predominantly flat: tonal shifts, image crops and fine rules separate content. Gradients protect white text over images; menu and chat use shadows when floating above content. The dark manager uses tonal layering and borders for hierarchy. The campaign media shifts subtly with scroll; reduced motion removes the movement. Image-card hover uses a subtle 0.4s scale.
 
 ## Shapes
 
@@ -127,7 +127,7 @@ Public cards and media stages have generous 14px corners; controls use 5px corne
 Public primary buttons are graphite with white text, changing to red on hover; secondary buttons are outlined and lighten on hover. The hero action is white with graphite text. Underlined text links use a directional arrow and a 44px minimum interaction height. Manager primary buttons remain red. Public focus uses a 3px red outline; manager focus uses a warm 2px outline.
 
 ### Cards and media
-Discovery cards overlay model names on large photographs with a bottom gradient. Catalogue cards pair contained vehicle photos with model, price, colour, key facts and a link to model details. Comparison is available from the dedicated comparison page. The news hero and light campaign stages use direct-selection dot controls and a separate pause button; campaign artwork remains contained with a separate caption; editorial news cards place text below cropped imagery.
+Discovery cards overlay model names on large photographs with a bottom gradient. Catalogue cards pair contained vehicle photos with model, price, colour, key facts and a link to model details. Comparison is available from the dedicated comparison page. The homepage campaign stage uses direct-selection dots and a separate pause button, respects saved order and timing, and contains media above its caption; editorial news cards place text below cropped imagery.
 
 ### Inputs and navigation
 Public fields use white backgrounds, grey borders and at least 48px height; focused forms sit on pale panels. The public header overlays the home hero and becomes a white bar on interior routes. Menu opens a light, vertically listed navigation panel; chat opens from navigation. The dark manager uses its own compact sidebar or mobile drawer and dark fields.
@@ -143,3 +143,15 @@ Public fields use white backgrounds, grey borders and at least 48px height; focu
 ### Don't:
 - **Don't** fabricate vehicle facts or digitally recolour cars.
 - **Don't** let decorative overlays obscure important campaign artwork.
+
+## Homepage and staff submission browsing, 30 October 2026
+
+The homepage sequence is the managed opening slideshow, featured models, dealership introduction and footer. The catalogue, duplicate campaign block, editorial news block and closing contact banner are removed from the homepage. “Explore and compare models” opens `/models`; comparison remains on its dedicated page. News stays on `/events`.
+
+The dark manager groups website content, assistant tools and submissions in the same desktop sidebar/mobile drawer. Homepage slides have immediate-save Move up/Move down controls, labelled action links, seconds-based timing, a collapsible preview, and explicit published/hidden save feedback. Editing a slide brings its fields into view on phones. Content and uploads remain staff-controlled.
+
+Enquiries and Job applications are read-only inboxes: search saved fields, browse 25 newest-first records per page, open a full detail view, then return to the same filtered list. Detail fields stack on phones and use a two-column definition list on wider screens. Branch snapshots are preferred; older branch IDs resolve to managed names where available. Missing legacy data is labelled, never invented. Authenticated résumé downloads retain private storage and report missing attachments without discarding the application. No submission deletion or status workflow is added.
+
+The current HTTP transport warning remains visible, as explicitly accepted by the owner. Submission reads and downloads require the existing admin session and use `Cache-Control: no-store`; unsafe attachment paths and links escaping the upload directory are rejected. No database schema migration is required.
+
+Finish review: SHIP for the homepage/admin usability release. Reviewed rendered public, slide-editor and submission list/detail flows at 360, 390, 605, 768 and 1440px, including keyboard focus, portrait media, long and missing fields. The backend suite passed 20 tests and browser suite passed 22 tests. The mechanical detector reported no findings in degraded regex mode, so computed contrast was checked separately: white/red actions 4.58:1 and muted manager text/panel 8.05:1. The intentional HTTP transport limitation remains visible and owner-approved.

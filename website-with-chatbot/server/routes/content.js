@@ -155,6 +155,16 @@ router.post('/settings/hero-slides', heroUpload.single('mediaFile'), (req, res) 
     writeJson('site-settings.json', settings); res.status(201).json(slide);
   } catch (error) { res.status(400).json({ error: error.message }); }
 });
+router.post('/settings/hero-slides/reorder', express.json(), (req, res) => {
+  const settings = readJson('site-settings.json', { heroSlides: [] });
+  const slides = settings.heroSlides || [], ids = req.body.ids;
+  if (!Array.isArray(ids) || ids.length !== slides.length || new Set(ids).size !== slides.length || ids.some(id => typeof id !== 'string' || !slides.some(slide => slide.id === id))) {
+    return res.status(409).json({ error: 'The slide list changed. Reload the page before reordering.' });
+  }
+  settings.heroSlides = ids.map((id, index) => ({ ...slides.find(slide => slide.id === id), priority: index + 1 }));
+  writeJson('site-settings.json', settings);
+  res.json(settings.heroSlides);
+});
 router.put('/settings/hero-slides/:id', heroUpload.single('mediaFile'), (req, res) => {
   try {
     const settings = readJson('site-settings.json', { heroSlides: [] });
