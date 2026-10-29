@@ -79,7 +79,7 @@ components:
 
 **Creative North Star: "The Open Road Showroom"**
 
-The public showroom opens with a full-height campaign slideshow and a quiet, centered BYD identity. Admin-managed artwork or video is contained above its headline and links so promotional copy and QR codes remain visible. Its editorial journey moves into bright, generous spaces where authentic cars and dealership media lead. Graphite type and restrained red accents keep the brand present without competing with the imagery. The user pinned the Porsche-inspired composition; the BYD identity and published media make it specific to Millennium Motors.
+The public showroom opens with a full-height campaign slideshow and a quiet, centered BYD identity. Video covers the opening viewport behind the headline, description and actions. Images retain contain sizing, with the same text overlay. Its editorial journey moves into bright, generous spaces where authentic cars and dealership media lead. Graphite type and restrained red accents keep the brand present without competing with the imagery. The user pinned the Porsche-inspired composition; the BYD identity and published media make it specific to Millennium Motors.
 
 Staff operate in the existing dark manager: charcoal panels, warm light text, clear fields and red primary actions. This distinction is intentional. `css/tokens.css` defines the dark base; `css/showroom.css` overrides it for public pages. The surface brief records page-level composition and content behavior.
 
@@ -105,13 +105,13 @@ Staff operate in the existing dark manager: charcoal panels, warm light text, cl
 
 **Display and body font:** Sora, with Arial and sans-serif fallbacks. The self-hosted font uses compact tracking for headings and measured, readable body text.
 
-- **Display:** The home hero uses responsive 36–70px story titles; on phones it uses 32–48px. White copy sits on the charcoal stage below the media; mobile titles use 34px type.
+- **Display:** The home hero uses responsive 36–70px story titles; on phones it uses 32–48px. White copy overlays the media on a dark lower gradient; mobile titles use 34px type.
 - **Headline:** Section headings scale from 30–46px; supporting copy is generally 15px.
 - **Body and labels:** Body text is 15px at 1.65 line height; labels are commonly 13px. Forms retain 16px input text.
 
 ## Layout
 
-Public content is centered at up to 1320px and 90% viewport width, with section padding scaling from 64px to 112px. The hero uses 100svh with a 740px minimum that expands for longer copy, reserving separate space for media, text and dot controls. A centered logo balances Menu at left and Contact at right. Cards use three columns where space and content permit; at 900px model grids become two columns, and at 650px they become one. On phones header labels hide, the hero action spans the content width, and complete campaign media remains visible above the caption. Comparison values remain two columns.
+Public content is centered at up to 1320px and 90% viewport width, with section padding scaling from 64px to 112px. The hero occupies 100svh with absolutely positioned media, copy and controls; text does not reserve media space. A centered logo balances Menu at left and Contact at right. Cards use three columns where space and content permit; at 900px model grids become two columns, and at 650px they become one. On phones header labels hide, the hero action spans the content width, and the video covers the viewport behind the caption. Comparison values remain two columns.
 
 ## Elevation & Depth
 
@@ -159,3 +159,7 @@ Finish review: SHIP for the homepage/admin usability release. Reviewed rendered 
 Video playback update: public video slides start automatically and muted, inline on phones, and rotate after the admin-defined duration. The slideshow pause control also pauses the active video, including a single video slide. Leaving the stage or hiding the tab pauses playback; returning resumes when not manually paused. Reduced motion starts paused. Native and YouTube player controls remain available, with explanatory recovery text if the browser blocks autoplay. Staff previews stay manual while editing. YouTube uses its official IFrame API to mute and synchronize playback.
 
 Autoplay finish review: SHIP. Phone and desktop native-video captures retain the existing composition without the public play-poster overlay. Backend tests passed (20); the six targeted autoplay, timing, pause, reduced-motion and control-recovery browser checks passed after the broader regression run. Native video playback was exercised with a local fixture; YouTube control integration was verified with a deterministic API stub, not a claim that third-party streaming was observed live.
+
+Full-screen hero correction: the header, headline, description, destination links and dot/pause/sound controls overlay the opening media. Native video uses cover sizing. YouTube embeds use centered 16:9 cover sizing with 35% overscan to cover the cinematic letterboxing shown in the user’s reference; edge cropping is intentional; background playback hides provider transport controls and keyboard focus, while labelled site controls handle pause and sound, including API-load recovery. Images keep contain sizing. A lower dark gradient provides text contrast; short landscape screens reduce the heading and omit secondary description text. Native and YouTube autoplay, saved timing and reduced motion remain supported.
+
+Overlay finish review: SHIP. The 26-test browser suite passed, including full-viewport media bounds, absolute text placement, unobstructed controls, native/YouTube playback, sound switching and short landscape layout. Reviewed mobile and desktop captures with fixture media behind the overlay; image artwork remains contained. The detector returned no findings in degraded regex mode; rendered contrast and control separation were reviewed directly.

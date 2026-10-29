@@ -167,24 +167,25 @@
     const stage = $('.showroom-hero'), media = $('#heroBackground'), controls = $('#heroControls'), status = $('#heroMediaStatus');
     const title = $('#heroTitle'), description = $('#heroDescription'), action = $('#heroAction');
     let slides = [], index = 0, timer, paused = matchMedia('(prefers-reduced-motion:reduce)').matches, focused = false, hovering = false, onscreen = true;
-    let youtubePlayer;
+    let youtubePlayer, muted = true;
     const playbackAllowed = () => !paused && onscreen && !document.hidden;
     function syncPlayback() {
       const video = media.querySelector('video');
-      if (video) { if (playbackAllowed()) video.play().catch(() => { if (media.contains(video) && playbackAllowed()) status.textContent = 'Your browser paused autoplay. Use the video’s play control to start it.'; }); else video.pause(); }
+      if (video) { video.muted = muted; if (playbackAllowed()) video.play().catch(() => { if (media.contains(video) && playbackAllowed()) autoplayBlocked(); }); else video.pause(); }
       const iframe = media.querySelector('iframe');
-      if (youtubePlayer && typeof youtubePlayer.playVideo === 'function') { try { if (playbackAllowed()) youtubePlayer.playVideo(); else youtubePlayer.pauseVideo(); } catch {} }
-      else if (iframe) { const url = new URL(iframe.src), autoplay = playbackAllowed() ? '1' : '0'; if (url.searchParams.get('autoplay') !== autoplay) { url.searchParams.set('autoplay', autoplay); iframe.src = url.href; } }
+      if (youtubePlayer && typeof youtubePlayer.playVideo === 'function') { try { if (muted) youtubePlayer.mute(); else youtubePlayer.unMute(); if (playbackAllowed()) youtubePlayer.playVideo(); else youtubePlayer.pauseVideo(); } catch {} }
+      else if (iframe) { const url = new URL(iframe.src), autoplay = playbackAllowed() ? '1' : '0'; if (url.searchParams.get('autoplay') !== autoplay || url.searchParams.get('mute') !== String(Number(muted))) { url.searchParams.set('autoplay', autoplay); url.searchParams.set('mute', String(Number(muted))); iframe.src = url.href; } }
     }
-    const resizeCopy = () => stage.style.setProperty('--hero-copy-space', `${Math.ceil($('.hero-content').getBoundingClientRect().height) + 112}px`);
-    if ('ResizeObserver' in window) new ResizeObserver(resizeCopy).observe($('.hero-content'));
     function schedule() {
       clearTimeout(timer);
       if (!paused && !focused && !hovering && onscreen && !document.hidden && slides.length > 1) timer = setTimeout(() => render((index + 1) % slides.length), Math.max(3000, Math.min(30000, Number(slides[index].duration) || 7000)));
     }
+    function autoplayBlocked() { paused = true; status.textContent = 'Your browser paused autoplay. Select Resume to play the video.'; renderControls(); schedule(); }
     function renderControls() {
       controls.hidden = slides.length < 2 && slides[index]?.mediaType !== 'video';
-      controls.innerHTML = `<div class="slide-dots" role="group" aria-label="Choose a homepage slide" ${slides.length < 2 ? 'hidden' : ''}>${slides.map((slide,i) => `<button class="slide-dot" type="button" data-hero-slide="${i}" aria-label="Show slide ${i+1}: ${escape(slide.headline)}" aria-pressed="${i === index}"><span></span></button>`).join('')}</div><button class="slide-pause" type="button" id="pauseHero" aria-label="${paused ? 'Resume' : 'Pause'} homepage slideshow" aria-pressed="${paused}">${paused ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7z"/></svg>' : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>'}</button>`;
+      const sound = slides[index]?.mediaType === 'video' ? `<button class="hero-sound" id="heroSound" type="button" aria-label="${muted ? 'Turn sound on' : 'Mute video'}" aria-pressed="${!muted}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h4l5-5v16l-5-5H3z"/>${muted ? '<path d="m16 9 5 6m0-6-5 6"/>' : '<path d="M16 8c2 2 2 6 0 8M19 5c4 4 4 10 0 14"/>'}</svg></button>` : '';
+      controls.innerHTML = `<div class="slide-dots" role="group" aria-label="Choose a homepage slide" ${slides.length < 2 ? 'hidden' : ''}>${slides.map((slide,i) => `<button class="slide-dot" type="button" data-hero-slide="${i}" aria-label="Show slide ${i+1}: ${escape(slide.headline)}" aria-pressed="${i === index}"><span></span></button>`).join('')}</div><button class="slide-pause" type="button" id="pauseHero" aria-label="${paused ? 'Resume' : 'Pause'} homepage slideshow" aria-pressed="${paused}">${paused ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7z"/></svg>' : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>'}</button>${sound}`;
+      if ($('#heroSound')) $('#heroSound').onclick = () => { muted = !muted; syncPlayback(); renderControls(); $('#heroSound').focus(); };
       controls.querySelectorAll('[data-hero-slide]').forEach(button => button.onclick = () => { const i = Number(button.dataset.heroSlide); render(i); controls.querySelector(`[data-hero-slide="${i}"]`).focus(); });
       $('#pauseHero').onclick = () => { paused = !paused; renderControls(); $('#pauseHero').focus(); syncPlayback(); schedule(); };
     }
@@ -200,28 +201,27 @@
       const id = youtube(slide.mediaUrl);
       if (slide.mediaType === 'video' && id) {
         const iframe = document.createElement('iframe'); iframe.title = slide.headline;
-        const params = new URLSearchParams({ autoplay: playbackAllowed() ? '1' : '0', mute:'1', playsinline:'1', enablejsapi:'1', controls:'1', loop:'1', playlist:id, origin:location.origin });
-        iframe.src = `https://www.youtube-nocookie.com/embed/${id}?${params}`; iframe.allow = 'autoplay; encrypted-media; picture-in-picture'; iframe.allowFullscreen = true; media.append(iframe);
+        const params = new URLSearchParams({ autoplay: playbackAllowed() ? '1' : '0', mute:String(Number(muted)), playsinline:'1', enablejsapi:'1', controls:'0', disablekb:'1', loop:'1', playlist:id, origin:location.origin });
+        iframe.src = `https://www.youtube-nocookie.com/embed/${id}?${params}`; iframe.allow = 'autoplay; encrypted-media; picture-in-picture'; iframe.tabIndex = -1; iframe.setAttribute('aria-hidden', 'true'); media.append(iframe);
         loadYouTubeApi().then(YT => {
           if (!media.contains(iframe)) return;
           youtubePlayer = new YT.Player(iframe, { events: {
-            onReady: event => { if (media.contains(iframe)) { event.target.mute(); syncPlayback(); } },
-            onAutoplayBlocked: () => { if (media.contains(iframe) && playbackAllowed()) status.textContent = 'Your browser paused autoplay. Use the video’s play control to start it.'; }
+            onReady: () => { if (media.contains(iframe)) syncPlayback(); },
+            onAutoplayBlocked: () => { if (media.contains(iframe) && playbackAllowed()) autoplayBlocked(); }
           } });
-        }).catch(() => { /* Embedded playback and native player controls remain available. */ });
+        }).catch(() => { /* Slideshow controls can still update the embed parameters. */ });
       } else if (slide.mediaType === 'video') {
-        const video = document.createElement('video'); video.src = slide.mediaUrl; video.controls = true; video.muted = true; video.defaultMuted = true; video.autoplay = playbackAllowed(); video.playsInline = true; video.loop = true; video.preload = 'metadata'; video.setAttribute('aria-label', slide.headline); video.onerror = () => { if (media.contains(video)) unavailable(); }; media.append(video); syncPlayback();
+        const video = document.createElement('video'); video.src = slide.mediaUrl; video.controls = false; video.muted = muted; video.defaultMuted = true; video.autoplay = playbackAllowed(); video.playsInline = true; video.loop = true; video.preload = 'metadata'; video.setAttribute('aria-hidden', 'true'); video.tabIndex = -1; video.onplaying = () => { status.textContent = ''; }; video.onerror = () => { if (media.contains(video)) unavailable(); }; media.append(video); syncPlayback();
       } else if (slide.mediaUrl) {
         const img = document.createElement('img'); img.alt = ''; img.src = slide.mediaUrl; img.fetchPriority = index === 0 ? 'high' : 'auto'; img.onerror = () => { if (media.contains(img)) unavailable(); }; media.append(img);
       } else unavailable();
-      renderControls(); resizeCopy(); schedule();
+      renderControls(); schedule();
     }
     function fallback(error) {
       media.replaceChildren(); controls.hidden = true;
       description.hidden = false; title.textContent = 'Discover your next BYD.'; description.textContent = 'Explore the BYD line-up at Millennium Motors.'; action.href = '/models'; action.textContent = 'Explore and compare models';
       if (error) { status.textContent = 'Homepage slides couldn’t load. '; const retry = document.createElement('button'); retry.type = 'button'; retry.textContent = 'Retry slides'; retry.onclick = load; status.append(retry); }
       else status.textContent = '';
-      resizeCopy();
     }
     async function load() {
       try { const settings = await api('/api/content/settings'); slides = (settings.heroSlides || []).filter(slide => slide.published === true).sort((a,b) => Number(a.priority) - Number(b.priority)); if (slides.length) render(0); else fallback(false); }
