@@ -151,10 +151,31 @@
     try { const url = new URL(href, location.origin); if (url.origin === location.origin && ['/', '/index.html'].includes(url.pathname) && destinations[url.hash.slice(1)]) return destinations[url.hash.slice(1)] + (url.search || ''); } catch {}
     return href;
   }
+  let youtubeApi;
+  function loadYouTubeApi() {
+    if (window.YT?.Player) return Promise.resolve(window.YT);
+    if (!youtubeApi) youtubeApi = new Promise((resolve, reject) => {
+      const previous = window.onYouTubeIframeAPIReady;
+      const timeout = setTimeout(() => reject(Error('Video controls unavailable')), 15000);
+      window.onYouTubeIframeAPIReady = () => { clearTimeout(timeout); previous?.(); resolve(window.YT); };
+      const script = document.createElement('script'); script.src = 'https://www.youtube.com/iframe_api'; script.async = true;
+      script.onerror = () => { clearTimeout(timeout); reject(Error('Video controls unavailable')); }; document.head.append(script);
+    });
+    return youtubeApi;
+  }
   async function campaignHero() {
     const stage = $('.showroom-hero'), media = $('#heroBackground'), controls = $('#heroControls'), status = $('#heroMediaStatus');
     const title = $('#heroTitle'), description = $('#heroDescription'), action = $('#heroAction');
     let slides = [], index = 0, timer, paused = matchMedia('(prefers-reduced-motion:reduce)').matches, focused = false, hovering = false, onscreen = true;
+    let youtubePlayer;
+    const playbackAllowed = () => !paused && onscreen && !document.hidden;
+    function syncPlayback() {
+      const video = media.querySelector('video');
+      if (video) { if (playbackAllowed()) video.play().catch(() => { if (media.contains(video) && playbackAllowed()) status.textContent = 'Your browser paused autoplay. Use the video’s play control to start it.'; }); else video.pause(); }
+      const iframe = media.querySelector('iframe');
+      if (youtubePlayer && typeof youtubePlayer.playVideo === 'function') { try { if (playbackAllowed()) youtubePlayer.playVideo(); else youtubePlayer.pauseVideo(); } catch {} }
+      else if (iframe) { const url = new URL(iframe.src), autoplay = playbackAllowed() ? '1' : '0'; if (url.searchParams.get('autoplay') !== autoplay) { url.searchParams.set('autoplay', autoplay); iframe.src = url.href; } }
+    }
     const resizeCopy = () => stage.style.setProperty('--hero-copy-space', `${Math.ceil($('.hero-content').getBoundingClientRect().height) + 112}px`);
     if ('ResizeObserver' in window) new ResizeObserver(resizeCopy).observe($('.hero-content'));
     function schedule() {
@@ -162,13 +183,12 @@
       if (!paused && !focused && !hovering && onscreen && !document.hidden && slides.length > 1) timer = setTimeout(() => render((index + 1) % slides.length), Math.max(3000, Math.min(30000, Number(slides[index].duration) || 7000)));
     }
     function renderControls() {
-      controls.hidden = slides.length < 2;
-      controls.innerHTML = `<div class="slide-dots" role="group" aria-label="Choose a homepage slide">${slides.map((slide,i) => `<button class="slide-dot" type="button" data-hero-slide="${i}" aria-label="Show slide ${i+1}: ${escape(slide.headline)}" aria-pressed="${i === index}"><span></span></button>`).join('')}</div><button class="slide-pause" type="button" id="pauseHero" aria-label="${paused ? 'Resume' : 'Pause'} homepage slideshow" aria-pressed="${paused}">${paused ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7z"/></svg>' : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>'}</button>`;
+      controls.hidden = slides.length < 2 && slides[index]?.mediaType !== 'video';
+      controls.innerHTML = `<div class="slide-dots" role="group" aria-label="Choose a homepage slide" ${slides.length < 2 ? 'hidden' : ''}>${slides.map((slide,i) => `<button class="slide-dot" type="button" data-hero-slide="${i}" aria-label="Show slide ${i+1}: ${escape(slide.headline)}" aria-pressed="${i === index}"><span></span></button>`).join('')}</div><button class="slide-pause" type="button" id="pauseHero" aria-label="${paused ? 'Resume' : 'Pause'} homepage slideshow" aria-pressed="${paused}">${paused ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7z"/></svg>' : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>'}</button>`;
       controls.querySelectorAll('[data-hero-slide]').forEach(button => button.onclick = () => { const i = Number(button.dataset.heroSlide); render(i); controls.querySelector(`[data-hero-slide="${i}"]`).focus(); });
-      $('#pauseHero').onclick = () => { paused = !paused; renderControls(); $('#pauseHero').focus(); schedule(); };
+      $('#pauseHero').onclick = () => { paused = !paused; renderControls(); $('#pauseHero').focus(); syncPlayback(); schedule(); };
     }
     function unavailable() { media.replaceChildren(); status.textContent = 'This slide’s media is unavailable. You can still follow its link or choose another slide.'; }
-    function pauseForVideo() { paused = true; renderControls(); schedule(); }
     function render(next) {
       clearTimeout(timer); index = next;
       const slide = slides[index], buttons = (slide.buttons || []).filter(button => button.label && button.href);
@@ -176,16 +196,21 @@
       action.textContent = buttons[0]?.label || 'Discover more'; action.href = routeHref(buttons[0]?.href || '/events');
       let extras = $('#heroExtraActions'); if (!extras) { extras = document.createElement('div'); extras.id = 'heroExtraActions'; extras.className = 'hero-extra-actions'; action.after(extras); }
       extras.innerHTML = buttons.slice(1).map(button => `<a href="${escape(routeHref(button.href))}" class="hero-secondary-action">${escape(button.label)}</a>`).join('');
-      status.textContent = ''; media.replaceChildren();
+      status.textContent = ''; if (youtubePlayer) { youtubePlayer.destroy(); youtubePlayer = undefined; } media.replaceChildren();
       const id = youtube(slide.mediaUrl);
       if (slide.mediaType === 'video' && id) {
-        const play = document.createElement('button'); play.type = 'button'; play.className = 'hero-video-poster'; play.setAttribute('aria-label', 'Play ' + slide.headline);
-        play.innerHTML = `<img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt=""><span>Play video ${BYDIcons.right}</span>`;
-        play.querySelector('img').onerror = event => event.target.remove();
-        play.onclick = () => { pauseForVideo(); const iframe = document.createElement('iframe'); iframe.title = slide.headline; iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1`; iframe.allow = 'autoplay; encrypted-media; picture-in-picture'; iframe.allowFullscreen = true; media.replaceChildren(iframe); iframe.focus(); };
-        media.append(play);
+        const iframe = document.createElement('iframe'); iframe.title = slide.headline;
+        const params = new URLSearchParams({ autoplay: playbackAllowed() ? '1' : '0', mute:'1', playsinline:'1', enablejsapi:'1', controls:'1', loop:'1', playlist:id, origin:location.origin });
+        iframe.src = `https://www.youtube-nocookie.com/embed/${id}?${params}`; iframe.allow = 'autoplay; encrypted-media; picture-in-picture'; iframe.allowFullscreen = true; media.append(iframe);
+        loadYouTubeApi().then(YT => {
+          if (!media.contains(iframe)) return;
+          youtubePlayer = new YT.Player(iframe, { events: {
+            onReady: event => { if (media.contains(iframe)) { event.target.mute(); syncPlayback(); } },
+            onAutoplayBlocked: () => { if (media.contains(iframe) && playbackAllowed()) status.textContent = 'Your browser paused autoplay. Use the video’s play control to start it.'; }
+          } });
+        }).catch(() => { /* Embedded playback and native player controls remain available. */ });
       } else if (slide.mediaType === 'video') {
-        const video = document.createElement('video'); video.src = slide.mediaUrl; video.controls = true; video.playsInline = true; video.preload = 'metadata'; video.setAttribute('aria-label', slide.headline); video.onplay = pauseForVideo; video.onerror = () => { if (media.contains(video)) unavailable(); }; media.append(video);
+        const video = document.createElement('video'); video.src = slide.mediaUrl; video.controls = true; video.muted = true; video.defaultMuted = true; video.autoplay = playbackAllowed(); video.playsInline = true; video.loop = true; video.preload = 'metadata'; video.setAttribute('aria-label', slide.headline); video.onerror = () => { if (media.contains(video)) unavailable(); }; media.append(video); syncPlayback();
       } else if (slide.mediaUrl) {
         const img = document.createElement('img'); img.alt = ''; img.src = slide.mediaUrl; img.fetchPriority = index === 0 ? 'high' : 'auto'; img.onerror = () => { if (media.contains(img)) unavailable(); }; media.append(img);
       } else unavailable();
@@ -204,8 +229,8 @@
     }
     stage.addEventListener('focusin', () => { focused = true; schedule(); }); stage.addEventListener('focusout', event => { if (!stage.contains(event.relatedTarget)) { focused = false; schedule(); } });
     if (matchMedia('(hover:hover)').matches) { stage.addEventListener('mouseenter', () => { hovering = true; schedule(); }); stage.addEventListener('mouseleave', () => { hovering = false; schedule(); }); }
-    document.addEventListener('visibilitychange', schedule);
-    if ('IntersectionObserver' in window) new IntersectionObserver(entries => { onscreen = entries[0].isIntersecting; schedule(); }, {threshold:0.05}).observe(stage);
+    document.addEventListener('visibilitychange', () => { syncPlayback(); schedule(); });
+    if ('IntersectionObserver' in window) new IntersectionObserver(entries => { onscreen = entries[0].isIntersecting && entries[0].intersectionRatio >= 0.05; syncPlayback(); schedule(); }, {threshold:0.05}).observe(stage);
     await load();
   }
   async function detail() {
