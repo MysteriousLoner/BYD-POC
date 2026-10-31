@@ -1,99 +1,527 @@
 [
   {
-    "id": "seal",
-    "name": "BYD Seal",
-    "type": "Electric Sedan",
-    "price": "From RM 179,800",
-    "range": "570 km",
-    "acceleration": "3.8s 0-100 km/h",
-    "power": "390 kW",
-    "battery": "82.5 kWh Blade Battery",
-    "badge": "NEW",
-    "description": "A sleek, performance-focused electric sedan built on BYD's e-Platform 3.0.",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/0/0d/BYD_Seal%2C_IAA_Open_Space_2023%2C_Munich_%28P1120203%29.jpg",
+    "id": "byd-sea-lion",
+    "name": "BYD SEALION 7",
+    "type": "Electric SUV",
+    "price": "From RM 163,800",
+    "description": "An electric SUV with a panoramic roof, rotating touchscreen and BYD Blade Battery. Specifications shown are for the Premium and Performance variants in the 2024 brochure; check with our team for current model-year details.",
+    "published": true,
+    "badge": "",
+    "videoUrl": "",
+    "image": "/assets/wordpress/catalogue/b0e90bcea3a7c2ae.webp",
     "images": [
-      "https://upload.wikimedia.org/wikipedia/commons/0/0d/BYD_Seal%2C_IAA_Open_Space_2023%2C_Munich_%28P1120203%29.jpg",
-      "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/BYD_Seal%2C_IAA_Open_Space_2023%2C_Munich_%28P1120203%29.jpg/1280px-BYD_Seal%2C_IAA_Open_Space_2023%2C_Munich_%28P1120203%29.jpg",
-      "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/BYD_Seal%2C_IAA_Open_Space_2023%2C_Munich_%28P1120204%29.jpg/1280px-BYD_Seal%2C_IAA_Open_Space_2023%2C_Munich_%28P1120204%29.jpg"
+      "/assets/wordpress/catalogue/b0e90bcea3a7c2ae.webp",
+      "/assets/wordpress/catalogue/2fa94369466e1b24.webp",
+      "/assets/wordpress/catalogue/230e97a7d3b8a924.webp",
+      "/assets/wordpress/catalogue/1c8f1aa809afb7a0.webp"
     ],
-    "videoUrl": "https://www.youtube.com/watch?v=2pWlRrEr_y4",
-    "published": false
+    "colours": [
+      {
+        "id": "atlantis-grey",
+        "name": "Atlantis Grey",
+        "swatch": "#556f85",
+        "images": [
+          "/assets/wordpress/catalogue/b0e90bcea3a7c2ae.webp"
+        ]
+      },
+      {
+        "id": "aurora-white",
+        "name": "Aurora White",
+        "swatch": "#e5e6e2",
+        "images": [
+          "/assets/wordpress/catalogue/2fa94369466e1b24.webp"
+        ]
+      },
+      {
+        "id": "cosmos-black",
+        "name": "Cosmos Black",
+        "swatch": "#1b1b1b",
+        "images": [
+          "/assets/wordpress/catalogue/230e97a7d3b8a924.webp"
+        ]
+      },
+      {
+        "id": "shark-grey",
+        "name": "Shark Grey",
+        "swatch": "#767c80",
+        "images": [
+          "/assets/wordpress/catalogue/1c8f1aa809afb7a0.webp"
+        ]
+      }
+    ],
+    "specifications": [
+      {
+        "key": "range",
+        "label": "Driving range (NEDC; Premium / Performance)",
+        "value": "567 / 542",
+        "unit": "km",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "acceleration",
+        "label": "0–100 km/h (Premium / Performance)",
+        "value": "6.7 / 4.5",
+        "unit": "s",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "power",
+        "label": "Maximum power (Premium / Performance)",
+        "value": "230 / 390",
+        "unit": "kW",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "battery",
+        "label": "Battery capacity",
+        "value": "82.5",
+        "unit": "kWh",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "battery-type",
+        "label": "Battery type",
+        "value": "BYD Blade Battery",
+        "unit": "",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "length",
+        "label": "Length",
+        "value": "4830",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "width",
+        "label": "Width",
+        "value": "1925",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "height",
+        "label": "Height",
+        "value": "1620",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "wheelbase",
+        "label": "Wheelbase",
+        "value": "2930",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "seating",
+        "label": "Seats",
+        "value": "5",
+        "unit": "",
+        "group": "Dimensions"
+      },
+      {
+        "key": "drivetrain",
+        "label": "Drivetrain (Premium / Performance)",
+        "value": "Rear-wheel / All-wheel drive",
+        "unit": "",
+        "group": "Performance & battery"
+      }
+    ],
+    "sourceUrl": "https://millenniumautobyd.com.my/home/byd-sealion/"
+  },
+  {
+    "id": "seal6ev",
+    "name": "BYD SEAL 6 EV",
+    "type": "Electric sedan",
+    "price": "From RM 100,000",
+    "description": "An electric sedan with a 15.6-inch rotating screen, rear-wheel drive and front and rear luggage compartments.",
+    "published": true,
+    "badge": "",
+    "videoUrl": "",
+    "image": "/assets/wordpress/catalogue/abee6027380b48b6.webp",
+    "images": [
+      "/assets/wordpress/catalogue/abee6027380b48b6.webp",
+      "/assets/wordpress/catalogue/86dd39c6a525c87a.webp",
+      "/assets/wordpress/catalogue/76276fb12eb868eb.webp"
+    ],
+    "colours": [
+      {
+        "id": "arctic-white",
+        "name": "Arctic White",
+        "swatch": "#e7e8e6",
+        "images": [
+          "/assets/wordpress/catalogue/abee6027380b48b6.webp"
+        ]
+      },
+      {
+        "id": "harbour-grey",
+        "name": "Harbour Grey",
+        "swatch": "#6b6e70",
+        "images": [
+          "/assets/wordpress/catalogue/86dd39c6a525c87a.webp"
+        ]
+      },
+      {
+        "id": "misty-blue",
+        "name": "Misty Blue",
+        "swatch": "#879cac",
+        "images": [
+          "/assets/wordpress/catalogue/76276fb12eb868eb.webp"
+        ]
+      }
+    ],
+    "specifications": [
+      {
+        "key": "acceleration",
+        "label": "0–100 km/h",
+        "value": "7.5",
+        "unit": "s",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "power",
+        "label": "Maximum power",
+        "value": "160",
+        "unit": "kW",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "torque",
+        "label": "Maximum torque",
+        "value": "330",
+        "unit": "Nm",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "battery",
+        "label": "Battery",
+        "value": "BYD Blade Battery",
+        "unit": "",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "drivetrain",
+        "label": "Drivetrain",
+        "value": "Rear-wheel drive",
+        "unit": "",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "rear-storage",
+        "label": "Rear luggage capacity",
+        "value": "460",
+        "unit": "L",
+        "group": "Dimensions"
+      },
+      {
+        "key": "front-storage",
+        "label": "Front luggage capacity",
+        "value": "65",
+        "unit": "L",
+        "group": "Dimensions"
+      },
+      {
+        "key": "display",
+        "label": "Central display",
+        "value": "15.6",
+        "unit": "in",
+        "group": "Interior"
+      }
+    ],
+    "sourceUrl": "https://millenniumautobyd.com.my/home/byd-seal-2025/"
+  },
+  {
+    "id": "seal",
+    "name": "BYD SEAL",
+    "type": "Electric sedan",
+    "price": "From RM 171,800",
+    "description": "An electric sedan with BYD Blade Battery and Cell-to-Body technology.",
+    "published": true,
+    "badge": "",
+    "videoUrl": "",
+    "image": "/assets/wordpress/catalogue/0f5869acb9f7aff8.webp",
+    "images": [
+      "/assets/wordpress/catalogue/0f5869acb9f7aff8.webp",
+      "/assets/wordpress/catalogue/476d83ae5cd28b52.webp"
+    ],
+    "colours": [
+      {
+        "id": "shark-grey",
+        "name": "Shark Grey",
+        "swatch": "#858a8e",
+        "images": [
+          "/assets/wordpress/catalogue/0f5869acb9f7aff8.webp"
+        ]
+      }
+    ],
+    "specifications": [
+      {
+        "key": "battery",
+        "label": "Battery",
+        "value": "BYD Blade Battery",
+        "unit": "",
+        "group": "Performance & battery"
+      }
+    ],
+    "sourceUrl": "https://millenniumautobyd.com.my/home/byd-seal-2025-2/"
+  },
+  {
+    "id": "atto2",
+    "name": "BYD ATTO 2",
+    "type": "Electric SUV",
+    "price": "From RM 100,000",
+    "description": "A compact electric SUV with a rotatable screen and BYD Blade Battery.",
+    "published": true,
+    "badge": "",
+    "videoUrl": "",
+    "image": "/assets/wordpress/catalogue/bbb926c0d51ebaf6.webp",
+    "images": [
+      "/assets/wordpress/catalogue/bbb926c0d51ebaf6.webp",
+      "/assets/wordpress/catalogue/f030dc1b440c10fc.webp",
+      "/assets/wordpress/catalogue/b64d5496bc9d7ec2.webp"
+    ],
+    "colours": [
+      {
+        "id": "white",
+        "name": "White",
+        "swatch": "#e9e9e5",
+        "images": [
+          "/assets/wordpress/catalogue/bbb926c0d51ebaf6.webp"
+        ]
+      },
+      {
+        "id": "black",
+        "name": "Black",
+        "swatch": "#222222",
+        "images": [
+          "/assets/wordpress/catalogue/f030dc1b440c10fc.webp"
+        ]
+      },
+      {
+        "id": "green",
+        "name": "Green",
+        "swatch": "#718578",
+        "images": [
+          "/assets/wordpress/catalogue/b64d5496bc9d7ec2.webp"
+        ]
+      }
+    ],
+    "specifications": [
+      {
+        "key": "acceleration",
+        "label": "0–100 km/h",
+        "value": "7.9",
+        "unit": "s",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "power",
+        "label": "Maximum power",
+        "value": "130",
+        "unit": "kW",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "torque",
+        "label": "Maximum torque",
+        "value": "290",
+        "unit": "Nm",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "battery",
+        "label": "Battery",
+        "value": "BYD Blade Battery",
+        "unit": "",
+        "group": "Performance & battery"
+      }
+    ],
+    "sourceUrl": "https://millenniumautobyd.com.my/home/byd-atto-2/"
   },
   {
     "id": "atto3",
-    "name": "BYD Atto 3",
+    "name": "BYD ATTO 3",
     "type": "Electric SUV",
-    "price": "From RM 149,800",
-    "range": "480 km",
-    "acceleration": "7.3s 0-100 km/h",
-    "power": "150 kW",
-    "battery": "60.48 kWh Blade Battery",
-    "badge": "POPULAR",
-    "description": "A versatile electric SUV combining expressive design, intelligent technology and everyday comfort.",
-    "image": "/assets/atto3-blue.webp",
-    "videoUrl": "https://www.youtube.com/watch?v=KL6RTpCXJNI",
+    "price": "Contact for pricing",
+    "description": "An electric SUV with BYD Blade Battery, rotating touchscreen and panoramic roof. Figures can vary by variant; contact our team for current details.",
     "published": true,
+    "badge": "",
+    "videoUrl": "",
+    "image": "/assets/wordpress/catalogue/6ee37f093dcae0a5.webp",
     "images": [
-      "/assets/atto3-blue.webp",
-      "/assets/atto3-white.webp",
-      "/assets/atto-cabin.webp"
+      "/assets/wordpress/catalogue/6ee37f093dcae0a5.webp",
+      "/assets/wordpress/catalogue/a5e8851e8b7a184e.webp"
     ],
-    "colours": [
+    "colours": [],
+    "specifications": [
       {
-        "id": "surf-blue",
-        "name": "Surf Blue",
-        "swatch": "#668cae",
-        "images": [
-          "/assets/atto3-blue.webp",
-          "/assets/atto-cabin.webp"
-        ]
+        "key": "range",
+        "label": "Driving range (NEDC)",
+        "value": "600",
+        "unit": "km",
+        "group": "Performance & battery"
       },
       {
-        "id": "ski-white",
-        "name": "Ski White",
-        "swatch": "#eeefeb",
-        "images": [
-          "/assets/atto3-white.webp",
-          "/assets/atto-cabin.webp"
-        ]
+        "key": "acceleration",
+        "label": "0–100 km/h",
+        "value": "5.5",
+        "unit": "s",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "power",
+        "label": "Maximum power",
+        "value": "230",
+        "unit": "kW",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "battery",
+        "label": "Battery",
+        "value": "BYD Blade Battery",
+        "unit": "",
+        "group": "Performance & battery"
       }
-    ]
+    ],
+    "sourceUrl": "https://millenniumautobyd.com.my/home/atto3/"
   },
   {
-    "id": "dolphin",
-    "name": "BYD Dolphin",
-    "type": "Electric Hatchback",
-    "price": "From RM 100,530",
-    "range": "427 km",
-    "acceleration": "7.0s 0-100 km/h",
-    "power": "150 kW",
-    "battery": "60.48 kWh Blade Battery",
-    "badge": "",
-    "description": "A compact and agile EV made for efficient, connected urban driving.",
-    "image": "/assets/dolphin-blue.webp",
-    "videoUrl": "https://www.youtube.com/watch?v=vy0fle6Fx34",
+    "id": "m6",
+    "name": "BYD M6",
+    "type": "Electric 7-seater",
+    "price": "From RM 109,800",
+    "description": "A seven-seat electric vehicle with a flat rear floor and BYD Blade Battery. Figures are shown for Standard and Extended variants.",
     "published": true,
+    "badge": "",
+    "videoUrl": "",
+    "image": "/assets/wordpress/catalogue/9e9223a1fd8c72cb.webp",
     "images": [
-      "/assets/dolphin-blue.webp",
-      "/assets/dolphin-white.webp"
+      "/assets/wordpress/catalogue/9e9223a1fd8c72cb.webp",
+      "/assets/wordpress/catalogue/38a2103a29c53c3e.webp",
+      "/assets/wordpress/catalogue/548abd8a5771004c.webp",
+      "/assets/wordpress/catalogue/be8e8bb5314678b7.webp"
     ],
     "colours": [
       {
-        "id": "surf-blue",
-        "name": "Surf Blue",
-        "swatch": "#668cae",
+        "id": "crystal-white",
+        "name": "Crystal White",
+        "swatch": "#eeeeeb",
         "images": [
-          "/assets/dolphin-blue.webp"
+          "/assets/wordpress/catalogue/9e9223a1fd8c72cb.webp"
         ]
       },
       {
-        "id": "ski-white",
-        "name": "Ski White",
-        "swatch": "#eeefeb",
+        "id": "ink-stone-blue",
+        "name": "Ink Stone Blue",
+        "swatch": "#4a617b",
         "images": [
-          "/assets/dolphin-white.webp"
+          "/assets/wordpress/catalogue/38a2103a29c53c3e.webp"
+        ]
+      },
+      {
+        "id": "cosmos-black",
+        "name": "Cosmos Black",
+        "swatch": "#1d1f20",
+        "images": [
+          "/assets/wordpress/catalogue/548abd8a5771004c.webp"
+        ]
+      },
+      {
+        "id": "harbour-grey",
+        "name": "Harbour Grey",
+        "swatch": "#777c7e",
+        "images": [
+          "/assets/wordpress/catalogue/be8e8bb5314678b7.webp"
         ]
       }
-    ]
+    ],
+    "specifications": [
+      {
+        "key": "range",
+        "label": "Driving range (NEDC; Standard / Extended)",
+        "value": "420 / 530",
+        "unit": "km",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "acceleration",
+        "label": "0–100 km/h (Standard / Extended)",
+        "value": "10.1 / 8.6",
+        "unit": "s",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "power",
+        "label": "Maximum power (Standard / Extended)",
+        "value": "120 / 150",
+        "unit": "kW",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "battery",
+        "label": "Battery capacity (Standard / Extended)",
+        "value": "55.4 / 71.8",
+        "unit": "kWh",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "battery-type",
+        "label": "Battery type",
+        "value": "BYD Blade Battery",
+        "unit": "",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "torque",
+        "label": "Maximum torque",
+        "value": "310",
+        "unit": "Nm",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "seating",
+        "label": "Seats",
+        "value": "7",
+        "unit": "",
+        "group": "Dimensions"
+      },
+      {
+        "key": "length",
+        "label": "Length",
+        "value": "4710",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "width",
+        "label": "Width",
+        "value": "1810",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "height",
+        "label": "Height",
+        "value": "1690",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "wheelbase",
+        "label": "Wheelbase",
+        "value": "2800",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "drivetrain",
+        "label": "Drivetrain",
+        "value": "Front-wheel drive",
+        "unit": "",
+        "group": "Performance & battery"
+      }
+    ],
+    "sourceUrl": "https://millenniumautobyd.com.my/home/byd-m6/"
   }
 ]

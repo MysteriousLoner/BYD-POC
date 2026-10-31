@@ -1,0 +1,19 @@
+# Independent preview: no production volumes or private submissions.
+services:
+  wordpress-preview:
+    build: ./website-with-chatbot
+    image: byd-wordpress-preview:${RELEASE_TAG:-local}
+    ports:
+      - "${PREVIEW_PORT:-8083}:3000"
+    restart: unless-stopped
+    env_file: .preview.env
+    environment:
+      DB_PATH: /app/runtime/byd.sqlite
+      UPLOAD_DIR: /app/uploads
+      SEED_DIR: /app/server/data
+    volumes:
+      - preview-runtime:/app/runtime
+      - preview-uploads:/app/uploads
+volumes:
+  preview-runtime:
+  preview-uploads:

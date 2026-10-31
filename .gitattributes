@@ -1,0 +1,2 @@
+# Keep copied third-party styles intact; source whitespace is not app code.
+website-with-chatbot/assets/wordpress/*.css -whitespace

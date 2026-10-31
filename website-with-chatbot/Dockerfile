@@ -14,6 +14,7 @@ COPY admin-dashboard.html admin-login.html ./
 COPY css/ ./css/
 COPY js/ ./js/
 COPY assets/ ./assets/
+COPY content/ ./content/
 
 # Copy server
 COPY server/ ./server/

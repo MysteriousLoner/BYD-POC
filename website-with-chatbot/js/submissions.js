@@ -67,12 +67,12 @@
       const heading = node('h2', record.name || 'Submitted details'); heading.tabIndex = -1;
       const header = node('div', undefined, 'submission-detail-heading'); header.append(heading, node('p', `Received ${date(record.createdAt)}`));
       const fields = node('dl', undefined, 'submission-fields');
-      const labels = { name: 'Full name', email: 'Email address', phone: 'Phone number', model: 'Model', position: 'Position of interest', branchName: 'Preferred branch', message: 'Message' };
+      const labels = { name: 'Full name', email: 'Email address', phone: 'Phone number', model: 'Model', position: 'Position of interest', branchName: 'Preferred branch', message: 'Message', testDrive: 'Test drive requested', consentMarketing: 'Marketing consent', consentPrivacy: 'Privacy acknowledgement' };
       const keys = [...new Set([...Object.keys(labels), ...Object.keys(record)])];
       for (const key of keys) {
         if (['id','createdAt','branch','branchId','hasResume','resumeDownloadUrl'].includes(key) || (key === 'position' && kind !== 'careers') || (['phone','model'].includes(key) && kind === 'careers' && !record[key])) continue;
         const label = labels[key] || key.replace(/([A-Z])/g, ' $1').replaceAll('_', ' ');
-        const row = node('div'); row.append(node('dt', label), node('dd', typeof record[key] === 'object' && record[key] !== null ? JSON.stringify(record[key]) : String(record[key] || 'Not provided'))); fields.append(row);
+        const row = node('div'); row.append(node('dt', label), node('dd', typeof record[key] === 'object' && record[key] !== null ? JSON.stringify(record[key]) : typeof record[key] === 'boolean' ? (record[key] ? 'Yes' : 'No') : String(record[key] || 'Not provided'))); fields.append(row);
       }
       section.replaceChildren(button('Back to results', () => open(kind, id)), header, fields);
       if (kind === 'careers') {

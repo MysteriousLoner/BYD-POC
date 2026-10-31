@@ -7,6 +7,7 @@ const root = path.join(__dirname, '..');
 function createApp(options = {}) {
   const app = express();
   app.disable('x-powered-by');
+  app.use(require('compression')());
   // Explicit CIDRs/addresses only: do not trust arbitrary forwarded headers.
   if (process.env.TRUST_PROXY) app.set('trust proxy', process.env.TRUST_PROXY.split(',').map(s => s.trim()));
   app.use(express.json({ limit: '64kb' }));
@@ -40,6 +41,7 @@ function createApp(options = {}) {
     res.sendFile(path.join(root, 'admin-dashboard.html'));
   });
   app.get(['/admin.html', '/admin-content.html'], (_, res) => res.redirect('/admin'));
+  app.use(require('./wordpress-pages'));
   app.get('/', (_, res) => res.sendFile(path.join(root, 'index.html')));
   app.get('/index.html', (_, res) => res.sendFile(path.join(root, 'index.html')));
   app.get(['/models', '/models/:id', '/compare', '/events', '/contact', '/careers'], (req, res) => {
@@ -49,6 +51,7 @@ function createApp(options = {}) {
     res.sendFile(path.join(root, 'showroom.html'));
   });
   // Serve only public assets, never application source, SQLite, or submissions.
+  app.use('/assets/wordpress', express.static(path.join(root, 'assets/wordpress'), { dotfiles: 'deny', maxAge: '1y', immutable: true }));
   for (const directory of ['css', 'js', 'assets']) app.use('/' + directory, express.static(path.join(root, directory), { dotfiles: 'deny' }));
   app.use('/uploads', (req, res, next) => {
     if (!/\.(jpe?g|png|webp|mp4|webm)$/i.test(req.path)) return res.sendStatus(404);

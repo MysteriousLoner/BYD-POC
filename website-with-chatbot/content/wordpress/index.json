@@ -1,0 +1,571 @@
+{
+  "pages": [
+    {
+      "name": "about",
+      "file": "about.html",
+      "route": "/about",
+      "source": "https://millenniumautobyd.com.my/home/about/",
+      "title": "ABOUT – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "articles-archive",
+      "file": "articles-archive.html",
+      "route": "/events/articles",
+      "source": "https://millenniumautobyd.com.my/home/news-events/articles/",
+      "title": "ARTICLES – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "atto2",
+      "file": "atto2.html",
+      "route": "/models/atto2",
+      "source": "https://millenniumautobyd.com.my/home/byd-atto-2/",
+      "title": "BYD ATTO 2 – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "atto3",
+      "file": "atto3.html",
+      "route": "/models/atto3",
+      "source": "https://millenniumautobyd.com.my/home/atto3/",
+      "title": "BYD ATTO 3 2026 – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "careers",
+      "file": "careers.html",
+      "route": "/careers",
+      "source": "https://millenniumautobyd.com.my/home/career-with-us/",
+      "title": "CAREER WITH US – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "contact",
+      "file": "contact.html",
+      "route": "/contact",
+      "source": "https://millenniumautobyd.com.my/home/contact/",
+      "title": "CONTACT – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "events-archive",
+      "file": "events-archive.html",
+      "route": "/events/events",
+      "source": "https://millenniumautobyd.com.my/home/news-events/events/",
+      "title": "EVENTS – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "events",
+      "file": "events.html",
+      "route": "/events",
+      "source": "https://millenniumautobyd.com.my/home/news-events/",
+      "title": "NEWS-EVENTS – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "home",
+      "file": "home.html",
+      "route": "/",
+      "source": "https://millenniumautobyd.com.my/home/",
+      "title": "BYD Millennium Autobeyond – Build Your Dreams"
+    },
+    {
+      "name": "m6",
+      "file": "m6.html",
+      "route": "/models/m6",
+      "source": "https://millenniumautobyd.com.my/home/byd-m6/",
+      "title": "BYD M6 – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-2026-new-byd-atto-3",
+      "file": "post-2026-new-byd-atto-3.html",
+      "route": "/stories/2026-new-byd-atto-3",
+      "source": "https://millenniumautobyd.com.my/home/2026/06/11/2026-new-byd-atto-3/",
+      "title": "2026 NEW BYD ATTO 3 – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-all-star-legends-2026",
+      "file": "post-all-star-legends-2026.html",
+      "route": "/stories/all-star-legends-2026",
+      "source": "https://millenniumautobyd.com.my/home/2026/10/03/all-star-legends-2026/",
+      "title": "All Star Legends 2026 – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-autoarenabukit-jalil",
+      "file": "post-autoarenabukit-jalil.html",
+      "route": "/stories/autoarenabukit-jalil",
+      "source": "https://millenniumautobyd.com.my/home/2025/01/12/autoarenabukit-jalil/",
+      "title": "AUTOARENA@BUKIT JALIL – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-beyond-your-drive-roadshow",
+      "file": "post-beyond-your-drive-roadshow.html",
+      "route": "/stories/beyond-your-drive-roadshow",
+      "source": "https://millenniumautobyd.com.my/home/2026/07/29/beyond-your-drive-roadshow/",
+      "title": "Beyond Your Drive Roadshow – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-book-a-byd-get-lucky",
+      "file": "post-book-a-byd-get-lucky.html",
+      "route": "/stories/book-a-byd-get-lucky",
+      "source": "https://millenniumautobyd.com.my/home/2025/10/07/book-a-byd-get-lucky/",
+      "title": "Book a BYD & Get Lucky! – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-byd-article-1",
+      "file": "post-byd-article-1.html",
+      "route": "/stories/byd-article-1",
+      "source": "https://millenniumautobyd.com.my/home/2024/06/12/byd-article-1/",
+      "title": "WHAT’S THE DIFFERENCE BETWEEN AC AND DC CHARGING?​ – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-byd-article-2",
+      "file": "post-byd-article-2.html",
+      "route": "/stories/byd-article-2",
+      "source": "https://millenniumautobyd.com.my/home/2024/06/12/byd-article-2/",
+      "title": "WHICH PARTS IN YOUR EV NEED REGULAR MAINTENANCE?​ – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-byd-article-3",
+      "file": "post-byd-article-3.html",
+      "route": "/stories/byd-article-3",
+      "source": "https://millenniumautobyd.com.my/home/2024/06/12/byd-article-3/",
+      "title": "WHAT AFFECTS BATTERY DEGRADATION IN ELECTRIC CARS?​ – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-byd-asia-pacific-2025-dealer-conference",
+      "file": "post-byd-asia-pacific-2025-dealer-conference.html",
+      "route": "/stories/byd-asia-pacific-2025-dealer-conference",
+      "source": "https://millenniumautobyd.com.my/home/2025/03/29/byd-asia-pacific-2025-dealer-conference/",
+      "title": "BYD ASIA PACIFIC 2025 DEALER CONFERENCE – SHENZHEN, CHINA (BYD MILLENNIUM MOTORS) – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-byd-atto-3-1000th-order-in-malaysia",
+      "file": "post-byd-atto-3-1000th-order-in-malaysia.html",
+      "route": "/stories/byd-atto-3-1000th-order-in-malaysia",
+      "source": "https://millenniumautobyd.com.my/home/2026/07/01/byd-atto-3-1000th-order-in-malaysia/",
+      "title": "BYD ATTO 3 1000th Order In Malaysia – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-byd-china-visit-to-millenium-auto-beyond",
+      "file": "post-byd-china-visit-to-millenium-auto-beyond.html",
+      "route": "/stories/byd-china-visit-to-millenium-auto-beyond",
+      "source": "https://millenniumautobyd.com.my/home/2023/05/09/byd-china-visit-to-millenium-auto-beyond/",
+      "title": "BYD Cheras Launch Day with Chairman Wang Chuanfu from BYD China – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-byd-coffee-rave-session",
+      "file": "post-byd-coffee-rave-session.html",
+      "route": "/stories/byd-coffee-rave-session",
+      "source": "https://millenniumautobyd.com.my/home/2026/10/25/byd-coffee-rave-session/",
+      "title": "BYD Coffee Rave Session – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-byd-evolve-day",
+      "file": "post-byd-evolve-day.html",
+      "route": "/stories/byd-evolve-day",
+      "source": "https://millenniumautobyd.com.my/home/2024/08/25/byd-evolve-day/",
+      "title": "BYD EVOLVE DAY – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-byd-malaysia-pick-sime-motors-inokom-as-ckd-partner",
+      "file": "post-byd-malaysia-pick-sime-motors-inokom-as-ckd-partner.html",
+      "route": "/stories/byd-malaysia-pick-sime-motors-inokom-as-ckd-partner",
+      "source": "https://millenniumautobyd.com.my/home/2026/10/16/byd-malaysia-pick-sime-motors-inokom-as-ckd-partner/",
+      "title": "BYD Malaysia Picks Inokom as CKD Partner – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-byd-merdeka-festival",
+      "file": "post-byd-merdeka-festival.html",
+      "route": "/stories/byd-merdeka-festival",
+      "source": "https://millenniumautobyd.com.my/home/2024/08/16/byd-merdeka-festival/",
+      "title": "BYD MERDEKA FESTIVAL – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-byd-millennium-x-tour-asia-malaysia-cup-2025",
+      "file": "post-byd-millennium-x-tour-asia-malaysia-cup-2025.html",
+      "route": "/stories/byd-millennium-x-tour-asia-malaysia-cup-2025",
+      "source": "https://millenniumautobyd.com.my/home/2025/09/19/byd-millennium-x-tour-asia-malaysia-cup-2025/",
+      "title": "BYD MILLENNIUM x Tour Asia Malaysia Cup 2025 – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-byd-raya-fiesta-2026",
+      "file": "post-byd-raya-fiesta-2026.html",
+      "route": "/stories/byd-raya-fiesta-2026",
+      "source": "https://millenniumautobyd.com.my/home/2026/03/05/byd-raya-fiesta-2026/",
+      "title": "BYD RAYA FIESTA 2026 – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-byd-ultra-weekend",
+      "file": "post-byd-ultra-weekend.html",
+      "route": "/stories/byd-ultra-weekend",
+      "source": "https://millenniumautobyd.com.my/home/2025/05/19/byd-ultra-weekend/",
+      "title": "BYD ULTRA WEEKEND PROMOTION – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-byd-x-bangsar-shopping-centre",
+      "file": "post-byd-x-bangsar-shopping-centre.html",
+      "route": "/stories/byd-x-bangsar-shopping-centre",
+      "source": "https://millenniumautobyd.com.my/home/2025/08/07/byd-x-bangsar-shopping-centre/",
+      "title": "BYD X BANGSAR SHOPPING CENTRE – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-byd-x-tarumt-music-fiesta",
+      "file": "post-byd-x-tarumt-music-fiesta.html",
+      "route": "/stories/byd-x-tarumt-music-fiesta",
+      "source": "https://millenniumautobyd.com.my/home/2025/09/19/byd-x-tarumt-music-fiesta/",
+      "title": "BYD MILLENNIUM x TARUMT Music Fiesta! – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-byd-year-end-carnival-2026",
+      "file": "post-byd-year-end-carnival-2026.html",
+      "route": "/stories/byd-year-end-carnival-2026",
+      "source": "https://millenniumautobyd.com.my/home/2026/10/27/byd-year-end-carnival-2026/",
+      "title": "BYD YEAR END CARNIVAL 2026 – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-byd-year-end-deals-2026",
+      "file": "post-byd-year-end-deals-2026.html",
+      "route": "/stories/byd-year-end-deals-2026",
+      "source": "https://millenniumautobyd.com.my/home/2026/10/16/byd-year-end-deals-2026/",
+      "title": "BYD Year End Deals 2026 – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-byd-year-end-gala",
+      "file": "post-byd-year-end-gala.html",
+      "route": "/stories/byd-year-end-gala",
+      "source": "https://millenniumautobyd.com.my/home/2025/10/28/byd-year-end-gala/",
+      "title": "BYD YEAR-END GALA – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-charge-on-us",
+      "file": "post-charge-on-us.html",
+      "route": "/stories/charge-on-us",
+      "source": "https://millenniumautobyd.com.my/home/2026/01/01/charge-on-us/",
+      "title": "Charge On Us ! – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-christmas-with-byd-2024",
+      "file": "post-christmas-with-byd-2024.html",
+      "route": "/stories/christmas-with-byd-2024",
+      "source": "https://millenniumautobyd.com.my/home/2024/12/14/christmas-with-byd-2024/",
+      "title": "CHRISTMAS WITH BYD 2024 – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-drive-green-drive-byd",
+      "file": "post-drive-green-drive-byd.html",
+      "route": "/stories/drive-green-drive-byd",
+      "source": "https://millenniumautobyd.com.my/home/2024/10/09/drive-green-drive-byd/",
+      "title": "DRIVE GREEN, DRIVE BYD – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-drive-into-prosperity",
+      "file": "post-drive-into-prosperity.html",
+      "route": "/stories/drive-into-prosperity",
+      "source": "https://millenniumautobyd.com.my/home/2026/03/04/drive-into-prosperity/",
+      "title": "DRIVE INTO PROSPERITY – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-drive-the-future-drive-byd",
+      "file": "post-drive-the-future-drive-byd.html",
+      "route": "/stories/drive-the-future-drive-byd",
+      "source": "https://millenniumautobyd.com.my/home/2024/11/25/drive-the-future-drive-byd/",
+      "title": "DRIVE THE FUTURE, DRIVE BYD – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-driven-by-love-with-byd",
+      "file": "post-driven-by-love-with-byd.html",
+      "route": "/stories/driven-by-love-with-byd",
+      "source": "https://millenniumautobyd.com.my/home/2026/05/26/driven-by-love-with-byd/",
+      "title": "DRIVEN BY LOVE WITH BYD – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-durian-festive-the-curve",
+      "file": "post-durian-festive-the-curve.html",
+      "route": "/stories/durian-festive-the-curve",
+      "source": "https://millenniumautobyd.com.my/home/2024/08/05/durian-festive-the-curve/",
+      "title": "DURIAN FESTIVE@THE CURVE – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-electrify-the-future",
+      "file": "post-electrify-the-future.html",
+      "route": "/stories/electrify-the-future",
+      "source": "https://millenniumautobyd.com.my/home/2025/05/05/electrify-the-future/",
+      "title": "ELECTRIFY THE FUTURE BYD MILLENNIUM – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-electrify-your-november",
+      "file": "post-electrify-your-november.html",
+      "route": "/stories/electrify-your-november",
+      "source": "https://millenniumautobyd.com.my/home/2025/11/21/electrify-your-november/",
+      "title": "ELECTRIFY YOUR NOVEMBER – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-ev-journey-with-byd-ioi-putrajaya",
+      "file": "post-ev-journey-with-byd-ioi-putrajaya.html",
+      "route": "/stories/ev-journey-with-byd-ioi-putrajaya",
+      "source": "https://millenniumautobyd.com.my/home/2025/08/28/ev-journey-with-byd-ioi-putrajaya/",
+      "title": "EV Journey with BYD @ IOI PUTRAJAYA – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-future-in-motion",
+      "file": "post-future-in-motion.html",
+      "route": "/stories/future-in-motion",
+      "source": "https://millenniumautobyd.com.my/home/2026/08/12/future-in-motion/",
+      "title": "Future In Motion – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-future-with-byd-millennium",
+      "file": "post-future-with-byd-millennium.html",
+      "route": "/stories/future-with-byd-millennium",
+      "source": "https://millenniumautobyd.com.my/home/2025/07/02/future-with-byd-millennium/",
+      "title": "FUTURE WITH BYD MILLENNIUM – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-gaya-raya-with-byd-2",
+      "file": "post-gaya-raya-with-byd-2.html",
+      "route": "/stories/gaya-raya-with-byd-2",
+      "source": "https://millenniumautobyd.com.my/home/2025/03/22/gaya-raya-with-byd-2/",
+      "title": "GAYA RAYA WITH BYD MILLENNIUM – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-gaya-raya-with-byd",
+      "file": "post-gaya-raya-with-byd.html",
+      "route": "/stories/gaya-raya-with-byd",
+      "source": "https://millenniumautobyd.com.my/home/2025/03/14/gaya-raya-with-byd/",
+      "title": "MERIAH BERSAMA BYD MILLENNIUM – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-get-ready-byd-atto-2-launches-this-24-july",
+      "file": "post-get-ready-byd-atto-2-launches-this-24-july.html",
+      "route": "/stories/get-ready-byd-atto-2-launches-this-24-july",
+      "source": "https://millenniumautobyd.com.my/home/2025/07/22/get-ready-byd-atto-2-launches-this-24-july/",
+      "title": "Get Ready! BYD ATTO 2 Launches This 24 July! – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-get-thrill-with-byd-ioi-putrajaya",
+      "file": "post-get-thrill-with-byd-ioi-putrajaya.html",
+      "route": "/stories/get-thrill-with-byd-ioi-putrajaya",
+      "source": "https://millenniumautobyd.com.my/home/2025/08/19/get-thrill-with-byd-ioi-putrajaya/",
+      "title": "Get Thrill with BYD @ IOI PUTRAJAYA – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-go-green-go-byd-copy",
+      "file": "post-go-green-go-byd-copy.html",
+      "route": "/stories/go-green-go-byd-copy",
+      "source": "https://millenniumautobyd.com.my/home/2024/10/29/go-green-go-byd-copy/",
+      "title": "GO GREEN, GO BYD – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-grand-launching-byd-m6-copy",
+      "file": "post-grand-launching-byd-m6-copy.html",
+      "route": "/stories/grand-launching-byd-m6-copy",
+      "source": "https://millenniumautobyd.com.my/home/2024/10/16/grand-launching-byd-m6-copy/",
+      "title": "GRAND LAUNCHING: BYD M6 – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-grand-opening-byd-bandar-utama-with-byd-china",
+      "file": "post-grand-opening-byd-bandar-utama-with-byd-china.html",
+      "route": "/stories/grand-opening-byd-bandar-utama-with-byd-china",
+      "source": "https://millenniumautobyd.com.my/home/2024/10/09/grand-opening-byd-bandar-utama-with-byd-china/",
+      "title": "GRAND OPENING BYD BANDAR UTAMA WITH  BYD CHINA – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-grand-opening-byd-kayu-ara",
+      "file": "post-grand-opening-byd-kayu-ara.html",
+      "route": "/stories/grand-opening-byd-kayu-ara",
+      "source": "https://millenniumautobyd.com.my/home/2024/10/08/grand-opening-byd-kayu-ara/",
+      "title": "GRAND OPENING BYD BANDAR UTAMA – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-ijm-duo-highway-cahllenge",
+      "file": "post-ijm-duo-highway-cahllenge.html",
+      "route": "/stories/ijm-duo-highway-cahllenge",
+      "source": "https://millenniumautobyd.com.my/home/2024/08/25/ijm-duo-highway-cahllenge/",
+      "title": "IJM DUO HIGHWAY CHALLENGE – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-ijm-land-half-marathon",
+      "file": "post-ijm-land-half-marathon.html",
+      "route": "/stories/ijm-land-half-marathon",
+      "source": "https://millenniumautobyd.com.my/home/2025/08/14/ijm-land-half-marathon/",
+      "title": "IJM LAND Half Marathon 2025 – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-love-at-first-drive",
+      "file": "post-love-at-first-drive.html",
+      "route": "/stories/love-at-first-drive",
+      "source": "https://millenniumautobyd.com.my/home/2025/02/15/love-at-first-drive/",
+      "title": "LOVE AT FIRST DRIVE BYD MILLENNIUM – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-mari-mari-market-byd-millennium",
+      "file": "post-mari-mari-market-byd-millennium.html",
+      "route": "/stories/mari-mari-market-byd-millennium",
+      "source": "https://millenniumautobyd.com.my/home/2025/07/11/mari-mari-market-byd-millennium/",
+      "title": "MARI MARI MARKET – BYD MILLENNIUM – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-miapex-2024",
+      "file": "post-miapex-2024.html",
+      "route": "/stories/miapex-2024",
+      "source": "https://millenniumautobyd.com.my/home/2024/11/23/miapex-2024/",
+      "title": "MIAPEX 2024 – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-millennium-motors-wins-top-dealership-award",
+      "file": "post-millennium-motors-wins-top-dealership-award.html",
+      "route": "/stories/millennium-motors-wins-top-dealership-award",
+      "source": "https://millenniumautobyd.com.my/home/2026/10/27/millennium-motors-wins-top-dealership-award/",
+      "title": "Millennium Motors Wins Outstanding Automotive Dealership Award – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-moonlit-teochew",
+      "file": "post-moonlit-teochew.html",
+      "route": "/stories/moonlit-teochew",
+      "source": "https://millenniumautobyd.com.my/home/2026/10/03/moonlit-teochew/",
+      "title": "Moonlit Teochew – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-mothers-day-with-byd",
+      "file": "post-mothers-day-with-byd.html",
+      "route": "/stories/mothers-day-with-byd",
+      "source": "https://millenniumautobyd.com.my/home/2025/06/09/mothers-day-with-byd/",
+      "title": "LET’S BE YOUR DAD’S HERO – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-new-byd-coming-soon",
+      "file": "post-new-byd-coming-soon.html",
+      "route": "/stories/new-byd-coming-soon",
+      "source": "https://millenniumautobyd.com.my/home/2025/08/18/new-byd-coming-soon/",
+      "title": "NEW BYD COMING SOON !! – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-raya-riang-bersama-byd",
+      "file": "post-raya-riang-bersama-byd.html",
+      "route": "/stories/raya-riang-bersama-byd",
+      "source": "https://millenniumautobyd.com.my/home/2026/03/11/raya-riang-bersama-byd/",
+      "title": "RAYA RIANG BERSAMA BYD – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-road-show-event-one-utama",
+      "file": "post-road-show-event-one-utama.html",
+      "route": "/stories/road-show-event-one-utama",
+      "source": "https://millenniumautobyd.com.my/home/2024/08/25/road-show-event-one-utama/",
+      "title": "ROAD SHOW EVENT@ONE UTAMA – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-s2-height-carnival",
+      "file": "post-s2-height-carnival.html",
+      "route": "/stories/s2-height-carnival",
+      "source": "https://millenniumautobyd.com.my/home/2024/12/02/s2-height-carnival/",
+      "title": "SEREMBAN S2 HEIGHT CARNIVAL – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-shaping-the-future-of-mobility",
+      "file": "post-shaping-the-future-of-mobility.html",
+      "route": "/stories/shaping-the-future-of-mobility",
+      "source": "https://millenniumautobyd.com.my/home/2026/01/14/shaping-the-future-of-mobility/",
+      "title": "Shaping the Future of Mobility – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-smart-nation-expo-2024",
+      "file": "post-smart-nation-expo-2024.html",
+      "route": "/stories/smart-nation-expo-2024",
+      "source": "https://millenniumautobyd.com.my/home/2024/11/20/smart-nation-expo-2024/",
+      "title": "SMART NATION EXPO 2024 – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-test-adn-feel-it-the-power-of-byd",
+      "file": "post-test-adn-feel-it-the-power-of-byd.html",
+      "route": "/stories/test-adn-feel-it-the-power-of-byd",
+      "source": "https://millenniumautobyd.com.my/home/2025/06/16/test-adn-feel-it-the-power-of-byd/",
+      "title": "FEEL THE POWER WITH BYD – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-the-drive-experience",
+      "file": "post-the-drive-experience.html",
+      "route": "/stories/the-drive-experience",
+      "source": "https://millenniumautobyd.com.my/home/2026/10/06/the-drive-experience/",
+      "title": "The Drive Experience – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-the-new-byd-atto-3-facelift-is-here",
+      "file": "post-the-new-byd-atto-3-facelift-is-here.html",
+      "route": "/stories/the-new-byd-atto-3-facelift-is-here",
+      "source": "https://millenniumautobyd.com.my/home/2026/06/03/the-new-byd-atto-3-facelift-is-here/",
+      "title": "The New BYD ATTO 3 Facelift is Here – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-unleash-the-performance",
+      "file": "post-unleash-the-performance.html",
+      "route": "/stories/unleash-the-performance",
+      "source": "https://millenniumautobyd.com.my/home/2025/05/25/unleash-the-performance/",
+      "title": "UNLEASH THE PERFORMANCE – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-weekend-with-byd-atto-2",
+      "file": "post-weekend-with-byd-atto-2.html",
+      "route": "/stories/weekend-with-byd-atto-2",
+      "source": "https://millenniumautobyd.com.my/home/2025/07/28/weekend-with-byd-atto-2/",
+      "title": "WEEKEND WITH BYD ATTO 2 – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "post-world-cup-2026-power-every-goal",
+      "file": "post-world-cup-2026-power-every-goal.html",
+      "route": "/stories/world-cup-2026-power-every-goal",
+      "source": "https://millenniumautobyd.com.my/home/2026/07/01/world-cup-2026-power-every-goal/",
+      "title": "WORLD CUP 2026 – POWER EVERY GOAL – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "press-archive",
+      "file": "press-archive.html",
+      "route": "/events/press",
+      "source": "https://millenniumautobyd.com.my/home/news-events/press/",
+      "title": "PRESS – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "seal",
+      "file": "seal.html",
+      "route": "/models/seal",
+      "source": "https://millenniumautobyd.com.my/home/byd-seal-2025-2/",
+      "title": "BYD SEAL – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "seal6ev",
+      "file": "seal6ev.html",
+      "route": "/models/seal6ev",
+      "source": "https://millenniumautobyd.com.my/home/byd-seal-2025/",
+      "title": "BYD SEAL 6 EV – BYD Millennium Autobeyond"
+    },
+    {
+      "name": "sealion7",
+      "file": "sealion7.html",
+      "route": "/models/byd-sea-lion",
+      "source": "https://millenniumautobyd.com.my/home/byd-sealion/",
+      "title": "BYD SEALION – BYD Millennium Autobeyond"
+    }
+  ],
+  "models": {
+    "atto2": {
+      "file": "atto2.html",
+      "source": "https://millenniumautobyd.com.my/home/byd-atto-2/"
+    },
+    "atto3": {
+      "file": "atto3.html",
+      "source": "https://millenniumautobyd.com.my/home/atto3/"
+    },
+    "m6": {
+      "file": "m6.html",
+      "source": "https://millenniumautobyd.com.my/home/byd-m6/"
+    },
+    "seal": {
+      "file": "seal.html",
+      "source": "https://millenniumautobyd.com.my/home/byd-seal-2025-2/"
+    },
+    "seal6ev": {
+      "file": "seal6ev.html",
+      "source": "https://millenniumautobyd.com.my/home/byd-seal-2025/"
+    },
+    "byd-sea-lion": {
+      "file": "sealion7.html",
+      "source": "https://millenniumautobyd.com.my/home/byd-sealion/"
+    }
+  },
+  "source": "https://millenniumautobyd.com.my/home/",
+  "capturedAt": "2026-10-31T02:42:22.051Z"
+}

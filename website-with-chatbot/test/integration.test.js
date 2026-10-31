@@ -9,6 +9,7 @@ process.env.UPLOAD_DIR = path.join(dir, 'uploads');
 process.env.ADMIN_USERNAME = 'tester'; process.env.ADMIN_PASSWORD = 'testing-password-123';
 process.env.PUBLIC_ORIGIN = 'http://localhost';
 process.env.AI_PROVIDER = 'openai';
+process.env.SEED_DIR = path.join(__dirname, 'fixtures', 'legacy-seed');
 const store = require('../server/database');
 const { createApp } = require('../server/index');
 let mode = 'valid', lastRequest;

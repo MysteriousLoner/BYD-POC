@@ -13,3 +13,6 @@ backups/
 website-with-chatbot/test-results/
 website-with-chatbot/playwright-report/
 .impeccable/review/
+
+wordpress-source/
+.preview.env

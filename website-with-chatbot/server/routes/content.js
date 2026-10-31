@@ -201,8 +201,15 @@ router.put('/settings/hero', heroUpload.single('mediaFile'), (req, res) => {
 });
 
 router.post('/enquiries', express.json(), (req, res) => {
+  const body=req.body||{}, branch=list('branches').find(item=>item.published===true&&(item.id===body.branch||item.name===body.branch));
+  const fields=Object.fromEntries(['name','email','phone','model','message','firstName','lastName','testDrive'].map(key=>[key,String(body[key]||'').trim()]));
+  if(!fields.name || !fields.phone || !fields.model || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email) || Object.values(fields).some(value=>value.length>5000))return res.status(400).json({error:'Enter your name, phone number, valid email and model of interest.'});
+  if(!branch)return res.status(400).json({error:'Choose an available preferred branch. Reload the branch options and try again.'});
+  const agreed=value=>value===true||value==='true'||value==='on';
+  if(body.formVersion==='wordpress-copy-1'&&(!agreed(body.consentPrivacy)||!agreed(body.consentMarketing)))return res.status(400).json({error:'Review and accept both disclaimer statements before submitting.'});
   const records = readJson('submissions/enquiries.json');
-  const record = { id: Date.now().toString(), createdAt: new Date().toISOString(), ...req.body };
+  const record = { ...fields,id:randomUUID(),createdAt:new Date().toISOString(),branch:branch.id,branchId:branch.id,branchName:branch.name };
+  if(body.formVersion==='wordpress-copy-1')Object.assign(record,{consentPrivacy:agreed(body.consentPrivacy),consentMarketing:agreed(body.consentMarketing),formVersion:'wordpress-copy-1'});
   records.push(record); writeJson('submissions/enquiries.json', records); res.status(201).json({ ok: true });
 });
 
@@ -211,8 +218,10 @@ router.post('/careers', upload.single('resume'), (req, res) => {
   const fail = message => { cleanup([req.file].filter(Boolean)); return res.status(400).json({ error: message }); };
   if (!branch) return fail('Choose an available preferred branch. Refresh the branch list and try again.');
   if (!req.file || !['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'].includes(req.file.mimetype)) return fail('Please attach a PDF, DOC or DOCX résumé.');
-  const fields = Object.fromEntries(['name', 'email', 'position', 'message'].map(key => [key, String(req.body[key] || '').trim()]));
+  const fields = Object.fromEntries(['name', 'email', 'position', 'message', 'phone', 'firstName', 'lastName'].map(key => [key, String(req.body[key] || '').trim()]));
   if (!fields.name || !fields.position || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email) || Object.values(fields).some(v => v.length > 5000)) return fail('Enter your name, a valid email, and position of interest.');
+  const agreed=value=>value===true||value==='true'||value==='on';
+  if(req.body.formVersion==='wordpress-copy-1'){if(!fields.phone||!agreed(req.body.consentPrivacy)||!agreed(req.body.consentMarketing))return fail('Enter your phone number and accept both disclaimer statements.');Object.assign(fields,{consentPrivacy:true,consentMarketing:true,formVersion:'wordpress-copy-1'})}
   const records = readJson('submissions/careers.json');
   records.push({ ...fields, id: randomUUID(), createdAt: new Date().toISOString(), branchId: branch.id, branchName: branch.name, resume: `/uploads/${req.file.filename}` });
   writeJson('submissions/careers.json', records); res.status(201).json({ ok: true });

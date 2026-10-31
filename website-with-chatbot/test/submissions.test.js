@@ -5,6 +5,7 @@ const path = require('node:path');
 const os = require('node:os');
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'byd-inbox-'));
 Object.assign(process.env, { DB_PATH: path.join(dir, 'test.sqlite'), UPLOAD_DIR: path.join(dir, 'uploads'), ADMIN_USERNAME: 'inbox-editor', ADMIN_PASSWORD: 'inbox-test-password-123', PUBLIC_ORIGIN: 'http://localhost' });
+process.env.SEED_DIR = path.join(__dirname, 'fixtures', 'legacy-seed');
 const store = require('../server/database');
 const { createApp } = require('../server/index');
 let server, origin, cookie, csrf;

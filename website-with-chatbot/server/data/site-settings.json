@@ -1,43 +1,116 @@
 {
   "heroSlides": [
     {
-      "id": "news-events",
-      "priority": 1,
-      "published": true,
+      "id": "wordpress-1",
+      "headline": "BYD SEALION 7",
+      "eyebrow": "STARTING FROM RM 163,800",
+      "description": "The All-Electric BYD SEALION 7: Power Meets Luxury",
       "mediaType": "image",
-      "mediaUrl": "/assets/atto-cabin.webp",
-      "eyebrow": "Latest at Millennium Motors",
-      "headline": "News & Events",
-      "description": "Discover upcoming launches, showroom events and owner experiences.",
+      "mediaUrl": "/assets/wordpress/be9674701be8b11e.webp",
+      "mediaPosition": "83% 92%",
+      "priority": 1,
       "duration": 7000,
+      "published": true,
       "buttons": [
         {
-          "label": "View Events",
-          "href": "#news",
+          "label": "REGISTER NOW",
+          "href": "/contact#register-section",
           "style": "primary"
         }
       ]
     },
     {
-      "id": "brand-video",
+      "id": "wordpress-2",
+      "headline": "BYD ATTO 3",
+      "eyebrow": "STARTING FROM RM 125,800",
+      "description": "Faster, Further and Smarter with the BYD ATTO 3",
+      "mediaType": "image",
+      "mediaUrl": "/assets/wordpress/1bdab81ae4c4d4be.webp",
+      "mediaPosition": "83% 97%",
       "priority": 2,
+      "duration": 7000,
       "published": true,
-      "mediaType": "video",
-      "mediaUrl": "https://youtu.be/OldTHqPji78?si=B3fLkTEgIOtBr16L",
-      "eyebrow": "Build Your Dreams",
-      "headline": "Electrify Your Journey",
-      "description": "Discover the full range of BYD electric and plug-in hybrid vehicles. Innovation that moves you - now in Malaysia.",
-      "duration": 12000,
       "buttons": [
         {
-          "label": "Explore Models",
-          "href": "#models",
+          "label": "REGISTER NOW",
+          "href": "/contact#register-section",
           "style": "primary"
-        },
+        }
+      ]
+    },
+    {
+      "id": "wordpress-3",
+      "headline": "BYD SEAL 6",
+      "eyebrow": "STARTING FROM RM 100,000",
+      "description": "Delivers electric power with precision and style",
+      "mediaType": "image",
+      "mediaUrl": "/assets/wordpress/a9f085bfb5e2b345.webp",
+      "mediaPosition": "63% 97%",
+      "priority": 3,
+      "duration": 7000,
+      "published": true,
+      "buttons": [
         {
-          "label": "Book a Test Drive",
-          "href": "#contact",
-          "style": "outline"
+          "label": "REGISTER NOW",
+          "href": "/contact#register-section",
+          "style": "primary"
+        }
+      ]
+    },
+    {
+      "id": "wordpress-4",
+      "headline": "BYD SEAL",
+      "eyebrow": "STARTING FROM RM 171,800",
+      "description": "Innovation Meets Acceleration.",
+      "mediaType": "image",
+      "mediaUrl": "/assets/wordpress/45ad1fd0d0a9d531.webp",
+      "mediaPosition": "55% 100%",
+      "priority": 4,
+      "duration": 7000,
+      "published": true,
+      "buttons": [
+        {
+          "label": "REGISTER NOW",
+          "href": "/contact#register-section",
+          "style": "primary"
+        }
+      ]
+    },
+    {
+      "id": "wordpress-5",
+      "headline": "BYD ATTO 2",
+      "eyebrow": "STARTING FROM RM 100,000",
+      "description": "When Chills meet Thrills with BYD ATTO 2",
+      "mediaType": "image",
+      "mediaUrl": "/assets/wordpress/e2d9adbd99e7e3de.webp",
+      "mediaPosition": "72% 95%",
+      "priority": 5,
+      "duration": 7000,
+      "published": true,
+      "buttons": [
+        {
+          "label": "REGISTER NOW",
+          "href": "/contact#register-section",
+          "style": "primary"
+        }
+      ]
+    },
+    {
+      "id": "wordpress-6",
+      "headline": "BYD M6",
+      "eyebrow": "STARTING FROM RM 109,800",
+      "description": "An Electric 7-Seater SUV with BYD M6.",
+      "mediaType": "image",
+      "mediaUrl": "/assets/wordpress/53acf7b24f7bfb3c.webp",
+      "mediaPosition": "49% 52%",
+      "priority": 6,
+      "duration": 7000,
+      "published": true,
+      "buttons": [
+        {
+          "label": "REGISTER NOW",
+          "href": "/contact#register-section",
+          "style": "primary"
         }
       ]
     }
