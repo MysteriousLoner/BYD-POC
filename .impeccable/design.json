@@ -1,133 +1,144 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-27T08:27:04.565165+00:00",
+  "generatedAt": "2026-10-31T02:58:07.352840+00:00",
   "title": "Design System: BYD Millennium Motors",
   "extensions": {
     "colorMeta": {
-      "public-red": {
+      "wp-red": {
         "role": "primary",
-        "displayName": "BYD red",
-        "canonical": "#bc2033"
+        "displayName": "WordPress action red"
       },
-      "public-bg": {
+      "wp-dark": {
         "role": "neutral",
-        "displayName": "Showroom white",
-        "canonical": "#fff"
+        "displayName": "WordPress charcoal"
       },
-      "public-ink": {
+      "wp-paper": {
         "role": "neutral",
-        "displayName": "Graphite",
-        "canonical": "#17191d"
+        "displayName": "Catalogue white"
       },
       "admin-bg": {
         "role": "neutral",
-        "displayName": "Manager charcoal",
-        "canonical": "#111214"
+        "displayName": "Staff manager charcoal"
       }
     },
     "typographyMeta": {
       "display": {
-        "displayName": "Hero display",
-        "purpose": "Vehicle-led home hero."
+        "displayName": "Source display",
+        "purpose": "Orbitron source headings and hero copy."
       },
-      "headline": {
-        "displayName": "Section headline",
-        "purpose": "Public editorial sections."
+      "body": {
+        "displayName": "Public body",
+        "purpose": "Red Hat Display/Raleway public text."
+      },
+      "admin-body": {
+        "displayName": "Staff body",
+        "purpose": "Existing dark manager only."
       }
     },
     "shadows": [
       {
-        "name": "navigation",
-        "value": "0 20px 45px #0002",
-        "purpose": "Floating public menu."
-      },
-      {
-        "name": "chat",
-        "value": "0 16px 50px #0003",
-        "purpose": "Floating conversation panel."
+        "name": "mobile-navigation",
+        "value": "0 12px 30px #0004",
+        "purpose": "Separates the mobile charcoal menu from page content."
       }
     ],
     "motion": [
       {
-        "name": "image-hover",
-        "value": "transform .4s ease",
-        "purpose": "Subtle discovery-card image scale; disabled under reduced motion."
+        "name": "action",
+        "value": "background-color .18s, color .18s, transform .18s",
+        "purpose": "Public action hover; disabled with reduced motion."
+      },
+      {
+        "name": "model-photo",
+        "value": "transform .4s",
+        "purpose": "Subtle 1.03 hover scale; disabled with reduced motion."
       }
     ],
     "breakpoints": [
       {
-        "name": "medium",
-        "value": "900px"
+        "name": "mobile-navigation",
+        "value": "1024px"
       },
       {
         "name": "phone",
-        "value": "650px"
+        "value": "767px"
       }
     ]
   },
   "components": [
     {
-      "name": "Public primary button",
+      "name": "Public primary action",
       "kind": "button",
-      "refersTo": "public-button-primary",
-      "description": "Graphite action for light public surfaces.",
-      "html": "<button class=\"ds-primary\">Explore model <span aria-hidden=\"true\">\u2197</span></button>",
-      "css": ".ds-primary{background:#17191d;color:#fff;border:1px solid #17191d;border-radius:5px;padding:12px 20px;min-height:48px;font:500 14px Sora,Arial,sans-serif;display:inline-flex;align-items:center;gap:24px}.ds-primary:hover{background:#a91c2d;border-color:#a91c2d}.ds-primary:focus-visible{outline:3px solid #a71b30;outline-offset:3px}"
+      "description": "Red capsule action shared by public app features.",
+      "html": "<button class=\"ds-action\">Register now</button>",
+      "css": ".ds-action{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:12px 25px;background:#ae2119;color:#fff;border:1px solid #ae2119;border-radius:26px;font:500 12px/1.3 Orbitron,Arial,sans-serif;transition:background-color .18s,transform .18s}.ds-action:hover{background:#851a14;border-color:#851a14;transform:translateY(-1px)}.ds-action:focus-visible{outline:3px solid #bb3027;outline-offset:4px}.ds-action:active{transform:none}",
+      "refersTo": "public-button-primary"
     },
     {
-      "name": "Public secondary button",
+      "name": "Public outline action",
       "kind": "button",
-      "refersTo": "public-button-secondary",
-      "description": "Outlined secondary action.",
-      "html": "<button class=\"ds-secondary\">View details <span aria-hidden=\"true\">\u2197</span></button>",
-      "css": ".ds-secondary{background:transparent;color:#17191d;border:1px solid #22252a;border-radius:5px;padding:12px 20px;min-height:48px;font:500 14px Sora,Arial,sans-serif;display:inline-flex;gap:24px}.ds-secondary:hover{background:#eee}.ds-secondary:focus-visible{outline:3px solid #a71b30;outline-offset:3px}"
+      "description": "Secondary action on a light catalogue surface.",
+      "html": "<button class=\"ds-outline\">Compare models</button>",
+      "css": ".ds-outline{min-height:44px;padding:12px 25px;background:transparent;color:#ae2119;border:1px solid #ae2119;border-radius:26px;font:500 12px/1.3 Orbitron,Arial,sans-serif}.ds-outline:hover{background:#f8eeee}.ds-outline:focus-visible{outline:3px solid #bb3027;outline-offset:4px}"
     },
     {
-      "name": "Public field",
+      "name": "Charcoal form field",
       "kind": "input",
-      "description": "Labelled light form field.",
-      "html": "<label class=\"ds-label\">Your name<input class=\"ds-field\" placeholder=\"Enter your name\"></label>",
-      "css": ".ds-label{display:grid;gap:8px;color:#17191d;font:500 13px Sora,Arial,sans-serif}.ds-field{min-height:48px;padding:12px 14px;background:#fff;color:#17191d;border:1px solid #95999f;border-radius:5px;font:400 16px Sora,Arial,sans-serif}.ds-field:focus-visible{outline:3px solid #a71b30;outline-offset:3px}"
+      "description": "White field and white label within the charcoal enquiry/employment form.",
+      "html": "<div class=\"ds-form\"><label class=\"ds-label\">First name<input class=\"ds-field\" autocomplete=\"given-name\"></label></div>",
+      "css": ".ds-form{background:#252728;padding:24px}.ds-label{display:grid;gap:8px;color:#fff;font:500 15px/1.5 \"Red Hat Display\",Raleway,Arial,sans-serif}.ds-field{min-height:48px;padding:12px 14px;background:#fff;color:#252728;border:1px solid #73777a;border-radius:2px;font:400 16px/1.4 \"Red Hat Display\",Raleway,Arial,sans-serif}.ds-field:hover{border-color:#252728}.ds-field:focus-visible{outline:3px solid #bb3027;outline-offset:4px}",
+      "refersTo": "public-field"
     },
     {
-      "name": "Public navigation",
+      "name": "Charcoal navigation",
       "kind": "nav",
-      "description": "Light menu with separated links.",
-      "html": "<nav class=\"ds-nav\" aria-label=\"Example navigation\"><small>Explore Millennium Motors</small><a href=\"#models\">Models <span>\u2192</span></a><a href=\"#contact\">Get in touch <span>\u2192</span></a></nav>",
-      "css": ".ds-nav{background:#fff;color:#17191d;padding:30px;font:400 19px Sora,Arial,sans-serif}.ds-nav small{display:block;color:#676b71;font-size:12px;padding-bottom:22px}.ds-nav a{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid #e3e3e1;text-decoration:none;color:inherit}.ds-nav a:hover{color:#bc2033}.ds-nav a:focus-visible{outline:3px solid #a71b30;outline-offset:3px}"
+      "description": "Source-colour navigation with active indication and 44px links.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Example navigation\"><a href=\"#home\" aria-current=\"page\">Home</a><a href=\"#models\">Model</a><a href=\"#contact\">Contact us</a></nav>",
+      "css": ".ds-nav{display:flex;flex-wrap:wrap;gap:20px;background:#252728;padding:20px;color:#fff;font:600 14px/1.5 Raleway,Arial,sans-serif}.ds-nav a{display:inline-flex;align-items:center;min-height:44px;color:inherit;text-decoration:none;padding:0 8px}.ds-nav a[aria-current]{box-shadow:inset 0 -2px 0 #b72d23}.ds-nav a:hover{color:#fff;box-shadow:inset 0 -2px 0 #b72d23}.ds-nav a:focus-visible{outline:3px solid #bb3027;outline-offset:4px}"
     },
     {
-      "name": "Model card",
+      "name": "Open model card",
       "kind": "card",
-      "refersTo": "public-card",
-      "description": "Pale catalogue card with model facts and an action.",
-      "html": "<article class=\"ds-card\"><div class=\"ds-photo\">Vehicle photograph</div><div class=\"ds-copy\"><h3>BYD model</h3><p>Electric SUV</p><a href=\"#model\">Explore model \u2197</a></div></article>",
-      "css": ".ds-card{background:#f3f3f1;border-radius:14px;overflow:hidden;color:#17191d;font:400 14px Sora,Arial,sans-serif}.ds-photo{height:140px;display:grid;place-items:center;background:#e8e9e8;color:#5d6168}.ds-copy{padding:24px}.ds-copy h3{font-size:23px;font-weight:500;margin:0 0 6px}.ds-copy p{color:#5d6168}.ds-copy a{color:inherit;text-underline-offset:5px}.ds-copy a:hover{color:#bc2033}.ds-copy a:focus-visible{outline:3px solid #a71b30;outline-offset:3px}"
+      "description": "Contained photograph area and ruled facts on a light catalogue surface.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-photo\" role=\"img\" aria-label=\"Vehicle photograph area\">Vehicle photograph</div><h2>BYD model</h2><p>Published model facts</p><a href=\"#model\">Explore model</a></article>",
+      "css": ".ds-card{max-width:340px;background:#fff;color:#252728;border-bottom:1px solid #d8dadd;padding-bottom:28px;font:400 16px/1.7 \"Red Hat Display\",Raleway,Arial,sans-serif}.ds-photo{aspect-ratio:1.7;background:#f5f5f5;display:grid;place-items:center;color:#595d61}.ds-card h2{font:500 24px/1.3 \"Red Hat Display\",Raleway,Arial,sans-serif;margin:24px 0 10px}.ds-card a{display:inline-flex;align-items:center;min-height:44px;color:#ae2119;text-underline-offset:4px}.ds-card a:hover{color:#851a14}.ds-card a:focus-visible{outline:3px solid #bb3027;outline-offset:4px}"
+    },
+    {
+      "name": "Selected colour control",
+      "kind": "chip",
+      "description": "Circular swatch selects genuine source photography.",
+      "html": "<button class=\"ds-colour\" aria-pressed=\"true\"><span class=\"ds-swatch\"></span>Vehicle colour</button>",
+      "css": ".ds-colour{display:grid;justify-items:center;gap:8px;min-width:74px;min-height:70px;padding:10px 12px;border:0;background:transparent;color:#252728;font:400 13px/1.45 \"Red Hat Display\",Raleway,Arial,sans-serif}.ds-swatch{width:28px;height:28px;border-radius:50%;background:#d8dadd;box-shadow:0 0 0 1px #8885}.ds-colour[aria-pressed=true] .ds-swatch{outline:2px solid #252728;outline-offset:3px}.ds-colour:hover{background:#f5f5f5}.ds-colour:focus-visible{outline:3px solid #bb3027;outline-offset:4px}"
     }
   ],
   "narrative": {
-    "northStar": "The Open Road Showroom",
-    "overview": "An immersive vehicle-led public showroom opens into bright editorial sections. The existing dark manager remains a focused workspace.",
+    "northStar": "Millennium Auto BYD source fidelity",
+    "overview": "The captured public WordPress website supplies the charcoal header, genuine combined logo, geometric display type, red capsules, source composition and native vehicle imagery. Light catalogue/comparison tools and charcoal forms inherit this identity; the dark Sora manager remains a separate staff environment.",
     "keyCharacteristics": [
-      "Authentic vehicle imagery",
-      "Centered BYD identity over a full-height hero",
-      "Light public surfaces and graphite typography",
-      "Dark, compact manager controls"
+      "Original source layout and authentic photography",
+      "Orbitron with Red Hat Display/Raleway",
+      "Charcoal header/forms and light catalogue/comparison",
+      "Phone controls and readable stacked specifications"
     ],
     "rules": [
       {
-        "name": "The Media First Rule",
-        "body": "Let imagery, white space and typography carry the public page; use red for meaningful emphasis and state.",
+        "name": "Source fidelity",
+        "body": "Preserve the selected WordPress visual world and native artwork composition.",
+        "section": "typography"
+      },
+      {
+        "name": "Separate manager",
+        "body": "Keep the existing Sora dark manager scoped to staff workflows.",
         "section": "colors"
       }
     ],
     "dos": [
-      "Do use authentic published media.",
-      "Do preserve visible focus and readable contrast."
+      "Do use locally sourced original media and genuine combined logo.",
+      "Do keep phone labels, statuses, focus and controls readable."
     ],
     "donts": [
-      "Don't fabricate vehicle facts or digitally recolour cars.",
-      "Don't obscure important campaign artwork."
+      "Don't restore the superseded Porsche-inspired public system.",
+      "Don't generate vehicle photos, recolour cars or invent specifications."
     ]
   }
 }

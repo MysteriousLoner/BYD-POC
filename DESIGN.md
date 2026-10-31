@@ -1,165 +1,159 @@
 ---
 name: BYD Millennium Motors
-description: An image-led public showroom and dark content manager for BYD Millennium Motors.
+description: Faithful local Millennium Auto BYD public website with an independent dark staff manager.
 colors:
-  public-bg: "#fff"
-  public-panel: "#f4f4f2"
-  public-raised: "#e9e9e7"
-  public-ink: "#17191d"
-  public-muted: "#5d6168"
-  public-line: "#d9dad9"
-  public-red: "#bc2033"
-  public-red-hover: "#981a2a"
-  public-success: "#17683e"
+  wp-red: "#ae2119"
+  wp-red-hover: "#851a14"
+  wp-dark: "#252728"
+  wp-paper: "#ffffff"
+  wp-muted: "#595d61"
+  wp-line: "#d8dadd"
+  wp-focus: "#bb3027"
+  form-muted: "#d5d7d8"
+  form-error: "#ffb3a7"
+  form-success: "#9fe2b8"
   admin-bg: "#111214"
   admin-panel: "#1a1c1f"
-  admin-raised: "#22252a"
   admin-ink: "#f3f1eb"
-  admin-muted: "#b0b2b7"
-  admin-line: "#383b40"
   admin-red: "#e2263e"
-  admin-focus: "#f5cc89"
 typography:
   display:
-    fontFamily: "Sora, Arial, sans-serif"
-    fontSize: "clamp(42px, 6vw, 80px)"
-    fontWeight: 500
-    lineHeight: 1.06
-    letterSpacing: "-.035em"
-  headline:
-    fontFamily: "Sora, Arial, sans-serif"
-    fontSize: "clamp(30px, 3.3vw, 46px)"
-    fontWeight: 500
+    fontFamily: "Orbitron, Arial, sans-serif"
+    fontSize: "clamp(34px, 4.2vw, 56px)"
+    fontWeight: 400
     lineHeight: 1.2
-    letterSpacing: "-.035em"
+    letterSpacing: "0"
+  headline:
+    fontFamily: "Orbitron, Arial, sans-serif"
+    fontSize: "clamp(28px, 3vw, 40px)"
+    fontWeight: 400
+    lineHeight: 1.3
   body:
+    fontFamily: "Red Hat Display, Raleway, Arial, sans-serif"
+    fontSize: "16px"
+    fontWeight: 400
+    lineHeight: 1.7
+  label:
+    fontFamily: "Red Hat Display, Raleway, Arial, sans-serif"
+    fontSize: "15px"
+    fontWeight: 500
+    lineHeight: 1.5
+  action:
+    fontFamily: "Orbitron, Arial, sans-serif"
+    fontSize: "12px"
+    fontWeight: 500
+    lineHeight: 1.3
+  admin-body:
     fontFamily: "Sora, Arial, sans-serif"
     fontSize: "15px"
-    fontWeight: 400
-    lineHeight: 1.65
-  label:
-    fontFamily: "Sora, Arial, sans-serif"
-    fontSize: "13px"
-    fontWeight: 500
     lineHeight: 1.65
 rounded:
-  public-control: "5px"
-  public-card: "14px"
-  admin-control: "4px"
-  circular: "50%"
+  field: "2px"
+  admin: "4px"
+  action: "26px"
 spacing:
-  compact: "8px"
-  small: "16px"
-  card: "24px"
-  mobile-section: "60px"
+  field-y: "12px"
+  field-x: "14px"
+  grid: "28px"
+  section: "70px"
+  section-phone: "42px"
 components:
   public-button-primary:
-    backgroundColor: "{colors.public-ink}"
-    textColor: "{colors.public-bg}"
-    rounded: "{rounded.public-control}"
-    padding: "12px 20px"
-  public-button-secondary:
-    backgroundColor: "transparent"
-    textColor: "{colors.public-ink}"
-    rounded: "{rounded.public-control}"
-    padding: "12px 20px"
-  public-card:
-    backgroundColor: "{colors.public-panel}"
-    rounded: "{rounded.public-card}"
-  admin-button-primary:
-    backgroundColor: "{colors.admin-red}"
-    textColor: "{colors.public-bg}"
-    rounded: "{rounded.admin-control}"
-    padding: "12px 20px"
+    backgroundColor: "{colors.wp-red}"
+    textColor: "{colors.wp-paper}"
+    rounded: "{rounded.action}"
+    padding: "12px 25px"
+    typography: "{typography.action}"
+  public-button-hover:
+    backgroundColor: "{colors.wp-red-hover}"
+    textColor: "{colors.wp-paper}"
+  public-field:
+    backgroundColor: "{colors.wp-paper}"
+    textColor: "{colors.wp-dark}"
+    rounded: "{rounded.field}"
+    padding: "12px 14px"
+  public-form:
+    backgroundColor: "{colors.wp-dark}"
+    textColor: "{colors.wp-paper}"
 ---
 
 # Design System: BYD Millennium Motors
 
 ## Overview
 
-**Creative North Star: "The Open Road Showroom"**
+The public visual authority is the captured Millennium Auto BYD WordPress website, explicitly selected by the owner. Its charcoal header, genuine combined BYD/Millennium logo, geometric display typography, red capsule actions and native campaign imagery define the implemented world. The source layout and content sequence are retained; app-owned catalogue, comparison and form controls inherit that identity.
 
-The public showroom opens with a full-height campaign slideshow and a quiet, centered BYD identity. Video covers the opening viewport behind the headline, description and actions. Images retain contain sizing, with the same text overlay. Its editorial journey moves into bright, generous spaces where authentic cars and dealership media lead. Graphite type and restrained red accents keep the brand present without competing with the imagery. The user pinned the Porsche-inspired composition; the BYD identity and published media make it specific to Millennium Motors.
+The existing staff manager is a separate dark working environment with Sora typography and compact controls. Public design changes do not restyle its authentication, editors or inboxes.
 
-Staff operate in the existing dark manager: charcoal panels, warm light text, clear fields and red primary actions. This distinction is intentional. `css/tokens.css` defines the dark base; `css/showroom.css` overrides it for public pages. The surface brief records page-level composition and content behavior.
-
-**Key Characteristics:**
-- Immersive photography and low-positioned, readable hero copy.
-- White public grounds, graphite text, pale panels and sparing red accents.
-- Self-hosted Sora, official BYD mark and authentic vehicle and campaign media.
-- Generous editorial spacing for shoppers; compact, labelled dark controls for staff.
+Key characteristics:
+- Original automotive marketing artwork and authentic vehicle colour photography.
+- Charcoal navigation, footer and form areas alongside light catalogue and comparison surfaces.
+- Orbitron display type with Red Hat Display/Raleway text.
+- Phone layouts that preserve readable information and usable controls.
 
 ## Colors
 
 ### Primary
-- **BYD red:** Public focus, selected controls and accents; the darker hover is used where defined. The manager uses its brighter red for primary actions.
+
+WordPress red marks capsule actions and meaningful public interaction. Its darker hover shade retains white action text.
 
 ### Neutral
-- **White and pale stone:** Public backgrounds and quiet card surfaces.
-- **Graphite and cool grey:** Public text, supporting copy and rules. Deep graphite also anchors the contact banner and footer.
-- **Charcoal and warm off-white:** Manager backgrounds, panels and readable text; muted grey supports labels and borders.
 
-**The Media First Rule.** Let imagery, white space and typography carry the public page; use red for meaningful emphasis and state.
+WordPress charcoal anchors the header, footer, article-card panels and forms; white supplies catalogue and comparison backgrounds and form labels. Muted grey and fine grey rules organize light-surface facts. Charcoal forms use lighter supporting copy, pale red errors and pale green success text. The staff manager keeps its own charcoal background, slightly raised panels, warm-white text and brighter red actions.
 
 ## Typography
 
-**Display and body font:** Sora, with Arial and sans-serif fallbacks. The self-hosted font uses compact tracking for headings and measured, readable body text.
+Orbitron supplies source display headings and compact action labels. Red Hat Display and Raleway supply readable public text; source page-specific typography is retained by the copied theme styles. Shared app features use the body stack in the frontmatter.
 
-- **Display:** The home hero uses responsive 36–70px story titles; on phones it uses 32–48px. White copy overlays the media on a dark lower gradient; mobile titles use 34px type.
-- **Headline:** Section headings scale from 30–46px; supporting copy is generally 15px.
-- **Body and labels:** Body text is 15px at 1.65 line height; labels are commonly 13px. Forms retain 16px input text.
+The home hero display scales to the frontmatter range on desktop and becomes 32px/1.3 on phones. Feature headings scale from 28px to 40px. Catalogue titles use the body family at 24px; form labels remain 15px and input text 16px. Long headings wrap. The manager continues using self-hosted Sora and its existing scale.
 
 ## Layout
 
-Public content is centered at up to 1320px and 90% viewport width, with section padding scaling from 64px to 112px. The hero occupies 100svh with absolutely positioned media, copy and controls; text does not reserve media space. A centered logo balances Menu at left and Contact at right. Cards use three columns where space and content permit; at 900px model grids become two columns, and at 650px they become one. On phones header labels hide, the hero action spans the content width, and the video covers the viewport behind the caption. Comparison values remain two columns.
+The sticky charcoal header holds the combined logo, horizontal desktop navigation and registration action. The home sequence is the managed opening slider, original full-width campaign/model artwork, three FAQ article cards, image-backed destination links and charcoal footer. Retain each copied page's original source composition rather than imposing the earlier showroom grid.
+
+New catalogue and comparison areas use 90% width, a 1200px maximum and 70px vertical section padding. The catalogue has three columns, two at 1024px and one at 767px; phone section padding is 42px. The mobile menu replaces desktop navigation at 1024px, with a scrollable charcoal panel and 44px targets. The home slider uses viewport-relative height below the header, with lower copy placement on phones and separated transport controls.
+
+Comparison keeps two aligned columns on phones, with smaller contained vehicle photographs and wrapped values. Model pages retain source photographs, native colour imagery, gallery and specification tabs. Below 768px, source numeric specification cells stack label over value at full width so long numbers remain readable. Galleries become two columns. Form name fields stack, submit actions span the phone width, and the news banner title stays within the image at tablet widths.
 
 ## Elevation & Depth
 
-Public sections are predominantly flat: tonal shifts, image crops and fine rules separate content. Gradients protect white text over images; menu and chat use shadows when floating above content. The dark manager uses tonal layering and borders for hierarchy. The campaign media shifts subtly with scroll; reduced motion removes the movement. Image-card hover uses a subtle 0.4s scale.
+The public interface is primarily flat: photographs, charcoal/light section contrast and fine dividers establish hierarchy. The mobile navigation uses a restrained drop shadow; the modal gallery uses a dark backdrop. Do not introduce lifted dashboard cards into source marketing sections. Existing source card treatments remain intact.
 
 ## Shapes
 
-Public cards and media stages have generous 14px corners; controls use 5px corners, with circular image-card arrows and colour swatches. The manager retains its tighter 4px controls and flatter panels. Images crop to fill discovery cards but catalogue vehicle photos and campaign artwork are contained to preserve content.
+Actions are red capsules with a 26px radius; white inputs use restrained 2px corners and a grey stroke. Catalogue cards are open, ruled layouts with contained photography rather than rounded floating tiles. Colour swatches are circular and show an outlined selected state. The separate manager retains its 4px control radius.
 
 ## Components
 
-### Buttons and links
-Public primary buttons are graphite with white text, changing to red on hover; secondary buttons are outlined and lighten on hover. The hero action is white with graphite text. Underlined text links use a directional arrow and a 44px minimum interaction height. Manager primary buttons remain red. Public focus uses a 3px red outline; manager focus uses a warm 2px outline.
+### Actions and navigation
 
-### Cards and media
-Discovery cards overlay model names on large photographs with a bottom gradient. Catalogue cards pair contained vehicle photos with model, price, colour, key facts and a link to model details. Comparison is available from the dedicated comparison page. The homepage campaign stage uses direct-selection dots and a separate pause button, respects saved order and timing, and contains media above its caption; editorial news cards place text below cropped imagery.
+Public actions use Orbitron, white text, at least 44px height and the red capsule shape. Outline actions inherit their surface contrast. Hover darkens red and adds a subtle one-pixel lift; a visible three-pixel focus outline sits outside controls. The sticky charcoal header preserves the combined source logo, current-page indication, model submenu and collapsible phone navigation.
 
-### Inputs and navigation
-Public fields use white backgrounds, grey borders and at least 48px height; focused forms sit on pale panels. The public header overlays the home hero and becomes a white bar on interior routes. Menu opens a light, vertically listed navigation panel; chat opens from navigation. The dark manager uses its own compact sidebar or mobile drawer and dark fields.
+### Catalogue and comparison
+
+Catalogue photographs are contained within a 1.7 aspect-ratio light image area. Model names, published facts and capsule actions follow below a 24px gap. A subtle image scale on hover is optional to the existing component and removed for reduced motion. Dedicated comparison shows two unique managed catalogue entries, aligned specification keys and explicit missing values; selectors remain available above results.
+
+### Forms and states
+
+Enquiry/test-drive and employment forms use charcoal surroundings, white labels and white fields with dark text. Inputs and selectors are at least 48px high; checkboxes remain visible alongside consent wording. Supporting text, error/success status and retry actions must retain contrast on charcoal. Failed submission preserves entries. Branch-loading errors disable submission and offer recovery. Résumé handling remains private.
+
+### Slider, colour, specifications and gallery
+
+The home slider follows saved slide order, duration and publication, with labelled previous/next, dot selection, play/pause and sound controls where relevant. Hero photography covers its stage; static source campaign artwork below keeps its composition. Colour controls select genuine photographs, specification tabs remain operable, and gallery images open in a keyboard-accessible modal. Reduced motion disables decorative transitions and starts automatic media paused.
+
+### Staff manager
+
+Preserve the dark manager's grouped sidebar/mobile drawer, 48px fields, explicit save feedback, slide ordering and collapsible preview. Enquiries and job applications remain authenticated read-only searchable inboxes with 25-record pagination, detail views and private résumé downloads. Its Sora typography and dark token set belong to staff workflows only.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** use published, authentic vehicle and campaign media and keep campaign artwork legible.
-- **Do** maintain clear contrast over photographs and preserve visible keyboard focus.
-- **Do** keep mobile controls and comparison information usable at narrow widths.
-- **Do** retain the dark manager's existing control language for staff workflows.
+- **Do** follow the captured WordPress layout, genuine combined logo and locally sourced original media.
+- **Do** preserve published catalogue facts, native colour images and source marketing composition.
+- **Do** keep focus, statuses, 44px targets and full-width phone specification values readable.
+- **Do** preserve the separate dark manager and reduced-motion behavior.
 
 ### Don't:
-- **Don't** fabricate vehicle facts or digitally recolour cars.
-- **Don't** let decorative overlays obscure important campaign artwork.
-
-## Homepage and staff submission browsing, 30 October 2026
-
-The homepage sequence is the managed opening slideshow, featured models, dealership introduction and footer. The catalogue, duplicate campaign block, editorial news block and closing contact banner are removed from the homepage. “Explore and compare models” opens `/models`; comparison remains on its dedicated page. News stays on `/events`.
-
-The dark manager groups website content, assistant tools and submissions in the same desktop sidebar/mobile drawer. Homepage slides have immediate-save Move up/Move down controls, labelled action links, seconds-based timing, a collapsible preview, and explicit published/hidden save feedback. Editing a slide brings its fields into view on phones. Content and uploads remain staff-controlled.
-
-Enquiries and Job applications are read-only inboxes: search saved fields, browse 25 newest-first records per page, open a full detail view, then return to the same filtered list. Detail fields stack on phones and use a two-column definition list on wider screens. Branch snapshots are preferred; older branch IDs resolve to managed names where available. Missing legacy data is labelled, never invented. Authenticated résumé downloads retain private storage and report missing attachments without discarding the application. No submission deletion or status workflow is added.
-
-The current HTTP transport warning remains visible, as explicitly accepted by the owner. Submission reads and downloads require the existing admin session and use `Cache-Control: no-store`; unsafe attachment paths and links escaping the upload directory are rejected. No database schema migration is required.
-
-Finish review: SHIP for the homepage/admin usability release. Reviewed rendered public, slide-editor and submission list/detail flows at 360, 390, 605, 768 and 1440px, including keyboard focus, portrait media, long and missing fields. The backend suite passed 20 tests and browser suite passed 22 tests. The mechanical detector reported no findings in degraded regex mode, so computed contrast was checked separately: white/red actions 4.58:1 and muted manager text/panel 8.05:1. The intentional HTTP transport limitation remains visible and owner-approved.
-
-Video playback update: public video slides start automatically and muted, inline on phones, and rotate after the admin-defined duration. The slideshow pause control also pauses the active video, including a single video slide. Leaving the stage or hiding the tab pauses playback; returning resumes when not manually paused. Reduced motion starts paused. Native and YouTube player controls remain available, with explanatory recovery text if the browser blocks autoplay. Staff previews stay manual while editing. YouTube uses its official IFrame API to mute and synchronize playback.
-
-Autoplay finish review: SHIP. Phone and desktop native-video captures retain the existing composition without the public play-poster overlay. Backend tests passed (20); the six targeted autoplay, timing, pause, reduced-motion and control-recovery browser checks passed after the broader regression run. Native video playback was exercised with a local fixture; YouTube control integration was verified with a deterministic API stub, not a claim that third-party streaming was observed live.
-
-Full-screen hero correction: the header, headline, description, destination links and dot/pause/sound controls overlay the opening media. Native video uses cover sizing. YouTube embeds use centered 16:9 cover sizing with 35% overscan to cover the cinematic letterboxing shown in the user’s reference; edge cropping is intentional; background playback hides provider transport controls and keyboard focus, while labelled site controls handle pause and sound, including API-load recovery. Images keep contain sizing. A lower dark gradient provides text contrast; short landscape screens reduce the heading and omit secondary description text. Native and YouTube autoplay, saved timing and reduced motion remain supported.
-
-Overlay finish review: SHIP. The 26-test browser suite passed, including full-viewport media bounds, absolute text placement, unobstructed controls, native/YouTube playback, sound switching and short landscape layout. Reviewed mobile and desktop captures with fixture media behind the overlay; image artwork remains contained. The detector returned no findings in degraded regex mode; rendered contrast and control separation were reviewed directly.
+- **Don't** restore the superseded Porsche-inspired public system or public Sora typography.
+- **Don't** generate replacement photography, digitally recolour vehicles or fabricate specifications.
+- **Don't** hide source artwork behind decorative UI or apply light-surface text colours to charcoal forms.

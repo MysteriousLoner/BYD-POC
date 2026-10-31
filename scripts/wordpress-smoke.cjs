@@ -1,0 +1,18 @@
+// Run only inside a disposable preflight container: writes synthetic form submissions.
+const assert=require('node:assert/strict');
+const base='http://127.0.0.1:3000';
+(async()=>{
+ for(let i=0;i<20;i++){try{if((await fetch(base+'/api/health')).ok)break}catch{}if(i===19)throw Error('Service did not start');await new Promise(r=>setTimeout(r,200))}
+ for(const route of ['/','/models','/models/byd-sea-lion','/compare?models=atto3,m6','/events','/events/events','/contact','/careers','/about','/stories/byd-year-end-carnival-2026']){const response=await fetch(base+route);assert.equal(response.status,200,route);assert.match(await response.text(),/wordpress.css/)}
+ const models=await(await fetch(base+'/api/content/models')).json(),news=await(await fetch(base+'/api/content/news')).json();assert.equal(models.length,6);assert.equal(news.length,63);
+ for(const model of models){assert(model.colours.length);assert(model.specifications.length);for(const image of model.images)assert.equal((await fetch(base+image)).status,200)}
+ assert.equal((await fetch(base+'/api/admin/submissions/enquiries')).status,401);
+ const login=await fetch(base+'/api/admin/login',{method:'POST',headers:{Origin:process.env.PUBLIC_ORIGIN,'Content-Type':'application/json'},body:JSON.stringify({username:process.env.ADMIN_USERNAME,password:process.env.ADMIN_PASSWORD})});assert.equal(login.status,200);const cookie=login.headers.get('set-cookie').split(';')[0];assert(cookie.startsWith('byd_wordpress_preview_admin='));
+ const headers={Cookie:cookie};for(const type of ['enquiries','careers']){const result=await(await fetch(base+'/api/admin/submissions/'+type,{headers})).json();assert.equal(result.total,0,'Preflight must begin with empty private submissions')}
+ const enquiry={formVersion:'wordpress-copy-1',name:'Synthetic Preview Check',firstName:'Synthetic',lastName:'Preview Check',email:'preview-check@example.test',phone:'0123456789',model:models[0].name,branch:'cheras',testDrive:'No',consentPrivacy:true,consentMarketing:true};
+ const send=body=>fetch(base+'/api/content/enquiries',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});assert.equal((await send({...enquiry,branch:'unavailable'})).status,400);assert.equal((await send(enquiry)).status,201);
+ const career=new FormData();for(const[key,value]of Object.entries({...enquiry,position:'Synthetic preflight application',branchId:'cheras'}))career.set(key,String(value));career.set('resume',new Blob(['%PDF-1.4 synthetic Docker smoke fixture'],{type:'application/pdf'}),'preview-fixture.pdf');assert.equal((await fetch(base+'/api/content/careers',{method:'POST',body:career})).status,201);
+ const applications=await(await fetch(base+'/api/admin/submissions/careers',{headers})).json();assert.equal(applications.total,1);const id=applications.items[0].id;const detail=await(await fetch(base+'/api/admin/submissions/careers/'+id,{headers})).json();assert.equal(detail.branchName,'BYD Cheras');assert.equal(detail.hasResume,true);assert.equal((await fetch(base+detail.resumeDownloadUrl)).status,401);assert.equal((await fetch(base+detail.resumeDownloadUrl,{headers})).status,200);
+ for(const route of ['/server/data/models.json','/content/wordpress/home.html','/.env','/models/unavailable'])assert.equal((await fetch(base+route)).status,404);
+ console.log('Docker preflight passed: copied routes/assets,6 models,63 stories,isolated admin cookie,branch validation,private inboxes and résumé download. Synthetic records are disposable.');
+})().catch(error=>{console.error(error.message);process.exit(1)});
