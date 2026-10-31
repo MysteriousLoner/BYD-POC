@@ -26,6 +26,8 @@ npm run test:browser
 node test/preview-server.js
 ```
 
+`scripts/wordpress-smoke.cjs` runs inside a disposable Docker preflight container and creates synthetic enquiry/application records. It verifies copied routes/assets, private downloads and isolated login cookies. Discard that container after verification; start the persistent preview with fresh volumes.
+
 The isolated local preview creates temporary SQLite/uploads and never reads `.env` or production data. Browser tests exercise submissions against this disposable data only.
 
 For a persistent server preview, create a root-only `.preview.env` with `ADMIN_USERNAME`, `ADMIN_PASSWORD` and `PUBLIC_ORIGIN=http://72.62.75.216:8083`. Then use the separate Compose project:
@@ -34,7 +36,7 @@ For a persistent server preview, create a root-only `.preview.env` with `ADMIN_U
 RELEASE_TAG=<git-commit> docker compose -p byd-wordpress-preview -f docker-compose.preview.yml up -d --build
 ```
 
-This creates independent volumes and seeds public source content. Do not mount production volumes or copy customer submissions into the preview. Stop only the preview with the same compose project/file. Production on port 8082 remains independent. Admin traffic remains HTTP, as previously chosen, with its existing console warning.
+This creates independent volumes and seeds public source content. Do not mount production volumes or copy customer submissions into the preview. Stop only the preview with the same compose project/file. Production on port 8082 remains independent. To roll back this separate preview, run `docker compose -p byd-wordpress-preview -f docker-compose.preview.yml stop`; this leaves production and preview volumes intact. Admin traffic remains HTTP, as previously chosen, with its existing console warning.
 
 ## Source import and assets
 
