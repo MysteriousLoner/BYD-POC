@@ -1,5 +1,6 @@
 const crypto = require('node:crypto');
 const { db } = require('./database');
+const sessionCookie = process.env.ADMIN_COOKIE_NAME || 'byd_admin';
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
 function passwordHash(password) {
   const salt = crypto.randomBytes(16).toString('hex');
@@ -17,7 +18,7 @@ function cookies(req) {
   return Object.fromEntries((req.headers.cookie || '').split(';').map(x => x.trim().split('=')).filter(x => x.length === 2));
 }
 function session(req) {
-  const token = cookies(req).byd_admin;
+  const token = cookies(req)[sessionCookie];
   if (!token) return null;
   return db.prepare('SELECT s.*, u.username FROM admin_sessions s JOIN admin_users u ON u.id=s.admin_id WHERE token_hash=? AND expires_at>?').get(hash(token), Date.now());
 }
@@ -59,12 +60,12 @@ function routes(router) {
     db.prepare('DELETE FROM admin_sessions WHERE expires_at<=?').run(Date.now());
     const token = crypto.randomBytes(32).toString('hex'), csrfToken = crypto.randomBytes(32).toString('hex');
     db.prepare('INSERT INTO admin_sessions VALUES(?,?,?,?)').run(hash(token), user.id, csrfToken, Date.now() + cookieOptions.maxAge);
-    res.cookie('byd_admin', token, cookieOptions).json({ username, csrf: csrfToken });
+    res.cookie(sessionCookie, token, cookieOptions).json({ username, csrf: csrfToken });
   });
   router.get('/session', authenticate, (req, res) => res.json({ username: req.admin.username, csrf: req.admin.csrf }));
   router.post('/logout', authenticate, csrf, (req, res) => {
     db.prepare('DELETE FROM admin_sessions WHERE token_hash=?').run(req.admin.token_hash);
-    res.clearCookie('byd_admin', { path: '/' }).json({ ok: true });
+    res.clearCookie(sessionCookie, { path: '/' }).json({ ok: true });
   });
 }
 module.exports = { hash, cookies, passwordHash, passwordMatches, session, authenticate, sameOrigin, csrf, limiter, routes };

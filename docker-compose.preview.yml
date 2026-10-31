@@ -8,6 +8,7 @@ services:
     restart: unless-stopped
     env_file: .preview.env
     environment:
+      ADMIN_COOKIE_NAME: byd_wordpress_preview_admin
       DB_PATH: /app/runtime/byd.sqlite
       UPLOAD_DIR: /app/uploads
       SEED_DIR: /app/server/data

@@ -12,7 +12,7 @@ This branch reproduces the public Millennium Auto BYD WordPress website inside t
 - Enquiry/test-drive and employment forms retain source fields/consent wording, add the managed preferred branch, and save to the existing staff inbox. Résumés require an authenticated staff download.
 - Existing `/admin` remains available with campaign, vehicles, events, branches and submissions management.
 
-Original source marketing pages are compiled snapshots. Managed colours/specifications, catalogue, publication, campaign slides and archive cards come from SQLite. Editing a model's description does not rewrite the imported long marketing page; reimport or edit its compiled source for those sections. Managed news publication controls apply to direct imported stories and archive cards; original article bodies remain snapshots. New managed articles use a generic page. The preview is noindex.
+Original source marketing pages are compiled snapshots. Managed colours/specifications, catalogue, publication, campaign slides and archive cards come from SQLite. Editing a model's description does not rewrite the imported long marketing page; reimport or edit its compiled source for those sections. Managed news publication controls apply to direct imported stories and archive cards; original article bodies remain snapshots. New managed articles use a generic page. The preview is noindex. Its admin session cookie has a separate name so logging in on port 8083 does not replace the live-site session cookie.
 
 ## Run and verify
 

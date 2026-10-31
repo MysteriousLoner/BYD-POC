@@ -1,7 +1,7 @@
 const {test,before,after}=require('node:test');
 const assert=require('node:assert/strict');const fs=require('node:fs');const os=require('node:os');const path=require('node:path');
 const dir=fs.mkdtempSync(path.join(os.tmpdir(),'byd-wordpress-'));
-Object.assign(process.env,{DB_PATH:path.join(dir,'preview.sqlite'),UPLOAD_DIR:path.join(dir,'uploads'),ADMIN_USERNAME:'wordpress-test',ADMIN_PASSWORD:'wordpress-test-password-123',PUBLIC_ORIGIN:'http://localhost'});
+Object.assign(process.env,{DB_PATH:path.join(dir,'preview.sqlite'),UPLOAD_DIR:path.join(dir,'uploads'),ADMIN_COOKIE_NAME:'byd_wordpress_test_admin',ADMIN_USERNAME:'wordpress-test',ADMIN_PASSWORD:'wordpress-test-password-123',PUBLIC_ORIGIN:'http://localhost'});
 const store=require('../server/database');const {createApp}=require('../server/index');let server,origin;
 before(async()=>{server=createApp().listen(0,'127.0.0.1');await new Promise(r=>server.once('listening',r));origin='http://127.0.0.1:'+server.address().port});
 after(async()=>{await new Promise(r=>server.close(r));store.db.close();fs.rmSync(dir,{recursive:true,force:true})});
@@ -28,4 +28,13 @@ test('WordPress employment fields and résumé remain private; rejected requests
  const make=(valid)=>{const data=new FormData();for(const [key,value]of Object.entries({formVersion:'wordpress-copy-1',name:'WordPress Applicant',firstName:'WordPress',lastName:'Applicant',email:'applicant@example.test',phone:'0123456789',position:'SALES ADVISOR / SALES CONSULTANT',branchId:'cheras',consentPrivacy:String(valid),consentMarketing:'true'}))data.set(key,value);data.set('resume',new Blob(['%PDF-1.4 fixture'],{type:'application/pdf'}),'resume.pdf');return data};
  assert.equal((await fetch(origin+'/api/content/careers',{method:'POST',body:make(false)})).status,400);assert.equal(fs.readdirSync(process.env.UPLOAD_DIR).length,0);
  assert.equal((await fetch(origin+'/api/content/careers',{method:'POST',body:make(true)})).status,201);const record=store.readJson('submissions/careers.json').at(-1);assert.equal(record.phone,'0123456789');assert.equal(record.branchName,'BYD Cheras');assert.equal(record.consentPrivacy,true);assert.equal((await fetch(origin+record.resume)).status,404);assert.equal((await fetch(origin+'/api/admin/submissions/careers/'+record.id+'/resume')).status,401);
+});
+
+test('preview admin session cookies stay separate from the live-site cookie',async()=>{
+ const response=await post('/api/admin/login',{username:'wordpress-test',password:'wordpress-test-password-123'});
+ assert.equal(response.status,403); // Login retains same-origin protection.
+ const login=await fetch(origin+'/api/admin/login',{method:'POST',headers:{Origin:'http://localhost','Content-Type':'application/json'},body:JSON.stringify({username:'wordpress-test',password:'wordpress-test-password-123'})});
+ assert.equal(login.status,200);const cookie=login.headers.get('set-cookie').split(';')[0];assert.match(cookie,/^byd_wordpress_test_admin=/);
+ assert.equal((await fetch(origin+'/api/admin/session',{headers:{Cookie:cookie}})).status,200);
+ assert.equal((await fetch(origin+'/api/admin/session',{headers:{Cookie:cookie.replace('byd_wordpress_test_admin=','byd_admin=')}})).status,401);
 });

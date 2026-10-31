@@ -23,7 +23,7 @@ ss3-force-full-width{display:block!important;width:100%!important;transform:none
 .wp-copy form.wp-public-form button[type=submit]{background:#ae2119!important;border:1px solid #ae2119!important;color:#fff!important;border-radius:26px!important;min-height:48px;font:500 12px/1.5 var(--wp-display)!important}
 .wp-copy form.wp-public-form button[type=submit]:hover{background:#851a14!important}.wp-copy form.wp-public-form .wp-text-button{background:transparent;border:1px solid #d5d7d8;color:#fff;min-height:44px;padding:8px 14px}
 .wp-copy .elementskit-post-image-card .meta-date-text{color:#d5d7d8}
-@media(min-width:768px) and (max-width:1024px){.wp-copy .elementor-2278 .elementor-element.elementor-element-3544205{left:auto!important;right:5%!important;width:48%!important;max-width:48%!important;top:20px!important}.wp-copy .elementor-2278 .elementor-element.elementor-element-3544205 .elementor-heading-title{font-size:30px;line-height:1.6;letter-spacing:5px}}
+@media(min-width:768px) and (max-width:1024px){.wp-copy .elementor-2278 .elementor-element.elementor-element-3544205{left:auto!important;right:max(40px,5%)!important;width:48%!important;max-width:48%!important;top:140px!important}.wp-copy .elementor-2278 .elementor-element.elementor-element-3544205 .elementor-heading-title{font-size:30px;line-height:1.6;letter-spacing:5px}}
 /* Captured masonry measurements must not constrain the responsive document flow. */
 .wp-copy .post-items{height:auto!important;display:flex;flex-wrap:wrap;position:relative!important}
 .wp-copy .post-items>[class*=col-]{position:static!important;transform:none!important}
