@@ -151,8 +151,16 @@ function slideshowMarkup(){return '<section class="wp-home-slider" aria-roledesc
   index.pages.push({name:capture.name,file:capture.name+'.html',route:capture.route,source:capture.url,title:$('title').text()});
   if(capture.name==='home')featureBase=html;
  }
+ const discoveryContract = `<!--
+THESIS: Fill discovery with real vehicles and useful choices instead of sparse lists.
+OWN-WORLD: Pale blue, charcoal and BYD red; original Orbitron/Red Hat Display and authentic photographs.
+STORY: Explore colours and facts, choose two models, inspect differences, enquire.
+FIRST VIEWPORT: Compact heading/action and two large vehicle cards on desktop, one on phones. Comparison starts with two selection slots and a thumbnail gallery.
+FORM: User-pinned scoped showroom extension; code-led; seed discovery-20261107-pinned, no open direction roll.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+-->`;
  for(const [view,title] of [['models','EXPLORE OUR MODELS'],['compare','COMPARE MODELS'],['detail','MODEL DETAILS'],['unavailable','PAGE NOT FOUND']]){
-  const $=load(featureBase);$('title').text(title+' – BYD Millennium Motors');$('#main').html(`<section class="wp-feature" data-feature="${view}"><h1>${title}</h1><div id="wpFeatureContent" role="status">Loading…</div></section>`);fs.writeFileSync(path.join(outputDir,view+'.html'),'<!doctype html>\n'+$.html().replace(/[ \t]+$/gm,''));
+  const $=load(featureBase);if(['models','compare'].includes(view)){$('script[src^="/js/wordpress.js"]').attr('src','/js/wordpress.js?v=showroom-20261107').before('<link rel="stylesheet" href="/css/model-showroom.css?v=20261107"><script src="/js/model-showroom.js?v=20261107" defer></script>');$('body').prepend(discoveryContract);}$('title').text(title+' – BYD Millennium Motors');$('#main').html(`<section class="wp-feature" data-feature="${view}"><h1>${title}</h1><div id="wpFeatureContent" role="status">Loading…</div></section>`);fs.writeFileSync(path.join(outputDir,view+'.html'),'<!doctype html>\n'+$.html().replace(/[ \t]+$/gm,''));
  }
  fs.writeFileSync(path.join(outputDir,'index.json'),JSON.stringify(index,null,2));
  const used=new Set(provenance.map(item=>path.basename(item.local)));for(const file of fs.readdirSync(assetsDir)){if(/^[a-f0-9]{16}\./.test(file)&&!used.has(file))fs.unlinkSync(path.join(assetsDir,file))}
