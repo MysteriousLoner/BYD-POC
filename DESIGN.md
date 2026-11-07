@@ -9,6 +9,13 @@ colors:
   wp-muted: "#595d61"
   wp-line: "#d8dadd"
   wp-focus: "#bb3027"
+  discovery-blue: "#195d7b"
+  discovery-blue-deep: "#154b62"
+  discovery-paper: "#edf4f8"
+  discovery-panel: "#dceaf3"
+  discovery-muted: "#455e6c"
+  discovery-line: "#bfd0dc"
+  discovery-focus-on-dark: "#a9d9f3"
   form-muted: "#d5d7d8"
   form-error: "#ffb3a7"
   form-success: "#9fe2b8"
@@ -51,6 +58,8 @@ rounded:
   field: "2px"
   admin: "4px"
   action: "26px"
+  discovery-card: "12px"
+  discovery-slot: "8px"
 spacing:
   field-y: "12px"
   field-x: "14px"
@@ -72,6 +81,15 @@ components:
     textColor: "{colors.wp-dark}"
     rounded: "{rounded.field}"
     padding: "12px 14px"
+  discovery-card:
+    backgroundColor: "{colors.wp-paper}"
+    textColor: "{colors.wp-dark}"
+    rounded: "{rounded.discovery-card}"
+  discovery-selection-panel:
+    backgroundColor: "{colors.wp-dark}"
+    textColor: "{colors.wp-paper}"
+    rounded: "{rounded.discovery-card}"
+    padding: "28px"
   public-form:
     backgroundColor: "{colors.wp-dark}"
     textColor: "{colors.wp-paper}"
@@ -82,6 +100,8 @@ components:
 ## Overview
 
 The public visual authority is the captured Millennium Auto BYD WordPress website, explicitly selected by the owner. Its charcoal header, genuine combined BYD/Millennium logo, geometric display typography, red capsule actions and native campaign imagery define the implemented world. The source layout and content sequence are retained; app-owned catalogue, comparison and form controls inherit that identity.
+
+The owner-approved colourful showroom is scoped to `/models` and `/compare`: pale blue canvases, charcoal selection panels, red actions and substantial photographic cards extend the same public identity. Other public pages retain their source compositions. The route brief in `.impeccable/surfaces/model-discovery.md` records the page strategy.
 
 The existing staff manager is a separate dark working environment with Sora typography and compact controls. Public design changes do not restyle its authentication, editors or inboxes.
 
@@ -97,31 +117,37 @@ Key characteristics:
 
 WordPress red marks capsule actions and meaningful public interaction. Its darker hover shade retains white action text.
 
+### Secondary
+
+Discovery blue supplies factual highlights, links and focus on light discovery surfaces; its deeper shade supports readable specification values. Pale blue paper and panels distinguish the two discovery routes. A pale blue outline remains visible on the charcoal picker. These tokens apply only to `/models` and `/compare`.
+
+**The Scoped Discovery Rule.** Use the colourful showroom only on /models and /compare; preserve other source layouts and the separate staff manager.
+
 ### Neutral
 
-WordPress charcoal anchors the header, footer, article-card panels and forms; white supplies catalogue and comparison backgrounds and form labels. Muted grey and fine grey rules organize light-surface facts. Charcoal forms use lighter supporting copy, pale red errors and pale green success text. The staff manager keeps its own charcoal background, slightly raised panels, warm-white text and brighter red actions.
+WordPress charcoal anchors the header, footer, article-card panels and forms; white supplies discovery cards, specification rows and form labels. Discovery muted blue-grey and dividers organize facts on pale surfaces. Muted grey and fine grey rules organize light-surface facts. Charcoal forms use lighter supporting copy, pale red errors and pale green success text. The staff manager keeps its own charcoal background, slightly raised panels, warm-white text and brighter red actions.
 
 ## Typography
 
 Orbitron supplies source display headings and compact action labels. Red Hat Display and Raleway supply readable public text; source page-specific typography is retained by the copied theme styles. Shared app features use the body stack in the frontmatter.
 
-The home hero display scales to the frontmatter range on desktop and becomes 32px/1.3 on phones. Feature headings scale from 28px to 40px. Catalogue titles use the body family at 24px; form labels remain 15px and input text 16px. Long headings wrap. The manager continues using self-hosted Sora and its existing scale.
+The home hero display scales to the frontmatter range on desktop and becomes 32px/1.3 on phones. Feature headings scale from 28px to 40px. Discovery route headings use Orbitron at `clamp(28px, 3.2vw, 44px)` and 27px on phones; catalogue model names use the body family at 27px, reducing to 23px on phones. Other app feature titles retain their source scale; form labels remain 15px and input text 16px. Long headings wrap. The manager continues using self-hosted Sora and its existing scale.
 
 ## Layout
 
 The sticky charcoal header holds the combined logo, horizontal desktop navigation and registration action. The home sequence is the managed opening slider, original full-width campaign/model artwork, three FAQ article cards, image-backed destination links and charcoal footer. Retain each copied page's original source composition rather than imposing the earlier showroom grid.
 
-New catalogue and comparison areas use 90% width, a 1200px maximum and 70px vertical section padding. The catalogue has three columns, two at 1024px and one at 767px; phone section padding is 42px. The mobile menu replaces desktop navigation at 1024px, with a scrollable charcoal panel and 44px targets. The home slider uses viewport-relative height below the header, with lower copy placement on phones and separated transport controls.
+Discovery content uses 90% width and a 1200px maximum, widening to 92% below 768px. The route canvas has 40px top/64px bottom padding, reducing to 30px/40px on phones. Catalogue cards use two columns with a 28px gap from 768px, and one column with a 22px gap below it. The guided comparison gallery uses three columns, reducing to two on phones. Other public feature sections retain 70px vertical padding and 42px on phones. The mobile menu replaces desktop navigation at 1024px, with a scrollable charcoal panel and 44px targets. The home slider uses viewport-relative height below the header, with lower copy placement on phones and separated transport controls.
 
-Comparison keeps two aligned columns on phones, with smaller contained vehicle photographs and wrapped values. Model pages retain source photographs, native colour imagery, gallery and specification tabs. Below 768px, source numeric specification cells stack label over value at full width so long numbers remain readable. Galleries become two columns. Form name fields stack, submit actions span the phone width, and the news banner title stays within the image at tablet widths.
+Comparison keeps two aligned columns on phones, with smaller contained vehicle photographs and wrapped values. Its compact charcoal identity bar sticks below the measured public header while grouped specifications scroll; preserve the route-scoped body overflow clipping that enables sticking without changing mobile menu scroll locking. Model pages retain source photographs, native colour imagery, gallery and specification tabs. Below 768px, source numeric specification cells stack label over value at full width so long numbers remain readable. Galleries become two columns. Form name fields stack, submit actions span the phone width, and the news banner title stays within the image at tablet widths.
 
 ## Elevation & Depth
 
-The public interface is primarily flat: photographs, charcoal/light section contrast and fine dividers establish hierarchy. The mobile navigation uses a restrained drop shadow; the modal gallery uses a dark backdrop. Do not introduce lifted dashboard cards into source marketing sections. Existing source card treatments remain intact.
+The public interface is primarily flat: photographs, charcoal/light section contrast and fine dividers establish hierarchy. The mobile navigation uses a restrained drop shadow; the modal gallery uses a dark backdrop. Do not introduce lifted dashboard cards into source marketing sections. Existing source card treatments remain intact. Discovery uses pale canvases, white cards and charcoal selection stages with fine blue-grey borders; no card shadows are added.
 
 ## Shapes
 
-Actions are red capsules with a 26px radius; white inputs use restrained 2px corners and a grey stroke. Catalogue cards are open, ruled layouts with contained photography rather than rounded floating tiles. Colour swatches are circular and show an outlined selected state. The separate manager retains its 4px control radius.
+Actions are red capsules with a 26px radius; white inputs use restrained 2px corners and a grey stroke. Discovery cards use restrained rounded corners from the scoped card token, a fine border and contained photography; selection slots use the smaller scoped slot radius. Other source card treatments are unchanged. Colour swatches are circular and show an outlined selected state. The separate manager retains its 4px control radius.
 
 ## Components
 
@@ -131,7 +157,9 @@ Public actions use Orbitron, white text, at least 44px height and the red capsul
 
 ### Catalogue and comparison
 
-Catalogue photographs are contained within a 1.7 aspect-ratio light image area. Model names, published facts and capsule actions follow below a 24px gap. A subtle image scale on hover is optional to the existing component and removed for reduced motion. Dedicated comparison shows two unique managed catalogue entries, aligned specification keys and explicit missing values; selectors remain available above results.
+Discovery catalogue cards contain genuine photographs in a 1.85 aspect-ratio stage (1.65 on phones), real colour swatches, managed type/price and up to three available factual highlights. Card copy has 24px padding, reducing to 18px on phones. Type filters show counts and a charcoal selected state. Swatches have 44px targets, a blue selected outline and named colour feedback; arrow keys, Home and End select colours. Filtering keeps surviving cards in place with a brief reflow; paint changes crossfade genuine photographs. Reduced motion removes these transitions and decorative image scaling.
+
+Dedicated comparison uses a charcoal guided stage with two explicit slots, a thumbnail gallery and an explicit Compare models action. Slot focus uses the pale outline token; other discovery controls use blue focus outlines. A short image-to-slot transition runs only when visible and motion is allowed. Model identity, changed selection, counts and errors remain readable and announced. Results show the union of stable specification keys in source groups, preserved units/variant qualifiers and explicit missing values. Differences-only filtering compares displayed value context; differences are informational, with no numeric winners. Model-specific enquiry actions remain available. Existing URL and saved-pair compatibility are preserved.
 
 ### Forms and states
 
@@ -152,8 +180,10 @@ Preserve the dark manager's grouped sidebar/mobile drawer, 48px fields, explicit
 - **Do** preserve published catalogue facts, native colour images and source marketing composition.
 - **Do** keep focus, statuses, 44px targets and full-width phone specification values readable.
 - **Do** preserve the separate dark manager and reduced-motion behavior.
+- **Do** scope the colourful showroom palette and card system to `/models` and `/compare`, retaining genuine paint photography and aligned comparison columns.
 
 ### Don't:
 - **Don't** restore the superseded Porsche-inspired public system or public Sora typography.
 - **Don't** generate replacement photography, digitally recolour vehicles or fabricate specifications.
+- **Don't** assign numeric winners or extend discovery styling to source marketing pages or staff tools.
 - **Don't** hide source artwork behind decorative UI or apply light-surface text colours to charcoal forms.
