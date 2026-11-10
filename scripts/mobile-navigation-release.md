@@ -46,3 +46,9 @@ Prepared for Git-based deployment to the existing 8083 preview. Deployment requi
 The owner requested a smaller dropdown after reviewing the full-width preview. It is now centred below the header with an 8px gap, a maximum width of 840px and a maximum height of 360px or 55dvh, whichever is smaller. Three columns retain all six published vehicles with 64–100px authentic thumbnails, 15px model names and 13px price text. The surrounding page remains visible and interactive; exceptionally long content scrolls inside the panel. Desktop tests now assert bounded width/height, centring and visible page space at 1100×900, 1440×900, 1265×536 and 1920×1080. Mobile navigation and all hover/keyboard/route controls are retained. Shared asset version: nav-20261110e.
 
 Compact correction validation: all six targeted desktop/mobile navigation checks passed. Rendered 1440px and 1265×536 captures confirm the page remains visible around the dropdown. The single scoped detector pass returned no findings.
+
+## Horizontal background extension
+
+At the owner’s request, the dark desktop dropdown background now spans the full viewport width and meets the header. The three-column vehicle content stays centred within 808px, retaining the compact thumbnails, type scale and 360px/55dvh height limit. The background extension does not enlarge the vehicle cards. Desktop checks assert the full-width background independently from the bounded content grid at all four desktop/laptop viewports; mobile stays unchanged. Shared asset version: nav-20261110f.
+
+Horizontal-background validation: all six targeted navigation tests passed; the rendered desktop capture and the single scoped detector pass showed no outstanding layout issues.
