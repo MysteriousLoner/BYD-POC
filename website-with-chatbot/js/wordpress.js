@@ -12,9 +12,14 @@
  function images(root=document){root.querySelectorAll('img').forEach(image=>{image.onerror=()=>{image.onerror=null;image.src='/assets/placeholder.svg';image.alt='Image unavailable';};if(image.complete&&!image.naturalWidth)image.onerror()})}
  function navigation(){
   const header=$('#masthead'),toggle=header?.querySelector('.hfe-nav-menu__toggle'),nav=$('#wpNavigation');if(!header||!toggle||!nav)return;
-  const mobile=()=>matchMedia('(max-width:1024px)').matches;
-  function open(value,restore=false){header.classList.toggle('wp-menu-open',value);document.body.classList.toggle('wp-nav-open',value&&mobile());toggle.setAttribute('aria-expanded',String(value));toggle.setAttribute('aria-label',value?'Close navigation':'Open navigation');nav.inert=mobile()&&!value;$('#main').inert=value&&mobile();if($('#colophon'))$('#colophon').inert=value&&mobile();if(restore)toggle.focus()}
-  toggle.onclick=()=>{const value=!header.classList.contains('wp-menu-open');open(value);if(value)nav.querySelector('a')?.focus()};toggle.onkeydown=event=>{if(['Enter',' '].includes(event.key)){event.preventDefault();toggle.click()}};
+  const breakpoint=matchMedia('(max-width:1024px)'),mobile=()=>breakpoint.matches;
+  // The source plugin's zero-height dropdown is replaced by a bounded, independently scrolling panel.
+  const backdrop=document.createElement('div');backdrop.className='wp-nav-backdrop';backdrop.setAttribute('aria-hidden','true');header.append(backdrop);
+  const label=toggle.querySelector('span'),icon=toggle.querySelector('path');
+  function collapse(){header.querySelectorAll('.wp-submenu-open').forEach(item=>{item.classList.remove('wp-submenu-open');item.querySelector('[aria-expanded]')?.setAttribute('aria-expanded','false')})}
+  function open(value,restore=false){header.classList.toggle('wp-menu-open',value);document.body.classList.toggle('wp-nav-open',value&&mobile());document.documentElement.classList.toggle('wp-nav-open',value&&mobile());if(label)label.textContent=value?'Close':'Menu';if(icon)icon.setAttribute('d',value?'M5 5l14 14M19 5 5 19':'M3 7h18M3 12h18M3 17h18');if(!value)collapse();toggle.setAttribute('aria-expanded',String(value));toggle.setAttribute('aria-label',value?'Close navigation':'Open navigation');nav.inert=mobile()&&!value;$('#main').inert=value&&mobile();if($('#colophon'))$('#colophon').inert=value&&mobile();if(restore)toggle.focus({preventScroll:true})}
+  backdrop.onclick=()=>open(false,true);
+  toggle.onclick=()=>{const value=!header.classList.contains('wp-menu-open');open(value);if(value)nav.scrollTop=0;if(value)nav.querySelector('a')?.focus({preventScroll:true})};toggle.onkeydown=event=>{if(['Enter',' '].includes(event.key)){event.preventDefault();toggle.click()}};
   header.querySelectorAll('.hfe-has-submenu-container>a').forEach(link=>{
    const item=link.closest('li'),submenu=item.querySelector('.sub-menu');if(!submenu)return;link.setAttribute('role','button');link.setAttribute('aria-expanded','false');link.querySelector('.sub-arrow').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
    const select=()=>{const value=!item.classList.contains('wp-submenu-open');header.querySelectorAll('.wp-submenu-open').forEach(other=>{if(other!==item){other.classList.remove('wp-submenu-open');other.querySelector('[aria-expanded]')?.setAttribute('aria-expanded','false')}});item.classList.toggle('wp-submenu-open',value);link.setAttribute('aria-expanded',String(value))};
@@ -26,8 +31,8 @@
    if(event.key==='Tab'&&mobile()&&header.classList.contains('wp-menu-open')){const items=[toggle,...nav.querySelectorAll('a,button')].filter(el=>el.offsetParent!==null),first=items[0],last=items.at(-1);if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}}
   });
   document.addEventListener('click',event=>{if(!header.contains(event.target)){open(false);header.querySelectorAll('.wp-submenu-open').forEach(item=>{item.classList.remove('wp-submenu-open');item.querySelector('[aria-expanded]')?.setAttribute('aria-expanded','false')})}});
-  function resize(){open(false);document.documentElement.style.setProperty('--wp-header-height',header.offsetHeight+'px')}
-  addEventListener('resize',resize);resize();if('ResizeObserver'in window)new ResizeObserver(()=>document.documentElement.style.setProperty('--wp-header-height',header.offsetHeight+'px')).observe(header);
+  function resize(){document.documentElement.style.setProperty('--wp-header-height',header.offsetHeight+'px')}
+  breakpoint.addEventListener('change',()=>open(false));addEventListener('resize',resize);open(false);resize();if('ResizeObserver'in window)new ResizeObserver(()=>document.documentElement.style.setProperty('--wp-header-height',header.offsetHeight+'px')).observe(header);
   header.querySelectorAll('a').forEach(link=>{if(!new URL(link.href).hash&&!link.getAttribute('href').startsWith('#')&&new URL(link.href).pathname.replace(/\/$/,'')===location.pathname.replace(/\/$/,'')){link.setAttribute('aria-current','page');link.closest('li')?.classList.add('current-menu-item')}});
  }
  function originalInteractions(){
