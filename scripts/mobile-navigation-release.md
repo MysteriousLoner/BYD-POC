@@ -52,3 +52,9 @@ Compact correction validation: all six targeted desktop/mobile navigation checks
 At the owner’s request, the dark desktop dropdown background now spans the full viewport width and meets the header. The three-column vehicle content stays centred within 808px, retaining the compact thumbnails, type scale and 360px/55dvh height limit. The background extension does not enlarge the vehicle cards. Desktop checks assert the full-width background independently from the bounded content grid at all four desktop/laptop viewports; mobile stays unchanged. Shared asset version: nav-20261110f.
 
 Horizontal-background validation: all six targeted navigation tests passed; the rendered desktop capture and the single scoped detector pass showed no outstanding layout issues.
+
+## Direct mobile model navigation
+
+The owner removed mobile model expansion: MODEL is a direct catalogue link on screens up to 1024px, with no disclosure arrow or vehicle list. The desktop hover preview remains available. Mobile checks now cover direct click/keyboard navigation and DISCOVER scrolling, with desktop checks retaining hover, photographs, publication/error handling and logo navigation. Shared asset version: nav-20261110g.
+
+Direct mobile navigation validation: all nine targeted browser regressions passed, including phone/tablet navigation, desktop previews, model details and enquiry preservation. The single scoped detector pass returned no findings.

@@ -146,7 +146,7 @@ function slideshowMarkup(){return '<section class="wp-home-slider" aria-roledesc
    const specs='<section class="wp-managed-specs wp-feature" id="wpManagedSpecs" data-model="'+modelId+'"></section>';if($('#register-section').length)$('#register-section').before(specs);else $('#main').append(specs);
    index.models[modelId]={file:capture.name+'.html',source:capture.url};
   }
-  $('head').append('<link rel="stylesheet" href="/css/wordpress.css?v=nav-20261110f"><script src="/js/catalogue-data.js?v=wp-1" defer></script><script src="/js/wordpress.js?v=nav-20261110f" defer></script>');
+  $('head').append('<link rel="stylesheet" href="/css/wordpress.css?v=nav-20261110g"><script src="/js/catalogue-data.js?v=wp-1" defer></script><script src="/js/wordpress.js?v=nav-20261110g" defer></script>');
   $('body').append('<p class="wp-announcement" id="wpAnnouncement" role="status"></p><dialog class="wp-lightbox" id="wpLightbox"><button type="button" aria-label="Close image">Close</button></dialog>');
   const html='<!doctype html>\n'+$.html().replace(/[ \t]+$/gm,'');fs.writeFileSync(path.join(outputDir,capture.name+'.html'),html);
   index.pages.push({name:capture.name,file:capture.name+'.html',route:capture.route,source:capture.url,title:$('title').text()});
@@ -161,7 +161,7 @@ FORM: User-pinned scoped showroom extension; code-led; seed discovery-20261107-p
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 -->`;
  for(const [view,title] of [['models','EXPLORE OUR MODELS'],['compare','COMPARE MODELS'],['detail','MODEL DETAILS'],['unavailable','PAGE NOT FOUND']]){
-  const $=load(featureBase);if(['models','compare'].includes(view)){$('script[src^="/js/wordpress.js"]').attr('src','/js/wordpress.js?v=nav-20261110f').before('<link rel="stylesheet" href="/css/model-showroom.css?v=20261107"><script src="/js/model-showroom.js?v=20261107" defer></script>');$('body').prepend(discoveryContract);}$('title').text(title+' – BYD Millennium Motors');$('#main').html(`<section class="wp-feature" data-feature="${view}"><h1>${title}</h1><div id="wpFeatureContent" role="status">Loading…</div></section>`);fs.writeFileSync(path.join(outputDir,view+'.html'),'<!doctype html>\n'+$.html().replace(/[ \t]+$/gm,''));
+  const $=load(featureBase);if(['models','compare'].includes(view)){$('script[src^="/js/wordpress.js"]').attr('src','/js/wordpress.js?v=nav-20261110g').before('<link rel="stylesheet" href="/css/model-showroom.css?v=20261107"><script src="/js/model-showroom.js?v=20261107" defer></script>');$('body').prepend(discoveryContract);}$('title').text(title+' – BYD Millennium Motors');$('#main').html(`<section class="wp-feature" data-feature="${view}"><h1>${title}</h1><div id="wpFeatureContent" role="status">Loading…</div></section>`);fs.writeFileSync(path.join(outputDir,view+'.html'),'<!doctype html>\n'+$.html().replace(/[ \t]+$/gm,''));
  }
  fs.writeFileSync(path.join(outputDir,'index.json'),JSON.stringify(index,null,2));
  const used=new Set(provenance.map(item=>path.basename(item.local)));for(const file of fs.readdirSync(assetsDir)){if(/^[a-f0-9]{16}\./.test(file)&&!used.has(file))fs.unlinkSync(path.join(assetsDir,file))}

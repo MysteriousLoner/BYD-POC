@@ -60,3 +60,6 @@ ss3-force-full-width{display:block!important;width:100%!important;transform:none
 @media(prefers-reduced-motion:reduce){.wp-copy #masthead #wpModelMenu img{transition:none;transform:none!important}}
 
 .wp-copy #wpModelMenu a[aria-current=page] .wp-model-preview-name{text-decoration:underline;text-underline-offset:5px}
+
+/* Mobile MODEL is a direct catalogue destination; the photographic submenu is desktop-only. */
+@media(max-width:1024px){.wp-copy #masthead .wp-submenu-toggle,.wp-copy #masthead #wpModelMenu{display:none!important}}

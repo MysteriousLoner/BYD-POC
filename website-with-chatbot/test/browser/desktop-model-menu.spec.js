@@ -36,10 +36,10 @@ test('desktop previews handle publication, sparse media, empty data and retry',a
  await page.route('**/api/content/models',r=>r.fulfill({json:fixture.slice(0,1)}));await menu.getByRole('button',{name:'Retry previews'}).click();await expect(menu.locator('.wp-model-preview-link')).toHaveCount(1);
 });
 
-test('mobile keeps the compact text list and the logo returns home',async({page})=>{
+test('mobile MODEL is a direct catalogue link without an expander and the logo returns home',async({page})=>{
  for(const width of [360,390,605,768]){
   await page.setViewportSize({width,height:900});await page.goto('/contact');await page.getByRole('button',{name:'Open navigation'}).click();const nav=page.locator('#wpNavigation');
-  await expect(nav.getByRole('link',{name:'HOME',exact:true})).toHaveCount(0);await nav.getByRole('button',{name:'Toggle model list'}).click();await expect(nav.getByRole('link',{name:'BYD M6',exact:true})).toBeVisible();await expect(nav.locator('#wpModelMenu img')).toHaveCount(0);
+  await expect(nav.getByRole('link',{name:'HOME',exact:true})).toHaveCount(0);await expect(nav.getByRole('button',{name:'Toggle model list'})).not.toBeVisible();await expect(page.locator('#wpModelMenu')).not.toBeVisible();await nav.getByRole('link',{name:'MODEL',exact:true}).click();await expect(page).toHaveURL(/\/models$/);await expect(page.locator('.wp-model-card').first()).toBeVisible();await page.getByRole('button',{name:'Open navigation'}).click();
   await page.getByRole('button',{name:'Close navigation'}).click();await page.getByRole('link',{name:'BYD Millennium Motors home',exact:true}).click();await expect(page).toHaveURL(/\/$/);
  }
 });
