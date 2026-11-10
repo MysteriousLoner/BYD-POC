@@ -17,7 +17,7 @@ test('mobile menu stays compact, scrolls independently and keeps destinations re
   await page.getByRole('button',{name:'MODEL',exact:true}).click();await expect(page.getByRole('button',{name:'MODEL',exact:true})).toHaveAttribute('aria-expanded','true');
   const item=nav.getByRole('link',{name:'BYD M6',exact:true});await item.scrollIntoViewIfNeeded();
   expect(await item.evaluate(el=>{const r=el.getBoundingClientRect();return el.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2))})).toBe(true);
-  expect(await nav.evaluate(el=>el.clientHeight<el.scrollHeight)).toBe(true);
+  if(height<500)expect(await nav.evaluate(el=>el.clientHeight<el.scrollHeight)).toBe(true);
   await page.getByRole('button',{name:'DISCOVER',exact:true}).click();await expect(page.getByRole('button',{name:'MODEL',exact:true})).toHaveAttribute('aria-expanded','false');
   await nav.getByRole('link',{name:'CAREER WITH US',exact:true}).scrollIntoViewIfNeeded();await page.screenshot({path:path.join(review,`menu-expanded-${width}.png`),animations:'disabled'});
   await page.getByRole('button',{name:'Close navigation'}).click();await expect(nav).not.toBeVisible();expect(await page.evaluate(()=>scrollY)).toBe(initial);await expect(page.locator('#main')).not.toHaveAttribute('inert','');
@@ -36,5 +36,5 @@ test('menu works across public routes with keyboard focus and returns to desktop
  }
  await page.screenshot({path:path.join(review,'menu-desktop-1440.png'),animations:'disabled'});
  await page.setViewportSize({width:390,height:844});await page.goto('/');await page.emulateMedia({reducedMotion:'reduce'});await page.getByRole('button',{name:'Open navigation'}).click();await page.getByRole('button',{name:'MODEL',exact:true}).click();await expect(page.locator('#wpNavigation .sub-arrow').first()).toHaveCSS('transition-duration','0s');
- await page.getByRole('link',{name:'COMPARE MODELS',exact:true}).first().click();await expect(page).toHaveURL(/\/compare$/);await expect(page.locator('#wpNavigation')).not.toBeVisible();
+ await page.locator('#wpNavigation').getByRole('link',{name:'BYD ATTO 3',exact:true}).click();await expect(page).toHaveURL(/\/models\/atto3$/);await expect(page.locator('#wpNavigation')).not.toBeVisible();
 });

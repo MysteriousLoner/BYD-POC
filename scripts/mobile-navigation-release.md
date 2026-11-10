@@ -9,6 +9,7 @@ The original plugin applies `height: 0` to its tablet dropdown until its own act
 ## Result
 
 - Auto-height charcoal panel below the header: 8px gap, 12px viewport inset, maximum width 420px and maximum height 65dvh, additionally bounded by available viewport height.
+- The model submenu lists individual vehicles only; the Explore all models and Compare models entries were removed at the owner’s request. Catalogue and comparison pages remain accessible through existing page actions.
 - Long model lists scroll inside the panel; submenus have no separate nested scrollbar. Only one submenu expands at a time.
 - Persistent labelled Close control with an X, outside-tap dismissal and Escape support.
 - Root scroll locking and body overflow clipping retain page position and sticky positioning. Underlying content is inert while the menu is open.

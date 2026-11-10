@@ -124,8 +124,7 @@ function slideshowMarkup(){return '<section class="wp-home-slider" aria-roledesc
   }
   $('.wpforms-container').each((i,e)=>$(e).html(formMarkup(capture.name==='careers',modelId||'')));
   $('form').not('.wp-public-form').remove();
-  // Retain the copied header and add only the catalogue/comparison destinations.
-  const modelMenu=$('#masthead #menu-item-3415 > .sub-menu');modelMenu.prepend('<li class="menu-item"><a class="hfe-sub-menu-item" href="/compare">COMPARE MODELS</a></li>');modelMenu.prepend('<li class="menu-item"><a class="hfe-sub-menu-item" href="/models">EXPLORE ALL MODELS</a></li>');
+  // Retain the copied header with only individual models in the model submenu.
   $('#masthead .hfe-nav-menu__toggle').attr('tabindex','0').attr('aria-controls','wpNavigation').attr('aria-label','Open navigation').html('<span>Menu</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>');$('#masthead nav').attr('id','wpNavigation').attr('aria-label','Main navigation');
   $('#masthead .hfe-site-logo-img').attr('alt','BYD Millennium Motors');$('#masthead a[href="#2"]').attr('href','#discover');
   $('#masthead a[href^="/models/"]').each((i,e)=>$(e).closest('li').attr('data-managed-model',$(e).attr('href').split('/').pop()));
