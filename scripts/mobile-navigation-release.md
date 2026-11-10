@@ -17,7 +17,7 @@ The original plugin applies `height: 0` to its tablet dropdown until its own act
 - Existing keyboard focus trapping is retained, with visible white focus outlines on charcoal. Opening/closing avoids scrolling the document to the focused item.
 - Height-only viewport changes do not unexpectedly close the menu. Crossing the desktop breakpoint resets it and restores desktop navigation.
 - Menu targets remain at least 44px. Submenu arrow motion respects reduced motion.
-- Shared CSS and JavaScript references use `nav-20261110d` in all 81 public templates and the WordPress importer. No API, database, upload, content or credentials changes.
+- Shared CSS and JavaScript references use `nav-20261110e` in all 81 public templates and the WordPress importer. No API, database, upload, content or credentials changes.
 
 ## Evidence
 
@@ -40,3 +40,9 @@ Final follow-up validation: all 25 backend tests and all 32 browser tests passed
 ## Rollout
 
 Prepared for Git-based deployment to the existing 8083 preview. Deployment requires a fresh user approval under the supplied AGENTS.md instructions. Inspect current server allocations and Compose mappings before rollout, retain data/uploads and a rollback release, then verify route assets and health. Port 8082 must remain untouched.
+
+## Compact desktop correction
+
+The owner requested a smaller dropdown after reviewing the full-width preview. It is now centred below the header with an 8px gap, a maximum width of 840px and a maximum height of 360px or 55dvh, whichever is smaller. Three columns retain all six published vehicles with 64–100px authentic thumbnails, 15px model names and 13px price text. The surrounding page remains visible and interactive; exceptionally long content scrolls inside the panel. Desktop tests now assert bounded width/height, centring and visible page space at 1100×900, 1440×900, 1265×536 and 1920×1080. Mobile navigation and all hover/keyboard/route controls are retained. Shared asset version: nav-20261110e.
+
+Compact correction validation: all six targeted desktop/mobile navigation checks passed. Rendered 1440px and 1265×536 captures confirm the page remains visible around the dropdown. The single scoped detector pass returned no findings.

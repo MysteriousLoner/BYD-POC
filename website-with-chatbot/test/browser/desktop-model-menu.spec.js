@@ -6,14 +6,14 @@ test.beforeEach(async({page,request})=>snapshotPublicReads(page,request));
 
 test('desktop hover opens image previews and stays open while choosing a vehicle',async({page,request})=>{
  fs.mkdirSync(review,{recursive:true});const records=await(await request.get('/api/content/models')).json();
- for(const [width,height] of [[1100,900],[1440,900],[1265,536]]){
+ for(const [width,height] of [[1100,900],[1440,900],[1265,536],[1920,1080]]){
   await page.setViewportSize({width,height});await page.goto('/contact');const nav=page.locator('#wpNavigation'),menu=page.locator('#wpModelMenu');
   await expect(nav.getByRole('link',{name:'HOME',exact:true})).toHaveCount(0);
   await nav.getByRole('link',{name:'MODEL',exact:true}).hover();await expect(menu.locator('.wp-model-preview-link')).toHaveCount(records.length);
   await expect(menu.locator('img').first()).toBeVisible();await expect(menu.locator('.wp-model-preview-price').first()).toHaveText(records[0].price);
   await expect(menu.locator('a').first()).toHaveAttribute('href','/models/'+records[0].id);
   await menu.locator('a').first().hover();await expect(menu).toBeVisible();
-  const rect=await menu.boundingBox(),header=await page.locator('#masthead').boundingBox();expect(rect.x).toBe(0);expect(Math.round(rect.width)).toBe(width);expect(Math.abs(rect.y-header.height)).toBeLessThan(2);expect(await menu.evaluate(el=>el.scrollHeight<=el.clientHeight+2)).toBe(true);
+  const rect=await menu.boundingBox(),header=await page.locator('#masthead').boundingBox();expect(rect.x).toBeGreaterThan(20);expect(rect.width).toBeLessThanOrEqual(841);expect(Math.abs(rect.x+rect.width/2-width/2)).toBeLessThan(2);expect(Math.abs(rect.y-header.height-8)).toBeLessThan(2);expect(rect.height).toBeLessThanOrEqual(Math.min(361,height*.55+1));expect(rect.y+rect.height).toBeLessThan(height-60);expect(await menu.evaluate(el=>el.scrollHeight<=el.clientHeight+2)).toBe(true);
   await page.evaluate(()=>document.fonts.ready);await page.locator('#wpModelMenu img').evaluateAll(els=>Promise.all(els.map(el=>el.decode().catch(()=>{}))));
   await page.screenshot({path:path.join(review,`desktop-model-previews-${width}.png`),animations:'disabled'});
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
