@@ -21,9 +21,10 @@
   backdrop.onclick=()=>open(false,true);
   toggle.onclick=()=>{const value=!header.classList.contains('wp-menu-open');open(value);if(value)nav.scrollTop=0;if(value)nav.querySelector('a')?.focus({preventScroll:true})};toggle.onkeydown=event=>{if(['Enter',' '].includes(event.key)){event.preventDefault();toggle.click()}};
   header.querySelectorAll('.hfe-has-submenu-container>a').forEach(link=>{
-   const item=link.closest('li'),submenu=item.querySelector('.sub-menu');if(!submenu)return;link.setAttribute('role','button');link.setAttribute('aria-expanded','false');link.querySelector('.sub-arrow').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
-   const select=()=>{const value=!item.classList.contains('wp-submenu-open');header.querySelectorAll('.wp-submenu-open').forEach(other=>{if(other!==item){other.classList.remove('wp-submenu-open');other.querySelector('[aria-expanded]')?.setAttribute('aria-expanded','false')}});item.classList.toggle('wp-submenu-open',value);link.setAttribute('aria-expanded',String(value))};
-   link.onclick=event=>{event.preventDefault();select()};link.onkeydown=event=>{if([' ','ArrowDown'].includes(event.key)){event.preventDefault();if(!item.classList.contains('wp-submenu-open'))select();submenu.querySelector('a')?.focus()}};
+   const item=link.closest('li'),submenu=item.querySelector('.sub-menu'),control=link.parentElement.querySelector('.wp-submenu-toggle')||link;if(!submenu)return;
+   if(control===link)link.setAttribute('role','button');control.setAttribute('aria-expanded','false');control.querySelector('.sub-arrow').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+   const select=()=>{const value=!item.classList.contains('wp-submenu-open');header.querySelectorAll('.wp-submenu-open').forEach(other=>{if(other!==item){other.classList.remove('wp-submenu-open');other.querySelector('[aria-expanded]')?.setAttribute('aria-expanded','false')}});item.classList.toggle('wp-submenu-open',value);control.setAttribute('aria-expanded',String(value))};
+   control.onclick=event=>{event.preventDefault();select()};control.onkeydown=event=>{if([' ','ArrowDown'].includes(event.key)){event.preventDefault();if(!item.classList.contains('wp-submenu-open'))select();submenu.querySelector('a')?.focus()}};
   });
   nav.querySelectorAll('a:not([aria-haspopup])').forEach(link=>link.addEventListener('click',()=>open(false)));
   document.addEventListener('keydown',event=>{

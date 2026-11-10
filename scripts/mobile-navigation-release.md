@@ -11,12 +11,13 @@ The original plugin applies `height: 0` to its tablet dropdown until its own act
 - Auto-height charcoal panel below the header: 8px gap, 12px viewport inset, maximum width 420px and maximum height 65dvh, additionally bounded by available viewport height.
 - The model submenu lists individual vehicles only; the Explore all models and Compare models entries were removed at the owner’s request. Catalogue and comparison pages remain accessible through existing page actions.
 - Long model lists scroll inside the panel; submenus have no separate nested scrollbar. Only one submenu expands at a time.
+- The MODEL text links directly to `/models`; a separate labelled 44px arrow button expands the vehicle list. The arrow preserves keyboard expansion, Escape and focus behaviour on phone and desktop.
 - Persistent labelled Close control with an X, outside-tap dismissal and Escape support.
 - Root scroll locking and body overflow clipping retain page position and sticky positioning. Underlying content is inert while the menu is open.
 - Existing keyboard focus trapping is retained, with visible white focus outlines on charcoal. Opening/closing avoids scrolling the document to the focused item.
 - Height-only viewport changes do not unexpectedly close the menu. Crossing the desktop breakpoint resets it and restores desktop navigation.
 - Menu targets remain at least 44px. Submenu arrow motion respects reduced motion.
-- Shared CSS and JavaScript references use `nav-20261110` in all 81 public templates and the WordPress importer. No API, database, upload, content or credentials changes.
+- Shared CSS and JavaScript references use `nav-20261110b` in all 81 public templates and the WordPress importer. No API, database, upload, content or credentials changes.
 
 ## Evidence
 
@@ -26,7 +27,7 @@ The navigation tests and existing repeated visual matrices reuse snapshots of re
 
 Rendered review captures are local and gitignored under `.impeccable/review`: `menu-compact-390.png`, `menu-models-390.png`, `menu-expanded-{360,390,605,768,844,1024}.png`, and `menu-desktop-1440.png`. A touch-enabled phone browser also verified open/submenu/close interactions. The single mechanical detector pass returned no findings; this is not a claim of a complete accessibility audit. No physical-device check was performed.
 
-Validation completed: all 25 backend tests and all 28 browser tests passed. Shared asset versions and source syntax checks also passed.
+Validation completed: all 25 backend tests and all 28 browser tests passed. Shared asset versions and source syntax checks also passed. After the menu-entry removal and separate MODEL link/arrow follow-ups, all four targeted navigation checks passed, including phone/desktop keyboard activation and rendered review.
 
 ## Rollout
 

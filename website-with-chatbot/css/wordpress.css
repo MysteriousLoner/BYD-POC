@@ -32,3 +32,11 @@ ss3-force-full-width{display:block!important;width:100%!important;transform:none
 @media(max-width:767px){.wp-copy .table-content table,.wp-copy .table-content tbody,.wp-copy .table-content tr{display:block;width:100%!important;min-width:0!important;max-width:100%}.wp-copy .table-content td{display:block;width:100%!important;min-width:0!important;max-width:100%;padding:16px!important}.wp-copy .table-content .td-content-wrapper,.wp-copy .table-content .td-content{display:block;width:100%;min-width:0}.wp-copy .table-content .row1,.wp-copy .table-content .row2{width:100%!important;padding:0!important;overflow-wrap:normal;word-break:normal}.wp-copy .table-content .row2{margin-top:6px}}
 
 @media(prefers-reduced-motion:reduce){.wp-copy #wpNavigation .sub-arrow{transition:none}}
+
+/* Separate the catalogue link from its submenu disclosure on touch and desktop. */
+.wp-copy #masthead .hfe-has-submenu-container:has(.wp-submenu-toggle){display:flex;align-items:stretch}
+.wp-copy #masthead .hfe-has-submenu-container:has(.wp-submenu-toggle)>a{flex:1;min-width:0;padding-right:0}
+.wp-copy #masthead .wp-submenu-toggle{display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;min-height:44px;padding:10px;background:transparent;color:#fff;border:0;border-radius:0}
+.wp-copy #masthead .wp-submenu-toggle:hover{background:#424446}
+.wp-copy #masthead .wp-submenu-toggle .sub-arrow{margin:0;padding:0}
+.wp-copy #masthead .wp-submenu-toggle[aria-expanded=true] .sub-arrow{transform:rotate(180deg)}
