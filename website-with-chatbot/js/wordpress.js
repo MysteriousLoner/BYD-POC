@@ -20,15 +20,44 @@
   function open(value,restore=false){header.classList.toggle('wp-menu-open',value);document.body.classList.toggle('wp-nav-open',value&&mobile());document.documentElement.classList.toggle('wp-nav-open',value&&mobile());if(label)label.textContent=value?'Close':'Menu';if(icon)icon.setAttribute('d',value?'M5 5l14 14M19 5 5 19':'M3 7h18M3 12h18M3 17h18');if(!value)collapse();toggle.setAttribute('aria-expanded',String(value));toggle.setAttribute('aria-label',value?'Close navigation':'Open navigation');nav.inert=mobile()&&!value;$('#main').inert=value&&mobile();if($('#colophon'))$('#colophon').inert=value&&mobile();if(restore)toggle.focus({preventScroll:true})}
   backdrop.onclick=()=>open(false,true);
   toggle.onclick=()=>{const value=!header.classList.contains('wp-menu-open');open(value);if(value)nav.scrollTop=0;if(value)nav.querySelector('a')?.focus({preventScroll:true})};toggle.onkeydown=event=>{if(['Enter',' '].includes(event.key)){event.preventDefault();toggle.click()}};
+  let previewPromise;
+  function previews(){
+   const menu=$('#wpModelMenu');if(!menu)return;
+   if(previewPromise)return previewPromise;
+   const names=new Map([...menu.querySelectorAll('[data-managed-model]')].map(item=>[item.dataset.managedModel,item.querySelector('a').textContent.trim()]));
+   const feedback=document.createElement('li');feedback.className='wp-model-menu-feedback';feedback.setAttribute('role','status');feedback.textContent='Loading model previews…';menu.querySelector('.wp-model-menu-feedback')?.remove();menu.append(feedback);
+   previewPromise=models().then(items=>{
+    const focused=menu.contains(document.activeElement)?document.activeElement.getAttribute('href'):null;
+    menu.innerHTML=items.filter(model=>model.published!==false).map(model=>{
+     const name=names.get(model.id)||model.name,current=location.pathname.replace(/\/$/,'')==='/models/'+encodeURIComponent(model.id);
+     return `<li class="menu-item" data-managed-model="${escape(model.id)}"><a class="hfe-sub-menu-item wp-model-preview-link" href="/models/${encodeURIComponent(model.id)}" aria-label="${escape(name)}"${current?' aria-current="page"':''}><span class="wp-model-preview-media"><img src="${escape(photo(model))}" alt="" decoding="async"></span><span class="wp-model-preview-name">${escape(name)}</span>${model.price?`<span class="wp-model-preview-price">${escape(model.price)}</span>`:''}</a></li>`;
+    }).join('')||'<li class="wp-model-menu-feedback" role="status">The model range is being updated. Please check back soon.</li>';
+    images(menu);
+    // A late media response must not discard a visitor's keyboard focus.
+    if(focused){const target=[...menu.querySelectorAll('a')].find(link=>link.getAttribute('href')===focused);(target||$('#masthead .wp-submenu-toggle')).focus({preventScroll:true})}
+   }).catch(()=>{
+    previewPromise=null;feedback.textContent='Preview images could not load. You can still use the model links. ';
+    const retry=document.createElement('button');retry.type='button';retry.textContent='Retry previews';retry.onclick=()=>previews();feedback.append(retry);
+   });
+   return previewPromise;
+  }
   header.querySelectorAll('.hfe-has-submenu-container>a').forEach(link=>{
    const item=link.closest('li'),submenu=item.querySelector('.sub-menu'),control=link.parentElement.querySelector('.wp-submenu-toggle')||link;if(!submenu)return;
    if(control===link)link.setAttribute('role','button');control.setAttribute('aria-expanded','false');control.querySelector('.sub-arrow').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
-   const select=()=>{const value=!item.classList.contains('wp-submenu-open');header.querySelectorAll('.wp-submenu-open').forEach(other=>{if(other!==item){other.classList.remove('wp-submenu-open');other.querySelector('[aria-expanded]')?.setAttribute('aria-expanded','false')}});item.classList.toggle('wp-submenu-open',value);control.setAttribute('aria-expanded',String(value))};
-   control.onclick=event=>{event.preventDefault();select()};control.onkeydown=event=>{if([' ','ArrowDown'].includes(event.key)){event.preventDefault();if(!item.classList.contains('wp-submenu-open'))select();submenu.querySelector('a')?.focus()}};
+   const isModel=submenu.id==='wpModelMenu';let hoverTimer;
+   const select=(value=!item.classList.contains('wp-submenu-open'))=>{header.querySelectorAll('.wp-submenu-open').forEach(other=>{if(other!==item){other.classList.remove('wp-submenu-open');other.querySelector('[aria-expanded]')?.setAttribute('aria-expanded','false')}});item.classList.toggle('wp-submenu-open',value);control.setAttribute('aria-expanded',String(value));if(value&&isModel&&!mobile())previews()};
+   control.onclick=event=>{event.preventDefault();clearTimeout(hoverTimer);select()};control.onkeydown=event=>{if([' ','ArrowDown'].includes(event.key)){event.preventDefault();if(!item.classList.contains('wp-submenu-open'))select();submenu.querySelector('a')?.focus()}};
+   if(isModel){
+    const canHover=()=>!mobile()&&matchMedia('(hover:hover) and (pointer:fine)').matches;
+    item.addEventListener('pointerenter',()=>{clearTimeout(hoverTimer);if(canHover())hoverTimer=setTimeout(()=>{if(canHover())select(true)},100)});
+    item.addEventListener('pointerleave',()=>{clearTimeout(hoverTimer);if(canHover())hoverTimer=setTimeout(()=>{if(!submenu.contains(document.activeElement))select(false)},180)});
+    link.addEventListener('focus',()=>{if(!mobile()){clearTimeout(hoverTimer);select(true)}});
+    item.addEventListener('focusout',event=>{if(!mobile()&&!item.contains(event.relatedTarget)){clearTimeout(hoverTimer);select(false)}});
+   }
   });
   nav.querySelectorAll('a:not([aria-haspopup])').forEach(link=>link.addEventListener('click',()=>open(false)));
   document.addEventListener('keydown',event=>{
-   if(event.key==='Escape'){const item=document.activeElement?.closest('.wp-submenu-open');if(item){item.classList.remove('wp-submenu-open');const link=item.querySelector('[aria-expanded]');link.setAttribute('aria-expanded','false');link.focus()}else if(header.classList.contains('wp-menu-open'))open(false,true)}
+   if(event.key==='Escape'){const item=document.activeElement?.closest('.wp-submenu-open')||header.querySelector('.wp-submenu-open');if(item){item.classList.remove('wp-submenu-open');const link=item.querySelector('[aria-expanded]');link.setAttribute('aria-expanded','false');link.focus()}else if(header.classList.contains('wp-menu-open'))open(false,true)}
    if(event.key==='Tab'&&mobile()&&header.classList.contains('wp-menu-open')){const items=[toggle,...nav.querySelectorAll('a,button')].filter(el=>el.offsetParent!==null),first=items[0],last=items.at(-1);if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}}
   });
   document.addEventListener('click',event=>{if(!header.contains(event.target)){open(false);header.querySelectorAll('.wp-submenu-open').forEach(item=>{item.classList.remove('wp-submenu-open');item.querySelector('[aria-expanded]')?.setAttribute('aria-expanded','false')})}});

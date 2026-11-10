@@ -124,7 +124,8 @@ function slideshowMarkup(){return '<section class="wp-home-slider" aria-roledesc
   }
   $('.wpforms-container').each((i,e)=>$(e).html(formMarkup(capture.name==='careers',modelId||'')));
   $('form').not('.wp-public-form').remove();
-  // Retain the copied header with only individual models in the model submenu.
+  // The logo is the home link; the model text and disclosure are separate controls.
+  $('#masthead #menu-item-3602').remove();$('#masthead .hfe-site-logo > a').attr('href','/').attr('aria-label','BYD Millennium Motors home');
   const modelLink=$('#masthead #menu-item-3415 > .hfe-has-submenu-container > a');modelLink.attr('href','/models').removeAttr('aria-haspopup aria-expanded').html('MODEL').after('<button type="button" class="wp-submenu-toggle" aria-label="Toggle model list" aria-expanded="false" aria-controls="wpModelMenu"><span class="sub-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button>');$('#masthead #menu-item-3415 > .sub-menu').attr('id','wpModelMenu');
   $('#masthead .hfe-nav-menu__toggle').attr('tabindex','0').attr('aria-controls','wpNavigation').attr('aria-label','Open navigation').html('<span>Menu</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>');$('#masthead nav').attr('id','wpNavigation').attr('aria-label','Main navigation');
   $('#masthead .hfe-site-logo-img').attr('alt','BYD Millennium Motors');$('#masthead a[href="#2"]').attr('href','#discover');
@@ -145,7 +146,7 @@ function slideshowMarkup(){return '<section class="wp-home-slider" aria-roledesc
    const specs='<section class="wp-managed-specs wp-feature" id="wpManagedSpecs" data-model="'+modelId+'"></section>';if($('#register-section').length)$('#register-section').before(specs);else $('#main').append(specs);
    index.models[modelId]={file:capture.name+'.html',source:capture.url};
   }
-  $('head').append('<link rel="stylesheet" href="/css/wordpress.css?v=nav-20261110b"><script src="/js/catalogue-data.js?v=wp-1" defer></script><script src="/js/wordpress.js?v=nav-20261110b" defer></script>');
+  $('head').append('<link rel="stylesheet" href="/css/wordpress.css?v=nav-20261110d"><script src="/js/catalogue-data.js?v=wp-1" defer></script><script src="/js/wordpress.js?v=nav-20261110d" defer></script>');
   $('body').append('<p class="wp-announcement" id="wpAnnouncement" role="status"></p><dialog class="wp-lightbox" id="wpLightbox"><button type="button" aria-label="Close image">Close</button></dialog>');
   const html='<!doctype html>\n'+$.html().replace(/[ \t]+$/gm,'');fs.writeFileSync(path.join(outputDir,capture.name+'.html'),html);
   index.pages.push({name:capture.name,file:capture.name+'.html',route:capture.route,source:capture.url,title:$('title').text()});
@@ -160,7 +161,7 @@ FORM: User-pinned scoped showroom extension; code-led; seed discovery-20261107-p
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 -->`;
  for(const [view,title] of [['models','EXPLORE OUR MODELS'],['compare','COMPARE MODELS'],['detail','MODEL DETAILS'],['unavailable','PAGE NOT FOUND']]){
-  const $=load(featureBase);if(['models','compare'].includes(view)){$('script[src^="/js/wordpress.js"]').attr('src','/js/wordpress.js?v=nav-20261110b').before('<link rel="stylesheet" href="/css/model-showroom.css?v=20261107"><script src="/js/model-showroom.js?v=20261107" defer></script>');$('body').prepend(discoveryContract);}$('title').text(title+' – BYD Millennium Motors');$('#main').html(`<section class="wp-feature" data-feature="${view}"><h1>${title}</h1><div id="wpFeatureContent" role="status">Loading…</div></section>`);fs.writeFileSync(path.join(outputDir,view+'.html'),'<!doctype html>\n'+$.html().replace(/[ \t]+$/gm,''));
+  const $=load(featureBase);if(['models','compare'].includes(view)){$('script[src^="/js/wordpress.js"]').attr('src','/js/wordpress.js?v=nav-20261110d').before('<link rel="stylesheet" href="/css/model-showroom.css?v=20261107"><script src="/js/model-showroom.js?v=20261107" defer></script>');$('body').prepend(discoveryContract);}$('title').text(title+' – BYD Millennium Motors');$('#main').html(`<section class="wp-feature" data-feature="${view}"><h1>${title}</h1><div id="wpFeatureContent" role="status">Loading…</div></section>`);fs.writeFileSync(path.join(outputDir,view+'.html'),'<!doctype html>\n'+$.html().replace(/[ \t]+$/gm,''));
  }
  fs.writeFileSync(path.join(outputDir,'index.json'),JSON.stringify(index,null,2));
  const used=new Set(provenance.map(item=>path.basename(item.local)));for(const file of fs.readdirSync(assetsDir)){if(/^[a-f0-9]{16}\./.test(file)&&!used.has(file))fs.unlinkSync(path.join(assetsDir,file))}

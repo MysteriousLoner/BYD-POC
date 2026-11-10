@@ -30,7 +30,7 @@ test('mobile menu stays compact, scrolls independently and keeps destinations re
 test('menu works across public routes with keyboard focus and returns to desktop navigation',async({page})=>{
  test.setTimeout(60000);for(const url of ['/','/models','/compare','/contact','/careers','/events','/models/atto3']){
   await page.setViewportSize({width:390,height:844});await page.goto(url);const toggle=page.getByRole('button',{name:'Open navigation'}),nav=page.locator('#wpNavigation');
-  await toggle.focus();await page.keyboard.press('Enter');await expect(nav.getByRole('link',{name:'HOME',exact:true})).toBeFocused();await page.keyboard.press('Shift+Tab');await expect(page.getByRole('button',{name:'Close navigation'})).toBeFocused();
+  await toggle.focus();await page.keyboard.press('Enter');await expect(nav.getByRole('link',{name:'MODEL',exact:true})).toBeFocused();await page.keyboard.press('Shift+Tab');await expect(page.getByRole('button',{name:'Close navigation'})).toBeFocused();
   await page.keyboard.press('Shift+Tab');await expect(nav.getByRole('button',{name:'DISCOVER',exact:true})).toBeFocused();await page.keyboard.press('Tab');await expect(page.getByRole('button',{name:'Close navigation'})).toBeFocused();
   await page.keyboard.press('Escape');await expect(toggle).toBeFocused();await expect(nav).not.toBeVisible();await toggle.click();await page.setViewportSize({width:1440,height:900});await expect(nav).toBeVisible();await expect(page.locator('body')).not.toHaveClass(/wp-nav-open/);await expect(nav).not.toHaveAttribute('inert','');
  }

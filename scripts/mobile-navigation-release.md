@@ -17,7 +17,7 @@ The original plugin applies `height: 0` to its tablet dropdown until its own act
 - Existing keyboard focus trapping is retained, with visible white focus outlines on charcoal. Opening/closing avoids scrolling the document to the focused item.
 - Height-only viewport changes do not unexpectedly close the menu. Crossing the desktop breakpoint resets it and restores desktop navigation.
 - Menu targets remain at least 44px. Submenu arrow motion respects reduced motion.
-- Shared CSS and JavaScript references use `nav-20261110b` in all 81 public templates and the WordPress importer. No API, database, upload, content or credentials changes.
+- Shared CSS and JavaScript references use `nav-20261110d` in all 81 public templates and the WordPress importer. No API, database, upload, content or credentials changes.
 
 ## Evidence
 
@@ -28,6 +28,14 @@ The navigation tests and existing repeated visual matrices reuse snapshots of re
 Rendered review captures are local and gitignored under `.impeccable/review`: `menu-compact-390.png`, `menu-models-390.png`, `menu-expanded-{360,390,605,768,844,1024}.png`, and `menu-desktop-1440.png`. A touch-enabled phone browser also verified open/submenu/close interactions. The single mechanical detector pass returned no findings; this is not a claim of a complete accessibility audit. No physical-device check was performed.
 
 Validation completed: all 25 backend tests and all 28 browser tests passed. Shared asset versions and source syntax checks also passed. After the menu-entry removal and separate MODEL link/arrow follow-ups, all four targeted navigation checks passed, including phone/desktop keyboard activation and rendered review.
+
+## Desktop preview follow-up
+
+Reference: https://byd.simemotors.my/contact-us, inspected in the owner’s existing Chrome tab. Desktop MODEL hover and keyboard focus reveal a full-width charcoal panel with three columns of real car photographs, model labels and staff-managed prices. The existing public API controls models, publication and ordering. The panel stays open while moving from the header into a vehicle link; Escape, focus departure, or pointer departure dismiss it. Touch and mobile retain explicit disclosure controls and text-only links. The combined logo is labelled as the home link, and the separate Home menu item is removed across all 81 templates and the importer. No new photography or factual vehicle content is introduced.
+
+The new desktop browser checks cover hover, pointer transit/dismissal, keyboard entry/Escape, links, logo navigation, managed pricing/order/publication, empty data, broken media and API retry. Phone checks cover 360/390/605/768px; desktop captures cover 1100/1440px and a short 1265×536 laptop viewport.
+
+Final follow-up validation: all 25 backend tests and all 32 browser tests passed; the three desktop-preview checks passed again after the short-viewport image-height adjustment. The scoped layout detector returned no findings. Rendered desktop and short-laptop captures were inspected.
 
 ## Rollout
 
