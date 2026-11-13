@@ -26,3 +26,7 @@ The full backend suite passed 25 tests and the full browser suite passed 36 test
 ## Rollout
 
 Prepared for a separate Git-based deployment to the existing 8083 preview. Keep 8082 untouched, retain preview data/uploads, inspect current ports/mappings, and obtain deployment approval before changing the server. This change has not been deployed.
+
+## Production promotion
+
+Use `docker-compose.production.yml` alongside the existing production Compose file, with `RELEASE_TAG` and `BYD_RELEASE_PATH` set to an immutable Git checkout. The override changes only the build context and versioned image. It retains the existing production environment file, host port 8082, internal port 3000, runtime/upload volumes, read-only seed bind and network. Build and test against copied live data before recreating only the production website service. Keep the old image, original server checkout and a protected database/uploads backup available for rollback. Port 8083 is a separate preview and is not changed by this promotion.

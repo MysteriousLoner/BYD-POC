@@ -1,0 +1,7 @@
+# Pair with the existing production Compose file. Preserve its ports, credentials,
+# volumes and networks; build only from an immutable Git release checkout.
+services:
+  byd-website:
+    image: "byd-production:${RELEASE_TAG:?Set the Git release tag}"
+    build:
+      context: "${BYD_RELEASE_PATH:?Set the immutable Git checkout path}/website-with-chatbot"
