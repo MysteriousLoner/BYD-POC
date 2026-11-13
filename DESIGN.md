@@ -155,6 +155,10 @@ Actions are red capsules with a 26px radius; white inputs use restrained 2px cor
 
 Public actions use Orbitron, white text, at least 44px height and the red capsule shape. Outline actions inherit their surface contrast. Hover darkens red and adds a subtle one-pixel lift; a visible three-pixel focus outline sits outside controls. The sticky charcoal header preserves the combined source logo, current-page indication, model submenu and collapsible phone navigation.
 
+### News navigation preview
+
+On desktop, News & Events shares the model menu’s edge-to-edge charcoal background, centred 808px three-column content area and 360px/55dvh height cap. Show the three latest published stories with genuine uncropped thumbnails, a two-line title, saved category/date and a 44px View all news & events link. Keep the label itself linked to `/events`; the separate arrow also supports keyboard entry. Hover exit has the same grace period as models; Escape, outside interaction and focus departure dismiss the preview. Opening one preview closes the other without a delayed close affecting the new panel. Mobile hides both disclosure buttons and preview panels, leaving direct MODEL and News & Events links. Loading, empty and retry states retain access to the archive. No record data or publication settings are changed.
+
 ### Catalogue and comparison
 
 Discovery catalogue cards contain genuine photographs in a 1.85 aspect-ratio stage (1.65 on phones), real colour swatches, managed type/price and up to three available factual highlights. Card copy has 24px padding, reducing to 18px on phones. Type filters show counts and a charcoal selected state. Swatches have 44px targets, a blue selected outline and named colour feedback; arrow keys, Home and End select colours. Filtering keeps surviving cards in place with a brief reflow; paint changes crossfade genuine photographs. Reduced motion removes these transitions and decorative image scaling.

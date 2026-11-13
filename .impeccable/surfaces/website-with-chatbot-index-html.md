@@ -47,3 +47,7 @@ The owner selected the existing Sime Motors contact-page hover menu as the inter
 ## Direct mobile model navigation
 
 On screens up to 1024px, MODEL goes directly to the model catalogue. Hide its disclosure arrow and submenu, including after resizing a previously opened desktop preview. Keep the DISCOVER submenu and all desktop model previews available. Shared assets use nav-20261110g.
+
+## News & Events hover — 13 November 2026
+
+Extend the existing desktop preview pattern to News & Events, using the same compact full-width dark shell and contained authentic images. Show the three latest published managed stories with their saved titles, categories and dates, plus an archive link; do not invent editorial content. The label remains a direct events link, including on phones where its expander and panel are hidden. Preserve mouse transit, keyboard entry, Escape/outside dismissal and focus when asynchronous content loads. Opening a preview closes its sibling; closing a former hover must not close a newly opened sibling. Empty/error states keep archive access and retry feedback. No admin, API or persistence changes. Shared assets: news-20261113b, mirrored by the WordPress importer and compiled pages.

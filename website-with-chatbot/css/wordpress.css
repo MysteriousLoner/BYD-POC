@@ -42,24 +42,33 @@ ss3-force-full-width{display:block!important;width:100%!important;transform:none
 .wp-copy #masthead .wp-submenu-toggle[aria-expanded=true] .sub-arrow{transform:rotate(180deg)}
 
 /* Desktop image-led model previews share the managed catalogue; phones retain text links. */
-.wp-copy #wpModelMenu .wp-model-preview-media,.wp-copy #wpModelMenu .wp-model-preview-price{display:none}
+.wp-copy :is(#wpModelMenu,#wpNewsMenu) .wp-model-preview-media,.wp-copy :is(#wpModelMenu,#wpNewsMenu) .wp-model-preview-price{display:none}
 .wp-copy #masthead .wp-model-menu-feedback{padding:16px;color:#fff;font:400 15px/1.5 var(--wp-body);list-style:none}
 .wp-copy #masthead .wp-model-menu-feedback button{min-height:44px;padding:8px 14px;color:#fff;border:1px solid #fff;background:transparent;font:500 14px var(--wp-body)}
 @media(min-width:1025px){
- .wp-copy #masthead #wpModelMenu{display:none!important;position:fixed!important;top:var(--wp-header-height);left:0!important;right:0;width:100%!important;min-width:0;max-height:min(360px,55dvh,calc(100dvh - var(--wp-header-height) - 32px));margin:0!important;padding:16px max(24px,calc((100% - 808px)/2));box-sizing:border-box;background:var(--wp-dark);border:0;box-shadow:0 14px 24px #0003;overflow:auto;overscroll-behavior:contain;scrollbar-color:#777b7e #252728;scrollbar-width:thin;transform:none!important}
- .wp-copy #masthead li.wp-submenu-open>#wpModelMenu{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 20px;opacity:1;visibility:visible;pointer-events:auto}
- .wp-copy #masthead #wpModelMenu>li{width:auto;min-width:0;margin:0;border:0}
- .wp-copy #masthead #wpModelMenu a{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:0 0 4px!important;background:transparent!important;color:#fff!important;white-space:normal;font:700 15px/1.4 var(--wp-body);letter-spacing:0;text-decoration:none}
- .wp-copy #masthead #wpModelMenu .wp-model-preview-media{display:block;aspect-ratio:auto;height:clamp(64px,calc((50dvh - 140px)/2),100px);width:100%;overflow:hidden;background:#f3f4f4}
- .wp-copy #masthead #wpModelMenu img{display:block;width:100%;height:100%;object-fit:contain;transition:transform .25s ease-out}
- .wp-copy #masthead #wpModelMenu a:hover img{transform:scale(1.035)}
- .wp-copy #masthead #wpModelMenu .wp-model-preview-price{display:block;font:400 13px/1.5 var(--wp-body);color:#e1e3e4}
- .wp-copy #masthead #wpModelMenu a:focus-visible{outline:3px solid #fff;outline-offset:4px}
- .wp-copy #masthead #wpModelMenu .wp-model-menu-feedback{grid-column:1/-1;padding:8px 0}
+ .wp-copy #masthead :is(#wpModelMenu,#wpNewsMenu){display:none!important;position:fixed!important;top:var(--wp-header-height);left:0!important;right:0;width:100%!important;min-width:0;max-height:min(360px,55dvh,calc(100dvh - var(--wp-header-height) - 32px));margin:0!important;padding:16px max(24px,calc((100% - 808px)/2));box-sizing:border-box;background:var(--wp-dark);border:0;box-shadow:0 14px 24px #0003;overflow:auto;overscroll-behavior:contain;scrollbar-color:#777b7e #252728;scrollbar-width:thin;transform:none!important}
+ .wp-copy #masthead li.wp-submenu-open>:is(#wpModelMenu,#wpNewsMenu){display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 20px;opacity:1;visibility:visible;pointer-events:auto}
+ .wp-copy #masthead :is(#wpModelMenu,#wpNewsMenu)>li{width:auto;min-width:0;margin:0;border:0}
+ .wp-copy #masthead :is(#wpModelMenu,#wpNewsMenu) a{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:0 0 4px!important;background:transparent!important;color:#fff!important;white-space:normal;font:700 15px/1.4 var(--wp-body);letter-spacing:0;text-decoration:none}
+ .wp-copy #masthead :is(#wpModelMenu,#wpNewsMenu) .wp-model-preview-media{display:block;aspect-ratio:auto;height:clamp(64px,calc((50dvh - 140px)/2),100px);width:100%;overflow:hidden;background:#f3f4f4}
+ .wp-copy #masthead :is(#wpModelMenu,#wpNewsMenu) img{display:block;width:100%;height:100%;object-fit:contain;transition:transform .25s ease-out}
+ .wp-copy #masthead :is(#wpModelMenu,#wpNewsMenu) a:hover img{transform:scale(1.035)}
+ .wp-copy #masthead :is(#wpModelMenu,#wpNewsMenu) .wp-model-preview-price{display:block;font:400 13px/1.5 var(--wp-body);color:#e1e3e4}
+ .wp-copy #masthead :is(#wpModelMenu,#wpNewsMenu) a:focus-visible{outline:3px solid #fff;outline-offset:4px}
+ .wp-copy #masthead :is(#wpModelMenu,#wpNewsMenu) .wp-model-menu-feedback{grid-column:1/-1;padding:8px 0}
 }
-@media(prefers-reduced-motion:reduce){.wp-copy #masthead #wpModelMenu img{transition:none;transform:none!important}}
+@media(prefers-reduced-motion:reduce){.wp-copy #masthead :is(#wpModelMenu,#wpNewsMenu) img{transition:none;transform:none!important}}
 
-.wp-copy #wpModelMenu a[aria-current=page] .wp-model-preview-name{text-decoration:underline;text-underline-offset:5px}
+.wp-copy :is(#wpModelMenu,#wpNewsMenu) a[aria-current=page] .wp-model-preview-name{text-decoration:underline;text-underline-offset:5px}
 
 /* Mobile MODEL is a direct catalogue destination; the photographic submenu is desktop-only. */
-@media(max-width:1024px){.wp-copy #masthead .wp-submenu-toggle,.wp-copy #masthead #wpModelMenu{display:none!important}}
+@media(max-width:1024px){.wp-copy #masthead .wp-submenu-toggle,.wp-copy #masthead :is(#wpModelMenu,#wpNewsMenu){display:none!important}}
+
+/* Latest stories share the compact desktop preview shell and its direct mobile link. */
+@media(min-width:1025px){
+ .wp-copy #masthead #wpNewsMenu .wp-news-preview-title{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;overflow-wrap:anywhere;min-height:42px}
+ .wp-copy #masthead #wpNewsMenu .wp-news-menu-all{grid-column:1/-1;border-top:1px solid #ffffff30;padding-top:4px}
+ .wp-copy #masthead #wpNewsMenu .wp-news-menu-all>a{min-height:44px;padding:8px 0!important;justify-content:center;text-decoration:underline;text-underline-offset:4px;font-weight:500}
+}
+
+@media(min-width:1025px) and (max-width:1200px){.wp-copy #masthead .elementor-button{padding-inline:16px;font-size:11px;letter-spacing:0;white-space:nowrap}}

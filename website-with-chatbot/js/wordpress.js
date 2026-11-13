@@ -20,7 +20,7 @@
   function open(value,restore=false){header.classList.toggle('wp-menu-open',value);document.body.classList.toggle('wp-nav-open',value&&mobile());document.documentElement.classList.toggle('wp-nav-open',value&&mobile());if(label)label.textContent=value?'Close':'Menu';if(icon)icon.setAttribute('d',value?'M5 5l14 14M19 5 5 19':'M3 7h18M3 12h18M3 17h18');if(!value)collapse();toggle.setAttribute('aria-expanded',String(value));toggle.setAttribute('aria-label',value?'Close navigation':'Open navigation');nav.inert=mobile()&&!value;$('#main').inert=value&&mobile();if($('#colophon'))$('#colophon').inert=value&&mobile();if(restore)toggle.focus({preventScroll:true})}
   backdrop.onclick=()=>open(false,true);
   toggle.onclick=()=>{const value=!header.classList.contains('wp-menu-open');open(value);if(value)nav.scrollTop=0;if(value)nav.querySelector('a')?.focus({preventScroll:true})};toggle.onkeydown=event=>{if(['Enter',' '].includes(event.key)){event.preventDefault();toggle.click()}};
-  let previewPromise;
+  let previewPromise,updatingPreviewMenu=null;
   function previews(){
    const menu=$('#wpModelMenu');if(!menu)return;
    if(previewPromise)return previewPromise;
@@ -41,18 +41,42 @@
    });
    return previewPromise;
   }
+  let newsPreviewPromise;
+  function newsPreviews(){
+   const menu=$('#wpNewsMenu');if(!menu)return;
+   if(newsPreviewPromise)return newsPreviewPromise;
+   const archive='<li class="wp-news-menu-all"><a class="hfe-sub-menu-item" href="/events">View all news &amp; events</a></li>';
+   if(menu.querySelector('.wp-model-menu-feedback')?.contains(document.activeElement))menu.querySelector('.wp-news-menu-all a')?.focus({preventScroll:true});
+   const feedback=document.createElement('li');feedback.className='wp-model-menu-feedback';feedback.setAttribute('role','status');feedback.textContent='Loading news and events…';menu.querySelector('.wp-model-menu-feedback')?.remove();menu.prepend(feedback);
+   newsPreviewPromise=api('/api/content/news').then(records=>{
+    const hadFocus=menu.contains(document.activeElement),focused=hadFocus?document.activeElement.getAttribute('href'):null;
+    const stories=records.filter(story=>story.published!==false&&story.id).sort((a,b)=>String(b.date||'').localeCompare(String(a.date||''))).slice(0,3);
+    updatingPreviewMenu=menu;
+    try{menu.innerHTML=(stories.map(story=>{
+     const date=/^\d{4}-\d{2}-\d{2}$/.test(story.date)?new Date(story.date+'T12:00:00+08:00').toLocaleDateString('en-MY',{day:'numeric',month:'short',year:'numeric',timeZone:'Asia/Kuala_Lumpur'}):String(story.date||'');
+     return `<li class="menu-item"><a class="hfe-sub-menu-item wp-news-preview-link" href="/stories/${encodeURIComponent(story.id)}" aria-label="${escape(story.title)}"><span class="wp-model-preview-media"><img src="${escape(story.image||'/assets/placeholder.svg')}" alt="" decoding="async"></span><span class="wp-news-preview-title">${escape(story.title)}</span><span class="wp-model-preview-price">${escape([story.category,date].filter(Boolean).join(' · '))}</span></a></li>`;
+    }).join('')||'<li class="wp-model-menu-feedback" role="status">No news or events have been published yet.</li>')+archive;
+    images(menu);
+    if(hadFocus&&!mobile()){const target=[...menu.querySelectorAll('a')].find(link=>link.getAttribute('href')===focused)||menu.querySelector('a');(target||$('#masthead [aria-controls="wpNewsMenu"]')).focus({preventScroll:true})}
+    }finally{updatingPreviewMenu=null}
+   }).catch(()=>{
+    newsPreviewPromise=null;feedback.textContent='News previews could not load. View all news and events or ';
+    const retry=document.createElement('button');retry.type='button';retry.textContent='Retry news previews';retry.onclick=()=>newsPreviews();feedback.append(retry);
+   });
+   return newsPreviewPromise;
+  }
   header.querySelectorAll('.hfe-has-submenu-container>a').forEach(link=>{
    const item=link.closest('li'),submenu=item.querySelector('.sub-menu'),control=link.parentElement.querySelector('.wp-submenu-toggle')||link;if(!submenu)return;
    if(control===link)link.setAttribute('role','button');control.setAttribute('aria-expanded','false');control.querySelector('.sub-arrow').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
-   const isModel=submenu.id==='wpModelMenu';let hoverTimer;
-   const select=(value=!item.classList.contains('wp-submenu-open'))=>{header.querySelectorAll('.wp-submenu-open').forEach(other=>{if(other!==item){other.classList.remove('wp-submenu-open');other.querySelector('[aria-expanded]')?.setAttribute('aria-expanded','false')}});item.classList.toggle('wp-submenu-open',value);control.setAttribute('aria-expanded',String(value));if(value&&isModel&&!mobile())previews()};
+   const isModel=submenu.id==='wpModelMenu',isNews=submenu.id==='wpNewsMenu',isPreview=isModel||isNews;let hoverTimer;
+   const select=(value=!item.classList.contains('wp-submenu-open'))=>{if(value)header.querySelectorAll('.wp-submenu-open').forEach(other=>{if(other!==item){other.classList.remove('wp-submenu-open');other.querySelector('[aria-expanded]')?.setAttribute('aria-expanded','false')}});item.classList.toggle('wp-submenu-open',value);control.setAttribute('aria-expanded',String(value));if(value&&isPreview&&!mobile())(isNews?newsPreviews:previews)()};
    control.onclick=event=>{event.preventDefault();clearTimeout(hoverTimer);select()};control.onkeydown=event=>{if([' ','ArrowDown'].includes(event.key)){event.preventDefault();if(!item.classList.contains('wp-submenu-open'))select();submenu.querySelector('a')?.focus()}};
-   if(isModel){
+   if(isPreview){
     const canHover=()=>!mobile()&&matchMedia('(hover:hover) and (pointer:fine)').matches;
     item.addEventListener('pointerenter',()=>{clearTimeout(hoverTimer);if(canHover())hoverTimer=setTimeout(()=>{if(canHover())select(true)},100)});
     item.addEventListener('pointerleave',()=>{clearTimeout(hoverTimer);if(canHover())hoverTimer=setTimeout(()=>{if(!submenu.contains(document.activeElement))select(false)},180)});
     link.addEventListener('focus',()=>{if(!mobile()){clearTimeout(hoverTimer);select(true)}});
-    item.addEventListener('focusout',event=>{if(!mobile()&&!item.contains(event.relatedTarget)){clearTimeout(hoverTimer);select(false)}});
+    item.addEventListener('focusout',event=>{if(updatingPreviewMenu!==submenu&&!mobile()&&!item.contains(event.relatedTarget)){clearTimeout(hoverTimer);select(false)}});
    }
   });
   nav.querySelectorAll('a:not([aria-haspopup])').forEach(link=>link.addEventListener('click',()=>open(false)));
@@ -60,7 +84,7 @@
    if(event.key==='Escape'){const item=document.activeElement?.closest('.wp-submenu-open')||header.querySelector('.wp-submenu-open');if(item){item.classList.remove('wp-submenu-open');const link=item.querySelector('[aria-expanded]');link.setAttribute('aria-expanded','false');link.focus()}else if(header.classList.contains('wp-menu-open'))open(false,true)}
    if(event.key==='Tab'&&mobile()&&header.classList.contains('wp-menu-open')){const items=[toggle,...nav.querySelectorAll('a,button')].filter(el=>el.offsetParent!==null),first=items[0],last=items.at(-1);if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}}
   });
-  document.addEventListener('click',event=>{if(!header.contains(event.target)){open(false);header.querySelectorAll('.wp-submenu-open').forEach(item=>{item.classList.remove('wp-submenu-open');item.querySelector('[aria-expanded]')?.setAttribute('aria-expanded','false')})}});
+  document.addEventListener('click',event=>{if(!event.composedPath().includes(header)){open(false);header.querySelectorAll('.wp-submenu-open').forEach(item=>{item.classList.remove('wp-submenu-open');item.querySelector('[aria-expanded]')?.setAttribute('aria-expanded','false')})}});
   function resize(){document.documentElement.style.setProperty('--wp-header-height',header.offsetHeight+'px')}
   breakpoint.addEventListener('change',()=>open(false));addEventListener('resize',resize);open(false);resize();if('ResizeObserver'in window)new ResizeObserver(()=>document.documentElement.style.setProperty('--wp-header-height',header.offsetHeight+'px')).observe(header);
   header.querySelectorAll('a').forEach(link=>{if(!new URL(link.href).hash&&!link.getAttribute('href').startsWith('#')&&new URL(link.href).pathname.replace(/\/$/,'')===location.pathname.replace(/\/$/,'')){link.setAttribute('aria-current','page');link.closest('li')?.classList.add('current-menu-item')}});
