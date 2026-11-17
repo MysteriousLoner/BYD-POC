@@ -2,7 +2,7 @@ const express = require('express');
 const fs = require('node:fs');
 const path = require('node:path');
 const { list, readJson } = require('./database');
-const { newsPage, storyCard } = require('./news-pages');
+const { newsPage, storyCard, publishedStories } = require('./news-pages');
 const router = express.Router();
 const directory = path.join(__dirname, '..', 'content', 'wordpress');
 const index = JSON.parse(fs.readFileSync(path.join(directory, 'index.json'), 'utf8'));
@@ -20,7 +20,7 @@ function template(name) { if (!cache.has(name)) cache.set(name, fs.readFileSync(
 function send(req, res, name, status = 200, story = null) {
   const vehicles = list('vehicles').filter(model => model.published === true);
   let html = template(name);
-  html = html.replace(/(\/(?:css\/(?:wordpress|model-showroom)\.css|js\/(?:wordpress|model-showroom)\.js))\?v=[^"\s]+/g, '$1?v=sime-menu-20261117');
+  html = html.replace(/(\/(?:css\/(?:wordpress|model-showroom)\.css|js\/(?:wordpress|model-showroom)\.js))\?v=[^"\s]+/g, '$1?v=home-news-20261117');
   const news = newsPage(name, readJson('news.json'));
   if (news) html = html.replace(/<main\b[^>]*>[\s\S]*?<\/main>/, news);
   if (story) {
@@ -34,7 +34,7 @@ function send(req, res, name, status = 200, story = null) {
   }
   html = html.replace(/<li\b[^>]*data-managed-model="([^"]+)"[^>]*>[\s\S]*?<\/li>/g, (markup,id) => vehicles.some(model => model.id === id) ? markup : '');
   html = html.replace(/<!--WP_NEWS:([^:]+):(\d+):(\d+)-->/g, (_,category,limit,columns) => {
-    const records = readJson('news.json').filter(record => record.published !== false && record.category === category).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+    const records = publishedStories(readJson('news.json'), category);
     return (Number(limit) ? records.slice(0,Number(limit)) : records).map(record=>storyCard(record,columns)).join('') || '<p class="wp-empty">No stories here yet. Please check back soon.</p>';
   });
   res.set('X-Robots-Tag','noindex, nofollow');

@@ -122,8 +122,21 @@ ss3-force-full-width{display:block!important;width:100%!important;transform:none
 .wp-story-page{max-width:960px}
 .wp-story-page .wp-story-image{display:block;width:100%;height:auto;max-height:640px;object-fit:contain;background:var(--wp-dark);margin:28px 0}
 .wp-story-page #wpFeatureContent>p{max-width:70ch;white-space:pre-line}
+/* Homepage FAQs use the same published articles as the news archive. */
+.wp-home-faq{background:var(--wp-dark);padding:80px 0}
+.wp-home-faq-content{width:90%;max-width:1200px;margin:0 auto}
+.wp-home-faq h2#home-faq-title{color:#fff;text-align:center;font:400 clamp(26px,3vw,35px)/1.35 var(--wp-display);letter-spacing:0;margin:0 0 32px;overflow-wrap:anywhere}
+.wp-home-faq .elementskit-post-image-card{background:#fff;color:var(--wp-ink)}
+.wp-home-faq .entry-title a,.wp-home-faq .elementskit-btn{color:var(--wp-ink)}
+.wp-home-faq .elementskit-post-excerpt,.wp-home-faq .post-meta-list{color:var(--wp-muted)}
+.wp-copy .wp-home-faq .elementskit-post-image-card .meta-date-text{color:var(--wp-muted)}
+.wp-home-faq .wp-news-grid>.wp-empty{color:#fff}
+.wp-home-faq-content>.wp-action.outline{margin-top:32px;border-color:#fff;color:#fff!important}
+.wp-home-faq-content>.wp-action.outline:hover{background:#fff;color:var(--wp-ink)!important}
+.wp-home-faq a:focus-visible{outline:3px solid var(--wp-focus);outline-offset:4px}
 @media(min-width:640px) and (max-width:1024px){.wp-copy .wp-news-grid.post-items{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:639px){
+ .wp-home-faq{padding:48px 0}
  .wp-news-hero{display:flex;flex-direction:column-reverse}
  .wp-news-hero-copy{position:static;padding:28px 5%;background:none;text-align:left}
  .wp-news-hero h1{font-size:28px;line-height:1.3}
