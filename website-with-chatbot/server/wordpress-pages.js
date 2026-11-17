@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('node:fs');
 const path = require('node:path');
 const { list, readJson } = require('./database');
+const { newsPage, storyCard } = require('./news-pages');
 const router = express.Router();
 const directory = path.join(__dirname, '..', 'content', 'wordpress');
 const index = JSON.parse(fs.readFileSync(path.join(directory, 'index.json'), 'utf8'));
@@ -16,15 +17,16 @@ for (const page of index.pages) {
 const cache = new Map();
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
 function template(name) { if (!cache.has(name)) cache.set(name, fs.readFileSync(path.join(directory, name + '.html'), 'utf8')); return cache.get(name); }
-function storyCard(record, columns) {
-  const url = '/stories/' + encodeURIComponent(record.id);
-  const date = /^\d{4}-\d{2}-\d{2}$/.test(record.date) ? new Date(record.date + 'T12:00:00+08:00').toLocaleDateString('en-MY',{day:'numeric',month:'long',year:'numeric',timeZone:'Asia/Kuala_Lumpur'}) : record.date;
-  return `<div class="col-lg-${columns} col-md-6"><div class="elementskit-post-image-card"><div class="elementskit-entry-header"><a href="${url}" class="elementskit-entry-thumb"><img src="${escape(record.image || '/assets/placeholder.svg')}" alt="${escape(record.title)}" loading="lazy" decoding="async"></a></div><div class="elementskit-post-body"><div class="post-meta-list"><span class="meta-date"><span class="meta-date-text">${escape(date)}</span></span></div><h2 class="entry-title"><a href="${url}">${escape(record.title)}</a></h2>${record.category === 'Article' ? `<p class="elementskit-post-excerpt">${escape(String(record.summary || '').slice(0,180))}</p>` : ''}<div class="btn-wraper"><a class="elementskit-btn whitespace--normal" href="${url}">Read more</a></div></div></div></div>`;
-}
-function send(req, res, name, status = 200) {
+function send(req, res, name, status = 200, story = null) {
   const vehicles = list('vehicles').filter(model => model.published === true);
   let html = template(name);
-  html = html.replace(/(\/(?:css\/(?:wordpress|model-showroom)\.css|js\/(?:wordpress|model-showroom)\.js))\?v=[^"\s]+/g, '$1?v=catalogue-20261117');
+  html = html.replace(/(\/(?:css\/(?:wordpress|model-showroom)\.css|js\/(?:wordpress|model-showroom)\.js))\?v=[^"\s]+/g, '$1?v=news-layout-20261117');
+  const news = newsPage(name, readJson('news.json'));
+  if (news) html = html.replace(/<main\b[^>]*>[\s\S]*?<\/main>/, news);
+  if (story) {
+    html = html.replace('data-feature="unavailable"', 'data-feature="story"').replace('class="wp-feature"', 'class="wp-feature wp-story-page"');
+    html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${escape(story.title)} – BYD Millennium Autobeyond</title>`).replace('<h1>PAGE NOT FOUND</h1>', `<h1>${escape(story.title)}</h1>`);
+  }
   if (name === 'detail') {
     const id = escape(req.params.id);
     html = html.replace('<!--WP_MODEL_TOOLBAR-->', `<section class="wp-model-toolbar" data-model="${id}"><label>Choose a model<select id="wpModelSwitcher" aria-label="Choose a model"><option>Loading models…</option></select></label><a class="wp-action outline" href="/compare">COMPARE MODELS</a><a class="wp-action" href="#register-section">REGISTER INTEREST</a></section>`);
@@ -51,8 +53,7 @@ router.get('/stories/:id', (req,res) => {
   if (!story) return send(req,res,'unavailable',404);
   const page = index.pages.find(page=>page.route === '/stories/' + req.params.id);
   if (page) return send(req,res,page.name);
-  let html=template('unavailable').replace('data-feature="unavailable"','data-feature="story"');
-  res.set('X-Robots-Tag','noindex, nofollow').type('html').send(html);
+  send(req,res,'unavailable',200,story);
 });
 router.get('*', (req,res,next) => {
   if (/^\/(api|admin|css|js|assets|uploads|server)(\/|\.|$)/.test(req.path)) return next();
