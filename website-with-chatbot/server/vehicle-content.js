@@ -1,4 +1,10 @@
-const { normalize, key } = require('../js/catalogue-data');
+const { normalize: catalogueNormalize, key } = require('../js/catalogue-data');
+const thumbnails = require('./data/model-thumbnails.json');
+function normalize(model) {
+  const result = catalogueNormalize(model);
+  const thumbnail = model.catalogueSource?.startsWith('sime-motors-') && thumbnails[model.id];
+  return thumbnail ? { ...result, thumbnail: thumbnail.image } : result;
+}
 const safeUrl = value => typeof value === 'string' && (/^https?:\/\/[^\s"'<>]+$/i.test(value) || /^\/(uploads|assets)\/[a-zA-Z0-9._/-]+$/.test(value) && !value.includes('..'));
 const text = (value, max = 5000) => {
   if (value === undefined || value === null) return '';

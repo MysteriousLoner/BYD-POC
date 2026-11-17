@@ -10,7 +10,7 @@
   const modelLink = model => '/models/' + encodeURIComponent(model.id);
   const enquiryLink = model => '/contact?model=' + encodeURIComponent(model.id) + '#register-section';
   const colours = model => model.colours.filter(colour => colour && Array.isArray(colour.images) && colour.images[0]);
-  const photograph = model => colours(model)[0]?.images[0] || model.images[0] || '';
+  const photograph = model => model.thumbnail || colours(model)[0]?.images[0] || model.images[0] || '';
   const fieldValue = field => [field.value, field.unit].filter(Boolean).join(' ');
   const announce = text => { const live = document.getElementById('discoveryLive'); if (live) live.textContent = text; };
 
@@ -59,7 +59,7 @@
   function swatches(model, selected) {
     const options = colours(model);
     if (!options.length) return '<p class="ds-colour-name">Vehicle gallery</p>';
-    return `<div class="ds-paint"><div class="ds-swatches" role="group" aria-label="${escape(model.name)} colours">${options.map((colour, index) => `<button type="button" class="ds-swatch" data-colour="${index}" style="--paint:${/^#[a-f0-9]{6}$/i.test(colour.swatch) ? colour.swatch : '#b9c5cb'}" aria-label="${escape(colour.name)}" aria-pressed="${index === selected}"><span></span></button>`).join('')}</div><p class="ds-colour-name">${escape(options[selected].name)}</p></div>`;
+    return `<div class="ds-paint"><div class="ds-swatches" role="group" aria-label="${escape(model.name)} colours">${options.map((colour, index) => `<button type="button" class="ds-swatch" data-colour="${index}" style="--paint:${/^#[a-f0-9]{6}$/i.test(colour.swatch) ? colour.swatch : '#b9c5cb'}" aria-label="${escape(colour.name)}" aria-pressed="${index === selected}"><span></span></button>`).join('')}</div><p class="ds-colour-name">${escape(options[selected]?.name || 'Select a colour')}</p></div>`;
   }
   function bindSwatches(card, model, memory) {
     card.querySelectorAll('[data-colour]').forEach(button => {
@@ -101,7 +101,7 @@
       const types = [...new Set(models.map(model => model.type).filter(Boolean))];
       content.innerHTML = `<div class="ds-introduction"><p>Find your colour. Get to know your BYD.</p><a class="ds-button" href="/compare">Compare models ${arrows}</a></div>
         <div class="ds-filter-bar"><div class="ds-filters" role="group" aria-label="Filter models by type"><button type="button" data-filter="" aria-pressed="true">All models <span>${models.length}</span></button>${types.map(type => `<button type="button" data-filter="${escape(type)}" aria-pressed="false">${escape(type)} <span>${models.filter(model => model.type === type).length}</span></button>`).join('')}</div><p class="ds-result-count" role="status" aria-live="polite"></p></div>
-        <div class="ds-model-grid wp-model-grid">${models.map(model => `<article class="ds-model-card wp-model-card" data-car="${escape(model.id)}"><a class="ds-model-photo-link" href="${modelLink(model)}" aria-label="Explore ${escape(model.name)}">${image(model)}</a><div class="ds-card-copy"><div class="ds-model-heading"><div><p class="ds-model-type">${escape(model.type)}</p><h2>${escape(model.name)}</h2></div><p class="ds-price">${escape(model.price)}</p></div>${swatches(model, 0)}${highlights(model)}<a class="ds-card-action" href="${modelLink(model)}">Explore model ${arrows}</a></div></article>`).join('')}</div>
+        <div class="ds-model-grid wp-model-grid">${models.map(model => `<article class="ds-model-card wp-model-card" data-car="${escape(model.id)}"><a class="ds-model-photo-link" href="${modelLink(model)}" aria-label="Explore ${escape(model.name)}">${image(model)}</a><div class="ds-card-copy"><div class="ds-model-heading"><div><p class="ds-model-type">${escape(model.type)}</p><h2>${escape(model.name)}</h2></div><p class="ds-price">${escape(model.price)}</p></div>${swatches(model, model.thumbnail ? -1 : 0)}${highlights(model)}<a class="ds-card-action" href="${modelLink(model)}">Explore model ${arrows}</a></div></article>`).join('')}</div>
         ${models.length ? '' : '<div class="ds-empty"><h2>The line-up is being updated.</h2><p>Please contact our team for current availability.</p><a class="ds-button" href="/contact">Contact our team</a></div>'}`;
       models.forEach(model => bindSwatches([...content.querySelectorAll('[data-car]')].find(card => card.dataset.car === model.id), model, paint));
       const cards = [...content.querySelectorAll('[data-car]')];

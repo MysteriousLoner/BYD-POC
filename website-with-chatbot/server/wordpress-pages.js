@@ -20,7 +20,7 @@ function template(name) { if (!cache.has(name)) cache.set(name, fs.readFileSync(
 function send(req, res, name, status = 200, story = null) {
   const vehicles = list('vehicles').filter(model => model.published === true);
   let html = template(name);
-  html = html.replace(/(\/(?:css\/(?:wordpress|model-showroom)\.css|js\/(?:wordpress|model-showroom)\.js))\?v=[^"\s]+/g, '$1?v=news-layout-20261117');
+  html = html.replace(/(\/(?:css\/(?:wordpress|model-showroom)\.css|js\/(?:wordpress|model-showroom)\.js))\?v=[^"\s]+/g, '$1?v=sime-menu-20261117');
   const news = newsPage(name, readJson('news.json'));
   if (news) html = html.replace(/<main\b[^>]*>[\s\S]*?<\/main>/, news);
   if (story) {

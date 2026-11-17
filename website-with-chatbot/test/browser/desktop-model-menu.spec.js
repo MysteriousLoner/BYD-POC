@@ -11,6 +11,7 @@ test('desktop hover opens image previews and stays open while choosing a vehicle
   await expect(nav.getByRole('link',{name:'HOME',exact:true})).toHaveCount(0);
   await nav.getByRole('link',{name:'MODEL',exact:true}).hover();await expect(menu.locator('.wp-model-preview-link')).toHaveCount(records.length);
   await expect(menu.locator('img').first()).toBeVisible();await expect(menu.locator('.wp-model-preview-price').first()).toHaveText(records[0].price);
+  for(const model of records)await expect(menu.locator(`[data-managed-model="${model.id}"] img`)).toHaveAttribute('src',require('../../server/data/model-thumbnails.json')[model.id].image);
   await expect(menu.locator('a').first()).toHaveAttribute('href','/models/'+records[0].id);
   await menu.locator('a').first().hover();await expect(menu).toBeVisible();
   const rect=await menu.boundingBox(),header=await page.locator('#masthead').boundingBox();expect(rect.x).toBe(0);expect(Math.round(rect.width)).toBe(width);expect(Math.abs(rect.y-header.height)).toBeLessThan(2);const first=await menu.locator(".wp-model-preview-link").nth(0).boundingBox(),third=await menu.locator(".wp-model-preview-link").nth(2).boundingBox();expect(third.x+third.width-first.x).toBeLessThanOrEqual(809);expect(Math.abs((first.x+third.x+third.width)/2-width/2)).toBeLessThan(2);expect(rect.height).toBeLessThanOrEqual(Math.min(361,height*.55+1));expect(rect.y+rect.height).toBeLessThan(height-60);expect(await menu.evaluate(el=>getComputedStyle(el).overflowY)).toMatch(/auto|scroll/);

@@ -1,0 +1,72 @@
+{
+  "seal6ev": {
+    "name": "BYD SEAL 6",
+    "href": "/models/byd-seal-6.html",
+    "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD_SEAL_6_EV_megamenu.jpg",
+    "id": "seal6ev",
+    "image": "/assets/sime-motors/menu/seal6ev.jpg",
+    "sha256": "53a94006ef110d97645b67c115d78102ef771a781c050067dcf049263af74cc6",
+    "bytes": 202871,
+    "transformation": "None — exact downloaded bytes."
+  },
+  "seal": {
+    "name": "THE NEW BYD SEAL",
+    "href": "/models/byd-seal.html",
+    "source": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-menu.webp",
+    "id": "seal",
+    "image": "/assets/sime-motors/menu/seal.webp",
+    "sha256": "103b654b6d617f3a8df7ca58830e31b9781a9f5c2963964867df5b34e212cbf6",
+    "bytes": 76122,
+    "transformation": "None — exact downloaded bytes."
+  },
+  "atto2": {
+    "name": "BYD ATTO 2",
+    "href": "/models/byd-atto-2.html",
+    "source": "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/atto2-megamenu.jpg",
+    "id": "atto2",
+    "image": "/assets/sime-motors/menu/atto2.jpg",
+    "sha256": "0a3ca5d0d11e80da54152d5375511b2979523aa67d658003f01bac03520ffce2",
+    "bytes": 440942,
+    "transformation": "None — exact downloaded bytes."
+  },
+  "byd-sea-lion": {
+    "name": "2026 BYD SEALION 7",
+    "href": "/byd-sealion-7",
+    "source": "https://byd.simemotors.my/pub/media/wysiwyg/sealion/sealion7-megamenu.jpg",
+    "id": "byd-sea-lion",
+    "image": "/assets/sime-motors/menu/byd-sea-lion.jpg",
+    "sha256": "48ae57fe8568341848a9983d64c6177b5a967c44697affe569391e869aabac8c",
+    "bytes": 38830,
+    "transformation": "None — exact downloaded bytes."
+  },
+  "m6": {
+    "name": "BYD M6",
+    "href": "/models/byd-m6.html",
+    "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/megamenu-m6.jpg",
+    "id": "m6",
+    "image": "/assets/sime-motors/menu/m6.jpg",
+    "sha256": "98d9e1f4b6922f1653c988bd3768fcd629fe8630ddb1b0f6312bef9cb3aa03d3",
+    "bytes": 597478,
+    "transformation": "None — exact downloaded bytes."
+  },
+  "atto3": {
+    "name": "BYD ATTO 3",
+    "href": "/byd-atto-3",
+    "source": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/byd-atto-3_resized.jpg",
+    "id": "atto3",
+    "image": "/assets/sime-motors/menu/atto3.jpg",
+    "sha256": "e495dd788e050992a83d4bb64712687f8e523ab21baf5fa83290e2946446acf7",
+    "bytes": 199425,
+    "transformation": "None — exact downloaded bytes."
+  },
+  "dolphin": {
+    "name": "BYD DOLPHIN",
+    "href": "/models/byd-dolphin.html",
+    "source": "https://byd.simemotors.my/pub/media/wysiwyg/v6/Menu_Dolphin.jpg",
+    "id": "dolphin",
+    "image": "/assets/sime-motors/menu/dolphin.jpg",
+    "sha256": "4d19740dcf9534b8c24542d6e9d9c0ca276324e211d861410643fd9c8b52399e",
+    "bytes": 56500,
+    "transformation": "None — exact downloaded bytes."
+  }
+}

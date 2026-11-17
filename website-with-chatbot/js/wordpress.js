@@ -30,7 +30,7 @@
     const focused=menu.contains(document.activeElement)?document.activeElement.getAttribute('href'):null;
     menu.innerHTML=items.filter(model=>model.published!==false).map(model=>{
      const name=model.catalogueSource?.startsWith('sime-motors-')?model.name:names.get(model.id)||model.name,current=location.pathname.replace(/\/$/,'')==='/models/'+encodeURIComponent(model.id);
-     return `<li class="menu-item" data-managed-model="${escape(model.id)}"><a class="hfe-sub-menu-item wp-model-preview-link" href="/models/${encodeURIComponent(model.id)}" aria-label="${escape(name)}"${current?' aria-current="page"':''}><span class="wp-model-preview-media"><img src="${escape(photo(model))}" alt="" decoding="async"></span><span class="wp-model-preview-name">${escape(name)}</span>${model.price?`<span class="wp-model-preview-price">${escape(model.price)}</span>`:''}</a></li>`;
+     return `<li class="menu-item" data-managed-model="${escape(model.id)}"><a class="hfe-sub-menu-item wp-model-preview-link" href="/models/${encodeURIComponent(model.id)}" aria-label="${escape(name)}"${current?' aria-current="page"':''}><span class="wp-model-preview-media"><img src="${escape(model.thumbnail||photo(model))}" alt="" decoding="async"></span><span class="wp-model-preview-name">${escape(name)}</span>${model.price?`<span class="wp-model-preview-price">${escape(model.price)}</span>`:''}</a></li>`;
     }).join('')||'<li class="wp-model-menu-feedback" role="status">The model range is being updated. Please check back soon.</li>';
     images(menu);
     // A late media response must not discard a visitor's keyboard focus.
