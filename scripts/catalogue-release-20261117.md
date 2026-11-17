@@ -1,6 +1,6 @@
 # Sime Motors catalogue replacement — 17 November 2026
 
-Based on production release `afaac3d`. Target: existing `byd-website` service on host port 8082, internal port 3000. This release is prepared for approval; it has not been deployed.
+Based on production release `afaac3d`. Target: existing `byd-website` service on host port 8082, internal port 3000. The user approved deployment in this chat. Commit `adbef18d2524ba00df19057e89199913725e71c3` was deployed on 17 November 2026 from the immutable checkout `/opt/byd-production-releases/adbef18`.
 
 ## Result
 
@@ -36,4 +36,13 @@ Read-only production inspection found nine stored vehicle records, six published
 
 All 27 backend tests passed, including explicit backup/replacement, stale-plan rejection, relationship preservation and retired-offer archival. The 36-test browser suite passed 34 initially; two old six-model/order assertions were updated and both passed on rerun. Additional scoped checks cover the full catalogue at 360/390/605/768/1440px, genuine colour selection, complete mobile paint access, unbroken variant names, aligned brake comparisons, gallery lightbox, model switching and enquiry forms. Source asset checks verified all 95 checksums/dimensions and provenance sidecars. The scoped Impeccable detector reported no findings in degraded regex mode; this is not a full accessibility audit or physical-device test.
 
-Local review uses a disposable database at http://127.0.0.1:4173/models and never loads production credentials or customer records. Production rollout still requires the user's approval under their AGENTS.md.
+Local review uses a disposable database at http://127.0.0.1:4173/models and never loads production credentials or customer records. The user granted the production approval required by their AGENTS.md before rollout.
+
+
+## Completed deployment verification
+
+The production image is `byd-production:adbef18`, with Docker health `healthy` and the existing 8082:3000 mapping. The production catalogue has exactly seven published records. All seven direct model pages, all 95 images and all seven official brochure URLs are available. SQLite integrity and foreign-key checks passed. Two retired models and their two offers were archived; the five retained offers remain linked to their existing model IDs.
+
+Before/after hashes confirmed unchanged branches, knowledge entries, campaigns, staff accounts/sessions, chat records, non-catalogue documents (including submissions) and upload files. The separate 8083 preview and every unrelated running container retained its original container ID and image.
+
+The approved replacement created a consistent SQLite snapshot and an upload archive. Host copies are retained under `/opt/byd-backups/releases/catalogue-adbef18/` as `catalogue-before.sqlite` and `uploads-before.tar.gz`, with file mode 0600 and parent directory mode 0700. The directory also contains the reviewed plan, apply result and before/after verification summaries. The previous `byd-production:afaac3d` image and its immutable source release remain available for rollback. Restore catalogue collections only if required; do not overwrite later customer submissions with a full database restore.
