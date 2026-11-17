@@ -48,7 +48,7 @@ test('MODEL opens catalogue directly on mobile and keeps its separate desktop ar
   const bounds=await arrow.boundingBox();expect(bounds.width).toBeGreaterThanOrEqual(44);expect(bounds.height).toBeGreaterThanOrEqual(44);
   await arrow.click();await expect(page).toHaveURL(/\/$/);await expect(arrow).toHaveAttribute('aria-expanded','true');await expect(nav.getByRole('link',{name:'BYD M6',exact:true})).toBeVisible();
   await page.screenshot({path:path.join(review,`menu-split-model-${width}.png`),animations:'disabled'});
-  await arrow.focus();await page.keyboard.press('Escape');await expect(arrow).toHaveAttribute('aria-expanded','false');await arrow.focus();await page.keyboard.press('ArrowDown');await expect(nav.getByRole('link',{name:'BYD SEALION',exact:true})).toBeFocused();
+  await arrow.focus();await page.keyboard.press('Escape');await expect(arrow).toHaveAttribute('aria-expanded','false');await arrow.focus();await page.keyboard.press('ArrowDown');await expect(nav.getByRole('link',{name:'BYD SEAL 6',exact:true})).toBeFocused();
   await link.focus();await page.keyboard.press('Enter');await expect(page).toHaveURL(/\/models$/);await expect(page.locator('.wp-model-card').first()).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  }

@@ -90,7 +90,8 @@
       return rank(a) - rank(b);
     }).slice(0, 3);
     if (!selected.length) return '<p class="ds-card-guidance">Explore this model or ask our team for specifications.</p>';
-    return `<dl class="ds-highlights">${selected.map(field => `<div><dt>${escape(field.label)}</dt><dd>${escape(fieldValue(field))}</dd></div>`).join('')}</dl>`;
+    const qualified = selected.some(field => String(field.value).includes(':'));
+    return `<dl class="ds-highlights${qualified ? ' has-variant-values' : ''}">${selected.map(field => `<div><dt>${escape(field.label)}</dt><dd>${escape(fieldValue(field))}</dd></div>`).join('')}</dl>`;
   }
   async function catalogue() {
     const content = mount();

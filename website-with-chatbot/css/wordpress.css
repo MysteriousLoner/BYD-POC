@@ -72,3 +72,23 @@ ss3-force-full-width{display:block!important;width:100%!important;transform:none
 }
 
 @media(min-width:1025px) and (max-width:1200px){.wp-copy #masthead .elementor-button{padding-inline:16px;font-size:11px;letter-spacing:0;white-space:nowrap}}
+
+/* Current managed catalogue details inherit the public WordPress identity. */
+.wp-catalogue-paint{min-width:0;justify-items:stretch!important;gap:12px!important}
+.wp-catalogue-paint>img{width:100%;height:auto;aspect-ratio:16/9;object-fit:contain}
+.wp-catalogue-paint>p{margin:0;text-align:center;min-height:1.7em}
+.wp-catalogue-colours{display:flex;flex-wrap:wrap;justify-content:center;gap:4px}
+.wp-catalogue-colours button{display:grid;place-items:center;width:44px;height:44px;padding:9px;border:0;background:transparent;cursor:pointer}
+.wp-catalogue-colours button>span{width:24px;height:24px;border:1px solid #73777a;border-radius:50%}
+.wp-catalogue-colours button[aria-pressed=true]>span{outline:2px solid var(--wp-ink);outline-offset:3px}
+.wp-catalogue-colours button:hover>span{outline:1px solid var(--wp-ink);outline-offset:3px}
+.wp-catalogue-colours button:focus-visible{outline:2px solid var(--wp-focus);outline-offset:0}
+.wp-catalogue-gallery{padding:36px 0}
+.wp-catalogue-gallery>div{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.wp-catalogue-gallery a{display:block;min-width:0}
+.wp-catalogue-gallery img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.wp-dynamic-detail>div,.wp-spec-group dt,.wp-spec-group dd{min-width:0;overflow-wrap:anywhere}
+@media(max-width:767px){.wp-catalogue-gallery>div{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+.wp-catalogue-enquiry{background:var(--wp-dark);color:#fff;padding:36px;box-sizing:border-box;margin-bottom:42px}
+.wp-catalogue-enquiry>h2{color:#fff}
+@media(max-width:767px){.wp-catalogue-enquiry{padding:24px 18px}}

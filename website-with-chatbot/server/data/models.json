@@ -1,81 +1,104 @@
 [
   {
-    "id": "byd-sea-lion",
-    "name": "BYD SEALION 7",
-    "type": "Electric SUV",
-    "price": "From RM 163,800",
-    "description": "An electric SUV with a panoramic roof, rotating touchscreen and BYD Blade Battery. Specifications shown are for the Premium and Performance variants in the 2024 brochure; check with our team for current model-year details.",
+    "id": "seal6ev",
+    "name": "BYD SEAL 6",
+    "type": "Electric sedan",
+    "price": "From RM 100,000",
+    "description": "A rear-wheel-drive electric sedan with a 56.64 kWh Blade Battery, a 460-litre boot and a 65-litre front luggage compartment. Available in Dynamic and Premium variants. Colour and equipment availability vary by variant.",
     "published": true,
     "badge": "",
     "videoUrl": "",
-    "image": "/assets/wordpress/catalogue/b0e90bcea3a7c2ae.webp",
+    "image": "/assets/sime-motors/1a1d2426b0e62dcf.webp",
     "images": [
-      "/assets/wordpress/catalogue/b0e90bcea3a7c2ae.webp",
-      "/assets/wordpress/catalogue/2fa94369466e1b24.webp",
-      "/assets/wordpress/catalogue/230e97a7d3b8a924.webp",
-      "/assets/wordpress/catalogue/1c8f1aa809afb7a0.webp"
+      "/assets/sime-motors/1a1d2426b0e62dcf.webp",
+      "/assets/sime-motors/34c19a892bd8d80a.webp",
+      "/assets/sime-motors/4708fbe67c1cebd2.webp",
+      "/assets/sime-motors/8bcdb2c4472d5153.webp",
+      "/assets/sime-motors/f6d0d23717f63d52.webp",
+      "/assets/sime-motors/ce89df4230354d44.webp",
+      "/assets/sime-motors/e449653e733b20b4.webp",
+      "/assets/sime-motors/0d98c04a97b3f9ef.webp",
+      "/assets/sime-motors/3bfae754e06430a4.webp",
+      "/assets/sime-motors/6da849bb938c4a2e.webp",
+      "/assets/sime-motors/f9a9d2528881980b.webp",
+      "/assets/sime-motors/70d78c4a589ca672.webp",
+      "/assets/sime-motors/b0ca087d721731e9.webp"
     ],
     "colours": [
       {
-        "id": "atlantis-grey",
-        "name": "Atlantis Grey",
-        "swatch": "#556f85",
+        "id": "arctic-white",
+        "name": "Arctic White",
+        "swatch": "#ebebea",
         "images": [
-          "/assets/wordpress/catalogue/b0e90bcea3a7c2ae.webp"
+          "/assets/sime-motors/1a1d2426b0e62dcf.webp"
         ]
       },
       {
-        "id": "aurora-white",
-        "name": "Aurora White",
-        "swatch": "#e5e6e2",
+        "id": "harbour-grey",
+        "name": "Harbour Grey",
+        "swatch": "#6e7478",
         "images": [
-          "/assets/wordpress/catalogue/2fa94369466e1b24.webp"
+          "/assets/sime-motors/34c19a892bd8d80a.webp"
         ]
       },
       {
-        "id": "cosmos-black",
-        "name": "Cosmos Black",
-        "swatch": "#1b1b1b",
+        "id": "misty-blue",
+        "name": "Misty Blue",
+        "swatch": "#8babbc",
         "images": [
-          "/assets/wordpress/catalogue/230e97a7d3b8a924.webp"
+          "/assets/sime-motors/4708fbe67c1cebd2.webp"
         ]
       },
       {
-        "id": "shark-grey",
-        "name": "Shark Grey",
-        "swatch": "#767c80",
+        "id": "ivory-gold",
+        "name": "Ivory Gold",
+        "swatch": "#d8cdb4",
         "images": [
-          "/assets/wordpress/catalogue/1c8f1aa809afb7a0.webp"
+          "/assets/sime-motors/8bcdb2c4472d5153.webp"
         ]
       }
     ],
     "specifications": [
       {
+        "key": "variants",
+        "label": "Variants",
+        "value": "Dynamic / Premium",
+        "unit": "",
+        "group": "Model"
+      },
+      {
         "key": "range",
-        "label": "Driving range (NEDC; Premium / Performance)",
-        "value": "567 / 542",
+        "label": "Driving range (NEDC)",
+        "value": "485",
         "unit": "km",
         "group": "Performance & battery"
       },
       {
         "key": "acceleration",
-        "label": "0–100 km/h (Premium / Performance)",
-        "value": "6.7 / 4.5",
+        "label": "0–100 km/h",
+        "value": "Dynamic: 10.9; Premium: 7.5",
         "unit": "s",
         "group": "Performance & battery"
       },
       {
         "key": "power",
-        "label": "Maximum power (Premium / Performance)",
-        "value": "230 / 390",
+        "label": "Motor power",
+        "value": "Dynamic: 95; Premium: 160",
         "unit": "kW",
         "group": "Performance & battery"
       },
       {
         "key": "battery",
         "label": "Battery capacity",
-        "value": "82.5",
+        "value": "56.64",
         "unit": "kWh",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "torque",
+        "label": "Maximum torque",
+        "value": "Dynamic: 220; Premium: 330",
+        "unit": "N·m",
         "group": "Performance & battery"
       },
       {
@@ -88,28 +111,28 @@
       {
         "key": "length",
         "label": "Length",
-        "value": "4830",
+        "value": "4,720",
         "unit": "mm",
         "group": "Dimensions"
       },
       {
         "key": "width",
         "label": "Width",
-        "value": "1925",
+        "value": "1,860",
         "unit": "mm",
         "group": "Dimensions"
       },
       {
         "key": "height",
         "label": "Height",
-        "value": "1620",
+        "value": "1,495",
         "unit": "mm",
         "group": "Dimensions"
       },
       {
         "key": "wheelbase",
         "label": "Wheelbase",
-        "value": "2930",
+        "value": "2,820",
         "unit": "mm",
         "group": "Dimensions"
       },
@@ -121,193 +144,315 @@
         "group": "Dimensions"
       },
       {
-        "key": "drivetrain",
-        "label": "Drivetrain (Premium / Performance)",
-        "value": "Rear-wheel / All-wheel drive",
+        "key": "wheel-track",
+        "label": "Wheel track (front / rear)",
+        "value": "1,610 / 1,610",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "ground-clearance-unladen",
+        "label": "Ground clearance unladen",
+        "value": "165",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "motor-type",
+        "label": "Motor Type",
+        "value": "Permanent magnet synchronous motor",
         "unit": "",
         "group": "Performance & battery"
+      },
+      {
+        "key": "front-suspension",
+        "label": "Front suspension",
+        "value": "Macpherson strut",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "rear-suspension",
+        "label": "Rear suspension",
+        "value": "Multi-link",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "front-brake",
+        "label": "Front brake",
+        "value": "Ventilated disc",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "rear-brake",
+        "label": "Rear brake",
+        "value": "Disc",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "wheel-type",
+        "label": "Wheel type",
+        "value": "Alloy",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "tyre-size",
+        "label": "Tyre size",
+        "value": "Dynamic: 225/55 R17; Premium: 225/50 R18",
+        "unit": "",
+        "group": "Chassis & wheels"
       }
     ],
-    "sourceUrl": "https://millenniumautobyd.com.my/home/byd-sealion/"
+    "sourceUrl": "https://byd.simemotors.my/models/byd-seal-6.html",
+    "brochureUrl": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_SEAL_6_Brochure.pdf",
+    "catalogueSource": "sime-motors-20261117",
+    "range": "485 km",
+    "acceleration": "Dynamic: 10.9; Premium: 7.5 s",
+    "power": "Dynamic: 95; Premium: 160 kW",
+    "battery": "56.64 kWh"
   },
   {
-    "id": "seal6ev",
-    "name": "BYD SEAL 6 EV",
+    "id": "seal",
+    "name": "THE NEW BYD SEAL",
     "type": "Electric sedan",
-    "price": "From RM 100,000",
-    "description": "An electric sedan with a 15.6-inch rotating screen, rear-wheel drive and front and rear luggage compartments.",
+    "price": "From RM 171,800",
+    "description": "An electric sports sedan with an 82.56 kWh Blade Battery. Choose Premium rear-wheel drive or Performance all-wheel drive. Colour and equipment availability vary by variant.",
     "published": true,
     "badge": "",
     "videoUrl": "",
-    "image": "/assets/wordpress/catalogue/abee6027380b48b6.webp",
+    "image": "/assets/sime-motors/ffcd9d2f396873e3.webp",
     "images": [
-      "/assets/wordpress/catalogue/abee6027380b48b6.webp",
-      "/assets/wordpress/catalogue/86dd39c6a525c87a.webp",
-      "/assets/wordpress/catalogue/76276fb12eb868eb.webp"
+      "/assets/sime-motors/ffcd9d2f396873e3.webp",
+      "/assets/sime-motors/990dc4f9ee28d1c2.webp",
+      "/assets/sime-motors/9608cb3db45fa9ea.webp",
+      "/assets/sime-motors/9de5f662fff095d6.webp",
+      "/assets/sime-motors/280fb0059089595d.webp",
+      "/assets/sime-motors/4654ebdbf77f893a.webp",
+      "/assets/sime-motors/ce374cf920636cc4.webp",
+      "/assets/sime-motors/39d841405d3370da.webp",
+      "/assets/sime-motors/49f2d27641337f36.webp",
+      "/assets/sime-motors/a7161a07c208bfbd.webp",
+      "/assets/sime-motors/d956b79fde8616ac.webp",
+      "/assets/sime-motors/594c3c03073b1b56.webp",
+      "/assets/sime-motors/85a48676b74acba4.webp",
+      "/assets/sime-motors/77e4adeb325c4879.webp",
+      "/assets/sime-motors/792cad947e3a8a38.webp",
+      "/assets/sime-motors/65f5af617a6d1318.webp"
     ],
     "colours": [
       {
-        "id": "arctic-white",
-        "name": "Arctic White",
-        "swatch": "#e7e8e6",
+        "id": "cosmos-black",
+        "name": "Cosmos Black",
+        "swatch": "#202326",
         "images": [
-          "/assets/wordpress/catalogue/abee6027380b48b6.webp"
+          "/assets/sime-motors/ffcd9d2f396873e3.webp",
+          "/assets/sime-motors/990dc4f9ee28d1c2.webp"
         ]
       },
       {
-        "id": "harbour-grey",
-        "name": "Harbour Grey",
-        "swatch": "#6b6e70",
+        "id": "atlantis-grey",
+        "name": "Atlantis Grey",
+        "swatch": "#76838c",
         "images": [
-          "/assets/wordpress/catalogue/86dd39c6a525c87a.webp"
+          "/assets/sime-motors/9608cb3db45fa9ea.webp",
+          "/assets/sime-motors/9de5f662fff095d6.webp"
         ]
       },
       {
-        "id": "misty-blue",
-        "name": "Misty Blue",
-        "swatch": "#879cac",
+        "id": "aurora-white",
+        "name": "Aurora White",
+        "swatch": "#e8e9e7",
         "images": [
-          "/assets/wordpress/catalogue/76276fb12eb868eb.webp"
+          "/assets/sime-motors/280fb0059089595d.webp",
+          "/assets/sime-motors/4654ebdbf77f893a.webp"
+        ]
+      },
+      {
+        "id": "shark-grey",
+        "name": "Shark Grey",
+        "swatch": "#777d83",
+        "images": [
+          "/assets/sime-motors/ce374cf920636cc4.webp",
+          "/assets/sime-motors/39d841405d3370da.webp"
         ]
       }
     ],
     "specifications": [
       {
+        "key": "variants",
+        "label": "Variants",
+        "value": "Premium / Performance",
+        "unit": "",
+        "group": "Model"
+      },
+      {
+        "key": "range",
+        "label": "Driving range (NEDC)",
+        "value": "Premium: 650; Performance: 580",
+        "unit": "km",
+        "group": "Performance & battery"
+      },
+      {
         "key": "acceleration",
         "label": "0–100 km/h",
-        "value": "7.5",
+        "value": "Premium: 5.9; Performance: 3.8",
         "unit": "s",
         "group": "Performance & battery"
       },
       {
         "key": "power",
-        "label": "Maximum power",
-        "value": "160",
+        "label": "Motor power",
+        "value": "Premium: 230; Performance: 390",
         "unit": "kW",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "battery",
+        "label": "Battery capacity",
+        "value": "82.56",
+        "unit": "kWh",
         "group": "Performance & battery"
       },
       {
         "key": "torque",
         "label": "Maximum torque",
-        "value": "330",
-        "unit": "Nm",
-        "group": "Performance & battery"
-      },
-      {
-        "key": "battery",
-        "label": "Battery",
-        "value": "BYD Blade Battery",
-        "unit": "",
+        "value": "Premium: 360; Performance: 670",
+        "unit": "N·m",
         "group": "Performance & battery"
       },
       {
         "key": "drivetrain",
         "label": "Drivetrain",
-        "value": "Rear-wheel drive",
+        "value": "Premium: Rear-wheel drive; Performance: All-wheel drive",
         "unit": "",
         "group": "Performance & battery"
       },
       {
-        "key": "rear-storage",
-        "label": "Rear luggage capacity",
-        "value": "460",
-        "unit": "L",
+        "key": "length",
+        "label": "Length",
+        "value": "4,800",
+        "unit": "mm",
         "group": "Dimensions"
       },
       {
-        "key": "front-storage",
-        "label": "Front luggage capacity",
-        "value": "65",
-        "unit": "L",
+        "key": "width",
+        "label": "Width",
+        "value": "1,875",
+        "unit": "mm",
         "group": "Dimensions"
       },
       {
-        "key": "display",
-        "label": "Central display",
-        "value": "15.6",
-        "unit": "in",
-        "group": "Interior"
-      }
-    ],
-    "sourceUrl": "https://millenniumautobyd.com.my/home/byd-seal-2025/"
-  },
-  {
-    "id": "seal",
-    "name": "BYD SEAL",
-    "type": "Electric sedan",
-    "price": "From RM 171,800",
-    "description": "An electric sedan with BYD Blade Battery and Cell-to-Body technology.",
-    "published": true,
-    "badge": "",
-    "videoUrl": "",
-    "image": "/assets/wordpress/catalogue/0f5869acb9f7aff8.webp",
-    "images": [
-      "/assets/wordpress/catalogue/0f5869acb9f7aff8.webp",
-      "/assets/wordpress/catalogue/476d83ae5cd28b52.webp"
-    ],
-    "colours": [
+        "key": "height",
+        "label": "Height",
+        "value": "1,460",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
       {
-        "id": "shark-grey",
-        "name": "Shark Grey",
-        "swatch": "#858a8e",
-        "images": [
-          "/assets/wordpress/catalogue/0f5869acb9f7aff8.webp"
-        ]
-      }
-    ],
-    "specifications": [
+        "key": "wheelbase",
+        "label": "Wheelbase",
+        "value": "2,920",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
       {
-        "key": "battery",
-        "label": "Battery",
-        "value": "BYD Blade Battery",
+        "key": "kerb-weight",
+        "label": "Kerb weight",
+        "value": "Premium: 2,055; Performance: 2,185",
+        "unit": "kg",
+        "group": "Dimensions"
+      },
+      {
+        "key": "adaption-control-itac",
+        "label": "Adaption Control (ITAC)",
+        "value": "Premium: No; Performance: Yes",
         "unit": "",
-        "group": "Performance & battery"
+        "group": "Equipment"
+      },
+      {
+        "key": "rear-suspension",
+        "label": "Rear Suspension",
+        "value": "Multi-link",
+        "unit": "",
+        "group": "Chassis & wheels"
       }
     ],
-    "sourceUrl": "https://millenniumautobyd.com.my/home/byd-seal-2025-2/"
+    "sourceUrl": "https://byd.simemotors.my/models/byd-seal.html",
+    "brochureUrl": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_NEW_SEAL_Brochure.pdf",
+    "catalogueSource": "sime-motors-20261117",
+    "range": "Premium: 650; Performance: 580 km",
+    "acceleration": "Premium: 5.9; Performance: 3.8 s",
+    "power": "Premium: 230; Performance: 390 kW",
+    "battery": "82.56 kWh"
   },
   {
     "id": "atto2",
     "name": "BYD ATTO 2",
     "type": "Electric SUV",
     "price": "From RM 100,000",
-    "description": "A compact electric SUV with a rotatable screen and BYD Blade Battery.",
+    "description": "A compact electric SUV with a 51.13 kWh Blade Battery, five seats and a 410 km NEDC driving range. Available in the Premium variant. Colour and equipment availability vary by variant.",
     "published": true,
     "badge": "",
     "videoUrl": "",
-    "image": "/assets/wordpress/catalogue/bbb926c0d51ebaf6.webp",
+    "image": "/assets/sime-motors/013641864c87d88b.webp",
     "images": [
-      "/assets/wordpress/catalogue/bbb926c0d51ebaf6.webp",
-      "/assets/wordpress/catalogue/f030dc1b440c10fc.webp",
-      "/assets/wordpress/catalogue/b64d5496bc9d7ec2.webp"
+      "/assets/sime-motors/013641864c87d88b.webp",
+      "/assets/sime-motors/26fa6c12bf3fb4d5.webp",
+      "/assets/sime-motors/3cc9768e1e1d423e.webp",
+      "/assets/sime-motors/329d8a96a38820fc.webp",
+      "/assets/sime-motors/bcc9d64472e841cd.webp",
+      "/assets/sime-motors/5a791dd320577729.webp",
+      "/assets/sime-motors/9a0e68c8d0aa41c8.webp",
+      "/assets/sime-motors/94a55a575e2629a4.webp",
+      "/assets/sime-motors/c8eab0ac4ae1b98e.webp",
+      "/assets/sime-motors/6d636312f5c07e06.webp",
+      "/assets/sime-motors/dbeaea90717c72e3.webp"
     ],
     "colours": [
       {
-        "id": "white",
-        "name": "White",
-        "swatch": "#e9e9e5",
+        "id": "ski-white",
+        "name": "Ski White",
+        "swatch": "#e6e8e6",
         "images": [
-          "/assets/wordpress/catalogue/bbb926c0d51ebaf6.webp"
+          "/assets/sime-motors/013641864c87d88b.webp"
         ]
       },
       {
-        "id": "black",
-        "name": "Black",
-        "swatch": "#222222",
+        "id": "harbour-grey",
+        "name": "Harbour Grey",
+        "swatch": "#6e7478",
         "images": [
-          "/assets/wordpress/catalogue/f030dc1b440c10fc.webp"
+          "/assets/sime-motors/26fa6c12bf3fb4d5.webp"
         ]
       },
       {
-        "id": "green",
-        "name": "Green",
-        "swatch": "#718578",
+        "id": "breeze-green",
+        "name": "Breeze Green",
+        "swatch": "#a6b8ac",
         "images": [
-          "/assets/wordpress/catalogue/b64d5496bc9d7ec2.webp"
+          "/assets/sime-motors/3cc9768e1e1d423e.webp"
         ]
       }
     ],
     "specifications": [
+      {
+        "key": "variants",
+        "label": "Variants",
+        "value": "Premium",
+        "unit": "",
+        "group": "Model"
+      },
+      {
+        "key": "range",
+        "label": "Driving range (NEDC)",
+        "value": "410",
+        "unit": "km",
+        "group": "Performance & battery"
+      },
       {
         "key": "acceleration",
         "label": "0–100 km/h",
@@ -317,152 +462,23 @@
       },
       {
         "key": "power",
-        "label": "Maximum power",
+        "label": "Motor power",
         "value": "130",
         "unit": "kW",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "battery",
+        "label": "Battery capacity",
+        "value": "51.13",
+        "unit": "kWh",
         "group": "Performance & battery"
       },
       {
         "key": "torque",
         "label": "Maximum torque",
         "value": "290",
-        "unit": "Nm",
-        "group": "Performance & battery"
-      },
-      {
-        "key": "battery",
-        "label": "Battery",
-        "value": "BYD Blade Battery",
-        "unit": "",
-        "group": "Performance & battery"
-      }
-    ],
-    "sourceUrl": "https://millenniumautobyd.com.my/home/byd-atto-2/"
-  },
-  {
-    "id": "atto3",
-    "name": "BYD ATTO 3",
-    "type": "Electric SUV",
-    "price": "Contact for pricing",
-    "description": "An electric SUV with BYD Blade Battery, rotating touchscreen and panoramic roof. Figures can vary by variant; contact our team for current details.",
-    "published": true,
-    "badge": "",
-    "videoUrl": "",
-    "image": "/assets/wordpress/catalogue/6ee37f093dcae0a5.webp",
-    "images": [
-      "/assets/wordpress/catalogue/6ee37f093dcae0a5.webp",
-      "/assets/wordpress/catalogue/a5e8851e8b7a184e.webp"
-    ],
-    "colours": [],
-    "specifications": [
-      {
-        "key": "range",
-        "label": "Driving range (NEDC)",
-        "value": "600",
-        "unit": "km",
-        "group": "Performance & battery"
-      },
-      {
-        "key": "acceleration",
-        "label": "0–100 km/h",
-        "value": "5.5",
-        "unit": "s",
-        "group": "Performance & battery"
-      },
-      {
-        "key": "power",
-        "label": "Maximum power",
-        "value": "230",
-        "unit": "kW",
-        "group": "Performance & battery"
-      },
-      {
-        "key": "battery",
-        "label": "Battery",
-        "value": "BYD Blade Battery",
-        "unit": "",
-        "group": "Performance & battery"
-      }
-    ],
-    "sourceUrl": "https://millenniumautobyd.com.my/home/atto3/"
-  },
-  {
-    "id": "m6",
-    "name": "BYD M6",
-    "type": "Electric 7-seater",
-    "price": "From RM 109,800",
-    "description": "A seven-seat electric vehicle with a flat rear floor and BYD Blade Battery. Figures are shown for Standard and Extended variants.",
-    "published": true,
-    "badge": "",
-    "videoUrl": "",
-    "image": "/assets/wordpress/catalogue/9e9223a1fd8c72cb.webp",
-    "images": [
-      "/assets/wordpress/catalogue/9e9223a1fd8c72cb.webp",
-      "/assets/wordpress/catalogue/38a2103a29c53c3e.webp",
-      "/assets/wordpress/catalogue/548abd8a5771004c.webp",
-      "/assets/wordpress/catalogue/be8e8bb5314678b7.webp"
-    ],
-    "colours": [
-      {
-        "id": "crystal-white",
-        "name": "Crystal White",
-        "swatch": "#eeeeeb",
-        "images": [
-          "/assets/wordpress/catalogue/9e9223a1fd8c72cb.webp"
-        ]
-      },
-      {
-        "id": "ink-stone-blue",
-        "name": "Ink Stone Blue",
-        "swatch": "#4a617b",
-        "images": [
-          "/assets/wordpress/catalogue/38a2103a29c53c3e.webp"
-        ]
-      },
-      {
-        "id": "cosmos-black",
-        "name": "Cosmos Black",
-        "swatch": "#1d1f20",
-        "images": [
-          "/assets/wordpress/catalogue/548abd8a5771004c.webp"
-        ]
-      },
-      {
-        "id": "harbour-grey",
-        "name": "Harbour Grey",
-        "swatch": "#777c7e",
-        "images": [
-          "/assets/wordpress/catalogue/be8e8bb5314678b7.webp"
-        ]
-      }
-    ],
-    "specifications": [
-      {
-        "key": "range",
-        "label": "Driving range (NEDC; Standard / Extended)",
-        "value": "420 / 530",
-        "unit": "km",
-        "group": "Performance & battery"
-      },
-      {
-        "key": "acceleration",
-        "label": "0–100 km/h (Standard / Extended)",
-        "value": "10.1 / 8.6",
-        "unit": "s",
-        "group": "Performance & battery"
-      },
-      {
-        "key": "power",
-        "label": "Maximum power (Standard / Extended)",
-        "value": "120 / 150",
-        "unit": "kW",
-        "group": "Performance & battery"
-      },
-      {
-        "key": "battery",
-        "label": "Battery capacity (Standard / Extended)",
-        "value": "55.4 / 71.8",
-        "unit": "kWh",
+        "unit": "N·m",
         "group": "Performance & battery"
       },
       {
@@ -473,11 +489,793 @@
         "group": "Performance & battery"
       },
       {
+        "key": "length",
+        "label": "Length",
+        "value": "4,310",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "width",
+        "label": "Width",
+        "value": "1,830",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "height",
+        "label": "Height",
+        "value": "1,675",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "wheelbase",
+        "label": "Wheelbase",
+        "value": "2,620",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "seating",
+        "label": "Seats",
+        "value": "5",
+        "unit": "",
+        "group": "Dimensions"
+      },
+      {
+        "key": "wheel-track",
+        "label": "Wheel track (front / rear)",
+        "value": "1,570 / 1,570",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "ground-clearance-laden",
+        "label": "Ground clearance laden",
+        "value": "150",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "motor-type",
+        "label": "Motor Type",
+        "value": "Permanent magnet synchronous motor",
+        "unit": "",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "front-suspension",
+        "label": "Front suspension",
+        "value": "Macpherson strut",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "rear-suspension",
+        "label": "Rear suspension",
+        "value": "Torsion Beam",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "front-brake",
+        "label": "Front brake",
+        "value": "Ventilated disc",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "rear-brake",
+        "label": "Rear brake",
+        "value": "Disc",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "wheel-type",
+        "label": "Wheel type",
+        "value": "Alloy",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "tyre-size",
+        "label": "Tyre size",
+        "value": "215/60 R17",
+        "unit": "",
+        "group": "Chassis & wheels"
+      }
+    ],
+    "sourceUrl": "https://byd.simemotors.my/models/byd-atto-2.html",
+    "brochureUrl": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_ATTO_2_Brochure.pdf",
+    "catalogueSource": "sime-motors-20261117",
+    "range": "410 km",
+    "acceleration": "7.9 s",
+    "power": "130 kW",
+    "battery": "51.13 kWh"
+  },
+  {
+    "id": "atto3",
+    "name": "BYD ATTO 3",
+    "type": "Electric SUV",
+    "price": "From RM 125,800",
+    "description": "A five-seat electric SUV offered in Ultra, Premium and Performance variants. Battery capacity, drivetrain and charging capability differ by variant. Colour and equipment availability vary by variant.",
+    "published": true,
+    "badge": "",
+    "videoUrl": "",
+    "image": "/assets/sime-motors/15f7ada300dd34c0.webp",
+    "images": [
+      "/assets/sime-motors/15f7ada300dd34c0.webp",
+      "/assets/sime-motors/88f2547c0a435db6.webp",
+      "/assets/sime-motors/fa0a0a7847d36c7d.webp",
+      "/assets/sime-motors/1eea6cc8935050e7.webp",
+      "/assets/sime-motors/69969d72a1a04fec.webp",
+      "/assets/sime-motors/88df96dfd54103c9.webp",
+      "/assets/sime-motors/addbaf96238fb838.webp",
+      "/assets/sime-motors/497a84feddcecd5a.webp",
+      "/assets/sime-motors/c20407c5214fb77e.webp",
+      "/assets/sime-motors/f478a86619281e55.webp",
+      "/assets/sime-motors/87c6952f0495ab0f.webp",
+      "/assets/sime-motors/96b0d71cbe17e0b7.webp",
+      "/assets/sime-motors/44dc8bc37dd2f1bf.webp",
+      "/assets/sime-motors/a17af2640fe7747d.webp"
+    ],
+    "colours": [
+      {
+        "id": "ski-white",
+        "name": "Ski White",
+        "swatch": "#e6e8e6",
+        "images": [
+          "/assets/sime-motors/15f7ada300dd34c0.webp"
+        ]
+      },
+      {
+        "id": "atlantis-grey",
+        "name": "Atlantis Grey",
+        "swatch": "#76838c",
+        "images": [
+          "/assets/sime-motors/88f2547c0a435db6.webp"
+        ]
+      },
+      {
+        "id": "harbour-grey",
+        "name": "Harbour Grey",
+        "swatch": "#6e7478",
+        "images": [
+          "/assets/sime-motors/fa0a0a7847d36c7d.webp"
+        ]
+      },
+      {
+        "id": "cosmos-black",
+        "name": "Cosmos Black",
+        "swatch": "#202326",
+        "images": [
+          "/assets/sime-motors/1eea6cc8935050e7.webp"
+        ]
+      },
+      {
+        "id": "gemilang-blue",
+        "name": "Gemilang Blue",
+        "swatch": "#28488b",
+        "images": [
+          "/assets/sime-motors/69969d72a1a04fec.webp"
+        ]
+      }
+    ],
+    "specifications": [
+      {
+        "key": "variants",
+        "label": "Variants",
+        "value": "Ultra / Premium / Performance",
+        "unit": "",
+        "group": "Model"
+      },
+      {
+        "key": "range",
+        "label": "Driving range (NEDC)",
+        "value": "Ultra: 480; Premium: 600; Performance: 530",
+        "unit": "km",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "acceleration",
+        "label": "0–100 km/h",
+        "value": "Ultra: 7.3; Premium: 5.5; Performance: 4.0",
+        "unit": "s",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "power",
+        "label": "Motor power",
+        "value": "Ultra: 150; Premium: 230; Performance: 100 front + 230 rear",
+        "unit": "kW",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "battery",
+        "label": "Battery capacity",
+        "value": "Ultra: 60.48; Premium: 74.88; Performance: 74.88",
+        "unit": "kWh",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "torque",
+        "label": "Maximum torque",
+        "value": "Ultra: 310; Premium: 380; Performance: 180 front + 380 rear",
+        "unit": "N·m",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "drivetrain",
+        "label": "Drivetrain",
+        "value": "Ultra: Front-wheel drive; Premium: Rear-wheel drive; Performance: All-wheel drive",
+        "unit": "",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "battery-type",
+        "label": "Battery type",
+        "value": "BYD Blade Battery",
+        "unit": "",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "dc-charging",
+        "label": "Maximum DC charging",
+        "value": "Ultra: 110; Premium: 220; Performance: 220",
+        "unit": "kW",
+        "group": "Charging"
+      },
+      {
+        "key": "ac-charging",
+        "label": "Maximum AC charging",
+        "value": "Ultra: 7; Premium: 11; Performance: 11",
+        "unit": "kW",
+        "group": "Charging"
+      },
+      {
+        "key": "length",
+        "label": "Length",
+        "value": "4,455",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "width",
+        "label": "Width",
+        "value": "1,875",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "height",
+        "label": "Height",
+        "value": "1,615",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "wheelbase",
+        "label": "Wheelbase",
+        "value": "2,720",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "seating",
+        "label": "Seats",
+        "value": "5",
+        "unit": "",
+        "group": "Dimensions"
+      },
+      {
+        "key": "kerb-weight",
+        "label": "Kerb weight",
+        "value": "Ultra: 1,750; Premium: 1,880; Performance: 1,990",
+        "unit": "kg",
+        "group": "Dimensions"
+      },
+      {
+        "key": "gross-vehicle-weight",
+        "label": "Gross vehicle weight",
+        "value": "Ultra: 2,160; Premium: 2,410; Performance: 2,520",
+        "unit": "kg",
+        "group": "Dimensions"
+      },
+      {
+        "key": "front-suspension",
+        "label": "Front suspension",
+        "value": "Macpherson strut",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "rear-suspension",
+        "label": "Rear suspension",
+        "value": "Multi-link",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "wheel-type",
+        "label": "Wheel type",
+        "value": "Alloy",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "tyre-size",
+        "label": "Tyre size",
+        "value": "235/50 R18",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "panoramic-roof",
+        "label": "Panoramic roof",
+        "value": "Yes",
+        "unit": "",
+        "group": "Equipment"
+      },
+      {
+        "key": "infotainment-screen",
+        "label": "Infotainment screen",
+        "value": "15.6",
+        "unit": "in",
+        "group": "Equipment"
+      },
+      {
+        "key": "driver-display",
+        "label": "Driver display",
+        "value": "8.8",
+        "unit": "in",
+        "group": "Equipment"
+      }
+    ],
+    "sourceUrl": "https://byd.simemotors.my/byd-atto-3",
+    "brochureUrl": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_Brochure_ATTO_3_Performance_6309.pdf",
+    "catalogueSource": "sime-motors-20261117",
+    "range": "Ultra: 480; Premium: 600; Performance: 530 km",
+    "acceleration": "Ultra: 7.3; Premium: 5.5; Performance: 4.0 s",
+    "power": "Ultra: 150; Premium: 230; Performance: 100 front + 230 rear kW",
+    "battery": "Ultra: 60.48; Premium: 74.88; Performance: 74.88 kWh"
+  },
+  {
+    "id": "dolphin",
+    "name": "BYD DOLPHIN",
+    "type": "Electric hatchback",
+    "price": "From RM 100,000",
+    "description": "A compact electric hatchback with Standard and Extended variants. Choose a 44.9 or 60.48 kWh Blade Battery, with single-tone and two-tone colours depending on the variant. Colour and equipment availability vary by variant.",
+    "published": true,
+    "badge": "",
+    "videoUrl": "",
+    "image": "/assets/sime-motors/fbd52483a848e7b1.webp",
+    "images": [
+      "/assets/sime-motors/fbd52483a848e7b1.webp",
+      "/assets/sime-motors/4ec3727b3ff039fc.webp",
+      "/assets/sime-motors/d6d0ae8f2e674b47.webp",
+      "/assets/sime-motors/b61f45a54f9ba1de.webp",
+      "/assets/sime-motors/8bf66e9ae995132c.webp",
+      "/assets/sime-motors/0a2db66b795f1a7c.webp",
+      "/assets/sime-motors/639b5977aca98d7a.webp",
+      "/assets/sime-motors/045369c38380000e.webp",
+      "/assets/sime-motors/ea18271c7b7cc253.webp",
+      "/assets/sime-motors/7fcea30cde8d91c8.webp",
+      "/assets/sime-motors/50e15fae11b3a6e3.webp",
+      "/assets/sime-motors/376f73f5cd3ad93a.webp",
+      "/assets/sime-motors/4ace9393c1e022e2.webp",
+      "/assets/sime-motors/dee0f426027d9ea0.webp",
+      "/assets/sime-motors/967cd38d149c9c81.webp",
+      "/assets/sime-motors/db6dda84142a4b46.webp"
+    ],
+    "colours": [
+      {
+        "id": "urban-grey",
+        "name": "Urban Grey",
+        "swatch": "#838a90",
+        "images": [
+          "/assets/sime-motors/fbd52483a848e7b1.webp"
+        ]
+      },
+      {
+        "id": "pale-mauve",
+        "name": "Pale Mauve",
+        "swatch": "#bca7b1",
+        "images": [
+          "/assets/sime-motors/4ec3727b3ff039fc.webp"
+        ]
+      },
+      {
+        "id": "taro-purple",
+        "name": "Taro Purple",
+        "swatch": "#85768f",
+        "images": [
+          "/assets/sime-motors/d6d0ae8f2e674b47.webp"
+        ]
+      },
+      {
+        "id": "sand-white",
+        "name": "Sand White",
+        "swatch": "#dbd6c9",
+        "images": [
+          "/assets/sime-motors/b61f45a54f9ba1de.webp"
+        ]
+      },
+      {
+        "id": "atlantis-grey-delan-black",
+        "name": "Atlantis Grey + Delan Black",
+        "swatch": "#6c7a87",
+        "images": [
+          "/assets/sime-motors/8bf66e9ae995132c.webp"
+        ]
+      },
+      {
+        "id": "surf-blue-urban-grey",
+        "name": "Surf Blue + Urban Grey",
+        "swatch": "#80afc5",
+        "images": [
+          "/assets/sime-motors/0a2db66b795f1a7c.webp"
+        ]
+      },
+      {
+        "id": "pale-mauve-urban-grey",
+        "name": "Pale Mauve + Urban Grey",
+        "swatch": "#bca7b1",
+        "images": [
+          "/assets/sime-motors/639b5977aca98d7a.webp"
+        ]
+      },
+      {
+        "id": "ski-white-urban-grey",
+        "name": "Ski White + Urban Grey",
+        "swatch": "#e6e8e6",
+        "images": [
+          "/assets/sime-motors/045369c38380000e.webp"
+        ]
+      }
+    ],
+    "specifications": [
+      {
+        "key": "variants",
+        "label": "Variants",
+        "value": "Standard / Extended",
+        "unit": "",
+        "group": "Model"
+      },
+      {
+        "key": "range",
+        "label": "Driving range (NEDC)",
+        "value": "Standard: 410; Extended: 490",
+        "unit": "km",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "acceleration",
+        "label": "0–100 km/h",
+        "value": "Standard: 12.3; Extended: 7",
+        "unit": "s",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "power",
+        "label": "Motor power",
+        "value": "Standard: 70; Extended: 150",
+        "unit": "kW",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "battery",
+        "label": "Battery capacity",
+        "value": "Standard: 44.9; Extended: 60.48",
+        "unit": "kWh",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "length",
+        "label": "Length",
+        "value": "4,290",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "width",
+        "label": "Width",
+        "value": "1,770",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "height",
+        "label": "Height",
+        "value": "1,570",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "wheelbase",
+        "label": "Wheelbase",
+        "value": "2,700",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "wheel-track",
+        "label": "Wheel track (front / rear)",
+        "value": "1,530 / 1,530",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "ventilated-front-seats",
+        "label": "Ventilated front seats",
+        "value": "Standard: No; Extended: Yes",
+        "unit": "",
+        "group": "Equipment"
+      },
+      {
+        "key": "dc-charging-port-ccs-2-standard-range-60kw",
+        "label": "DC Charging port - CCS 2 Standard range (60kW)",
+        "value": "Standard: Yes; Extended: No",
+        "unit": "",
+        "group": "Equipment"
+      },
+      {
+        "key": "dc-charging-port-ccs-2-standard-range-80kw",
+        "label": "DC Charging port - CCS 2 Standard range (80kW)",
+        "value": "Standard: No; Extended: Yes",
+        "unit": "",
+        "group": "Equipment"
+      },
+      {
+        "key": "dual-stage-pretensioner-on-front-seat-belts",
+        "label": "Dual Stage Pretensioner on front seat belts",
+        "value": "Standard: No; Extended: Yes",
+        "unit": "",
+        "group": "Equipment"
+      },
+      {
+        "key": "pretension-on-front-seat-belts",
+        "label": "Pretension on front seat belts",
+        "value": "Standard: Yes; Extended: No",
+        "unit": "",
+        "group": "Equipment"
+      },
+      {
+        "key": "panoramic-glass-roof",
+        "label": "Panoramic glass roof",
+        "value": "Standard: No; Extended: Yes",
+        "unit": "",
+        "group": "Equipment"
+      },
+      {
+        "key": "mobile-phone-wireless-charging",
+        "label": "Mobile phone wireless charging",
+        "value": "Standard: No; Extended: Yes",
+        "unit": "",
+        "group": "Equipment"
+      },
+      {
+        "key": "6-way-manual-adjustment-driver-seat",
+        "label": "6-way manual adjustment - driver seat",
+        "value": "Standard: Yes; Extended: No",
+        "unit": "",
+        "group": "Equipment"
+      },
+      {
+        "key": "6-way-power-adjustment-driver-seat",
+        "label": "6-way power adjustment - driver seat",
+        "value": "Standard: No; Extended: Yes",
+        "unit": "",
+        "group": "Equipment"
+      },
+      {
+        "key": "4-way-manual-adjustment-front-passenger-seat",
+        "label": "4-way manual adjustment - front passenger seat",
+        "value": "Standard: Yes; Extended: No",
+        "unit": "",
+        "group": "Equipment"
+      },
+      {
+        "key": "4-way-power-adjustment-front-passenger-seat",
+        "label": "4-way power adjustment - front passenger seat",
+        "value": "Standard: No; Extended: Yes",
+        "unit": "",
+        "group": "Equipment"
+      },
+      {
+        "key": "led-rear-side-reading-light",
+        "label": "LED rear side reading light",
+        "value": "Standard: No; Extended: Yes",
+        "unit": "",
+        "group": "Equipment"
+      },
+      {
+        "key": "led-rear-reading-light",
+        "label": "LED rear reading light",
+        "value": "Standard: Yes; Extended: No",
+        "unit": "",
+        "group": "Equipment"
+      },
+      {
+        "key": "driver-s-window-one-touch-up-down-with-anti-pinch",
+        "label": "Driver's window one touch up-down with anti-pinch",
+        "value": "Standard: Yes; Extended: No",
+        "unit": "",
+        "group": "Equipment"
+      },
+      {
+        "key": "4-door-window-one-touch-up-down-with-anti-pinch",
+        "label": "4-door window one touch up-down with anti-pinch",
+        "value": "Standard: No; Extended: Yes",
+        "unit": "",
+        "group": "Equipment"
+      }
+    ],
+    "sourceUrl": "https://byd.simemotors.my/models/byd-dolphin.html",
+    "brochureUrl": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_DOLPHIN_Brochure.pdf",
+    "catalogueSource": "sime-motors-20261117",
+    "range": "Standard: 410; Extended: 490 km",
+    "acceleration": "Standard: 12.3; Extended: 7 s",
+    "power": "Standard: 70; Extended: 150 kW",
+    "battery": "Standard: 44.9; Extended: 60.48 kWh"
+  },
+  {
+    "id": "m6",
+    "name": "BYD M6",
+    "type": "Electric MPV",
+    "price": "From RM 109,800",
+    "description": "A seven-seat electric MPV with front-wheel drive and a Blade Battery. Available in Standard and Extended variants, with 420 or 530 km NEDC driving range respectively. Colour and equipment availability vary by variant.",
+    "published": true,
+    "badge": "",
+    "videoUrl": "",
+    "image": "/assets/sime-motors/d037045f64bb1e0d.webp",
+    "images": [
+      "/assets/sime-motors/d037045f64bb1e0d.webp",
+      "/assets/sime-motors/3ce89e1cec54ded0.webp",
+      "/assets/sime-motors/3e68f8548e022bae.webp",
+      "/assets/sime-motors/af510888773eb4c9.webp",
+      "/assets/sime-motors/ad112f0550bd7c35.webp",
+      "/assets/sime-motors/74f45d5ee7678ed3.webp",
+      "/assets/sime-motors/1901ff6ad41cfe65.webp",
+      "/assets/sime-motors/d7cc15890d2fd266.webp",
+      "/assets/sime-motors/a41cf82e83743aba.webp",
+      "/assets/sime-motors/f4bb6dfe61a6c44d.webp",
+      "/assets/sime-motors/63e771cae24b93c7.webp",
+      "/assets/sime-motors/bdee7a9bddb312dc.webp"
+    ],
+    "colours": [
+      {
+        "id": "crystal-white",
+        "name": "Crystal White",
+        "swatch": "#e8e9e7",
+        "images": [
+          "/assets/sime-motors/d037045f64bb1e0d.webp"
+        ]
+      },
+      {
+        "id": "ink-stone-blue",
+        "name": "Ink Stone Blue",
+        "swatch": "#516977",
+        "images": [
+          "/assets/sime-motors/3ce89e1cec54ded0.webp"
+        ]
+      },
+      {
+        "id": "cosmos-black",
+        "name": "Cosmos Black",
+        "swatch": "#202326",
+        "images": [
+          "/assets/sime-motors/3e68f8548e022bae.webp"
+        ]
+      },
+      {
+        "id": "harbour-grey",
+        "name": "Harbour Grey",
+        "swatch": "#6e7478",
+        "images": [
+          "/assets/sime-motors/af510888773eb4c9.webp"
+        ]
+      }
+    ],
+    "specifications": [
+      {
+        "key": "variants",
+        "label": "Variants",
+        "value": "Standard / Extended",
+        "unit": "",
+        "group": "Model"
+      },
+      {
+        "key": "range",
+        "label": "Driving range (NEDC)",
+        "value": "Standard: 420; Extended: 530",
+        "unit": "km",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "acceleration",
+        "label": "0–100 km/h",
+        "value": "Standard: 10.1; Extended: 8.6",
+        "unit": "s",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "power",
+        "label": "Motor power",
+        "value": "Standard: 120; Extended: 150",
+        "unit": "kW",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "battery",
+        "label": "Battery capacity",
+        "value": "Standard: 55.4; Extended: 71.8",
+        "unit": "kWh",
+        "group": "Performance & battery"
+      },
+      {
         "key": "torque",
         "label": "Maximum torque",
         "value": "310",
-        "unit": "Nm",
+        "unit": "N·m",
         "group": "Performance & battery"
+      },
+      {
+        "key": "drivetrain",
+        "label": "Drivetrain",
+        "value": "Front Wheel Drive",
+        "unit": "",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "battery-type",
+        "label": "Battery type",
+        "value": "BYD Blade Battery",
+        "unit": "",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "dc-charging",
+        "label": "Maximum DC charging",
+        "value": "Standard: 89; Extended: 115",
+        "unit": "kW",
+        "group": "Charging"
+      },
+      {
+        "key": "ac-charging",
+        "label": "Maximum AC charging",
+        "value": "7",
+        "unit": "kW",
+        "group": "Charging"
+      },
+      {
+        "key": "length",
+        "label": "Length",
+        "value": "4,710",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "width",
+        "label": "Width",
+        "value": "1,810",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "height",
+        "label": "Height",
+        "value": "1,690",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "wheelbase",
+        "label": "Wheelbase",
+        "value": "2,800",
+        "unit": "mm",
+        "group": "Dimensions"
       },
       {
         "key": "seating",
@@ -487,41 +1285,376 @@
         "group": "Dimensions"
       },
       {
+        "key": "kerb-weight",
+        "label": "Kerb weight",
+        "value": "Standard: 1,800; Extended: 1,915",
+        "unit": "kg",
+        "group": "Dimensions"
+      },
+      {
+        "key": "gross-vehicle-weight",
+        "label": "Gross vehicle weight",
+        "value": "Standard: 2,374; Extended: 2,489",
+        "unit": "kg",
+        "group": "Dimensions"
+      },
+      {
+        "key": "ground-clearance",
+        "label": "Ground clearance",
+        "value": "140",
+        "unit": "mm",
+        "group": "Dimensions"
+      },
+      {
+        "key": "luggage",
+        "label": "Luggage capacity (min / max)",
+        "value": "180 / 580",
+        "unit": "L",
+        "group": "Dimensions"
+      },
+      {
+        "key": "motor-type",
+        "label": "Motor type",
+        "value": "AC Permanent Magnet Synchronous Motor",
+        "unit": "",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "front-suspension",
+        "label": "Front suspension",
+        "value": "MacPherson Strut",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "rear-suspension",
+        "label": "Rear suspension",
+        "value": "Multi-link",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "front-brake",
+        "label": "Front brake",
+        "value": "Ventilated Disc",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "rear-brake",
+        "label": "Rear brake",
+        "value": "Disc",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "wheel-type",
+        "label": "Wheel type",
+        "value": "Alloy",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "tyre-size",
+        "label": "Tyre size",
+        "value": "225/55 R17",
+        "unit": "",
+        "group": "Chassis & wheels"
+      }
+    ],
+    "sourceUrl": "https://byd.simemotors.my/models/byd-m6.html",
+    "brochureUrl": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_M6_Brochure.pdf",
+    "catalogueSource": "sime-motors-20261117",
+    "range": "Standard: 420; Extended: 530 km",
+    "acceleration": "Standard: 10.1; Extended: 8.6 s",
+    "power": "Standard: 120; Extended: 150 kW",
+    "battery": "Standard: 55.4; Extended: 71.8 kWh"
+  },
+  {
+    "id": "byd-sea-lion",
+    "name": "2026 BYD SEALION 7",
+    "type": "Electric SUV",
+    "price": "From RM 163,800",
+    "description": "A five-seat electric SUV in Dynamic, Premium and Performance variants. The 2026 line-up includes 71.8 or 91.39 kWh Blade Batteries and rear-wheel or all-wheel drive, depending on the variant. Colour and equipment availability vary by variant.",
+    "published": true,
+    "badge": "",
+    "videoUrl": "",
+    "image": "/assets/sime-motors/d2c88e3dfaa355c8.webp",
+    "images": [
+      "/assets/sime-motors/d2c88e3dfaa355c8.webp",
+      "/assets/sime-motors/19002de2d31edd9d.webp",
+      "/assets/sime-motors/482b5572341adb7e.webp",
+      "/assets/sime-motors/5852ecd248eb8ad8.webp",
+      "/assets/sime-motors/d7652b375c465454.webp",
+      "/assets/sime-motors/a36e79360f950588.webp",
+      "/assets/sime-motors/172e3e2a8daa0097.webp",
+      "/assets/sime-motors/36698c63c8ee92ac.webp",
+      "/assets/sime-motors/185c886d10c15bdc.webp",
+      "/assets/sime-motors/d2309e16f21bce8d.webp",
+      "/assets/sime-motors/3507cc310ccdec11.webp",
+      "/assets/sime-motors/e2079f1d047dc5b0.webp",
+      "/assets/sime-motors/61e8bb8f859e67c1.webp"
+    ],
+    "colours": [
+      {
+        "id": "atlantis-grey",
+        "name": "Atlantis Grey",
+        "swatch": "#76838c",
+        "images": [
+          "/assets/sime-motors/d2c88e3dfaa355c8.webp"
+        ]
+      },
+      {
+        "id": "aurora-white",
+        "name": "Aurora White",
+        "swatch": "#e8e9e7",
+        "images": [
+          "/assets/sime-motors/19002de2d31edd9d.webp"
+        ]
+      },
+      {
+        "id": "cosmos-black",
+        "name": "Cosmos Black",
+        "swatch": "#202326",
+        "images": [
+          "/assets/sime-motors/482b5572341adb7e.webp"
+        ]
+      },
+      {
+        "id": "shark-grey",
+        "name": "Shark Grey",
+        "swatch": "#777d83",
+        "images": [
+          "/assets/sime-motors/5852ecd248eb8ad8.webp"
+        ]
+      },
+      {
+        "id": "ultraviolet",
+        "name": "Ultraviolet",
+        "swatch": "#6a5a7c",
+        "images": [
+          "/assets/sime-motors/d7652b375c465454.webp"
+        ]
+      }
+    ],
+    "specifications": [
+      {
+        "key": "variants",
+        "label": "Variants",
+        "value": "Dynamic / Premium / Performance",
+        "unit": "",
+        "group": "Model"
+      },
+      {
+        "key": "range",
+        "label": "Driving range (NEDC)",
+        "value": "Dynamic: 520; Premium: 650; Performance: 600",
+        "unit": "km",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "acceleration",
+        "label": "0–100 km/h",
+        "value": "Dynamic: 7.3; Premium: 6.9; Performance: 4.5",
+        "unit": "s",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "power",
+        "label": "Motor power",
+        "value": "Dynamic: 170; Premium: 230; Performance: 390",
+        "unit": "kW",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "battery",
+        "label": "Battery capacity",
+        "value": "Dynamic: 71.8; Premium: 91.39; Performance: 91.39",
+        "unit": "kWh",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "torque",
+        "label": "Maximum torque",
+        "value": "Dynamic: 380; Premium: 380; Performance: 690",
+        "unit": "N·m",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "drivetrain",
+        "label": "Drivetrain",
+        "value": "Dynamic: Rear Drive; Premium: Rear Drive; Performance: All-Wheel Drive",
+        "unit": "",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "battery-type",
+        "label": "Battery type",
+        "value": "BYD Blade Battery (LFP)",
+        "unit": "",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "dc-charging",
+        "label": "Maximum DC charging",
+        "value": "Dynamic: 110; Premium: 230; Performance: 230",
+        "unit": "kW",
+        "group": "Charging"
+      },
+      {
+        "key": "ac-charging",
+        "label": "Maximum AC charging",
+        "value": "Dynamic: 7; Premium: 11; Performance: 11",
+        "unit": "kW",
+        "group": "Charging"
+      },
+      {
         "key": "length",
         "label": "Length",
-        "value": "4710",
+        "value": "4,830",
         "unit": "mm",
         "group": "Dimensions"
       },
       {
         "key": "width",
         "label": "Width",
-        "value": "1810",
+        "value": "1,925",
         "unit": "mm",
         "group": "Dimensions"
       },
       {
         "key": "height",
         "label": "Height",
-        "value": "1690",
+        "value": "1,620",
         "unit": "mm",
         "group": "Dimensions"
       },
       {
         "key": "wheelbase",
         "label": "Wheelbase",
-        "value": "2800",
+        "value": "2,930",
         "unit": "mm",
         "group": "Dimensions"
       },
       {
-        "key": "drivetrain",
-        "label": "Drivetrain",
-        "value": "Front-wheel drive",
+        "key": "seating",
+        "label": "Seats",
+        "value": "5",
+        "unit": "",
+        "group": "Dimensions"
+      },
+      {
+        "key": "kerb-weight",
+        "label": "Kerb weight",
+        "value": "Dynamic: 2,160; Premium: 2,295; Performance: 2,435",
+        "unit": "kg",
+        "group": "Dimensions"
+      },
+      {
+        "key": "gross-vehicle-weight",
+        "label": "Gross vehicle weight",
+        "value": "Dynamic: 2,700; Premium: 2,705; Performance: 2,845",
+        "unit": "kg",
+        "group": "Dimensions"
+      },
+      {
+        "key": "front-motor-type",
+        "label": "Front motor type",
+        "value": "Dynamic: N/A; Premium: N/A; Performance: Squirrel cage induction asynchronous motor",
         "unit": "",
         "group": "Performance & battery"
+      },
+      {
+        "key": "rear-motor-type",
+        "label": "Rear motor type",
+        "value": "Permanent magnet synchronous motor",
+        "unit": "",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "front-motor-max-power-kw",
+        "label": "Front motor max power (kW)",
+        "value": "Dynamic: N/A; Premium: N/A; Performance: 160",
+        "unit": "",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "rear-motor-max-power-kw",
+        "label": "Rear motor max power (kW)",
+        "value": "Dynamic: 170; Premium: 230; Performance: 230",
+        "unit": "",
+        "group": "Performance & battery"
+      },
+      {
+        "key": "front-suspension",
+        "label": "Front suspension",
+        "value": "Double Wishbone",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "rear-suspension",
+        "label": "Rear suspension",
+        "value": "Multi-Link",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "front-brake",
+        "label": "Front brake",
+        "value": "Dynamic: Ventilated disc; Premium: Cross-Drilled Ventilated disc; Performance: Cross-Drilled Ventilated disc",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "rear-brake",
+        "label": "Rear brake",
+        "value": "Ventilated disc",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "front-brake-caliper",
+        "label": "Front brake caliper",
+        "value": "Dynamic: Floated; Premium: Fixed; Performance: Fixed",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "wheel-type",
+        "label": "Wheel type",
+        "value": "Alloy",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "tyre-size",
+        "label": "Tyre size",
+        "value": "Dynamic: 235/50 R19 (F) / 255/45 R19 (R); Premium: 235/50 R19 (F) / 255/45 R19 (R); Performance: 245/45 R20",
+        "unit": "",
+        "group": "Chassis & wheels"
+      },
+      {
+        "key": "panoramic-roof",
+        "label": "Panoramic roof",
+        "value": "Yes",
+        "unit": "",
+        "group": "Equipment"
+      },
+      {
+        "key": "infotainment-screen",
+        "label": "Infotainment screen",
+        "value": "15.6",
+        "unit": "in",
+        "group": "Equipment"
       }
     ],
-    "sourceUrl": "https://millenniumautobyd.com.my/home/byd-m6/"
+    "sourceUrl": "https://byd.simemotors.my/byd-sealion-7",
+    "brochureUrl": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_2026_SEALION_7_Brochure_Final_Digital.pdf",
+    "catalogueSource": "sime-motors-20261117",
+    "range": "Dynamic: 520; Premium: 650; Performance: 600 km",
+    "acceleration": "Dynamic: 7.3; Premium: 6.9; Performance: 4.5 s",
+    "power": "Dynamic: 170; Premium: 230; Performance: 390 kW",
+    "battery": "Dynamic: 71.8; Premium: 91.39; Performance: 91.39 kWh"
   }
 ]

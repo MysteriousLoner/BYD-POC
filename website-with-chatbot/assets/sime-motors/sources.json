@@ -1,0 +1,2717 @@
+{
+  "capturedAt": "2026-11-17",
+  "source": "https://byd.simemotors.my/",
+  "owner": "BYD / Sime Motors. Original asset ownership retained.",
+  "models": [
+    {
+      "key": "seal-6",
+      "url": "https://byd.simemotors.my/models/byd-seal-6.html",
+      "colours": [
+        {
+          "name": "Arctic White",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD-SEAL-6-EV_Arctic-White.png"
+        },
+        {
+          "name": "Harbour Grey",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD-SEAL-6-EV_Harbour-Grey.png"
+        },
+        {
+          "name": "Misty Blue",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD-SEAL-6-EV_Misty-Blue.png"
+        },
+        {
+          "name": "Arctic White",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD-SEAL-6-EV_Arctic-White.png"
+        },
+        {
+          "name": "Harbour Grey",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD-SEAL-6-EV_Harbour-Grey.png"
+        },
+        {
+          "name": "Misty Blue",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD-SEAL-6-EV_Misty-Blue.png"
+        },
+        {
+          "name": "Ivory Gold",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD-SEAL-6-EV_Ivory-Gold_1.png"
+        }
+      ],
+      "gallery": [
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD_SEAL_6_EV_main_interior_01.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD_SEAL_6_EV_interior_04.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD_SEAL_6_EV_interior_05.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD_SEAL_6_EV_interior_06.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD_SEAL_6_EV_interior_07.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD_SEAL_6_EV_interior_08.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD_SEAL_6_EV_interior_09.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD_SEAL_6_EV_interior_10.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD_SEAL_6_EV_interior_011.jpg"
+      ],
+      "documents": [
+        {
+          "text": "e-Brochure",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_SEAL_6_Brochure.pdf"
+        },
+        {
+          "text": "Price List - Peninsular Malaysia",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_SEAL_6_Brochure_WM.pdf"
+        },
+        {
+          "text": "Price List - East Malaysia",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_SEAL_6_Brochure_EM.pdf"
+        }
+      ],
+      "variants": [
+        {
+          "name": "Dynamic",
+          "specifications": [
+            {
+              "label": "Overall Length (mm)",
+              "value": "4,720"
+            },
+            {
+              "label": "Overall Width (mm)",
+              "value": "1,860"
+            },
+            {
+              "label": "Overall Height (mm)",
+              "value": "1,495"
+            },
+            {
+              "label": "Wheel Track - front / rear (mm)",
+              "value": "1,610 / 1,610"
+            },
+            {
+              "label": "Wheelbase (mm)",
+              "value": "2,820"
+            },
+            {
+              "label": "Ground clearance unladen (mm)",
+              "value": "165"
+            },
+            {
+              "label": "Motor Type",
+              "value": "Permanent magnet synchronous motor"
+            },
+            {
+              "label": "Maximum power (kW)",
+              "value": "95"
+            },
+            {
+              "label": "Maximum torque (N.m)",
+              "value": "220"
+            },
+            {
+              "label": "Acceleration 0-100km/h (s)",
+              "value": "10.9"
+            },
+            {
+              "label": "Driving range: NEDC (km)",
+              "value": "485"
+            },
+            {
+              "label": "Seating Capacity",
+              "value": "5"
+            },
+            {
+              "label": "Battery type",
+              "value": "BYD Blade Battery"
+            },
+            {
+              "label": "Battery capacity (kWh)",
+              "value": "56.64"
+            },
+            {
+              "label": "Front suspension",
+              "value": "Macpherson strut"
+            },
+            {
+              "label": "Rear suspension",
+              "value": "Multi-link"
+            },
+            {
+              "label": "Front brake",
+              "value": "Ventilated disc"
+            },
+            {
+              "label": "Rear brake",
+              "value": "Disc"
+            },
+            {
+              "label": "Wheel type",
+              "value": "Alloy"
+            },
+            {
+              "label": "Tyre size",
+              "value": "225/55 R17"
+            }
+          ]
+        },
+        {
+          "name": "Premium",
+          "specifications": [
+            {
+              "label": "Overall Length (mm)",
+              "value": "4,720"
+            },
+            {
+              "label": "Overall Width (mm)",
+              "value": "1,860"
+            },
+            {
+              "label": "Overall Height (mm)",
+              "value": "1,495"
+            },
+            {
+              "label": "Wheel Track - front / rear (mm)",
+              "value": "1,610 / 1,610"
+            },
+            {
+              "label": "Wheelbase (mm)",
+              "value": "2,820"
+            },
+            {
+              "label": "Ground clearance unladen (mm)",
+              "value": "165"
+            },
+            {
+              "label": "Motor Type",
+              "value": "Permanent magnet synchronous motor"
+            },
+            {
+              "label": "Maximum power (kW)",
+              "value": "160"
+            },
+            {
+              "label": "Maximum torque (N.m)",
+              "value": "330"
+            },
+            {
+              "label": "Acceleration 0-100km/h (s)",
+              "value": "7.5"
+            },
+            {
+              "label": "Driving range: NEDC (km)",
+              "value": "485"
+            },
+            {
+              "label": "Seating Capacity",
+              "value": "5"
+            },
+            {
+              "label": "Battery type",
+              "value": "BYD Blade Battery"
+            },
+            {
+              "label": "Battery capacity (kWh)",
+              "value": "56.64"
+            },
+            {
+              "label": "Front suspension",
+              "value": "Macpherson strut"
+            },
+            {
+              "label": "Rear suspension",
+              "value": "Multi-link"
+            },
+            {
+              "label": "Front brake",
+              "value": "Ventilated disc"
+            },
+            {
+              "label": "Rear brake",
+              "value": "Disc"
+            },
+            {
+              "label": "Wheel type",
+              "value": "Alloy"
+            },
+            {
+              "label": "Tyre size",
+              "value": "225/50 R18"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "seal",
+      "url": "https://byd.simemotors.my/models/byd-seal.html",
+      "colours": [
+        {
+          "name": "Cosmos Black",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-premium-cosmic-black.png"
+        },
+        {
+          "name": "Atlantis Grey",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-premium-atlantic-grey.png"
+        },
+        {
+          "name": "Aurora White",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-premium-aurora-white.png"
+        },
+        {
+          "name": "Shark Grey",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-premium-shark-grey.png"
+        },
+        {
+          "name": "Cosmos Black",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-performance-cosmos-black.png"
+        },
+        {
+          "name": "Atlantis Grey",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-performance-atlantic-grey.png"
+        },
+        {
+          "name": "Aurora White",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-performance-aurora-white.png"
+        },
+        {
+          "name": "Shark Grey",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-performance-shark-grey.png"
+        }
+      ],
+      "gallery": [
+        "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-gallery-exterior-1-2.webp",
+        "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-gallery-exterior-2.webp",
+        "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-gallery-exterior-3-2.webp",
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-v7/LearnMore-Seal/Seal_Gallery/Exterior4.webp",
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-v7/LearnMore-Seal/Seal_Gallery/Interior4.webp",
+        "https://byd.simemotors.my/pub/media/wysiwyg/gallery-v2.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-v7/LearnMore-Seal/Seal_Gallery/Interior2.webp",
+        "https://byd.simemotors.my/pub/media/wysiwyg/gallery-v1.jpg"
+      ],
+      "documents": [
+        {
+          "text": "e-Brochure",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_NEW_SEAL_Brochure.pdf"
+        },
+        {
+          "text": "Price List - Peninsular Malaysia",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_NEW_SEAL_Brochure_WM.pdf"
+        },
+        {
+          "text": "Price List - East Malaysia",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_NEW_SEAL_Brochure_EM.pdf"
+        }
+      ],
+      "variants": [
+        {
+          "name": "Premium",
+          "specifications": [
+            {
+              "label": "Battery Capacity",
+              "value": "82.56 kWh"
+            },
+            {
+              "label": "Acceleration 0-100km/h",
+              "value": "5.9s"
+            },
+            {
+              "label": "Driving range",
+              "value": "650KM NEDC"
+            },
+            {
+              "label": "Drivetrain",
+              "value": "Rear-wheel drive"
+            },
+            {
+              "label": "Length (mm)",
+              "value": "4,800"
+            },
+            {
+              "label": "Width (mm)",
+              "value": "1,875"
+            },
+            {
+              "label": "Height (mm)",
+              "value": "1,460"
+            },
+            {
+              "label": "Wheelbase (mm)",
+              "value": "2,920"
+            },
+            {
+              "label": "Motor Max power (kW)",
+              "value": "230"
+            },
+            {
+              "label": "Motor Max torque (N.m)",
+              "value": "360"
+            },
+            {
+              "label": "0-100km/h (s)",
+              "value": "5.9"
+            },
+            {
+              "label": "Range - NEDC (km)",
+              "value": "650"
+            },
+            {
+              "label": "Kerb Weight (kg)",
+              "value": "2,055"
+            },
+            {
+              "label": "Intelligence Torque",
+              "value": "No"
+            },
+            {
+              "label": "Adaption Control (ITAC)",
+              "value": "No"
+            },
+            {
+              "label": "Rear Suspension",
+              "value": "Multi-link"
+            }
+          ]
+        },
+        {
+          "name": "Performance",
+          "specifications": [
+            {
+              "label": "Battery Capacity",
+              "value": "82.56 kWh"
+            },
+            {
+              "label": "Acceleration 0-100km/h",
+              "value": "3.8s"
+            },
+            {
+              "label": "Driving range",
+              "value": "580KM NEDC"
+            },
+            {
+              "label": "Drivetrain",
+              "value": "All-wheel drive"
+            },
+            {
+              "label": "Length (mm)",
+              "value": "4,800"
+            },
+            {
+              "label": "Width (mm)",
+              "value": "1,875"
+            },
+            {
+              "label": "Height (mm)",
+              "value": "1,460"
+            },
+            {
+              "label": "Wheelbase (mm)",
+              "value": "2,920"
+            },
+            {
+              "label": "Motor Max power (kW)",
+              "value": "390"
+            },
+            {
+              "label": "Motor Max torque (N.m)",
+              "value": "670"
+            },
+            {
+              "label": "0-100km/h (s)",
+              "value": "3.8"
+            },
+            {
+              "label": "Range - NEDC (km)",
+              "value": "580"
+            },
+            {
+              "label": "Kerb Weight (kg)",
+              "value": "2,185"
+            },
+            {
+              "label": "Intelligence Torque",
+              "value": "Yes"
+            },
+            {
+              "label": "Adaption Control (ITAC)",
+              "value": "Yes"
+            },
+            {
+              "label": "Rear Suspension",
+              "value": "Multi-link"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "atto-2",
+      "url": "https://byd.simemotors.my/models/byd-atto-2.html",
+      "colours": [
+        {
+          "name": "Ski White",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/car-sky-white.png"
+        },
+        {
+          "name": "Harbour Grey",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/car-harbour-grey.png"
+        },
+        {
+          "name": "Breeze Green",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/car-green2.png"
+        }
+      ],
+      "gallery": [
+        "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/atto2-interior-1.png",
+        "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/atto2-interior-2.png",
+        "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/atto2-interior-9.png",
+        "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/atto2-interior-4.png",
+        "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/atto2-interior-5.png",
+        "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/atto2-interior-6.png",
+        "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/atto2-interior-7.png",
+        "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/atto2-interior-8.png"
+      ],
+      "documents": [
+        {
+          "text": "e-Brochure",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_ATTO_2_Brochure.pdf"
+        },
+        {
+          "text": "Price List - Peninsular Malaysia",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_ATTO_2_Brochure_WM.pdf"
+        },
+        {
+          "text": "Price List - East Malaysia",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_ATTO_2_Brochure_EM.pdf"
+        }
+      ],
+      "variants": [
+        {
+          "name": "Premium",
+          "specifications": [
+            {
+              "label": "Overall Length (mm)",
+              "value": "4,310"
+            },
+            {
+              "label": "Overall Width (mm)",
+              "value": "1,830"
+            },
+            {
+              "label": "Overall Height (mm)",
+              "value": "1,675"
+            },
+            {
+              "label": "Wheel Track - front / rear (mm)",
+              "value": "1,570 / 1,570"
+            },
+            {
+              "label": "Wheelbase (mm)",
+              "value": "2,620"
+            },
+            {
+              "label": "Ground clearance laden (mm)",
+              "value": "150"
+            },
+            {
+              "label": "Motor Type",
+              "value": "Permanent magnet synchronous motor"
+            },
+            {
+              "label": "Maximum power (kW)",
+              "value": "130"
+            },
+            {
+              "label": "Maximum torque (N.m)",
+              "value": "290"
+            },
+            {
+              "label": "Acceleration 0-100km/h (s)",
+              "value": "7.9"
+            },
+            {
+              "label": "Driving range: NEDC (km)",
+              "value": "410"
+            },
+            {
+              "label": "Seating Capacity",
+              "value": "5"
+            },
+            {
+              "label": "Battery type",
+              "value": "BYD Blade Battery"
+            },
+            {
+              "label": "Battery capacity (kWh)",
+              "value": "51.13"
+            },
+            {
+              "label": "Front suspension",
+              "value": "Macpherson strut"
+            },
+            {
+              "label": "Rear suspension",
+              "value": "Torsion Beam"
+            },
+            {
+              "label": "Front brake",
+              "value": "Ventilated disc"
+            },
+            {
+              "label": "Rear brake",
+              "value": "Disc"
+            },
+            {
+              "label": "Wheel type",
+              "value": "Alloy"
+            },
+            {
+              "label": "Tyre size",
+              "value": "215/60 R17"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "atto-3",
+      "url": "https://byd.simemotors.my/byd-atto-3",
+      "colours": [
+        {
+          "name": "Ski White",
+          "url": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_ski_white.png"
+        },
+        {
+          "name": "Atlantis Grey",
+          "url": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_atlantis_gray.png"
+        },
+        {
+          "name": "Harbour Grey",
+          "url": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_harbour_grey.png"
+        },
+        {
+          "name": "Cosmos Black",
+          "url": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_cosmos_black.png"
+        },
+        {
+          "name": "Gemilang Blue",
+          "url": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/Atto_3_Blue_Gemilang_1_.png"
+        }
+      ],
+      "gallery": [
+        "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_interior-3.jpg",
+        "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_charger.jpg",
+        "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_steering.jpg",
+        "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_interior.jpg",
+        "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_backseat.jpg",
+        "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_bonnet.jpg",
+        "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_left.jpg",
+        "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_middle.jpg",
+        "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_right.jpg"
+      ],
+      "documents": [
+        {
+          "text": "e-Brochure",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_Brochure_ATTO_3_Performance_6309.pdf"
+        },
+        {
+          "text": "Price List - Peninsular Malaysia",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_Brochure_ATTO_3_Performance_WM.pdf"
+        },
+        {
+          "text": "Price List - East Malaysia",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_Brochure_ATTO_3_Performance_EM.pdf"
+        }
+      ],
+      "variants": [
+        {
+          "name": "Ultra",
+          "specifications": [
+            {
+              "label": "Overall Length (mm)",
+              "value": "4,455"
+            },
+            {
+              "label": "Overall Width (mm)",
+              "value": "1,875"
+            },
+            {
+              "label": "Overall Height (mm)",
+              "value": "1,615"
+            },
+            {
+              "label": "Wheelbase (mm)",
+              "value": "2,720"
+            },
+            {
+              "label": "Kerb weight (kg)",
+              "value": "1,750"
+            },
+            {
+              "label": "Gross vehicle weight (kg)",
+              "value": "2,160"
+            },
+            {
+              "label": "Drivetrain",
+              "value": "Front-wheel drive"
+            },
+            {
+              "label": "Maximum power (kW)",
+              "value": "150"
+            },
+            {
+              "label": "Maximum torque (N.m)",
+              "value": "310"
+            },
+            {
+              "label": "Acceleration 0-100km/h (s)",
+              "value": "7.3"
+            },
+            {
+              "label": "Battery type",
+              "value": "BYD Blade Battery"
+            },
+            {
+              "label": "Battery capacity (kWh)",
+              "value": "60.48"
+            },
+            {
+              "label": "Driving range: NEDC (km)",
+              "value": "480"
+            },
+            {
+              "label": "AC charging max (kW)",
+              "value": "7"
+            },
+            {
+              "label": "DC fast charging max (kW)",
+              "value": "110"
+            },
+            {
+              "label": "Front suspension",
+              "value": "Macpherson strut"
+            },
+            {
+              "label": "Rear suspension",
+              "value": "Multi-link"
+            },
+            {
+              "label": "Wheel type",
+              "value": "Alloy"
+            },
+            {
+              "label": "Tyre size",
+              "value": "235/50 R18"
+            },
+            {
+              "label": "Seating Capacity",
+              "value": "5"
+            },
+            {
+              "label": "Panoramic roof",
+              "value": "Yes"
+            },
+            {
+              "label": "Infotainment screen size (inch)",
+              "value": "15.6\""
+            },
+            {
+              "label": "Driver display size (inch)",
+              "value": "8.8\""
+            },
+            {
+              "label": "",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "name": "Premium",
+          "specifications": [
+            {
+              "label": "Overall Length (mm)",
+              "value": "4,455"
+            },
+            {
+              "label": "Overall Width (mm)",
+              "value": "1,875"
+            },
+            {
+              "label": "Overall Height (mm)",
+              "value": "1,615"
+            },
+            {
+              "label": "Wheelbase (mm)",
+              "value": "2,720"
+            },
+            {
+              "label": "Kerb weight (kg)",
+              "value": "1,880"
+            },
+            {
+              "label": "Gross vehicle weight (kg)",
+              "value": "2,410"
+            },
+            {
+              "label": "Drivetrain",
+              "value": "Rear-wheel drive"
+            },
+            {
+              "label": "Maximum power (kW)",
+              "value": "230"
+            },
+            {
+              "label": "Maximum torque (N.m)",
+              "value": "380"
+            },
+            {
+              "label": "Acceleration 0-100km/h (s)",
+              "value": "5.5"
+            },
+            {
+              "label": "Battery type",
+              "value": "BYD Blade Battery"
+            },
+            {
+              "label": "Battery capacity (kWh)",
+              "value": "74.88"
+            },
+            {
+              "label": "Driving range: NEDC (km)",
+              "value": "600"
+            },
+            {
+              "label": "AC charging max (kW)",
+              "value": "11"
+            },
+            {
+              "label": "DC fast charging max (kW)",
+              "value": "220"
+            },
+            {
+              "label": "Front suspension",
+              "value": "Macpherson strut"
+            },
+            {
+              "label": "Rear suspension",
+              "value": "Multi-link"
+            },
+            {
+              "label": "Wheel type",
+              "value": "Alloy"
+            },
+            {
+              "label": "Tyre size",
+              "value": "235/50 R18"
+            },
+            {
+              "label": "Seating Capacity",
+              "value": "5"
+            },
+            {
+              "label": "Panoramic roof",
+              "value": "Yes"
+            },
+            {
+              "label": "Infotainment screen size (inch)",
+              "value": "15.6\""
+            },
+            {
+              "label": "Driver display size (inch)",
+              "value": "8.8\""
+            },
+            {
+              "label": "",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "name": "Performance",
+          "specifications": [
+            {
+              "label": "Overall Length (mm)",
+              "value": "4,455"
+            },
+            {
+              "label": "Overall Width (mm)",
+              "value": "1,875"
+            },
+            {
+              "label": "Overall Height (mm)",
+              "value": "1,615"
+            },
+            {
+              "label": "Wheelbase (mm)",
+              "value": "2,720"
+            },
+            {
+              "label": "Kerb weight (kg)",
+              "value": "1,990"
+            },
+            {
+              "label": "Gross vehicle weight (kg)",
+              "value": "2,520"
+            },
+            {
+              "label": "Drivetrain",
+              "value": "All-wheel drive"
+            },
+            {
+              "label": "Maximum power (kW)",
+              "value": "100(FF) + 230(RR)"
+            },
+            {
+              "label": "Maximum torque (N.m)",
+              "value": "180(FF) + 380(RR)"
+            },
+            {
+              "label": "Acceleration 0-100km/h (s)",
+              "value": "4.0"
+            },
+            {
+              "label": "Battery type",
+              "value": "BYD Blade Battery"
+            },
+            {
+              "label": "Battery capacity (kWh)",
+              "value": "74.88"
+            },
+            {
+              "label": "Driving range: NEDC (km)",
+              "value": "530"
+            },
+            {
+              "label": "AC charging max (kW)",
+              "value": "11"
+            },
+            {
+              "label": "DC fast charging max (kW)",
+              "value": "220"
+            },
+            {
+              "label": "Front suspension",
+              "value": "Macpherson strut"
+            },
+            {
+              "label": "Rear suspension",
+              "value": "Multi-link"
+            },
+            {
+              "label": "Wheel type",
+              "value": "Alloy"
+            },
+            {
+              "label": "Tyre size",
+              "value": "235/50 R18"
+            },
+            {
+              "label": "Seating Capacity",
+              "value": "5"
+            },
+            {
+              "label": "Panoramic roof",
+              "value": "Yes"
+            },
+            {
+              "label": "Infotainment screen size (inch)",
+              "value": "15.6\""
+            },
+            {
+              "label": "Driver display size (inch)",
+              "value": "8.8\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "dolphin",
+      "url": "https://byd.simemotors.my/models/byd-dolphin.html",
+      "colours": [
+        {
+          "name": "Urban Grey",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/dolphin/Standard/dolphin1.png"
+        },
+        {
+          "name": "Pale Mauve",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/dolphin/Standard/dolphin2.png"
+        },
+        {
+          "name": "Taro Purple",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/dolphin/Standard/dolphin3.png"
+        },
+        {
+          "name": "Sand White",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/dolphin/Standard/dolphin4.png"
+        },
+        {
+          "name": "Atlantis Grey + Delan Black",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/dolphin/Extended/dolphin1.png"
+        },
+        {
+          "name": "Surf Blue + Urban Grey",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/dolphin/Extended/dolphin2.png"
+        },
+        {
+          "name": "Pale Mauve + Urban Grey",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/dolphin/Extended/dolphin3.png"
+        },
+        {
+          "name": "Ski White + Urban Grey",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/dolphin/Extended/dolphin4.png"
+        }
+      ],
+      "gallery": [
+        "https://byd.simemotors.my/pub/media/wysiwyg/desktop-new/LearnMore_Dolphin_Gallery1.webp",
+        "https://byd.simemotors.my/pub/media/wysiwyg/desktop-new/LearnMore_Dolphin_Gallery2.webp",
+        "https://byd.simemotors.my/pub/media/wysiwyg/desktop-new/LearnMore_Dolphin_Gallery3.webp",
+        "https://byd.simemotors.my/pub/media/wysiwyg/desktop-new/LearnMore_Dolphin_Gallery4.webp",
+        "https://byd.simemotors.my/pub/media/wysiwyg/desktop-new/LearnMore_Dolphin_Gallery5.webp",
+        "https://byd.simemotors.my/pub/media/wysiwyg/desktop-new/LearnMore_Dolphin_Gallery6.webp",
+        "https://byd.simemotors.my/pub/media/wysiwyg/desktop-new/LearnMore_Dolphin_Gallery7.webp",
+        "https://byd.simemotors.my/pub/media/wysiwyg/desktop-new/LearnMore_Dolphin_Gallery8.webp"
+      ],
+      "documents": [
+        {
+          "text": "e-Brochure",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_DOLPHIN_Brochure.pdf"
+        },
+        {
+          "text": "Price List - Peninsular Malaysia",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_DOLPHIN_Brochure_WM.pdf"
+        },
+        {
+          "text": "Price List - East Malaysia",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_DOLPHIN_Brochure_EM.pdf"
+        }
+      ],
+      "variants": [
+        {
+          "name": "Standard",
+          "specifications": [
+            {
+              "label": "Overall Length (mm)",
+              "value": "4,290"
+            },
+            {
+              "label": "Overall Width (mm)",
+              "value": "1,770"
+            },
+            {
+              "label": "Overall Height (mm)",
+              "value": "1,570"
+            },
+            {
+              "label": "Wheel Track - front / rear (mm)",
+              "value": "1,530 / 1,530"
+            },
+            {
+              "label": "Ventilated front seats",
+              "value": "No"
+            },
+            {
+              "label": "Wheelbase (mm)",
+              "value": "2,700"
+            },
+            {
+              "label": "Maximum Power (kW)",
+              "value": "70"
+            },
+            {
+              "label": "Accelaration 0-100km/h (s)",
+              "value": "12.3"
+            },
+            {
+              "label": "Battery Capacity (kWh)",
+              "value": "44.9"
+            },
+            {
+              "label": "Driving range (KM)",
+              "value": "410"
+            },
+            {
+              "label": "DC Charging port - CCS 2 Standard range (60kW)",
+              "value": "Yes"
+            },
+            {
+              "label": "DC Charging port - CCS 2 Standard range (80kW)",
+              "value": "No"
+            },
+            {
+              "label": "Dual Stage Pretensioner on front seat belts",
+              "value": "No"
+            },
+            {
+              "label": "Pretension on front seat belts",
+              "value": "Yes"
+            },
+            {
+              "label": "Panoramic glass roof",
+              "value": "No"
+            },
+            {
+              "label": "Mobile phone wireless charging",
+              "value": "No"
+            },
+            {
+              "label": "6-way manual adjustment - driver seat",
+              "value": "Yes"
+            },
+            {
+              "label": "6-way power adjustment - driver seat",
+              "value": "No"
+            },
+            {
+              "label": "4-way manual adjustment - front passenger seat",
+              "value": "Yes"
+            },
+            {
+              "label": "4-way power adjustment - front passenger seat",
+              "value": "No"
+            },
+            {
+              "label": "LED rear side reading light",
+              "value": "No"
+            },
+            {
+              "label": "LED rear reading light",
+              "value": "Yes"
+            },
+            {
+              "label": "Driver's window one touch up-down with anti-pinch",
+              "value": "Yes"
+            },
+            {
+              "label": "4-door window one touch up-down with anti-pinch",
+              "value": "No"
+            }
+          ]
+        },
+        {
+          "name": "Extended",
+          "specifications": [
+            {
+              "label": "Overall Length (mm)",
+              "value": "4,290"
+            },
+            {
+              "label": "Overall Width (mm)",
+              "value": "1,770"
+            },
+            {
+              "label": "Overall Height (mm)",
+              "value": "1,570"
+            },
+            {
+              "label": "Wheel Track - front / rear (mm)",
+              "value": "1,530 / 1,530"
+            },
+            {
+              "label": "Ventilated front seats",
+              "value": "Yes"
+            },
+            {
+              "label": "Wheelbase (mm)",
+              "value": "2,700"
+            },
+            {
+              "label": "Maximum Power (kW)",
+              "value": "150"
+            },
+            {
+              "label": "Accelaration 0-100km/h (s)",
+              "value": "7"
+            },
+            {
+              "label": "Battery Capacity (kWh)",
+              "value": "60.48"
+            },
+            {
+              "label": "Driving range (KM)",
+              "value": "490"
+            },
+            {
+              "label": "DC Charging port - CCS 2 Standard range (60kW)",
+              "value": "No"
+            },
+            {
+              "label": "DC Charging port - CCS 2 Standard range (80kW)",
+              "value": "Yes"
+            },
+            {
+              "label": "Dual Stage Pretensioner on front seat belts",
+              "value": "Yes"
+            },
+            {
+              "label": "Pretension on front seat belts",
+              "value": "No"
+            },
+            {
+              "label": "Panoramic glass roof",
+              "value": "Yes"
+            },
+            {
+              "label": "Mobile phone wireless charging",
+              "value": "Yes"
+            },
+            {
+              "label": "6-way manual adjustment - driver seat",
+              "value": "No"
+            },
+            {
+              "label": "6-way power adjustment - driver seat",
+              "value": "Yes"
+            },
+            {
+              "label": "4-way manual adjustment - front passenger seat",
+              "value": "No"
+            },
+            {
+              "label": "4-way power adjustment - front passenger seat",
+              "value": "Yes"
+            },
+            {
+              "label": "LED rear side reading light",
+              "value": "Yes"
+            },
+            {
+              "label": "LED rear reading light",
+              "value": "No"
+            },
+            {
+              "label": "Driver's window one touch up-down with anti-pinch",
+              "value": "No"
+            },
+            {
+              "label": "4-door window one touch up-down with anti-pinch",
+              "value": "Yes"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "m6",
+      "url": "https://byd.simemotors.my/models/byd-m6.html",
+      "colours": [
+        {
+          "name": "Crystal White",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/icy-white.png"
+        },
+        {
+          "name": "Ink Stone Blue",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/ink-stone-blue.png"
+        },
+        {
+          "name": "Cosmos Black",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/cosmos-black.png"
+        },
+        {
+          "name": "Harbour Grey",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/harbour-grey.png"
+        }
+      ],
+      "gallery": [
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/gallery1_v3.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/gallery5_v2.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/gallery6_v2.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/gallery4_v2.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/gallery3_v2.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/gallery2_v2.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/gallery7_v2.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/gallery8_v2.jpg"
+      ],
+      "documents": [
+        {
+          "text": "e-Brochure",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_M6_Brochure.pdf"
+        },
+        {
+          "text": "Price List - Peninsular Malaysia",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_M6_Brochure_WM.pdf"
+        },
+        {
+          "text": "Price List - East Malaysia",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_M6_Brochure_EM.pdf"
+        }
+      ],
+      "variants": [
+        {
+          "name": "Standard",
+          "specifications": [
+            {
+              "label": "Overall length (mm)",
+              "value": "4,710"
+            },
+            {
+              "label": "Overall width (mm)",
+              "value": "1,810"
+            },
+            {
+              "label": "Overall height (mm)",
+              "value": "1,690"
+            },
+            {
+              "label": "Wheelbase (mm)",
+              "value": "2,800"
+            },
+            {
+              "label": "Curb weight (kg)",
+              "value": "1,800"
+            },
+            {
+              "label": "Gross vehicle weight (kg)",
+              "value": "2,374"
+            },
+            {
+              "label": "Ground clearance (mm)",
+              "value": "140"
+            },
+            {
+              "label": "Luggage capacity (min/max) (l)",
+              "value": "180 / 580"
+            },
+            {
+              "label": "Motor type",
+              "value": "AC Permanent Magnet Synchronous Motor"
+            },
+            {
+              "label": "Drivetrain",
+              "value": "Front Wheel Drive"
+            },
+            {
+              "label": "Maximum power (kW)",
+              "value": "120"
+            },
+            {
+              "label": "Maximum torque (N⋅m)",
+              "value": "310"
+            },
+            {
+              "label": "Acceleration 0-100km/h (s)",
+              "value": "10.1"
+            },
+            {
+              "label": "Driving range (NEDC) (km)",
+              "value": "420"
+            },
+            {
+              "label": "Seating capacity",
+              "value": "7"
+            },
+            {
+              "label": "Battery type",
+              "value": "BYD Blade Battery"
+            },
+            {
+              "label": "Battery capacity (kWh)",
+              "value": "55.4"
+            },
+            {
+              "label": "DC charging power (kW)",
+              "value": "89"
+            },
+            {
+              "label": "AC charging power (kW)",
+              "value": "7"
+            },
+            {
+              "label": "Front suspension",
+              "value": "MacPherson Strut"
+            },
+            {
+              "label": "Rear suspension",
+              "value": "Multi-link"
+            },
+            {
+              "label": "Front brake",
+              "value": "Ventilated Disc"
+            },
+            {
+              "label": "Rear brake",
+              "value": "Disc"
+            },
+            {
+              "label": "Wheel type",
+              "value": "Alloy"
+            },
+            {
+              "label": "Tyre size",
+              "value": "225/55 R17"
+            }
+          ]
+        },
+        {
+          "name": "Extended",
+          "specifications": [
+            {
+              "label": "Overall length (mm)",
+              "value": "4,710"
+            },
+            {
+              "label": "Overall width (mm)",
+              "value": "1,810"
+            },
+            {
+              "label": "Overall height (mm)",
+              "value": "1,690"
+            },
+            {
+              "label": "Wheelbase (mm)",
+              "value": "2,800"
+            },
+            {
+              "label": "Curb weight (kg)",
+              "value": "1,915"
+            },
+            {
+              "label": "Gross vehicle weight (kg)",
+              "value": "2,489"
+            },
+            {
+              "label": "Ground clearance (mm)",
+              "value": "140"
+            },
+            {
+              "label": "Luggage capacity (min/max) (l)",
+              "value": "180 / 580"
+            },
+            {
+              "label": "Motor type",
+              "value": "AC Permanent Magnet Synchronous Motor"
+            },
+            {
+              "label": "Drivetrain",
+              "value": "Front Wheel Drive"
+            },
+            {
+              "label": "Maximum power (kW)",
+              "value": "150"
+            },
+            {
+              "label": "Maximum torque (N⋅m)",
+              "value": "310"
+            },
+            {
+              "label": "Acceleration 0-100km/h (s)",
+              "value": "8.6"
+            },
+            {
+              "label": "Driving range (NEDC) (km)",
+              "value": "530"
+            },
+            {
+              "label": "Seating capacity",
+              "value": "7"
+            },
+            {
+              "label": "Battery type",
+              "value": "BYD Blade Battery"
+            },
+            {
+              "label": "Battery capacity (kWh)",
+              "value": "71.8"
+            },
+            {
+              "label": "DC charging power (kW)",
+              "value": "115"
+            },
+            {
+              "label": "AC charging power (kW)",
+              "value": "7"
+            },
+            {
+              "label": "Front suspension",
+              "value": "MacPherson Strut"
+            },
+            {
+              "label": "Rear suspension",
+              "value": "Multi-link"
+            },
+            {
+              "label": "Front brake",
+              "value": "Ventilated Disc"
+            },
+            {
+              "label": "Rear brake",
+              "value": "Disc"
+            },
+            {
+              "label": "Wheel type",
+              "value": "Alloy"
+            },
+            {
+              "label": "Tyre size",
+              "value": "225/55 R17"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sealion-7",
+      "url": "https://byd.simemotors.my/byd-sealion-7",
+      "colours": [
+        {
+          "name": "Atlantis Grey",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/sealion/atgreyv1.png"
+        },
+        {
+          "name": "Aurora White",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/sealion/arwhitev1.png"
+        },
+        {
+          "name": "Cosmos Black",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/sealion/cmblackv1.png"
+        },
+        {
+          "name": "Shark Grey",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/sealion/sharkgreyv1.png"
+        },
+        {
+          "name": "Ultraviolet",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/sealion/ultravioletv1.png"
+        }
+      ],
+      "gallery": [
+        "https://byd.simemotors.my/pub/media/wysiwyg/sealion/bs7_exterior1.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/sealion7/3-2.jpeg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/sealion7/4-2.jpeg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/sealion/bs7_exterior4.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/sealion7/1-2.jpeg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/sealion/bs7_gallery6.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/sealion/bs7_gallery7.jpg",
+        "https://byd.simemotors.my/pub/media/wysiwyg/sealion/bs7_gallery8.jpg"
+      ],
+      "documents": [
+        {
+          "text": "e-Brochure",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_2026_SEALION_7_Brochure_Final_Digital.pdf"
+        },
+        {
+          "text": "Price List - Peninsular Malaysia",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_2026_SEALION_7_Brochure_Final_WM.pdf"
+        },
+        {
+          "text": "Price List - East Malaysia",
+          "url": "https://byd.simemotors.my/pub/media/wysiwyg/2026-spec-price/BYD_26_2026_SEALION_7_Brochure_Final_EM.pdf"
+        }
+      ],
+      "variants": [
+        {
+          "name": "Dynamic",
+          "specifications": [
+            {
+              "label": "Overall length (mm)",
+              "value": "4,830"
+            },
+            {
+              "label": "Overall width (mm)",
+              "value": "1,925"
+            },
+            {
+              "label": "Overall height (mm)",
+              "value": "1,620"
+            },
+            {
+              "label": "Wheelbase (mm)",
+              "value": "2,930"
+            },
+            {
+              "label": "Kerb weight (kg)",
+              "value": "2,160"
+            },
+            {
+              "label": "Gross vehicle weight (kg)",
+              "value": "2,700"
+            },
+            {
+              "label": "Drivetrain",
+              "value": "Rear Drive"
+            },
+            {
+              "label": "Front motor type",
+              "value": "N/A"
+            },
+            {
+              "label": "Rear motor type",
+              "value": "Permanent magnet synchronous motor"
+            },
+            {
+              "label": "Front motor max power (kW)",
+              "value": "N/A"
+            },
+            {
+              "label": "Rear motor max power (kW)",
+              "value": "170"
+            },
+            {
+              "label": "Total maximum power (kW)",
+              "value": "170"
+            },
+            {
+              "label": "Maximum torque (N·m)",
+              "value": "380"
+            },
+            {
+              "label": "Acceleration 0-100 km/h (s)",
+              "value": "7.3"
+            },
+            {
+              "label": "Battery type",
+              "value": "BYD Blade Battery (LFP)"
+            },
+            {
+              "label": "Battery capacity (kWh)",
+              "value": "71.8"
+            },
+            {
+              "label": "Driving range - NEDC (km)",
+              "value": "520"
+            },
+            {
+              "label": "AC charging max (kW)",
+              "value": "7"
+            },
+            {
+              "label": "DC fast charging max (kW)",
+              "value": "110"
+            },
+            {
+              "label": "Front suspension",
+              "value": "Double Wishbone"
+            },
+            {
+              "label": "Rear suspension",
+              "value": "Multi-Link"
+            },
+            {
+              "label": "Front disc brake",
+              "value": "Ventilated"
+            },
+            {
+              "label": "Rear disc brake",
+              "value": "Ventilated"
+            },
+            {
+              "label": "Front brake caliper",
+              "value": "Floated"
+            },
+            {
+              "label": "Wheel type",
+              "value": "Alloy"
+            },
+            {
+              "label": "Tyre size",
+              "value": "235/50 R19 (F)255/45 R19 (R)"
+            },
+            {
+              "label": "Seating capacity",
+              "value": "5"
+            },
+            {
+              "label": "Panoramic roof",
+              "value": "Yes"
+            },
+            {
+              "label": "Infotainment screen size (inch)",
+              "value": "15.6"
+            }
+          ]
+        },
+        {
+          "name": "Premium",
+          "specifications": [
+            {
+              "label": "Overall length (mm)",
+              "value": "4,830"
+            },
+            {
+              "label": "Overall width (mm)",
+              "value": "1,925"
+            },
+            {
+              "label": "Overall height (mm)",
+              "value": "1,620"
+            },
+            {
+              "label": "Wheelbase (mm)",
+              "value": "2,930"
+            },
+            {
+              "label": "Kerb weight (kg)",
+              "value": "2,295"
+            },
+            {
+              "label": "Gross vehicle weight (kg)",
+              "value": "2,705"
+            },
+            {
+              "label": "Drivetrain",
+              "value": "Rear Drive"
+            },
+            {
+              "label": "Front motor type",
+              "value": "N/A"
+            },
+            {
+              "label": "Rear motor type",
+              "value": "Permanent magnet synchronous motor"
+            },
+            {
+              "label": "Front motor max power (kW)",
+              "value": "N/A"
+            },
+            {
+              "label": "Rear motor max power (kW)",
+              "value": "230"
+            },
+            {
+              "label": "Total maximum power (kW)",
+              "value": "230"
+            },
+            {
+              "label": "Maximum torque (N·m)",
+              "value": "380"
+            },
+            {
+              "label": "Acceleration 0-100 km/h (s)",
+              "value": "6.9"
+            },
+            {
+              "label": "Battery type",
+              "value": "BYD Blade Battery (LFP)"
+            },
+            {
+              "label": "Battery capacity (kWh)",
+              "value": "91.39"
+            },
+            {
+              "label": "Driving range - NEDC (km)",
+              "value": "650"
+            },
+            {
+              "label": "AC charging max (kW)",
+              "value": "11"
+            },
+            {
+              "label": "DC fast charging max (kW)",
+              "value": "230"
+            },
+            {
+              "label": "Front suspension",
+              "value": "Double Wishbone"
+            },
+            {
+              "label": "Rear suspension",
+              "value": "Multi-Link"
+            },
+            {
+              "label": "Front disc brake",
+              "value": "Cross-Drilled Ventilated"
+            },
+            {
+              "label": "Rear disc brake",
+              "value": "Ventilated"
+            },
+            {
+              "label": "Front brake caliper",
+              "value": "Fixed"
+            },
+            {
+              "label": "Wheel type",
+              "value": "Alloy"
+            },
+            {
+              "label": "Tyre size",
+              "value": "235/50 R19 (F)255/45 R19 (R)"
+            },
+            {
+              "label": "Seating capacity",
+              "value": "5"
+            },
+            {
+              "label": "Panoramic roof",
+              "value": "Yes"
+            },
+            {
+              "label": "Infotainment screen size (inch)",
+              "value": "15.6"
+            }
+          ]
+        },
+        {
+          "name": "Performance",
+          "specifications": [
+            {
+              "label": "Overall length (mm)",
+              "value": "4,830"
+            },
+            {
+              "label": "Overall width (mm)",
+              "value": "1,925"
+            },
+            {
+              "label": "Overall height (mm)",
+              "value": "1,620"
+            },
+            {
+              "label": "Wheelbase (mm)",
+              "value": "2,930"
+            },
+            {
+              "label": "Kerb weight (kg)",
+              "value": "2,435"
+            },
+            {
+              "label": "Gross vehicle weight (kg)",
+              "value": "2,845"
+            },
+            {
+              "label": "Drivetrain",
+              "value": "All-Wheel Drive"
+            },
+            {
+              "label": "Front motor type",
+              "value": "Squirrel cage induction asynchronous motor"
+            },
+            {
+              "label": "Rear motor type",
+              "value": "Permanent magnet synchronous motor"
+            },
+            {
+              "label": "Front motor max power (kW)",
+              "value": "160"
+            },
+            {
+              "label": "Rear motor max power (kW)",
+              "value": "230"
+            },
+            {
+              "label": "Total maximum power (kW)",
+              "value": "390"
+            },
+            {
+              "label": "Maximum torque (N·m)",
+              "value": "690"
+            },
+            {
+              "label": "Acceleration 0-100 km/h (s)",
+              "value": "4.5"
+            },
+            {
+              "label": "Battery type",
+              "value": "BYD Blade Battery (LFP)"
+            },
+            {
+              "label": "Battery capacity (kWh)",
+              "value": "91.39"
+            },
+            {
+              "label": "Driving range - NEDC (km)",
+              "value": "600"
+            },
+            {
+              "label": "AC charging max (kW)",
+              "value": "11"
+            },
+            {
+              "label": "DC fast charging max (kW)",
+              "value": "230"
+            },
+            {
+              "label": "Front suspension",
+              "value": "Double Wishbone"
+            },
+            {
+              "label": "Rear suspension",
+              "value": "Multi-Link"
+            },
+            {
+              "label": "Front disc brake",
+              "value": "Cross-Drilled Ventilated"
+            },
+            {
+              "label": "Rear disc brake",
+              "value": "Ventilated"
+            },
+            {
+              "label": "Front brake caliper",
+              "value": "Fixed"
+            },
+            {
+              "label": "Wheel type",
+              "value": "Alloy"
+            },
+            {
+              "label": "Tyre size",
+              "value": "245/45 R20"
+            },
+            {
+              "label": "Seating capacity",
+              "value": "5"
+            },
+            {
+              "label": "Panoramic roof",
+              "value": "Yes"
+            },
+            {
+              "label": "Infotainment screen size (inch)",
+              "value": "15.6"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD_SEAL_6_EV_main_interior_01.jpg",
+      "path": "/assets/sime-motors/f6d0d23717f63d52.webp",
+      "sha256": "cf723305745853ffc5cffb1423ce63d80635f07cb1b97f0ce952f92e8c1e9284",
+      "width": 1600,
+      "height": 865,
+      "bytes": 148020,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD_SEAL_6_EV_interior_04.jpg",
+      "path": "/assets/sime-motors/ce89df4230354d44.webp",
+      "sha256": "1d92af4824d475aee570139987239ab17b2305ed3f2f5d060d73259a5d880377",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 166486,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD-SEAL-6-EV_Arctic-White.png",
+      "path": "/assets/sime-motors/1a1d2426b0e62dcf.webp",
+      "sha256": "1760cf13a58ab2da11d0db671e89dc03d11ec986d7bbe2b6336e8240a8ceb454",
+      "width": 1600,
+      "height": 747,
+      "bytes": 113234,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD-SEAL-6-EV_Ivory-Gold_1.png",
+      "path": "/assets/sime-motors/8bcdb2c4472d5153.webp",
+      "sha256": "ba9a5b5717e887d7f7285e612aebe8ef02608d043f9b793f12aa809901c775f6",
+      "width": 1600,
+      "height": 747,
+      "bytes": 112906,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD-SEAL-6-EV_Misty-Blue.png",
+      "path": "/assets/sime-motors/4708fbe67c1cebd2.webp",
+      "sha256": "c6c47125fcb06f957a639f61ae72156513f3c3036d2b88cbc45703065d86342a",
+      "width": 1600,
+      "height": 747,
+      "bytes": 116604,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD-SEAL-6-EV_Harbour-Grey.png",
+      "path": "/assets/sime-motors/34c19a892bd8d80a.webp",
+      "sha256": "446266e2365c95412da354a0f55c93305c4863efe919cd088e08992f7265f768",
+      "width": 1600,
+      "height": 747,
+      "bytes": 116316,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD_SEAL_6_EV_interior_05.jpg",
+      "path": "/assets/sime-motors/e449653e733b20b4.webp",
+      "sha256": "0010b0900bdaa8932ffe839812ee9ce6b387819f373c63d698e663e048cba45a",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 127284,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD_SEAL_6_EV_interior_07.jpg",
+      "path": "/assets/sime-motors/3bfae754e06430a4.webp",
+      "sha256": "28a6f50414ff0d09f810a64dcbbee17a00330c2d947cb5636b20b3b7c72f6b22",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 94706,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD_SEAL_6_EV_interior_06.jpg",
+      "path": "/assets/sime-motors/0d98c04a97b3f9ef.webp",
+      "sha256": "511d72a5e60d2a3f82ba721e1e0213b5126ee17c880f7b52ac5b2e2efb645c27",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 146052,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD_SEAL_6_EV_interior_08.jpg",
+      "path": "/assets/sime-motors/6da849bb938c4a2e.webp",
+      "sha256": "635bc20fc68e73203ab93f9280dea2b27376dc52823a17ee7b9a0686a62fea0f",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 167928,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD_SEAL_6_EV_interior_09.jpg",
+      "path": "/assets/sime-motors/f9a9d2528881980b.webp",
+      "sha256": "a2a56c1eb1684ab611cc5c8d470cd178b760567cff7339a11657a24a9dbb0cfd",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 135562,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD_SEAL_6_EV_interior_10.jpg",
+      "path": "/assets/sime-motors/70d78c4a589ca672.webp",
+      "sha256": "7d88fd24496126bd5cf6f9d9eea1e412e0c3888515312afce51c7b334a9779cd",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 219952,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-seal-6-ev-2025/BYD_SEAL_6_EV_interior_011.jpg",
+      "path": "/assets/sime-motors/b0ca087d721731e9.webp",
+      "sha256": "8407edda9d52fd0571b8854e24cc7722bc68cd0441507667a76a0d15b52b4a0a",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 130516,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-premium-atlantic-grey.png",
+      "path": "/assets/sime-motors/9608cb3db45fa9ea.webp",
+      "sha256": "989c860610920b1ff8135e2d963a8fcb606267581809e7d710151767be548c91",
+      "width": 1600,
+      "height": 747,
+      "bytes": 124822,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-premium-cosmic-black.png",
+      "path": "/assets/sime-motors/ffcd9d2f396873e3.webp",
+      "sha256": "8dbceb01de5ff4ba43557e2bb3f96787e289a0f84774d06d3425f165db4fedc1",
+      "width": 1600,
+      "height": 747,
+      "bytes": 127020,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-premium-aurora-white.png",
+      "path": "/assets/sime-motors/280fb0059089595d.webp",
+      "sha256": "b024542696601da65cd73fd15166b5b68d61c91deea001331071e3e4024bcf73",
+      "width": 1600,
+      "height": 747,
+      "bytes": 131510,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-performance-cosmos-black.png",
+      "path": "/assets/sime-motors/990dc4f9ee28d1c2.webp",
+      "sha256": "571a71e8c9aa89831bc64a0a217ecbb92a1aeee0cec7714abbbc38ba899247e2",
+      "width": 1600,
+      "height": 747,
+      "bytes": 125562,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-premium-shark-grey.png",
+      "path": "/assets/sime-motors/ce374cf920636cc4.webp",
+      "sha256": "ff5d95ccf01c1e03f262fe564a68ccf61e3ea5b21eb9b92b9cd0b409058ee69d",
+      "width": 1600,
+      "height": 747,
+      "bytes": 129322,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-performance-atlantic-grey.png",
+      "path": "/assets/sime-motors/9de5f662fff095d6.webp",
+      "sha256": "c79fa5fe59cd74d22b85bd64e8cc6a3d85ae393bb6305b4a7ac49ef73a592bff",
+      "width": 1600,
+      "height": 747,
+      "bytes": 133612,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-gallery-exterior-2.webp",
+      "path": "/assets/sime-motors/a7161a07c208bfbd.webp",
+      "sha256": "ad0ca5fb95331e9ce56e74c1fc230c98ca1297c721546d85505fd1faff16b008",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 75700,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-gallery-exterior-1-2.webp",
+      "path": "/assets/sime-motors/49f2d27641337f36.webp",
+      "sha256": "593f8ba7eb07d4834115e29328eca148876bf02fde125202821118cee0795061",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 89372,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-performance-aurora-white.png",
+      "path": "/assets/sime-motors/4654ebdbf77f893a.webp",
+      "sha256": "c2593d798ed9ac0cc482bcbfd4bd1bf9f9fe49659f3100dcaf3f446c23bcfc4b",
+      "width": 1600,
+      "height": 747,
+      "bytes": 130138,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-v7/LearnMore-Seal/Seal_Gallery/Exterior4.webp",
+      "path": "/assets/sime-motors/594c3c03073b1b56.webp",
+      "sha256": "12797345ad926c00cb970e2d2cb82ba57c535ce6e1e48a669c955d1c1f44b77b",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 109494,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-gallery-exterior-3-2.webp",
+      "path": "/assets/sime-motors/d956b79fde8616ac.webp",
+      "sha256": "280ef17987e58004ab57ff31f5d13e534902b6b13aed402470c2c1b644c6eade",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 100018,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/seal2025/seal-performance-shark-grey.png",
+      "path": "/assets/sime-motors/39d841405d3370da.webp",
+      "sha256": "34b3b16f248cf7a713051b6fbcfcce56aeb30802c104e1fcf7acf45ffc2be1bf",
+      "width": 1600,
+      "height": 747,
+      "bytes": 127882,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-v7/LearnMore-Seal/Seal_Gallery/Interior4.webp",
+      "path": "/assets/sime-motors/85a48676b74acba4.webp",
+      "sha256": "6c6df6ea5d42ea8968023e7ddd10ccfcabf68e48178e7d3efb589b502a31f252",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 92804,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-v7/LearnMore-Seal/Seal_Gallery/Interior2.webp",
+      "path": "/assets/sime-motors/792cad947e3a8a38.webp",
+      "sha256": "a3c351e8887f2d53fd5bc7c04939608873acfa512e3f12ab8a28f5d514e66050",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 112744,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/gallery-v1.jpg",
+      "path": "/assets/sime-motors/65f5af617a6d1318.webp",
+      "sha256": "0d3cb3eb20fb89e6fa38688005d0206de73ddeab93b1c223274f56c8a041b1a8",
+      "width": 1600,
+      "height": 1120,
+      "bytes": 227932,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/gallery-v2.jpg",
+      "path": "/assets/sime-motors/77e4adeb325c4879.webp",
+      "sha256": "a66ddc192673caec23fa68e84359e23dc660c6e99626f53f57fa10cd75c4508d",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 205930,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/car-sky-white.png",
+      "path": "/assets/sime-motors/013641864c87d88b.webp",
+      "sha256": "5c7b7c301243aef4aaca0d1279d99de7b0da2ea97853c9df483c69b9b278023c",
+      "width": 1600,
+      "height": 747,
+      "bytes": 100930,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/atto2-interior-1.png",
+      "path": "/assets/sime-motors/329d8a96a38820fc.webp",
+      "sha256": "bb5570a12842562ffa13f9bb12b5d311726eefbade15c4aba841c7f0c7368c90",
+      "width": 1600,
+      "height": 865,
+      "bytes": 103304,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/car-harbour-grey.png",
+      "path": "/assets/sime-motors/26fa6c12bf3fb4d5.webp",
+      "sha256": "36566283a1cc16e55bdf28e2b4c914e4a5afa662070cb7e0356fa0dd75b7bff2",
+      "width": 1600,
+      "height": 747,
+      "bytes": 90234,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/atto2-interior-2.png",
+      "path": "/assets/sime-motors/bcc9d64472e841cd.webp",
+      "sha256": "9a130d49d1fe26ca3a8b8e32dd32c79640c40624b6e62c0db6b4f69714d9ecc1",
+      "width": 1600,
+      "height": 865,
+      "bytes": 109352,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/car-green2.png",
+      "path": "/assets/sime-motors/3cc9768e1e1d423e.webp",
+      "sha256": "0cfeab6045637ca166a17617baf78e78af87308f71ff52d5c488127135786571",
+      "width": 1600,
+      "height": 747,
+      "bytes": 101238,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/atto2-interior-4.png",
+      "path": "/assets/sime-motors/9a0e68c8d0aa41c8.webp",
+      "sha256": "1883986a95a556d8540ac266686e0cc21182d69f1913521354a4f8cd0da9d46c",
+      "width": 1600,
+      "height": 865,
+      "bytes": 99592,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/atto2-interior-9.png",
+      "path": "/assets/sime-motors/5a791dd320577729.webp",
+      "sha256": "364cd5089f245858c30558b1f114e3711986fdecfe4bbb97f70ef2f4d01d73f7",
+      "width": 1600,
+      "height": 865,
+      "bytes": 94408,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/atto2-interior-6.png",
+      "path": "/assets/sime-motors/c8eab0ac4ae1b98e.webp",
+      "sha256": "1fd6f5af926b89107b21ba6ff1101dd3f54de3414974a599d34af7784f234aa8",
+      "width": 1600,
+      "height": 865,
+      "bytes": 76760,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/atto2-interior-5.png",
+      "path": "/assets/sime-motors/94a55a575e2629a4.webp",
+      "sha256": "b233f1221df51a9ecf6746c19a919b2e86b1db4b81e067cac9dfe6b21a466516",
+      "width": 1600,
+      "height": 865,
+      "bytes": 139116,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_ski_white.png",
+      "path": "/assets/sime-motors/15f7ada300dd34c0.webp",
+      "sha256": "b0a0433ddf7cffe9cfc9e4578a3e12f91c15ec53f75c53d51e815abce1139c35",
+      "width": 793,
+      "height": 424,
+      "bytes": 44000,
+      "transformation": "Removed transparent padding; resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/atto2-interior-7.png",
+      "path": "/assets/sime-motors/6d636312f5c07e06.webp",
+      "sha256": "4d26d41b39006c62c540acc9ab72a9c043e1181f0e7e1382bcc52ca6a9c3da22",
+      "width": 1600,
+      "height": 865,
+      "bytes": 141970,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/atto-2/atto2-interior-8.png",
+      "path": "/assets/sime-motors/dbeaea90717c72e3.webp",
+      "sha256": "df23abe2ad88a7a60ab0aa22cc7a6e61c938622e3704776af712b28b9d1f1a5d",
+      "width": 1600,
+      "height": 865,
+      "bytes": 81770,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_atlantis_gray.png",
+      "path": "/assets/sime-motors/88f2547c0a435db6.webp",
+      "sha256": "71c5f60814602a013177704e34a3b3f5ee966b83787ce8a3d7c79adea60197e3",
+      "width": 793,
+      "height": 424,
+      "bytes": 42996,
+      "transformation": "Removed transparent padding; resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_harbour_grey.png",
+      "path": "/assets/sime-motors/fa0a0a7847d36c7d.webp",
+      "sha256": "fa65fa6ce942cb52ff1a18c52a6e96917f76a6e136ae68cf5674fecf1fc0cadf",
+      "width": 793,
+      "height": 424,
+      "bytes": 41710,
+      "transformation": "Removed transparent padding; resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_cosmos_black.png",
+      "path": "/assets/sime-motors/1eea6cc8935050e7.webp",
+      "sha256": "1d41feedd8c7e09de243e128fc48897e5c0489400218855cec8a78b9a77a8049",
+      "width": 793,
+      "height": 424,
+      "bytes": 41770,
+      "transformation": "Removed transparent padding; resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_interior-3.jpg",
+      "path": "/assets/sime-motors/88df96dfd54103c9.webp",
+      "sha256": "afd85b83d91ec1363c3910c1b99336670111690655fe2c227ddfc1131cade2bb",
+      "width": 1600,
+      "height": 877,
+      "bytes": 109098,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/Atto_3_Blue_Gemilang_1_.png",
+      "path": "/assets/sime-motors/69969d72a1a04fec.webp",
+      "sha256": "6c0975d2aa4da5b4d98f79cc9bb85109d701df96e8460a6b5ae7791f536b6d77",
+      "width": 791,
+      "height": 424,
+      "bytes": 45994,
+      "transformation": "Removed transparent padding; resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_charger.jpg",
+      "path": "/assets/sime-motors/addbaf96238fb838.webp",
+      "sha256": "3d3fd1b985478d4febceaf96fbd60d33b180d13dc085e82af50056981d2d866a",
+      "width": 1592,
+      "height": 1080,
+      "bytes": 80222,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_steering.jpg",
+      "path": "/assets/sime-motors/497a84feddcecd5a.webp",
+      "sha256": "29aa30a5fcd4a4dd1e1df159ebbb7055392b18af7cefb014e54446091abc057d",
+      "width": 1600,
+      "height": 975,
+      "bytes": 127528,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_interior.jpg",
+      "path": "/assets/sime-motors/c20407c5214fb77e.webp",
+      "sha256": "60666941fa303f8f4ec2fd52b17ab74fbbaacf7f5b407cbdea1556e190d2b8de",
+      "width": 1600,
+      "height": 1020,
+      "bytes": 124496,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_bonnet.jpg",
+      "path": "/assets/sime-motors/87c6952f0495ab0f.webp",
+      "sha256": "dd8aba93ca9742a5824864c914eddb65506c474eeb40a235ea39d415b799e2ce",
+      "width": 1600,
+      "height": 970,
+      "bytes": 120462,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_backseat.jpg",
+      "path": "/assets/sime-motors/f478a86619281e55.webp",
+      "sha256": "30b06c578c01ffb086b19b9a11c528be2f1a9bafc85f2d789c0b8f6ea9d00cd2",
+      "width": 1600,
+      "height": 962,
+      "bytes": 108558,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_left.jpg",
+      "path": "/assets/sime-motors/96b0d71cbe17e0b7.webp",
+      "sha256": "a7ae4276dad00bc357deed69908ce01290b6497478870730b27d16bc1309f52e",
+      "width": 1600,
+      "height": 838,
+      "bytes": 104310,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/dolphin/Standard/dolphin1.png",
+      "path": "/assets/sime-motors/fbd52483a848e7b1.webp",
+      "sha256": "e71d35a688fc84344f00fc581390138681bb39da165ad82f839ae92ec646bfc1",
+      "width": 800,
+      "height": 333,
+      "bytes": 44152,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_right.jpg",
+      "path": "/assets/sime-motors/a17af2640fe7747d.webp",
+      "sha256": "2df5f0cda620220c0a6f27acced05e7edd4920818ded8edefa8e01039103f09a",
+      "width": 1600,
+      "height": 858,
+      "bytes": 60318,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/amasty/ammegamenu/compressed_middle.jpg",
+      "path": "/assets/sime-motors/44dc8bc37dd2f1bf.webp",
+      "sha256": "10e86e13f9d8ba28b359cbaa3dce2ffd40789f4203c1075c99866e519032698c",
+      "width": 1600,
+      "height": 1039,
+      "bytes": 152010,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/dolphin/Standard/dolphin4.png",
+      "path": "/assets/sime-motors/b61f45a54f9ba1de.webp",
+      "sha256": "58118f2e236b6ed6e2d84bb8aa995cf6081d046e15a0aa88d5240cb380f0e1cc",
+      "width": 800,
+      "height": 333,
+      "bytes": 42164,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/dolphin/Standard/dolphin3.png",
+      "path": "/assets/sime-motors/d6d0ae8f2e674b47.webp",
+      "sha256": "3d89150631b1413a35a251a0a465cef0e10a2e3e36ca9e4361fc69fba830e747",
+      "width": 800,
+      "height": 333,
+      "bytes": 41630,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/dolphin/Standard/dolphin2.png",
+      "path": "/assets/sime-motors/4ec3727b3ff039fc.webp",
+      "sha256": "a26539064ebda5c84df858ebf55bf2eb1b424fea8040b67dac9353389de432bc",
+      "width": 800,
+      "height": 333,
+      "bytes": 42670,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/dolphin/Extended/dolphin1.png",
+      "path": "/assets/sime-motors/8bf66e9ae995132c.webp",
+      "sha256": "ca2cba819c641dd80a3333abd1154eb422166056964f690a5ce90f1ab02063e4",
+      "width": 800,
+      "height": 333,
+      "bytes": 41016,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/dolphin/Extended/dolphin2.png",
+      "path": "/assets/sime-motors/0a2db66b795f1a7c.webp",
+      "sha256": "5c075b383b0a372c87804681405472aea2fa81e6b46171d7f8548dd6bfc00aff",
+      "width": 800,
+      "height": 333,
+      "bytes": 42504,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/dolphin/Extended/dolphin3.png",
+      "path": "/assets/sime-motors/639b5977aca98d7a.webp",
+      "sha256": "589722b6dc02ae5f975db97c739215d4cb09c386ed61aae414dc28740f927108",
+      "width": 800,
+      "height": 333,
+      "bytes": 41500,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/dolphin/Extended/dolphin4.png",
+      "path": "/assets/sime-motors/045369c38380000e.webp",
+      "sha256": "013363df89d166b76c31879f7c371a2af37b708724a97d1a9fb53016ff95fa71",
+      "width": 800,
+      "height": 333,
+      "bytes": 40816,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/desktop-new/LearnMore_Dolphin_Gallery1.webp",
+      "path": "/assets/sime-motors/ea18271c7b7cc253.webp",
+      "sha256": "979a7dfeabd8749e5ad692119d3e52189bf2031d342d4cea824378279c22c84a",
+      "width": 1600,
+      "height": 892,
+      "bytes": 63564,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/desktop-new/LearnMore_Dolphin_Gallery2.webp",
+      "path": "/assets/sime-motors/7fcea30cde8d91c8.webp",
+      "sha256": "9c670d1959e520d81647392204bba596334911fd4cbe8cfa5a28f3144c73f6cb",
+      "width": 1600,
+      "height": 892,
+      "bytes": 66568,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/desktop-new/LearnMore_Dolphin_Gallery3.webp",
+      "path": "/assets/sime-motors/50e15fae11b3a6e3.webp",
+      "sha256": "d434e719cb7522c3dc8efd4e5b23cbe95916509814fead40fa5113586f06bc9a",
+      "width": 1600,
+      "height": 892,
+      "bytes": 69706,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/desktop-new/LearnMore_Dolphin_Gallery4.webp",
+      "path": "/assets/sime-motors/376f73f5cd3ad93a.webp",
+      "sha256": "21b01e71ba038886578b563e22e11701d27964194c796afce29785e536eb33c3",
+      "width": 1600,
+      "height": 892,
+      "bytes": 123272,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/desktop-new/LearnMore_Dolphin_Gallery5.webp",
+      "path": "/assets/sime-motors/4ace9393c1e022e2.webp",
+      "sha256": "cece4efd9f1724813927ec6d7cf9145e75f23a4bb71971047a58ed4ddbff589a",
+      "width": 1600,
+      "height": 892,
+      "bytes": 104846,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/desktop-new/LearnMore_Dolphin_Gallery6.webp",
+      "path": "/assets/sime-motors/dee0f426027d9ea0.webp",
+      "sha256": "2458583bee9ef8849ad48671e6338d10ff7ff0915c6005ddd5961426ec004e64",
+      "width": 1600,
+      "height": 892,
+      "bytes": 104050,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/desktop-new/LearnMore_Dolphin_Gallery7.webp",
+      "path": "/assets/sime-motors/967cd38d149c9c81.webp",
+      "sha256": "ae28558ef480f1c6a37b88cd218ab0920f425592010bc1b00f146b48e0cc2692",
+      "width": 1600,
+      "height": 892,
+      "bytes": 101284,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/desktop-new/LearnMore_Dolphin_Gallery8.webp",
+      "path": "/assets/sime-motors/db6dda84142a4b46.webp",
+      "sha256": "0b519425498a2c41271f80f93cf31ea5e995ea835b0b4c71a42902001c2a54bc",
+      "width": 1600,
+      "height": 892,
+      "bytes": 111466,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/icy-white.png",
+      "path": "/assets/sime-motors/d037045f64bb1e0d.webp",
+      "sha256": "5f93fa70e62b7ac85f6cef10a6fa6ee7fce6d2449241568af21865015fb53009",
+      "width": 1600,
+      "height": 747,
+      "bytes": 102992,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/ink-stone-blue.png",
+      "path": "/assets/sime-motors/3ce89e1cec54ded0.webp",
+      "sha256": "3a8a9bf029c29d34a3a416f811ba7f8c0336f7eb8a9f0a46b4e278cd402bf282",
+      "width": 1600,
+      "height": 747,
+      "bytes": 110222,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/cosmos-black.png",
+      "path": "/assets/sime-motors/3e68f8548e022bae.webp",
+      "sha256": "fb86bce822f22761325c08de324a33a77343c2a8ec48667123813a5469309811",
+      "width": 1600,
+      "height": 747,
+      "bytes": 99154,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/harbour-grey.png",
+      "path": "/assets/sime-motors/af510888773eb4c9.webp",
+      "sha256": "09ba69eaec6ef383a85ed16c4e60579a522435ae76151d2631af8b54ac60c702",
+      "width": 1600,
+      "height": 747,
+      "bytes": 99802,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/gallery1_v3.jpg",
+      "path": "/assets/sime-motors/ad112f0550bd7c35.webp",
+      "sha256": "a613470de6a80960355f8f671a90b193b1e58e0bda8efcc09260a10295ca7064",
+      "width": 1600,
+      "height": 1048,
+      "bytes": 132270,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/gallery5_v2.jpg",
+      "path": "/assets/sime-motors/74f45d5ee7678ed3.webp",
+      "sha256": "dd38b5ebee083ae7049f348c6e039152d4129779c20350aba425c01c67102753",
+      "width": 1600,
+      "height": 1047,
+      "bytes": 94492,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/gallery6_v2.jpg",
+      "path": "/assets/sime-motors/1901ff6ad41cfe65.webp",
+      "sha256": "6f4d3fd36d6e0d8f30e26a4bb1de896051e95b782b0347cc580c0571e49cdfbb",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 75148,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/gallery3_v2.jpg",
+      "path": "/assets/sime-motors/a41cf82e83743aba.webp",
+      "sha256": "cc979a9a8102e5f9c39a21cdb060a264fd84455a9148f95659afa9f9924d58db",
+      "width": 1600,
+      "height": 900,
+      "bytes": 33180,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/gallery4_v2.jpg",
+      "path": "/assets/sime-motors/d7cc15890d2fd266.webp",
+      "sha256": "6c7c0bbf4644933480fe2a22efb6951a8a7269e409b8ce08fa735e31c9342027",
+      "width": 1600,
+      "height": 900,
+      "bytes": 35190,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/gallery2_v2.jpg",
+      "path": "/assets/sime-motors/f4bb6dfe61a6c44d.webp",
+      "sha256": "3282dc1bf72a7086a11530b9d27c7aedef9d051d0c422b59dd3b29c2f17e0715",
+      "width": 1600,
+      "height": 904,
+      "bytes": 73938,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/gallery7_v2.jpg",
+      "path": "/assets/sime-motors/63e771cae24b93c7.webp",
+      "sha256": "d11308beac7dd73584e706619562b1805f5d038903e0b59713945cfc475bce22",
+      "width": 1600,
+      "height": 900,
+      "bytes": 45388,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/byd-m6/gallery8_v2.jpg",
+      "path": "/assets/sime-motors/bdee7a9bddb312dc.webp",
+      "sha256": "483371cd575b0f637d189e78b7708185564f1c180f93df4d1ad780c1c795a3a7",
+      "width": 1600,
+      "height": 900,
+      "bytes": 46902,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/sealion/bs7_exterior1.jpg",
+      "path": "/assets/sime-motors/a36e79360f950588.webp",
+      "sha256": "09a8c72f3dbf799a8e2e309b7cd9f23324f2d394c588973bc7d4ab278c538001",
+      "width": 1600,
+      "height": 984,
+      "bytes": 109462,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/sealion/atgreyv1.png",
+      "path": "/assets/sime-motors/d2c88e3dfaa355c8.webp",
+      "sha256": "fde78826b556af9b82c2cba19c73ea3e652d5d2f67383072426785da51c404fb",
+      "width": 1600,
+      "height": 747,
+      "bytes": 233282,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/sealion/arwhitev1.png",
+      "path": "/assets/sime-motors/19002de2d31edd9d.webp",
+      "sha256": "fb28cae5bc3c3f28df9a415eab828be6facf76b7a39bf658a2e4c73b0f12d325",
+      "width": 1600,
+      "height": 747,
+      "bytes": 229740,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/sealion/cmblackv1.png",
+      "path": "/assets/sime-motors/482b5572341adb7e.webp",
+      "sha256": "041b3326d3409bc224b441c33df9f7a9d49b0a7179a3a1a732c17d27d079e456",
+      "width": 1600,
+      "height": 747,
+      "bytes": 220606,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/sealion7/3-2.jpeg",
+      "path": "/assets/sime-motors/172e3e2a8daa0097.webp",
+      "sha256": "e1a4522df12447863a443bfc7146a019f6d0d1d29cff50955360e768e96e5133",
+      "width": 1600,
+      "height": 879,
+      "bytes": 71080,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/sealion/bs7_exterior4.jpg",
+      "path": "/assets/sime-motors/185c886d10c15bdc.webp",
+      "sha256": "82b034bcd3d562f37ce2663f2ff69908236b3729192a37d255f9f492df6eabb0",
+      "width": 1600,
+      "height": 867,
+      "bytes": 55176,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/sealion/ultravioletv1.png",
+      "path": "/assets/sime-motors/d7652b375c465454.webp",
+      "sha256": "54d13138a33efb76555d38b67eba50378debf4fcc7c7115433ea397c9d90ba01",
+      "width": 1600,
+      "height": 747,
+      "bytes": 223696,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/sealion/sharkgreyv1.png",
+      "path": "/assets/sime-motors/5852ecd248eb8ad8.webp",
+      "sha256": "a8a051ea0637728e147adc3f1a42680d14b7df1bad0d0fa77aaa16bbd3954c44",
+      "width": 1600,
+      "height": 747,
+      "bytes": 227850,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/sealion7/1-2.jpeg",
+      "path": "/assets/sime-motors/d2309e16f21bce8d.webp",
+      "sha256": "5fade235f2201c4d26db82098fa5d33d4bc02dae2fe988ffb7c0a2da3fe03d27",
+      "width": 1600,
+      "height": 890,
+      "bytes": 141124,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/sealion7/4-2.jpeg",
+      "path": "/assets/sime-motors/36698c63c8ee92ac.webp",
+      "sha256": "598643d211e614063f8c703ce30f5efe2fdcce0dfbe4b9e6c106c8c5f16de403",
+      "width": 1600,
+      "height": 1074,
+      "bytes": 167946,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/sealion/bs7_gallery6.jpg",
+      "path": "/assets/sime-motors/3507cc310ccdec11.webp",
+      "sha256": "cf7165deaa99a714d5b48aa5f03576e7a58d7159df54d935ddc752ff963bfc3c",
+      "width": 1600,
+      "height": 1124,
+      "bytes": 181356,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/sealion/bs7_gallery8.jpg",
+      "path": "/assets/sime-motors/61e8bb8f859e67c1.webp",
+      "sha256": "1ffe36b798724e8ae1d97f59f56de891cf5d5d9dfe148c9ca1fced5af64addf4",
+      "width": 1600,
+      "height": 859,
+      "bytes": 78336,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    },
+    {
+      "source": "https://byd.simemotors.my/pub/media/wysiwyg/sealion/bs7_gallery7.jpg",
+      "path": "/assets/sime-motors/e2079f1d047dc5b0.webp",
+      "sha256": "e7ade3713932132efff8d7da7584d561e1dec70d09a376de6319bb0bf6c9dd51",
+      "width": 1600,
+      "height": 1023,
+      "bytes": 183956,
+      "transformation": "Resized within 1600 × 1200 pixels; WebP encoding; no recolouring or generative editing."
+    }
+  ]
+}

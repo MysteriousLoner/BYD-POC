@@ -29,7 +29,7 @@
    previewPromise=models().then(items=>{
     const focused=menu.contains(document.activeElement)?document.activeElement.getAttribute('href'):null;
     menu.innerHTML=items.filter(model=>model.published!==false).map(model=>{
-     const name=names.get(model.id)||model.name,current=location.pathname.replace(/\/$/,'')==='/models/'+encodeURIComponent(model.id);
+     const name=model.catalogueSource?.startsWith('sime-motors-')?model.name:names.get(model.id)||model.name,current=location.pathname.replace(/\/$/,'')==='/models/'+encodeURIComponent(model.id);
      return `<li class="menu-item" data-managed-model="${escape(model.id)}"><a class="hfe-sub-menu-item wp-model-preview-link" href="/models/${encodeURIComponent(model.id)}" aria-label="${escape(name)}"${current?' aria-current="page"':''}><span class="wp-model-preview-media"><img src="${escape(photo(model))}" alt="" decoding="async"></span><span class="wp-model-preview-name">${escape(name)}</span>${model.price?`<span class="wp-model-preview-price">${escape(model.price)}</span>`:''}</a></li>`;
     }).join('')||'<li class="wp-model-menu-feedback" role="status">The model range is being updated. Please check back soon.</li>';
     images(menu);
@@ -114,7 +114,22 @@
   }catch(error){toolbar.innerHTML='<p>Model options couldn’t load.</p><a class="wp-action outline" href="/models">EXPLORE MODELS</a>'}
  }
  async function dynamicDetail(){
-  const content=$('#wpFeatureContent'),id=decodeURIComponent(location.pathname.split('/').pop());try{const model=normalize(await api('/api/content/models/'+encodeURIComponent(id)));$('.wp-feature h1').textContent=model.name;content.innerHTML=`<div class="wp-dynamic-detail"><img src="${escape(photo(model))}" alt="${escape(model.name)}"><div><p>${escape(model.description)}</p><strong>${escape(model.price)}</strong><a class="wp-action" href="/contact?model=${encodeURIComponent(id)}#register-section">REGISTER INTEREST</a><a class="wp-action outline" href="/compare">COMPARE MODELS</a></div></div>${specifications(model)}`;images(content)}catch(error){errorState(content,error,dynamicDetail,'Reload model')}
+  const content=$('#wpFeatureContent'),id=decodeURIComponent(location.pathname.split('/').pop());
+  try{
+   const model=normalize(await api('/api/content/models/'+encodeURIComponent(id)));
+   content.removeAttribute('role');
+   $('.wp-feature h1').textContent=model.name;
+   document.title=model.name+' – BYD Millennium Autobeyond';
+   const paints=model.colours.filter(colour=>colour.images?.length);
+   const paintImages=new Set(paints.flatMap(colour=>colour.images));
+   const gallery=model.images.filter(url=>!paintImages.has(url));
+   const brochure=/^https:\/\/byd\.simemotors\.my\//.test(model.brochureUrl||'')?`<a class="wp-action outline" href="${escape(model.brochureUrl)}" target="_blank" rel="noopener">VIEW BROCHURE</a>`:'';
+   content.innerHTML=`<div class="wp-dynamic-detail"><div class="wp-catalogue-paint"><img id="wpCataloguePhoto" src="${escape(photo(model))}" alt="${escape(model.name+(paints[0]?' in '+paints[0].name:''))}" width="960" height="540"><p id="wpCatalogueColour" aria-live="polite">${escape(paints[0]?.name||'')}</p><div class="wp-catalogue-colours" role="group" aria-label="${escape(model.name)} colours">${paints.map((colour,i)=>`<button type="button" data-paint="${i}" aria-label="${escape(colour.name)}" aria-pressed="${i===0}"><span style="background-color:${/^#[a-f0-9]{6}$/i.test(colour.swatch)?colour.swatch:'#aaa'}"></span></button>`).join('')}</div></div><div><p>${escape(model.description)}</p><strong>${escape(model.price)}</strong><a class="wp-action" href="/contact?model=${encodeURIComponent(id)}#register-section">REGISTER INTEREST</a><a class="wp-action outline" href="/compare">COMPARE MODELS</a>${brochure}</div></div>${specifications(model)}${gallery.length?`<section class="wp-catalogue-gallery"><h2>Gallery</h2><div>${gallery.map((url,i)=>`<a href="${escape(url)}" data-fancybox aria-label="View ${escape(model.name)} gallery image ${i+1}"><img src="${escape(url)}" alt="${escape(model.name)} gallery image ${i+1}" loading="lazy" decoding="async" width="800" height="600"></a>`).join('')}</div></section>`:''}`;
+   const buttons=[...content.querySelectorAll('[data-paint]')];
+   function choose(index){const colour=paints[index];$('#wpCataloguePhoto').src=colour.images[0];$('#wpCataloguePhoto').alt=model.name+' in '+colour.name;$('#wpCatalogueColour').textContent=colour.name;buttons.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));}
+   buttons.forEach((button,index)=>{button.onclick=()=>choose(index);button.onkeydown=event=>{const keys=['ArrowLeft','ArrowRight','Home','End'];if(!keys.includes(event.key))return;event.preventDefault();const next=event.key==='Home'?0:event.key==='End'?buttons.length-1:(index+(event.key==='ArrowLeft'?-1:1)+buttons.length)%buttons.length;choose(next);buttons[next].focus()};});
+   originalInteractions();images(content);
+  }catch(error){errorState(content,error,dynamicDetail,'Reload model')}
  }
  async function compare(){return window.BYDShowroom.compare()}
  async function forms(){

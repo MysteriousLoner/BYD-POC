@@ -24,6 +24,12 @@ function storyCard(record, columns) {
 function send(req, res, name, status = 200) {
   const vehicles = list('vehicles').filter(model => model.published === true);
   let html = template(name);
+  html = html.replace(/(\/(?:css\/(?:wordpress|model-showroom)\.css|js\/(?:wordpress|model-showroom)\.js))\?v=[^"\s]+/g, '$1?v=catalogue-20261117');
+  if (name === 'detail') {
+    const id = escape(req.params.id);
+    html = html.replace('<!--WP_MODEL_TOOLBAR-->', `<section class="wp-model-toolbar" data-model="${id}"><label>Choose a model<select id="wpModelSwitcher" aria-label="Choose a model"><option>Loading models…</option></select></label><a class="wp-action outline" href="/compare">COMPARE MODELS</a><a class="wp-action" href="#register-section">REGISTER INTEREST</a></section>`);
+    html = html.replace('<!--WP_MODEL_ENQUIRY-->', template('catalogue-enquiry').replace('data-model=""', `data-model="${id}"`));
+  }
   html = html.replace(/<li\b[^>]*data-managed-model="([^"]+)"[^>]*>[\s\S]*?<\/li>/g, (markup,id) => vehicles.some(model => model.id === id) ? markup : '');
   html = html.replace(/<!--WP_NEWS:([^:]+):(\d+):(\d+)-->/g, (_,category,limit,columns) => {
     const records = readJson('news.json').filter(record => record.published !== false && record.category === category).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
@@ -34,8 +40,11 @@ function send(req, res, name, status = 200) {
 }
 router.get(['/models','/compare'], (req,res) => send(req,res,req.path.slice(1)));
 router.get('/models/:id', (req,res) => {
-  if (!list('vehicles').some(model => model.id === req.params.id && model.published === true)) return send(req,res,'unavailable',404);
-  send(req,res,index.models[req.params.id]?.file.replace(/\.html$/,'') || 'detail');
+  const model = list('vehicles').find(model => model.id === req.params.id && model.published === true);
+  if (!model) return send(req,res,'unavailable',404);
+  // Official catalogue records use their current managed specs and photography.
+  const managed = model.catalogueSource?.startsWith('sime-motors-');
+  send(req,res,managed ? 'detail' : index.models[req.params.id]?.file.replace(/\.html$/,'') || 'detail');
 });
 router.get('/stories/:id', (req,res) => {
   const story = readJson('news.json').find(record => record.id === req.params.id && record.published !== false);

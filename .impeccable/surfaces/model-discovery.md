@@ -35,7 +35,7 @@ Paint changes use a brief genuine-image crossfade. Filter reflow keeps surviving
 
 ## Content, media and implementation boundary
 
-Existing normalized catalogue data and staff publication remain authoritative. No API/schema changes, nested trim management or new assets are required. Preserve authentic studio backgrounds and all existing source media provenance; the reviewed inventory of 369 raster originals had no missing files. No generated photographs or digital vehicle recolouring are used.
+The prepared replacement supplies seven official Sime Motors model families, fifteen variants through qualified values and 95 genuine photographs with provenance in `website-with-chatbot/assets/sime-motors/sources.json`; existing six IDs remain and `dolphin` is added. Staff publication remains authoritative, with no nested trim management. Preserve authentic studio backgrounds and source provenance; no generated photographs or digital vehicle recolouring are used. Canonical brake keys align comparison, and phone metric rows and wrapping paint controls retain complete qualified facts and colour access.
 
 The dedicated module and stylesheet load only on the two discovery routes. Shared WordPress code delegates only the catalogue and comparison feature functions. Existing authentication, CSRF, private résumé handling, staff functionality and unrelated public interactions retain their current behavior.
 
@@ -45,4 +45,6 @@ The discovery finish reviewer returned SHIP after two fix-verdict passes. The th
 
 The detector returned an empty findings list in degraded regex mode because its parser was unavailable. This is limited mechanical evidence, not a full accessibility audit.
 
-Local review runs on port 4189. The port 8083 server preview has not received this refresh; release remains a Git-based workflow requiring credentials-file confirmation, target port/container inspection and explicit deployment approval. Preserve live port 8082 and unrelated containers. Repository resolution against `github.com/MysteriousLoner/BYD-POC` found no registered Techmation project, so no shared canonical documentation was verified or published; this is local repository documentation.
+Historical discovery release: local review ran on port 4189. The port 8083 server preview had not received that refresh; its release required a Git-based workflow, credentials-file confirmation, target port/container inspection and explicit deployment approval, preserving live port 8082 and unrelated containers. Repository resolution against `github.com/MysteriousLoner/BYD-POC` found no registered Techmation project, so no shared canonical documentation was verified or published; this is local repository documentation.
+
+The current requested catalogue release targets production port 8082 and is prepared locally, awaiting user approval; no deployment has occurred. The finish reviewer returned SHIP at the three-fix verdict scope. `scripts/catalogue-release-20261117.md` holds the scoped verification and rollout evidence, including preview-by-default replacement, reviewed vehicle/promotion fingerprint, consistent private backup and retired relationship archival while preserving unrelated private business data.

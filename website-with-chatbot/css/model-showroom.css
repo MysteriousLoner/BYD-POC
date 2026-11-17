@@ -14,3 +14,11 @@
 /* Avoid the copied body's non-scrolling overflow container on discovery routes. The menu retains its own scroll lock. */
 body.byd-discovery-page:not(.wp-nav-open){overflow-x:clip!important;overflow-y:visible!important}
 .byd-discovery .ds-picker-stage :focus-visible{outline-color:#a9d9f3}
+
+/* A complete paint range and variant-qualified facts must fit phone cards. */
+.ds-swatches{flex-wrap:wrap}
+@media(max-width:767px){
+ .ds-highlights.has-variant-values{grid-template-columns:minmax(0,1fr)}
+ .ds-highlights.has-variant-values>div{display:grid;grid-template-columns:minmax(82px,.8fr) minmax(0,1.6fr);gap:12px;align-items:start}
+ .ds-highlights.has-variant-values dd{overflow-wrap:normal;word-break:normal}
+}

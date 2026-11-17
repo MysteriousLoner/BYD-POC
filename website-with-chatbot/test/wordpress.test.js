@@ -11,7 +11,7 @@ test('copied WordPress routes, local assets and public archives remain available
  const html=await(await fetch(origin+'/')).text();const url=html.match(/href="(\/assets\/wordpress\/[a-f0-9]+\.css)"/)[1];const asset=await fetch(origin+url);assert.equal(asset.status,200);assert.match(asset.headers.get('cache-control'),/immutable/);
  for(const route of ['/content/wordpress/home.html','/wordpress-source/home.json','/server/data/models.json','/.env'])assert.equal((await fetch(origin+route)).status,404);
  assert.equal((await fetch(origin+'/home/contact/',{redirect:'manual'})).headers.get('location'),'/contact');
- assert.equal(store.readJson('news.json').length,63);assert.equal(store.list('vehicles').length,6);assert.equal(store.readJson('submissions/enquiries.json').length,0);assert.equal(store.readJson('submissions/careers.json').length,0);
+ assert.equal(store.readJson('news.json').length,63);assert.equal(store.list('vehicles').length,7);assert.equal(store.readJson('submissions/enquiries.json').length,0);assert.equal(store.readJson('submissions/careers.json').length,0);
 });
 test('publication settings filter copied navigation, model pages, archives and direct article links',async()=>{
  const model=store.list('vehicles')[0],news=store.readJson('news.json')[0];store.save('vehicles',{...model,published:false});const stories=store.readJson('news.json');store.writeJson('news.json',stories.map(s=>s.id===news.id?{...s,published:false}:s));
