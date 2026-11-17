@@ -6,6 +6,7 @@ colors:
   wp-red-hover: "#851a14"
   wp-dark: "#252728"
   wp-paper: "#ffffff"
+  wp-canvas: "#e3e5e7"
   wp-muted: "#595d61"
   wp-line: "#d8dadd"
   wp-focus: "#bb3027"
@@ -104,6 +105,8 @@ The public visual authority is the captured Millennium Auto BYD WordPress websit
 The owner-approved colourful showroom is scoped to `/models` and `/compare`: pale blue canvases, charcoal selection panels, red actions and substantial photographic cards extend the same public identity. Other public pages retain their source compositions. The route brief in `.impeccable/surfaces/model-discovery.md` records the page strategy.
 
 The existing staff manager is a separate dark working environment with Sora typography and compact controls. Public design changes do not restyle its authentication, editors or inboxes.
+
+The owner requested a grey public page canvas (`#e3e5e7`) on 17 November 2026. Dedicated cards, forms and the blue model showroom retain their own surfaces. News hides the banner photograph below 768px, keeping its charcoal title band. Each mobile news-hub category is a native horizontal row with one full-width card visible and snap scrolling; the full category archives keep their ordinary grids. News thumbnail frames crop to fill from 768px, including desktop news-menu previews above 1024px. Full story images and model photographs retain their existing presentation.
 
 Key characteristics:
 - Original automotive marketing artwork and authentic vehicle colour photography.

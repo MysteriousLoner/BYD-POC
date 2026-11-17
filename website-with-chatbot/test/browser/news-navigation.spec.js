@@ -39,6 +39,7 @@ test('news preview stays compact across desktop sizes and becomes a direct mobil
  test.setTimeout(90000);fs.mkdirSync(review,{recursive:true});
  for(const [width,height]of [[1100,900],[1440,900],[1265,536],[1920,1080]]){
   await page.setViewportSize({width,height});await page.goto('/contact');await page.locator('#wpNavigation').getByRole('link',{name:'NEWS & EVENTS',exact:true}).hover();const menu=page.locator('#wpNewsMenu');await expect(menu.locator('.wp-news-preview-link')).toHaveCount(3);
+  await expect(menu.locator('img').first()).toHaveCSS('object-fit','cover');
   const rect=await menu.boundingBox(),first=await menu.locator('.wp-news-preview-link').nth(0).boundingBox(),last=await menu.locator('.wp-news-preview-link').nth(2).boundingBox();expect(rect.x).toBe(0);expect(Math.round(rect.width)).toBe(width);expect(rect.height).toBeLessThanOrEqual(Math.min(361,height*.55+1));expect(last.x+last.width-first.x).toBeLessThanOrEqual(809);
   await page.locator('#wpNewsMenu img').evaluateAll(items=>Promise.all(items.map(el=>el.decode().catch(()=>{}))));await page.evaluate(()=>document.fonts.ready);expect(await page.locator('#masthead .elementor-button-text').evaluate(el=>{const range=document.createRange();range.selectNodeContents(el);return new Set([...range.getClientRects()].map(rect=>Math.round(rect.y))).size})).toBe(1);await page.screenshot({path:path.join(review,`news-preview-${width}.png`),animations:'disabled'});
  }

@@ -17,7 +17,7 @@ async function sparsePage(page, request) {
     return route.fulfill({ contentType:'image/svg+xml', body:`<svg xmlns="http://www.w3.org/2000/svg" width="600" height="${portrait ? 900 : 600}" viewBox="0 0 600 ${portrait ? 900 : 600}"><rect width="100%" height="100%" fill="#455e6c"/><text x="60" y="100" fill="white" font-size="32">News layout fixture</text></svg>` });
   });
 }
-test('news banner, sparse cards and complete portrait artwork fit phone, tablet and desktop layouts', async ({page,request}) => {
+test('responsive news banner and sparse cards fit phone, tablet and desktop layouts', async ({page,request}) => {
   test.setTimeout(60000); fs.mkdirSync(review,{recursive:true});
   await sparsePage(page,request);
   for (const width of [360,390,768,1024,1440,1920]) {
@@ -26,11 +26,14 @@ test('news banner, sparse cards and complete portrait artwork fit phone, tablet 
     const hero=await page.locator('.wp-news-hero').boundingBox(), heading=await page.getByRole('heading',{name:'NEWS & EVENTS',exact:true}).boundingBox();
     expect(heading.x).toBeGreaterThanOrEqual(hero.x); expect(heading.x+heading.width).toBeLessThanOrEqual(hero.x+hero.width+1);
     expect(heading.y).toBeGreaterThanOrEqual(hero.y); expect(heading.y+heading.height).toBeLessThanOrEqual(hero.y+hero.height+1);
-    expect(hero.height).toBeLessThan(width<640?350:700);
+    expect(hero.height).toBeLessThan(width<768?160:700);
+    if(width<768) await expect(page.locator('.wp-news-hero>img')).not.toBeVisible();
+    else await expect(page.locator('.wp-news-hero>img')).toBeVisible();
+    await expect(page.locator('#main')).toHaveCSS('background-color','rgb(227, 229, 231)');
     await expect(page.locator('.elementskit-post-image-card')).toHaveCount(3);
     await expect(page.locator('.wp-empty')).toContainText('No stories here yet');
     const frames=await page.locator('.wp-news-grid .elementskit-entry-thumb img').evaluateAll(images=>images.map(image=>({fit:getComputedStyle(image).objectFit,width:image.getBoundingClientRect().width,height:image.getBoundingClientRect().height,loaded:image.naturalWidth>0})));
-    for(const frame of frames){expect(frame.fit).toBe('contain');expect(frame.loaded).toBe(true);expect(Math.abs(frame.width/frame.height-16/9)).toBeLessThan(.02);}
+    for(const frame of frames){expect(frame.fit).toBe(width<768?'contain':'cover');expect(frame.loaded).toBe(true);expect(Math.abs(frame.width/frame.height-16/9)).toBeLessThan(.02);}
     const groups=await page.locator('.wp-news-section').evaluateAll(sections=>sections.map(section=>({top:section.getBoundingClientRect().top,bottom:section.getBoundingClientRect().bottom,cardBottom:Math.max(section.getBoundingClientRect().top,...[...section.querySelectorAll('.elementskit-post-image-card')].map(card=>card.getBoundingClientRect().bottom))})));
     for(let i=0;i<groups.length;i++){expect(groups[i].cardBottom).toBeLessThanOrEqual(groups[i].bottom+1);if(i)expect(groups[i].top).toBeGreaterThanOrEqual(groups[i-1].bottom-1);}
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
