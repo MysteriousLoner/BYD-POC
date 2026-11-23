@@ -1,0 +1,38 @@
+{
+  "gitCommit": "2514af63eb97d3a0dddc52b11f86c78bf014cebd",
+  "publicOrigin": "http://72.62.75.216:8082",
+  "files": [
+    {
+      "file": "browser-verification.json",
+      "sha256": "7e0e60e35adcdaa733ff916336a2c7f1e54b6c0ca419e916b8b992296c75ef66"
+    },
+    {
+      "file": "screenshots/01-logo-one-second.png",
+      "sha256": "86255329aee79b67b6f2214d06d53fd0965a39bb0ebe5c4f045977c53ec014f9"
+    },
+    {
+      "file": "screenshots/02-model-menu-two-rows.png",
+      "sha256": "2461d9083842faa96ea9bd51f456625227e56ca9c184721595b9a2e04f93e6a1"
+    },
+    {
+      "file": "screenshots/03-contact-desktop.png",
+      "sha256": "c7f5ae3a12b0babbe0ee1600ddd230dcefeab5a80b58dde09e60c34a0b4141df"
+    },
+    {
+      "file": "screenshots/04-contact-mobile.png",
+      "sha256": "7ba684cd3c95d7bcdf9a1d347dd0014c52e44b2658261f3835b5c674470f9f50"
+    },
+    {
+      "file": "screenshots/05-about-desktop.png",
+      "sha256": "c2242305add00ff3768cdaedb7cbe834ccc27eb1e1a0e4a363d3d72a46cdb647"
+    },
+    {
+      "file": "screenshots/06-story-unavailable.png",
+      "sha256": "5f9cd4b5ab3cc87de6c8459121b867b56af1c1df1fc8a5e5ec7c8877f294d6b2"
+    },
+    {
+      "file": "server-verification.json",
+      "sha256": "67a188060c80fb8b005e4ba7f4039926242239b9405c952efa635b2223c869bb"
+    }
+  ]
+}
