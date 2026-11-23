@@ -1,0 +1,19 @@
+{
+  "capturedAt": "2026-11-23T13:46:38.540Z",
+  "origin": "http://127.0.0.1:4174",
+  "adminPrefillVerified": true,
+  "publicRoutes": [
+    "/",
+    "/about",
+    "/contact",
+    "/events",
+    "/models"
+  ],
+  "visibleNewIcons": [
+    "tiktokUrl",
+    "googleReviewUrl"
+  ],
+  "rednoteHidden": true,
+  "phoneWidth": 390,
+  "noHorizontalOverflow": true
+}

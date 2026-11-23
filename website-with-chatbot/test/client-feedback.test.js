@@ -7,6 +7,7 @@ Object.assign(process.env, { DB_PATH:path.join(dir,'preview.sqlite'), UPLOAD_DIR
 const store = require('../server/database');
 const update = require('../server/apply-client-feedback');
 const { publicBranch, validateSocialLinks } = require('../server/public-dealership');
+const socialPrefill = require('../server/prefill-social-links');
 let server, origin, headers;
 before(async () => {
   server = require('../server/index').createApp().listen(0,'127.0.0.1');
@@ -84,4 +85,19 @@ test('explicit content update verifies identity, rejects stale plans, backs up, 
     for (const slide of store.list('hero_slides')) store.remove('hero_slides',slide.id);
     store.writeJson('news.json',originalNews); originalBranches.forEach(branch=>store.save('branches',branch)); store.db.prepare('DELETE FROM documents WHERE name=?').run(update.MARKER);
   }
+});
+test('verified social prefill fills only blank destinations, rejects stale plans, backs up and preserves later staff clearing', () => {
+  const original = store.readJson('social-links.json', {}), news = store.readJson('news.json');
+  try {
+    store.writeJson('social-links.json', {});
+    const first = socialPrefill.plan(store);
+    assert.deepEqual(first.fieldsToPrefill, ['tiktokUrl','googleReviewUrl']); assert.deepEqual(first.unresolvedFields,['xhsUrl']);
+    store.writeJson('social-links.json', { tiktokUrl:'https://www.tiktok.com/@saved-staff-account' });
+    assert.throws(()=>socialPrefill.apply(store,first.currentFingerprint),/changed since preview/);
+    const reviewed = socialPrefill.plan(store); assert.deepEqual(reviewed.fieldsToPrefill,['googleReviewUrl']);
+    const applied = spawnSync(process.execPath,['server/prefill-social-links.js','--apply','--expected',reviewed.currentFingerprint],{cwd:path.resolve(__dirname,'..'),env:process.env,encoding:'utf8'});
+    assert.equal(applied.status,0,applied.stderr); const result=JSON.parse(applied.stdout);assert.equal(fs.statSync(result.backupPath).mode & 0o777,0o600);
+    const saved=store.readJson('social-links.json');assert.equal(saved.tiktokUrl,'https://www.tiktok.com/@saved-staff-account');assert.equal(saved.googleReviewUrl,require('../server/data/social-links-verified-20261123.json').links.googleReviewUrl);assert(!saved.xhsUrl);
+    store.writeJson('social-links.json',{...saved,googleReviewUrl:''});assert.equal(socialPrefill.apply(store,socialPrefill.plan(store).currentFingerprint).applied,false);assert.equal(store.readJson('social-links.json').googleReviewUrl,'');assert.deepEqual(store.readJson('news.json'),news);
+  } finally { store.writeJson('social-links.json',original);store.db.prepare('DELETE FROM documents WHERE name=?').run(socialPrefill.MARKER); }
 });

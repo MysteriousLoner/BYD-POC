@@ -36,3 +36,5 @@ New seed data has no hero slides. When no slides are published, server rendering
 
 ## Accessibility & Inclusion
 Keyboard navigation, visible focus, labelled fields, 44px touch targets, reduced motion and readable contrast. Mobile navigation is scrollable, source numeric specifications stack label/value at full width, gallery/specification interactions remain operable and comparison retains aligned entries.
+
+Verified social content as of 23 November 2026: the explicit Git-tracked prefill supplies TikTok `@bydmillenniumauto`, sourced from the dealership Linktree, and the Google review form for the verified Cheras showroom. Rednote/Xiaohongshu remains blank and hidden: the dealership brochure names BYD Millennium 千禧 but no direct profile URL was verified or supplied. Saved staff destinations and subsequent clearing take precedence; prefill is never run at startup. See `scripts/social-links-20261123.md` and `website-with-chatbot/server/data/social-links-verified-20261123.json` for source evidence and operation.

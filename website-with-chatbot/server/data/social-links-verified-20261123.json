@@ -1,0 +1,28 @@
+{
+  "checkedOn": "2026-11-23",
+  "links": {
+    "tiktokUrl": "https://www.tiktok.com/@bydmillenniumauto",
+    "xhsUrl": "",
+    "googleReviewUrl": "https://search.google.com/local/writereview?placeid=ChIJKV3cTlY1zDERz_EltbSQ7cA"
+  },
+  "evidence": {
+    "tiktokUrl": {
+      "account": "BYD Millennium Autobeyond",
+      "source": "https://linktr.ee/bydmillenniumautobeyond",
+      "verification": "The dealership Linktree links this TikTok account and the original millenniumautobyd.com.my website. The current Linktree HTML was checked. Tracking parameters were removed. TikTok itself blocks automated access."
+    },
+    "googleReviewUrl": {
+      "branch": "BYD Cheras - Millennium Motors",
+      "address": "No 691, Batu 5, Jln Cheras, Taman Mutiara Barat, 56100 Kuala Lumpur",
+      "placeId": "ChIJKV3cTlY1zDERz_EltbSQ7cA",
+      "source": "https://www.google.com/maps/search/?api=1&query=BYD+Cheras+Millennium+Motors&query_place_id=ChIJKV3cTlY1zDERz_EltbSQ7cA",
+      "addressSource": "https://millenniumautobyd.com.my/home/contact/",
+      "verification": "Google Maps displayed the matching dealership name and street number. The review URL uses that verified place ID; a signed-out browser received Google's sign-in page with the review destination retained. The footer has one review destination, so this selects the main Cheras showroom."
+    },
+    "xhsUrl": {
+      "accountName": "BYD Millennium 千禧",
+      "source": "https://millenniumautobyd.com.my/home/wp-content/uploads/2024/12/BYD-M6-brochure-NOV-2024-2.pdf",
+      "verification": "The dealership brochure names this Rednote/Xiaohongshu account, but no direct profile URL was verified on the dealership website, Linktree or public web search. Leave the field blank and icon hidden pending the direct URL."
+    }
+  }
+}

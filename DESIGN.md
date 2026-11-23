@@ -182,6 +182,8 @@ About pairs the authentic Cheras showroom photograph with readable introductory 
 
 The charcoal footer keeps the authentic combined logo, Facebook, Instagram and WhatsApp. Optional TikTok, XHS and Google reviews controls appear only when staff save valid destinations. Social links use labelled 44px circular targets, subtle light hover feedback and visible keyboard focus; they wrap on narrow screens. The footer logo remains a home link.
 
+The approved 23 November social-content prefill supplies the dealership's Linktree-linked TikTok and the verified Cheras Google Review destination. Rednote remains blank and hidden until a direct profile URL is confirmed. Staff can edit or clear the prefilled URLs; no visual or interaction change is introduced. Source evidence and the explicit operation are recorded in `scripts/social-links-20261123.md`.
+
 ### Page transition
 
 First visits and reloads show the genuine combined logo centred on charcoal for at least one second after document readiness. Ordinary same-origin page links share a one-second countdown across the outgoing and incoming documents, so a quick destination stays covered for the remaining time. The active overlay captures pointer input and destination content is temporarily inert. History restorations clear immediately. Same-page anchors, external links, downloads, forms and modified clicks keep their native interaction. Cancelled navigation releases after one second; reduced motion retains the static logo and timing.
