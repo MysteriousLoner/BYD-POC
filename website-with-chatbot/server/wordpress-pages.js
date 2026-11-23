@@ -3,6 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { list, readJson } = require('./database');
 const { newsPage, storyCard, publishedStories } = require('./news-pages');
+const dealership = require('./public-dealership');
 const router = express.Router();
 const directory = path.join(__dirname, '..', 'content', 'wordpress');
 const index = JSON.parse(fs.readFileSync(path.join(directory, 'index.json'), 'utf8'));
@@ -20,7 +21,19 @@ function template(name) { if (!cache.has(name)) cache.set(name, fs.readFileSync(
 function send(req, res, name, status = 200, story = null) {
   const vehicles = list('vehicles').filter(model => model.published === true);
   let html = template(name);
-  html = html.replace(/(\/(?:css\/(?:wordpress|model-showroom)\.css|js\/(?:wordpress|model-showroom)\.js))\?v=[^"\s]+/g, '$1?v=news-responsive-20261117');
+  html = html.replace(/(\/(?:css\/(?:wordpress|model-showroom)\.css|js\/(?:wordpress|model-showroom)\.js))\?v=[^"\s]+/g, '$1?v=model-two-rows-20261123');
+  if (name === 'contact') {
+    const form = html.match(/<form class="wp-public-form" id="enquiryForm"[\s\S]*?<\/form>/)?.[0];
+    if (!form) throw new Error('Contact enquiry form is missing.');
+    html = html.replace(/<main\b[^>]*>[\s\S]*?<\/main>/, dealership.contactPage(list('branches'), form));
+  }
+  if (name === 'about') html = html.replace(/<main\b[^>]*>[\s\S]*?<\/main>/, dealership.aboutPage());
+  if (name === 'home' && !list('hero_slides').some(slide => slide.published === true)) {
+    // Remove the complete captured slider wrapper, including Elementor spacing.
+    html = html.replace(/<section\b[^>]*data-id="f058ff5"[\s\S]*?<\/section>\s*<\/ss3-force-full-width>[\s\S]*?<\/section>/, '');
+    // Keep a page heading when the carousel no longer provides one.
+    html = html.replace(/(<main\b[^>]*>)/, '$1<h1 class="screen-reader-text">BYD Millennium Motors</h1>');
+  }
   const news = newsPage(name, readJson('news.json'));
   if (news) html = html.replace(/<main\b[^>]*>[\s\S]*?<\/main>/, news);
   if (story) {
@@ -37,6 +50,8 @@ function send(req, res, name, status = 200, story = null) {
     const records = publishedStories(readJson('news.json'), category);
     return (Number(limit) ? records.slice(0,Number(limit)) : records).map(record=>storyCard(record,columns)).join('') || '<p class="wp-empty">No stories here yet. Please check back soon.</p>';
   });
+  html = html.replace(/<footer\b[^>]*id="colophon"[\s\S]*?<\/footer>/, dealership.footer(readJson(dealership.SOCIAL_DOCUMENT, {})));
+  html = html.replace('</head>', dealership.transitionHead + '</head>').replace('</body>', dealership.transitionOverlay + '</body>');
   res.set('X-Robots-Tag','noindex, nofollow');
   res.status(status).type('html').send(html);
 }

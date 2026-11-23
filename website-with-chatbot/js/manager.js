@@ -7,7 +7,7 @@
   const warning = el('p', 'This admin connection uses HTTP. Passwords and conversations are not encrypted in transit.', 'transport-warning'); warning.hidden = location.protocol === 'https:'; main.prepend(warning);
   const logout = button('Sign out', async () => { await fetch('/api/admin/logout', { method: 'POST' }); location.assign('/admin/login'); });
   nav.parentElement.append(logout);
-  const titles = { promotions: 'Promotions', branches: 'Branches', knowledge: 'Sales Knowledge', conversations: 'Conversations' };
+  const titles = { promotions: 'Promotions', branches: 'Branches', 'social-links': 'Social Links', knowledge: 'Sales Knowledge', conversations: 'Conversations' };
   let active = '', generation = 0;
   async function api(url, options) {
     const response = await fetch('/api/admin/' + url, options);
@@ -40,11 +40,12 @@
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); section.classList.add('active');
     document.querySelectorAll('.nav-item').forEach(b => b.classList.toggle('active', b.dataset.manager === kind));
     document.getElementById('pageTitle').textContent = titles[kind];
-    document.getElementById('pageSubtitle').textContent = kind === 'conversations' ? 'Messages and visitor IPs are retained until you delete them.' : 'Published changes are available to the assistant immediately.';
+    document.getElementById('pageSubtitle').textContent = kind === 'conversations' ? 'Messages and visitor IPs are retained until you delete them.' : ['branches','social-links'].includes(kind) ? 'Saved changes appear on the public website.' : 'Published changes are available to the assistant immediately.';
     document.getElementById('topAction').hidden = true;
     section.replaceChildren(el('p', 'Loading…'));
     try {
       if (kind === 'conversations') return await conversations(current);
+      if (kind === 'social-links') return await socialEditor(current);
       const [records, vehicles] = await Promise.all([api(kind), kind === 'promotions' ? api('content/models') : Promise.resolve([])]);
       if (current !== generation) return;
       section.replaceChildren();
@@ -79,7 +80,8 @@
       field(form, 'starts_at', 'Starts on (Malaysia date)', 'date', record.starts_at); field(form, 'ends_at', 'Ends on (Malaysia date)', 'date', record.ends_at);
       field(form, 'terms', 'Terms and conditions', 'textarea', record.terms);
     } else if (kind === 'branches') {
-      for (const [name, label] of [['name', 'Branch name'], ['city', 'City'], ['state', 'State'], ['address', 'Address'], ['phone', 'Phone'], ['hours', 'Opening hours'], ['mapUrl', 'Map URL']]) field(form, name, label, name === 'address' ? 'textarea' : name === 'mapUrl' ? 'url' : 'text', record[name]).required = ['name', 'address'].includes(name);
+      for (const [name, label] of [['name', 'Branch name'], ['city', 'City'], ['state', 'State'], ['address', 'Address'], ['phone', 'Phone'], ['email', 'Email'], ['hours', 'Opening hours'], ['image', 'Showroom photo URL or local image path'], ['mapUrl', 'Google Maps URL (optional)'], ['wazeUrl', 'Waze URL (optional)']]) field(form, name, label, ['address','hours'].includes(name) ? 'textarea' : ['mapUrl','wazeUrl'].includes(name) ? 'url' : name === 'email' ? 'email' : 'text', record[name]).required = ['name', 'address'].includes(name);
+      form.append(el('p', 'Showroom photos: use a 16:9 image, recommended 1600 × 900 pixels. The frame fills with a centred crop. Leave map links empty to search using the branch name and address.', 'field-help'));
     } else {
       field(form, 'category', 'Category', 'select', record.category || 'faq', [['faq', 'FAQ'], ['warranty', 'Warranty'], ['service', 'Service'], ['charging', 'Charging'], ['contact', 'Contact / fallback'], ['test_drive', 'Test drives']]);
       field(form, 'title', 'Question or title', 'text', record.title).required = true;
@@ -151,10 +153,25 @@
     filters.onsubmit = event => { event.preventDefault(); page = 1; selected.clear(); load(); };
     await load();
   }
+  async function socialEditor(current) {
+    const links = await api('social-links');
+    if (current !== generation) return;
+    section.replaceChildren(el('h2','Social Links'), el('p','Add the official destinations below. Empty links keep their icons hidden on every public page.'));
+    const form = el('form', undefined, 'manager-form');
+    for (const [key,label] of [['tiktokUrl','TikTok profile URL'],['xhsUrl','XHS profile URL'],['googleReviewUrl','Google Review URL']]) field(form,key,label,'url',links[key]).maxLength=2048;
+    const status = el('p', '', 'form-message'); status.setAttribute('role','status');
+    const submit = el('button','Save social links','primary'); submit.type='submit'; form.append(submit,status); section.append(form);
+    form.onsubmit = async event => {
+      event.preventDefault(); submit.disabled=true; status.textContent='Saving…'; status.className='form-message';
+      try { await api('social-links',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(formData(form))}); status.textContent='Social links saved. Icons with a URL are now visible on the public website.'; status.className='form-message success'; }
+      catch(error) { status.textContent=error.message; status.className='form-message error'; }
+      finally { submit.disabled=false; }
+    };
+  }
   for (const [kind, title] of Object.entries(titles)) {
     if (kind === 'knowledge') nav.append(el('span', 'Assistant', 'nav-group-label'));
     const b = button('', () => openPage(kind), 'nav-item'); b.title = title; b.dataset.manager = kind;
-    const icon = el('span', undefined, 'nav-icon'); icon.innerHTML = BYDIcons[{promotions:'campaign',branches:'branch',knowledge:'document',conversations:'conversation'}[kind]]; b.append(icon,el('span',title,'nav-label')); nav.append(b);
+    const icon = el('span', undefined, 'nav-icon'); icon.innerHTML = BYDIcons[{promotions:'campaign',branches:'branch','social-links':'campaign',knowledge:'document',conversations:'conversation'}[kind]]; b.append(icon,el('span',title,'nav-label')); nav.append(b);
   }
   document.querySelectorAll('[data-page]').forEach(b => b.addEventListener('click', () => { active = ''; generation++; document.getElementById('topAction').hidden = false; }));
 })();

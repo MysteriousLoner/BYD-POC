@@ -1,0 +1,18 @@
+{
+  "capturedAt": "2026-11-23T13:24:32.002Z",
+  "desktop": {
+    "width": 1440,
+    "height": 649,
+    "menuHeight": 473,
+    "visibleFirstSix": true,
+    "secondRowBottom": 571,
+    "panelBottom": 587,
+    "padding": 16
+  },
+  "shortDesktop": {
+    "viewportHeight": 536,
+    "panelBottom": 504,
+    "lastModelFullyVisible": true,
+    "scrollTop": 312
+  }
+}

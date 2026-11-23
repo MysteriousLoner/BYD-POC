@@ -5,6 +5,7 @@ const multer = require('multer');
 const sharp = require('sharp');
 const { randomUUID } = require('node:crypto');
 const vehicleContent = require('../vehicle-content');
+const { publicBranch } = require('../public-dealership');
 
 const router = express.Router();
 const { readJson, writeJson, list } = require('../database');
@@ -67,7 +68,7 @@ router.delete('/models/:id', (req, res) => {
   if (!models.some(m => m.id === req.params.id)) return res.status(404).json({ error: 'Model not found.' });
   writeJson('models.json', models.filter(m => m.id !== req.params.id)); res.status(204).end();
 });
-router.get('/branches', (_, res) => res.json(list('branches').filter(b => b.published === true).map(b => ({ id: b.id, name: b.name, city: b.city }))));
+router.get('/branches', (_, res) => res.json(list('branches').filter(b => b.published === true).map(publicBranch)));
 router.get('/news', (req, res) => res.json(readJson('news.json').filter(n => req.admin || n.published !== false)));
 const eventImage = multer({ storage, limits: { fileSize: 8 * 1024 * 1024 }, fileFilter: (_, file, cb) => {
   const valid = ['image/jpeg', 'image/png', 'image/webp'].includes(file.mimetype);

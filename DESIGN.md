@@ -100,15 +100,17 @@ components:
 
 ## Overview
 
-The public visual authority is the captured Millennium Auto BYD WordPress website, explicitly selected by the owner. Its charcoal header, genuine combined BYD/Millennium logo, geometric display typography, red capsule actions and native campaign imagery define the implemented world. The source layout and content sequence are retained; app-owned catalogue, comparison and form controls inherit that identity.
+**Creative North Star: "Millennium Auto BYD source fidelity"**
 
-The owner-approved colourful showroom is scoped to `/models` and `/compare`: pale blue canvases, charcoal selection panels, red actions and substantial photographic cards extend the same public identity. Other public pages retain their source compositions. The route brief in `.impeccable/surfaces/model-discovery.md` records the page strategy.
+The public visual authority is the captured Millennium Auto BYD WordPress website, explicitly selected by the owner. Its charcoal header, genuine combined BYD/Millennium logo, geometric display typography, red capsule actions and native campaign imagery define the implemented world. Source marketing composition remains the default; app-owned catalogue, comparison and form controls inherit that identity. Approved runtime replacements retain the same visual world.
 
-The existing staff manager is a separate dark working environment with Sora typography and compact controls. Public design changes do not restyle its authentication, editors or inboxes.
+The owner-approved colourful showroom is scoped to `/models` and `/compare`: pale blue canvases, charcoal selection panels, red actions and substantial photographic cards extend the same public identity. The 23 November 2026 approved Contact, About and shared-footer compositions use the Millennium charcoal/grey palette and authentic local imagery rather than the discovery palette. Remaining source pages retain their source compositions. The route brief in `.impeccable/surfaces/model-discovery.md` records the page strategy.
 
-The owner requested a grey public page canvas (`#e3e5e7`) on 17 November 2026. Dedicated cards, forms and the blue model showroom retain their own surfaces. News hides the banner photograph below 768px, keeping its charcoal title band. Each mobile news-hub category is a native horizontal row with one full-width card visible and snap scrolling; the full category archives keep their ordinary grids. News thumbnail frames crop to fill from 768px, including desktop news-menu previews above 1024px. Full story images and model photographs retain their existing presentation.
+The existing staff manager is a separate dark working environment with Sora typography and compact controls. Its authentication, editors and inboxes retain that visual system, including the new Social Links editor.
 
-Key characteristics:
+The owner requested a grey public page canvas (`#e3e5e7`) on 17 November 2026. Dedicated cards, forms and the blue model showroom retain their own surfaces. News hides the banner photograph below 768px, keeping its charcoal title band. Each mobile news-hub category is a native horizontal row with one full-width card visible and snap scrolling; the full category archives keep their ordinary grids. News thumbnail frames crop to fill from 768px, including desktop news-menu previews above 1024px. Full story and model-detail images retain their existing presentation. Desktop MODEL previews use the approved native-ratio filled frames described below.
+
+**Key Characteristics:**
 - Original automotive marketing artwork and authentic vehicle colour photography.
 - Charcoal navigation, footer and form areas alongside light catalogue and comparison surfaces.
 - Orbitron display type with Red Hat Display/Raleway text.
@@ -124,7 +126,7 @@ WordPress red marks capsule actions and meaningful public interaction. Its darke
 
 Discovery blue supplies factual highlights, links and focus on light discovery surfaces; its deeper shade supports readable specification values. Pale blue paper and panels distinguish the two discovery routes. A pale blue outline remains visible on the charcoal picker. These tokens apply only to `/models` and `/compare`.
 
-**The Scoped Discovery Rule.** Use the colourful showroom only on /models and /compare; preserve other source layouts and the separate staff manager.
+**The Scoped Discovery Rule.** Use the colourful showroom only on /models and /compare. Approved Contact, About and footer replacements use the shared Millennium palette; preserve remaining source compositions and the separate staff manager.
 
 ### Neutral
 
@@ -134,13 +136,15 @@ WordPress charcoal anchors the header, footer, article-card panels and forms; wh
 
 Orbitron supplies source display headings and compact action labels. Red Hat Display and Raleway supply readable public text; source page-specific typography is retained by the copied theme styles. Shared app features use the body stack in the frontmatter.
 
-The home hero display scales to the frontmatter range on desktop and becomes 32px/1.3 on phones. Feature headings scale from 28px to 40px. Discovery route headings use Orbitron at `clamp(28px, 3.2vw, 44px)` and 27px on phones; catalogue model names use the body family at 27px, reducing to 23px on phones. Other app feature titles retain their source scale; form labels remain 15px and input text 16px. Long headings wrap. The manager continues using self-hosted Sora and its existing scale.
+When published, the home hero display scales to the frontmatter range on desktop and becomes 32px/1.3 on phones. Feature headings scale from 28px to 40px. Discovery route headings use Orbitron at `clamp(28px, 3.2vw, 44px)` and 27px on phones; catalogue model names use the body family at 27px, reducing to 23px on phones. Other app feature titles retain their source scale; form labels remain 15px and input text 16px. Long headings wrap. The manager continues using self-hosted Sora and its existing scale.
 
 ## Layout
 
-The sticky charcoal header holds the combined logo, horizontal desktop navigation and registration action. The home sequence is the managed opening slider, original full-width campaign/model artwork, three FAQ article cards, image-backed destination links and charcoal footer. Retain each copied page's original source composition rather than imposing the earlier showroom grid.
+The sticky charcoal header holds the combined logo, horizontal desktop navigation and registration action. The home sequence has an optional managed opening slider followed by original full-width campaign/model artwork, three FAQ article cards, image-backed destination links and the shared charcoal footer. The approved fresh seed has no hero slides; with no published slides, server rendering removes the complete slider wrapper so the first remaining banner starts without a vacant stage. Retain remaining copied marketing compositions alongside the documented Contact, About and discovery exceptions.
 
-Discovery content uses 90% width and a 1200px maximum, widening to 92% below 768px. The route canvas has 40px top/64px bottom padding, reducing to 30px/40px on phones. Catalogue cards use two columns with a 28px gap from 768px, and one column with a 22px gap below it. The guided comparison gallery uses three columns, reducing to two on phones. Other public feature sections retain 70px vertical padding and 42px on phones. The logo is the home link; Home is omitted from the navigation list. The MODEL label links to the catalogue. On desktop, hovering or focusing it opens an edge-to-edge charcoal dropdown background with a centred 808px vehicle grid, at most 360px tall (also capped at 55dvh), with three columns of authentic published vehicle photos, source model names and managed prices. Compact thumbnail height adapts from 64px to 100px on short laptop viewports, preserving visible page content below the shallow dropdown; exceptionally short panels scroll independently. A short pointer-exit grace period allows moving into the panel, and Escape or leaving closes it. On phones, MODEL is a full-width direct link to the catalogue; its arrow and vehicle submenu are hidden. Desktop hover, keyboard previews and the separate arrow remain available. The mobile menu replaces desktop navigation at 1024px. Its charcoal panel sits 8px below the header, 12px from the viewport edge, with a 420px maximum width and 65dvh maximum height. Long model submenus scroll inside the panel; the header’s Close control stays visible. Outside taps and Escape dismiss the menu, background scrolling is locked at the root without moving the page, and controls retain at least 44px targets. Height-only viewport changes keep the menu open; crossing the desktop breakpoint resets it. The home slider uses viewport-relative height below the header, with lower copy placement on phones and separated transport controls.
+Discovery content uses 90% width and a 1200px maximum, widening to 92% below 768px. The route canvas has 40px top/64px bottom padding, reducing to 30px/40px on phones. Catalogue cards use two columns with a 28px gap from 768px, and one column with a 22px gap below it. The guided comparison gallery uses three columns, reducing to two on phones. Other public feature sections retain 70px vertical padding and 42px on phones. The logo is the home link; Home is omitted from the navigation list. The MODEL label links to the catalogue. On desktop, hovering or focusing it opens an edge-to-edge charcoal dropdown background with a centred 808px vehicle grid, sized to two complete rows including names and prices, with three columns of authentic published vehicle photos, source model names and managed prices. Each MODEL photograph fills its native 8:5 frame with automatic height and cover fitting, without white sidebars. This overrides the earlier adaptive 64–100px thumbnail height. Measure the first six cards after media enhancement and font loading, and update on resize. The panel is capped at the space below the header with 32px of viewport clearance, and scrolls independently for later models or short screens without shrinking the artwork. A short pointer-exit grace period allows moving into the panel, and Escape or leaving closes it. On phones, MODEL is a full-width direct link to the catalogue; its arrow and vehicle submenu are hidden. Desktop hover, keyboard previews and the separate arrow remain available. The mobile menu replaces desktop navigation at 1024px. Its charcoal panel sits 8px below the header, 12px from the viewport edge, with a 420px maximum width and 65dvh maximum height. Long supported submenus scroll inside the panel; the header’s Close control stays visible. Outside taps and Escape dismiss the menu, background scrolling is locked at the root without moving the page, and controls retain at least 44px targets. Height-only viewport changes keep the menu open; crossing the desktop breakpoint resets it. When published, the home slider uses viewport-relative height below the header, with lower copy placement on phones and separated transport controls.
+
+Contact uses a centred 90%/1200px content area and two branch-card columns from 768px, becoming one below it. Each genuine showroom photograph fills a 16:9 frame above a charcoal factual panel; the original enquiry form follows the cards. About uses the same content width, with a two-column photographic introduction, a full-width charcoal services band, paired vision/mission content, a six-value list and a charcoal enquiry band. On phones the introduction, services and purpose stack, the photograph leads the introduction, the values use two columns and the enquiry action follows the heading. These layouts are approved route compositions, not a replacement grid for other source pages.
 
 Comparison keeps two aligned columns on phones, with smaller contained vehicle photographs and wrapped values. Its compact charcoal identity bar sticks below the measured public header while grouped specifications scroll; preserve the route-scoped body overflow clipping that enables sticking without changing mobile menu scroll locking. Official catalogue details inherit the existing generic template; legacy records retain source marketing compositions. Both retain genuine colour imagery, galleries and specification controls. Below 768px, qualified catalogue metrics use label/value rows, source numeric specification cells stack label over value at full width, and full paint ranges wrap. Galleries become two columns. Form name fields stack, submit actions span the phone width, and the news banner title stays within the image at tablet widths.
 
@@ -150,7 +154,7 @@ The public interface is primarily flat: photographs, charcoal/light section cont
 
 ## Shapes
 
-Actions are red capsules with a 26px radius; white inputs use restrained 2px corners and a grey stroke. Discovery cards use restrained rounded corners from the scoped card token, a fine border and contained photography; selection slots use the smaller scoped slot radius. Other source card treatments are unchanged. Colour swatches are circular and show an outlined selected state. The separate manager retains its 4px control radius.
+Actions are red capsules with a 26px radius; white inputs use restrained 2px corners and a grey stroke. Discovery cards use restrained rounded corners from the scoped card token, a fine border and contained photography; selection slots use the smaller scoped slot radius. Published branch cards use square photographic and charcoal panels. Remaining source card treatments are unchanged. Colour swatches are circular and show an outlined selected state. The separate manager retains its 4px control radius.
 
 ## Components
 
@@ -160,7 +164,7 @@ Public actions use Orbitron, white text, at least 44px height and the red capsul
 
 ### News navigation preview
 
-On desktop, News & Events shares the model menu’s edge-to-edge charcoal background, centred 808px three-column content area and 360px/55dvh height cap. Show the three latest published stories with genuine uncropped thumbnails, a two-line title, saved category/date and a 44px View all news & events link. Keep the label itself linked to `/events`; the separate arrow also supports keyboard entry. Hover exit has the same grace period as models; Escape, outside interaction and focus departure dismiss the preview. Opening one preview closes the other without a delayed close affecting the new panel. Mobile hides both disclosure buttons and preview panels, leaving direct MODEL and News & Events links. Loading, empty and retry states retain access to the archive. No record data or publication settings are changed.
+On desktop, News & Events uses the edge-to-edge charcoal background and centred 808px three-column content area, retaining its compact 360px/55dvh height cap. Show the three latest published stories with genuine thumbnails cropped to fill their frames, a two-line title, saved category/date and a 44px View all news & events link. Keep the label itself linked to `/events`; the separate arrow also supports keyboard entry. Hover exit has the same grace period as models; Escape, outside interaction and focus departure dismiss the preview. Opening one preview closes the other without a delayed close affecting the new panel. Mobile hides both disclosure buttons and preview panels, leaving direct MODEL and News & Events links. Loading, empty and retry states retain access to the archive. No record data or publication settings are changed.
 
 ### Catalogue and comparison
 
@@ -168,29 +172,43 @@ Discovery catalogue cards contain genuine photographs in a 1.85 aspect-ratio sta
 
 Dedicated comparison uses a charcoal guided stage with two explicit slots, a thumbnail gallery and an explicit Compare models action. Slot focus uses the pale outline token; other discovery controls use blue focus outlines. A short image-to-slot transition runs only when visible and motion is allowed. Model identity, changed selection, counts and errors remain readable and announced. Results show the union of stable specification keys in source groups, preserved units/variant qualifiers and explicit missing values. Differences-only filtering compares displayed value context; differences are informational, with no numeric winners. Model-specific enquiry actions remain available. Existing URL and saved-pair compatibility are preserved.
 
+### Showroom cards and About sections
+
+Contact branch cards show the managed name, address, available phone/email/hours and Google Maps/Waze actions. White text and light supporting labels remain readable on charcoal; phone/email links and direction actions retain usable targets. Only published branches appear. Missing photography uses the existing placeholder without inventing a location image.
+
+About pairs the authentic Cheras showroom photograph with readable introductory copy. A charcoal services band, clear vision/mission headings, ruled values and an enquiry capsule carry the existing identity without decorative card elevation.
+
+### Shared footer
+
+The charcoal footer keeps the authentic combined logo, Facebook, Instagram and WhatsApp. Optional TikTok, XHS and Google reviews controls appear only when staff save valid destinations. Social links use labelled 44px circular targets, subtle light hover feedback and visible keyboard focus; they wrap on narrow screens. The footer logo remains a home link.
+
+### Page transition
+
+First visits and reloads show the genuine combined logo centred on charcoal for at least one second after document readiness. Ordinary same-origin page links share a one-second countdown across the outgoing and incoming documents, so a quick destination stays covered for the remaining time. The active overlay captures pointer input and destination content is temporarily inert. History restorations clear immediately. Same-page anchors, external links, downloads, forms and modified clicks keep their native interaction. Cancelled navigation releases after one second; reduced motion retains the static logo and timing.
+
 ### Forms and states
 
 Enquiry/test-drive and employment forms use charcoal surroundings, white labels and white fields with dark text. Inputs and selectors are at least 48px high; checkboxes remain visible alongside consent wording. Supporting text, error/success status and retry actions must retain contrast on charcoal. Failed submission preserves entries. Branch-loading errors disable submission and offer recovery. Résumé handling remains private.
 
 ### Slider, colour, specifications and gallery
 
-The home slider follows saved slide order, duration and publication, with labelled previous/next, dot selection, play/pause and sound controls where relevant. Hero photography covers its stage; static source campaign artwork below keeps its composition. Colour controls select genuine photographs, specification tabs remain operable, and gallery images open in a keyboard-accessible modal. Reduced motion disables decorative transitions and starts automatic media paused.
+When at least one slide is published, the home slider follows saved slide order, duration and publication, with labelled previous/next, dot selection, play/pause and sound controls where relevant. Hero photography covers its stage; static source campaign artwork below keeps its composition. Colour controls select genuine photographs, specification tabs remain operable, and gallery images open in a keyboard-accessible modal. Reduced motion disables decorative transitions and starts automatic media paused.
 
 ### Staff manager
 
-Preserve the dark manager's grouped sidebar/mobile drawer, 48px fields, explicit save feedback, slide ordering and collapsible preview. Enquiries and job applications remain authenticated read-only searchable inboxes with 25-record pagination, detail views and private résumé downloads. Its Sora typography and dark token set belong to staff workflows only.
+Preserve the dark manager's grouped sidebar/mobile drawer, 48px fields, explicit save feedback, slide ordering and collapsible preview. Branch facts and optional Social Links use this existing staff visual system; empty optional social fields hide their public controls. Enquiries and job applications remain authenticated read-only searchable inboxes with 25-record pagination, detail views and private résumé downloads. Its Sora typography and dark token set belong to staff workflows only.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** follow the captured WordPress layout, genuine combined logo and locally sourced original media.
-- **Do** preserve published catalogue facts, native colour images and source marketing composition.
-- **Do** keep focus, statuses, 44px targets and full-width phone specification values readable.
-- **Do** preserve the separate dark manager and reduced-motion behavior.
-- **Do** scope the colourful showroom palette and card system to `/models` and `/compare`, retaining genuine paint photography and aligned comparison columns.
+- Do follow the captured Millennium visual identity, genuine combined logo and locally sourced original media within the documented layout exceptions.
+- Do preserve published catalogue facts, native colour images and source marketing composition.
+- Do keep focus, statuses, 44px targets and full-width phone specification values readable.
+- Do preserve the separate dark manager and reduced-motion behavior.
+- Do scope the colourful showroom palette and card system to `/models` and `/compare`, retaining genuine paint photography and aligned comparison columns.
 
 ### Don't:
-- **Don't** restore the superseded Porsche-inspired public system or public Sora typography.
-- **Don't** generate replacement photography, digitally recolour vehicles or fabricate specifications.
-- **Don't** assign numeric winners or extend discovery styling to source marketing pages or staff tools.
-- **Don't** hide source artwork behind decorative UI or apply light-surface text colours to charcoal forms.
+- Don't restore the superseded Porsche-inspired public system or public Sora typography.
+- Don't generate replacement photography, digitally recolour vehicles or fabricate specifications.
+- Don't assign numeric winners or extend discovery styling to source marketing pages or staff tools.
+- Don't hide source artwork behind decorative UI or apply light-surface text colours to charcoal forms.

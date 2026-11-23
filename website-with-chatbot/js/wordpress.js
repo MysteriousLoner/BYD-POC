@@ -21,6 +21,14 @@
   backdrop.onclick=()=>open(false,true);
   toggle.onclick=()=>{const value=!header.classList.contains('wp-menu-open');open(value);if(value)nav.scrollTop=0;if(value)nav.querySelector('a')?.focus({preventScroll:true})};toggle.onkeydown=event=>{if(['Enter',' '].includes(event.key)){event.preventDefault();toggle.click()}};
   let previewPromise,updatingPreviewMenu=null;
+  function sizeModelMenu(){
+   const menu=$('#wpModelMenu');if(mobile()||!menu?.getClientRects().length)return;
+   const cards=[...menu.querySelectorAll(':scope > li')].filter(card=>card.querySelector('.wp-model-preview-link')).slice(0,6);if(!cards.length)return;
+   // Measure both rows, including wrapped names/prices, without changing the photographs.
+   const bottom=Math.max(...cards.map(card=>card.getBoundingClientRect().bottom));
+   const height=Math.ceil(bottom-menu.getBoundingClientRect().top+menu.scrollTop+parseFloat(getComputedStyle(menu).paddingBottom));
+   menu.style.setProperty('--wp-model-menu-height',height+'px');
+  }
   function previews(){
    const menu=$('#wpModelMenu');if(!menu)return;
    if(previewPromise)return previewPromise;
@@ -32,7 +40,7 @@
      const name=model.catalogueSource?.startsWith('sime-motors-')?model.name:names.get(model.id)||model.name,current=location.pathname.replace(/\/$/,'')==='/models/'+encodeURIComponent(model.id);
      return `<li class="menu-item" data-managed-model="${escape(model.id)}"><a class="hfe-sub-menu-item wp-model-preview-link" href="/models/${encodeURIComponent(model.id)}" aria-label="${escape(name)}"${current?' aria-current="page"':''}><span class="wp-model-preview-media"><img src="${escape(model.thumbnail||photo(model))}" alt="" decoding="async"></span><span class="wp-model-preview-name">${escape(name)}</span>${model.price?`<span class="wp-model-preview-price">${escape(model.price)}</span>`:''}</a></li>`;
     }).join('')||'<li class="wp-model-menu-feedback" role="status">The model range is being updated. Please check back soon.</li>';
-    images(menu);
+    images(menu);sizeModelMenu();
     // A late media response must not discard a visitor's keyboard focus.
     if(focused){const target=[...menu.querySelectorAll('a')].find(link=>link.getAttribute('href')===focused);(target||$('#masthead .wp-submenu-toggle')).focus({preventScroll:true})}
    }).catch(()=>{
@@ -69,7 +77,7 @@
    const item=link.closest('li'),submenu=item.querySelector('.sub-menu'),control=link.parentElement.querySelector('.wp-submenu-toggle')||link;if(!submenu)return;
    if(control===link)link.setAttribute('role','button');control.setAttribute('aria-expanded','false');control.querySelector('.sub-arrow').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
    const isModel=submenu.id==='wpModelMenu',isNews=submenu.id==='wpNewsMenu',isPreview=isModel||isNews;let hoverTimer;
-   const select=(value=!item.classList.contains('wp-submenu-open'))=>{if(value)header.querySelectorAll('.wp-submenu-open').forEach(other=>{if(other!==item){other.classList.remove('wp-submenu-open');other.querySelector('[aria-expanded]')?.setAttribute('aria-expanded','false')}});item.classList.toggle('wp-submenu-open',value);control.setAttribute('aria-expanded',String(value));if(value&&isPreview&&!mobile())(isNews?newsPreviews:previews)()};
+   const select=(value=!item.classList.contains('wp-submenu-open'))=>{if(value)header.querySelectorAll('.wp-submenu-open').forEach(other=>{if(other!==item){other.classList.remove('wp-submenu-open');other.querySelector('[aria-expanded]')?.setAttribute('aria-expanded','false')}});item.classList.toggle('wp-submenu-open',value);control.setAttribute('aria-expanded',String(value));if(value&&isPreview&&!mobile())(isNews?newsPreviews:previews)();if(value&&isModel)sizeModelMenu()};
    control.onclick=event=>{event.preventDefault();clearTimeout(hoverTimer);select()};control.onkeydown=event=>{if([' ','ArrowDown'].includes(event.key)){event.preventDefault();if(!item.classList.contains('wp-submenu-open'))select();submenu.querySelector('a')?.focus()}};
    if(isPreview){
     const canHover=()=>!mobile()&&matchMedia('(hover:hover) and (pointer:fine)').matches;
@@ -85,8 +93,10 @@
    if(event.key==='Tab'&&mobile()&&header.classList.contains('wp-menu-open')){const items=[toggle,...nav.querySelectorAll('a,button')].filter(el=>el.offsetParent!==null),first=items[0],last=items.at(-1);if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}}
   });
   document.addEventListener('click',event=>{if(!event.composedPath().includes(header)){open(false);header.querySelectorAll('.wp-submenu-open').forEach(item=>{item.classList.remove('wp-submenu-open');item.querySelector('[aria-expanded]')?.setAttribute('aria-expanded','false')})}});
-  function resize(){document.documentElement.style.setProperty('--wp-header-height',header.offsetHeight+'px')}
+  function resize(){document.documentElement.style.setProperty('--wp-header-height',header.offsetHeight+'px');sizeModelMenu()}
   breakpoint.addEventListener('change',()=>open(false));addEventListener('resize',resize);open(false);resize();if('ResizeObserver'in window)new ResizeObserver(()=>document.documentElement.style.setProperty('--wp-header-height',header.offsetHeight+'px')).observe(header);
+  document.fonts.ready.then(sizeModelMenu);
+  document.fonts.addEventListener('loadingdone',sizeModelMenu);
   header.querySelectorAll('a').forEach(link=>{if(!new URL(link.href).hash&&!link.getAttribute('href').startsWith('#')&&new URL(link.href).pathname.replace(/\/$/,'')===location.pathname.replace(/\/$/,'')){link.setAttribute('aria-current','page');link.closest('li')?.classList.add('current-menu-item')}});
  }
  function originalInteractions(){
@@ -152,11 +162,20 @@
    if(item.mediaType==='video'){const match=item.mediaUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]{11})/);if(match){const frame=document.createElement('iframe');frame.title=item.headline;frame.src='https://www.youtube-nocookie.com/embed/'+match[1]+'?autoplay='+(paused?'0':'1')+'&mute=1&playsinline=1&controls=1';frame.allow='autoplay; encrypted-media; picture-in-picture';media.append(frame)}else{const video=document.createElement('video');video.src=item.mediaUrl;video.muted=true;video.defaultMuted=true;video.autoplay=!paused;video.playsInline=true;video.controls=true;video.loop=true;media.append(video)}}else{const image=document.createElement('img');image.src=item.mediaUrl;image.alt='';if(/^\d{1,3}% \d{1,3}%$/.test(item.mediaPosition||''))image.style.objectPosition=item.mediaPosition;image.fetchPriority='high';image.onerror=()=>{image.remove();status.textContent='This slide’s image is unavailable. You can still follow its link.'};media.append(image)}if(!reduced)media.animate([{opacity:.4},{opacity:1}],{duration:650,easing:'cubic-bezier(.16,1,.3,1)'});transport();schedule();
   }
   $('#wpPrevious').onclick=()=>{if(!entries.length)return;render((index-1+entries.length)%entries.length)};$('#wpNext').onclick=()=>{if(!entries.length)return;render((index+1)%entries.length)};stage.addEventListener('focusin',()=>{focused=true;schedule()});stage.addEventListener('focusout',event=>{if(!stage.contains(event.relatedTarget)){focused=false;schedule()}});if(matchMedia('(hover:hover)').matches){stage.addEventListener('mouseenter',()=>{hovering=true;schedule()});stage.addEventListener('mouseleave',()=>{hovering=false;schedule()})}document.addEventListener('visibilitychange',schedule);if('IntersectionObserver'in window)new IntersectionObserver(items=>{visible=items[0].isIntersecting;schedule()}).observe(stage);
-  try{entries=(await api('/api/content/settings')).heroSlides.filter(item=>item.published===true).sort((a,b)=>Number(a.priority)-Number(b.priority));if(entries.length)render(0);else{status.textContent='Explore our current models below.';controls.hidden=true;$('#wpPrevious').hidden=true;$('#wpNext').hidden=true}}catch(error){status.textContent='Slides couldn’t load. Please explore our models or try again later.';controls.hidden=true;$('#wpPrevious').hidden=true;$('#wpNext').hidden=true}
+   try{entries=(await api('/api/content/settings')).heroSlides.filter(item=>item.published===true).sort((a,b)=>Number(a.priority)-Number(b.priority));if(entries.length)render(0);else stage.hidden=true}catch(error){stage.hidden=true}
  }
  async function story(){const content=$('#wpFeatureContent'),id=decodeURIComponent(location.pathname.split('/').pop());try{const entry=(await api('/api/content/news')).find(item=>item.id===id);if(!entry)throw Error('This story is unavailable.');$('.wp-feature h1').textContent=entry.title;content.innerHTML=`<p class="wp-intro">${escape(entry.date)}</p><img src="${escape(entry.image||'/assets/placeholder.svg')}" alt="${escape(entry.title)}" class="wp-story-image"><p>${escape(entry.summary)}</p><a class="wp-action outline" href="/events">NEWS & EVENTS</a>`;images(content)}catch(error){errorState(content,error,story)}}
  function motion(){if(reduced||!('IntersectionObserver'in window))return;const observer=new IntersectionObserver(items=>items.forEach(item=>{if(item.isIntersecting){item.target.animate([{transform:'translateY(14px)'},{transform:'translateY(0)'}],{duration:650,easing:'cubic-bezier(.16,1,.3,1)'});observer.unobserve(item.target)}}),{threshold:0.2});$$('#main .elementor-widget-image').filter((_,i)=>i%3===0).forEach(image=>observer.observe(image))}
  const legacy={'#models':'/models','#contact':'/contact','#careers':'/careers','#news':'/events'};if(location.pathname==='/'&&legacy[location.hash]){location.replace(legacy[location.hash]+location.search);return}
- navigation();originalInteractions();images();slideshow();forms();modelTools();motion();
+  function pageTransitions(){
+   document.addEventListener('click',event=>{
+    if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+    const link=event.target.closest('a[href]');if(!link||link.hasAttribute('download')||(link.target&&link.target!=='_self'))return;
+    const url=new URL(link.href,location.href);if(!['http:','https:'].includes(url.protocol)||url.origin!==location.origin||url.pathname.startsWith('/api/')||url.pathname.startsWith('/admin'))return;
+    if(url.pathname===location.pathname&&url.search===location.search)return;
+    window.BYDPageTransition?.begin(url.href);
+   });
+  }
+  pageTransitions();navigation();originalInteractions();images();slideshow();forms();modelTools();motion();
  const feature=$('[data-feature]')?.dataset.feature;if(feature==='models')catalogue();else if(feature==='compare')compare();else if(feature==='detail')dynamicDetail();else if(feature==='story')story();else if(feature==='unavailable')$('#wpFeatureContent').innerHTML='<p class="wp-intro">This page or model is unavailable.</p><a class="wp-action" href="/models">EXPLORE MODELS</a><a class="wp-action outline" href="/">RETURN HOME</a>';
 })();

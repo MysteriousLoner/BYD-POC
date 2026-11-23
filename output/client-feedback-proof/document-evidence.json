@@ -1,0 +1,26 @@
+{
+  "document": "BYD-Millennium-Revision-Proof-20261123.docx",
+  "sourceManifest": "capture-manifest.json",
+  "embeddedScreenshots": [
+    "01-model-menu-top.png",
+    "02-model-menu-next-row.png",
+    "05-hidden-story.png",
+    "06-story-unavailable.png",
+    "03-home-opening.png",
+    "04-hidden-video-detail.png",
+    "08-contact-desktop.png",
+    "09-contact-details.png",
+    "11-contact-mobile.png",
+    "12-about-introduction.png",
+    "13-about-services.png",
+    "14-about-values.png",
+    "15-about-enquiry.png",
+    "16-social-editor.png",
+    "17-footer-default.png",
+    "18-footer-demo.png",
+    "19-logo-transition.png",
+    "20-navigation-arrived.png"
+  ],
+  "localChecksPassed": 20,
+  "rawScreenshots": 21
+}

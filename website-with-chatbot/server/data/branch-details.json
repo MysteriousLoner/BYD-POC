@@ -1,0 +1,6 @@
+{
+  "cheras": { "phone": "012-822 8645", "email": "Info@millenniumautobyd.com.my", "hours": "Monday – Saturday: 8:00am – 6:00pm\nSunday and Public Holiday: 10:00am – 5:00pm", "image": "/assets/wordpress/f6ee4bf7463842c8.webp" },
+  "kl-north": { "phone": "012-822 8645", "email": "Info@millenniumautobyd.com.my", "hours": "Monday – Saturday: 8:30am – 5:30pm\nSunday: 10:00am – 5:00pm", "image": "/assets/wordpress/50df88b2f8de7352.webp" },
+  "bandar-utama": { "phone": "012-822 8645", "email": "Info@millenniumautobyd.com.my", "hours": "Monday – Saturday: 8:30am – 5:30pm\nSunday: 10:00am – 5:00pm", "image": "/assets/wordpress/13e64aa87b24ac0f.webp" },
+  "seremban": { "phone": "016-6311566", "email": "Info@millenniumautobyd.com.my", "hours": "Monday – Saturday: 8:30am – 5:30pm\nSunday: 10:00am – 5:00pm", "image": "/assets/wordpress/99d37d7c011aea3b.webp" }
+}

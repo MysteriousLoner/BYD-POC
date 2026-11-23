@@ -1,6 +1,50 @@
 [
-  {"id":"cheras","name":"BYD Cheras","city":"Kuala Lumpur","state":"Kuala Lumpur","address":"No 691, Batu 5, Jln Cheras, Taman Mutiara Barat, 56100 Kuala Lumpur","published":true},
-  {"id":"kl-north","name":"BYD KL North","city":"Kuala Lumpur","state":"Kuala Lumpur","address":"LOT 2097, Jalan 1/42, off Jln Kuching, 51200 Kuala Lumpur","published":true},
-  {"id":"bandar-utama","name":"BYD Bandar Utama","city":"Petaling Jaya","state":"Selangor","address":"Lot 938, LDP, Kampung Sungai Kayu Ara, 47400 Petaling Jaya, Selangor","published":true},
-  {"id":"seremban","name":"BYD Seremban","city":"Seremban","state":"Negeri Sembilan","address":"50, Jalan Haruan 1, Oakland Industrial Park, 70300 Seremban, Negeri Sembilan","published":true}
+  {
+    "id": "cheras",
+    "name": "BYD Cheras",
+    "city": "Kuala Lumpur",
+    "state": "Kuala Lumpur",
+    "address": "No 691, Batu 5, Jln Cheras, Taman Mutiara Barat, 56100 Kuala Lumpur",
+    "published": true,
+    "phone": "012-822 8645",
+    "email": "Info@millenniumautobyd.com.my",
+    "hours": "Monday – Saturday: 8:00am – 6:00pm\nSunday and Public Holiday: 10:00am – 5:00pm",
+    "image": "/assets/wordpress/f6ee4bf7463842c8.webp"
+  },
+  {
+    "id": "kl-north",
+    "name": "BYD KL North",
+    "city": "Kuala Lumpur",
+    "state": "Kuala Lumpur",
+    "address": "LOT 2097, Jalan 1/42, off Jln Kuching, 51200 Kuala Lumpur",
+    "published": true,
+    "phone": "012-822 8645",
+    "email": "Info@millenniumautobyd.com.my",
+    "hours": "Monday – Saturday: 8:30am – 5:30pm\nSunday: 10:00am – 5:00pm",
+    "image": "/assets/wordpress/50df88b2f8de7352.webp"
+  },
+  {
+    "id": "bandar-utama",
+    "name": "BYD Bandar Utama",
+    "city": "Petaling Jaya",
+    "state": "Selangor",
+    "address": "Lot 938, LDP, Kampung Sungai Kayu Ara, 47400 Petaling Jaya, Selangor",
+    "published": true,
+    "phone": "012-822 8645",
+    "email": "Info@millenniumautobyd.com.my",
+    "hours": "Monday – Saturday: 8:30am – 5:30pm\nSunday: 10:00am – 5:00pm",
+    "image": "/assets/wordpress/13e64aa87b24ac0f.webp"
+  },
+  {
+    "id": "seremban",
+    "name": "BYD Seremban",
+    "city": "Seremban",
+    "state": "Negeri Sembilan",
+    "address": "50, Jalan Haruan 1, Oakland Industrial Park, 70300 Seremban, Negeri Sembilan",
+    "published": true,
+    "phone": "016-6311566",
+    "email": "Info@millenniumautobyd.com.my",
+    "hours": "Monday – Saturday: 8:30am – 5:30pm\nSunday: 10:00am – 5:00pm",
+    "image": "/assets/wordpress/99d37d7c011aea3b.webp"
+  }
 ]

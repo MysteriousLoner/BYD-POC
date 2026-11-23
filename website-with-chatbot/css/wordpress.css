@@ -157,3 +157,91 @@ ss3-force-full-width{display:block!important;width:100%!important;transform:none
  .wp-news-hub .wp-news-grid>[class*=col-]{scroll-snap-align:start;margin:0}
  .wp-news-hub .wp-news-grid>.wp-empty{grid-column:auto}
 }
+
+/* Client feedback: authentic model artwork fills its native 8:5 frame. */
+@media(min-width:1025px){
+ .wp-copy #masthead #wpModelMenu{max-height:min(var(--wp-model-menu-height,100dvh),calc(100dvh - var(--wp-header-height) - 32px));transition:none}
+ .wp-copy #masthead #wpModelMenu .wp-model-preview-media{aspect-ratio:8/5;height:auto;background:var(--wp-dark)}
+ .wp-copy #masthead #wpModelMenu img{object-fit:cover}
+}
+
+.wp-copy .wp-dealership-page{font:400 16px/1.7 var(--wp-body);color:var(--wp-ink);background:var(--wp-canvas)}
+.wp-dealership-page :is(h1,h2){color:inherit;letter-spacing:0;overflow-wrap:normal;text-wrap:balance}
+.wp-dealership-page h1{font:400 clamp(28px,3vw,40px)/1.3 var(--wp-display);margin:0}
+.wp-dealership-page h2{font:400 clamp(24px,2.5vw,32px)/1.35 var(--wp-display);margin:0 0 20px}
+.wp-copy .wp-dealership-page p{margin:0 0 20px;max-width:70ch}
+.wp-dealership-heading,.wp-branch-grid,.wp-about-intro,.wp-about-purpose,.wp-about-values{width:90%;max-width:1200px;margin-inline:auto;box-sizing:border-box}
+.wp-dealership-heading{padding:60px 0 36px}
+.wp-copy .wp-dealership-heading p{margin:18px 0 0;color:var(--wp-muted)}
+.wp-branch-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;padding-bottom:70px}
+.wp-branch-card{display:flex;flex-direction:column;min-width:0;background:var(--wp-dark);color:#fff}
+.wp-copy .wp-branch-photo{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:center;margin:0}
+.wp-branch-copy{display:flex;flex-direction:column;flex:1;padding:30px;min-width:0}
+.wp-copy .wp-branch-copy h2{font:500 27px/1.35 var(--wp-body);color:#fff;margin:0 0 20px;text-wrap:balance}
+.wp-branch-copy address{font-style:normal;line-height:1.7;margin:0 0 24px;overflow-wrap:anywhere;color:#fff}
+.wp-branch-copy dl{display:grid;gap:18px;margin:0 0 28px}
+.wp-branch-copy dt{font:500 14px/1.5 var(--wp-body);color:#d5d7d8;margin-bottom:4px}
+.wp-branch-copy dd{margin:0;overflow-wrap:anywhere;line-height:1.65}
+.wp-branch-hours{white-space:pre-line}
+.wp-branch-copy dd a{display:inline-flex;align-items:center;min-height:44px;color:#fff;text-decoration:underline;text-underline-offset:4px}
+.wp-branch-directions{display:flex;flex-wrap:wrap;gap:12px;margin-top:auto;padding-top:4px}
+.wp-branch-directions .wp-action.outline{border-color:#d5d7d8;color:#fff!important}
+.wp-branch-directions .wp-action.outline:hover{background:#fff1}
+.wp-contact-enquiry{background:var(--wp-dark);color:#fff;padding:64px 5%;scroll-margin-top:calc(var(--wp-header-height) + 20px)}
+.wp-contact-enquiry>div{max-width:760px;margin:0 auto}
+.wp-copy .wp-contact-enquiry h2{color:#fff;margin-bottom:32px}
+.wp-about-intro{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:0 0 80px}
+.wp-about-intro h2{font-size:clamp(28px,3.3vw,44px);line-height:1.25;margin-bottom:28px}
+.wp-copy .wp-about-intro>img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
+.wp-about-services{background:var(--wp-dark);color:#fff;padding:70px 5%}
+.wp-about-services-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:start}
+.wp-copy .wp-about-services h2,.wp-copy .wp-about-services p{color:#fff}
+.wp-about-services ul{list-style:none;padding:0;margin:0;display:grid;gap:0}
+.wp-about-services li{padding:18px 0;border-bottom:1px solid #ffffff40;font:400 20px/1.5 var(--wp-body)}
+.wp-about-services li:first-child{padding-top:0}
+.wp-about-purpose{display:grid;grid-template-columns:1fr 1fr;gap:80px;padding:70px 0 48px}
+.wp-about-values{padding:20px 0 80px}
+.wp-about-values ul{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 40px}
+.wp-about-values li{border-top:1px solid #b3b6b9;padding:22px 0;font:400 23px/1.5 var(--wp-body);overflow-wrap:anywhere}
+.wp-about-enquiry{background:var(--wp-dark);color:#fff;padding:60px 5%}
+.wp-about-enquiry>div{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:32px}
+.wp-copy .wp-about-enquiry h2{color:#fff;max-width:700px;margin:0}
+.wp-about-enquiry .wp-action{flex-shrink:0}
+
+.wp-copy .wp-public-footer{background:var(--wp-dark);color:#d5d7d8;padding:36px 5% 24px;font:400 14px/1.6 var(--wp-body)}
+.wp-footer-top,.wp-footer-bottom{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.wp-footer-top{justify-content:space-between;padding:0 0 28px}
+.wp-copy .wp-footer-logo{display:inline-flex;align-items:center;min-height:44px}
+.wp-copy .wp-footer-logo img{width:230px;height:auto;max-width:100%;display:block}
+.wp-footer-social{display:flex;flex-wrap:wrap;gap:8px}
+.wp-copy .wp-footer-social a{display:flex;align-items:center;justify-content:center;width:44px;min-height:44px;color:#fff;border:1px solid transparent;text-decoration:none;border-radius:50%;transition:background-color .18s}
+.wp-copy .wp-footer-social a:hover{background:#ffffff14}
+.wp-copy .wp-footer-social img,.wp-copy .wp-footer-social svg{display:block;width:23px;height:23px;object-fit:contain;stroke:currentColor;stroke-width:1.7;fill:none}
+.wp-social-wordmark{font:700 12px/1 var(--wp-body)}
+.wp-footer-bottom{border-top:1px solid #ffffff30;padding-top:20px;gap:12px 24px;font-size:12px}
+.wp-footer-bottom>span:first-child{margin-right:auto}
+.wp-page-transition{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:var(--wp-dark);opacity:0;visibility:hidden;pointer-events:none}
+.wp-copy .wp-page-transition img{display:block;width:min(360px,70vw);height:auto}
+html.wp-page-leaving .wp-page-transition{opacity:1;visibility:visible;pointer-events:auto}
+@media(max-width:1024px){.wp-about-intro{gap:36px}.wp-about-services-inner,.wp-about-purpose{gap:40px}.wp-branch-copy{padding:24px}.wp-branch-grid{gap:24px}.wp-about-intro h2{font-size:30px}}
+@media(max-width:767px){
+ .wp-dealership-heading{padding:36px 0 28px}
+ .wp-branch-grid{grid-template-columns:minmax(0,1fr);padding-bottom:42px}
+ .wp-copy .wp-branch-copy h2{font-size:25px}
+ .wp-branch-directions .wp-action{padding-inline:20px}
+ .wp-contact-enquiry{padding-block:42px}
+ .wp-about-intro{grid-template-columns:minmax(0,1fr);gap:28px;padding-bottom:42px}
+ .wp-about-intro>img{grid-row:1}
+ .wp-copy .wp-about-intro>img{aspect-ratio:4/3}
+ .wp-about-intro h2{font-size:28px}
+ .wp-about-services{padding-block:42px}
+ .wp-about-services-inner,.wp-about-purpose{grid-template-columns:minmax(0,1fr);gap:28px}
+ .wp-about-purpose{padding:42px 0 20px}
+ .wp-about-values{padding:16px 0 42px}
+ .wp-about-values ul{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px}
+ .wp-about-values li{font-size:19px;padding-block:18px}
+ .wp-about-enquiry{padding-block:42px}
+ .wp-about-enquiry>div{align-items:flex-start;flex-direction:column;gap:24px}
+ .wp-footer-top{align-items:flex-start;flex-direction:column;gap:24px}
+ .wp-footer-bottom>span:first-child{flex-basis:100%}
+}

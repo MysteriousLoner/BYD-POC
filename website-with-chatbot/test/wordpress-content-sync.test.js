@@ -15,6 +15,7 @@ test('import merges missing posts, preserves edits, and only unpublishes the rev
   const renamed = { ...imported[1], id:'local-import-id', published:false };
   store.writeJson('news.json', [staff, edited, renamed]);
   store.save('hero_slides', { id:'old-klang-road', mediaUrl:QR_IMAGE, published:true, headline:'Old Klang Road' });
+  store.save('hero_slides', { id:'staff-campaign', mediaUrl:'/assets/placeholder.svg', published:true, headline:'Staff campaign' });
   const otherSlides = store.list('hero_slides').filter(slide => slide.id !== 'old-klang-road');
   const vehicles = store.list('vehicles');
   store.writeJson('submissions/enquiries.json', [{ id:'private-fixture' }]);

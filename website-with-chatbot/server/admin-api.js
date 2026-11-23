@@ -1,10 +1,16 @@
 const express = require('express');
-const { db, list, save, remove, transaction } = require('./database');
+const { db, list, save, remove, transaction, readJson, writeJson } = require('./database');
+const { SOCIAL_DOCUMENT, socialLinks, validateSocialLinks, externalUrl, imageUrl } = require('./public-dealership');
 const auth = require('./auth');
 const router = express.Router();
 auth.routes(router);
 router.use(auth.authenticate, auth.csrf);
 router.use('/submissions', require('./submissions'));
+router.get('/social-links', (_, res) => res.json(socialLinks(readJson(SOCIAL_DOCUMENT, {}))));
+router.put('/social-links', (req, res) => {
+  try { const links = validateSocialLinks(req.body); writeJson(SOCIAL_DOCUMENT, links); res.json(links); }
+  catch (error) { res.status(400).json({ error: error.message }); }
+});
 const collections = { promotions: 'promotions', branches: 'branches', knowledge: 'knowledge_entries' };
 const text = (value, max = 5000) => String(value || '').trim().slice(0, max);
 function validate(kind, body, id) {
@@ -24,9 +30,11 @@ function validate(kind, body, id) {
     }
     item.terms = text(body.terms);
   } else if (kind === 'branches') {
-    for (const key of ['name', 'city', 'state', 'address', 'phone', 'hours', 'mapUrl']) item[key] = text(body[key]);
+    for (const key of ['name', 'city', 'state', 'address', 'phone', 'hours', 'mapUrl', 'email', 'image', 'wazeUrl']) item[key] = text(body[key]);
     if (!item.name || !item.address) throw new Error('Branch name and address are required.');
-    if (item.mapUrl && !/^https?:\/\//i.test(item.mapUrl)) throw new Error('Map URL must start with https:// or http://.');
+    for (const key of ['mapUrl', 'wazeUrl']) if (item[key] && !externalUrl(item[key])) throw new Error('Map links must use a valid http:// or https:// URL.');
+    if (item.image && !imageUrl(item.image)) throw new Error('Use a public /assets/ or /uploads/ image path, or an http:// or https:// image URL.');
+    if (item.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(item.email)) throw new Error('Enter a valid branch email address.');
   } else {
     item.category = text(body.category, 50);
     if (!['warranty', 'charging', 'contact', 'test_drive', 'faq', 'service'].includes(item.category)) throw new Error('Choose a valid category.');
@@ -39,8 +47,12 @@ for (const [kind, table] of Object.entries(collections)) {
   router.get(`/${kind}`, (_, res) => res.json(list(table)));
   router.post(`/${kind}`, (req, res) => { try { res.status(201).json(transaction(() => save(table, validate(kind, req.body)))); } catch (e) { res.status(400).json({ error: e.message }); } });
   router.put(`/${kind}/:id`, (req, res) => {
-    if (!list(table).some(x => x.id === req.params.id)) return res.status(404).json({ error: 'Record not found.' });
-    try { res.json(transaction(() => save(table, validate(kind, req.body, req.params.id)))); } catch (e) { res.status(400).json({ error: e.message }); }
+    const current = list(table).find(x => x.id === req.params.id);
+    if (!current) return res.status(404).json({ error: 'Record not found.' });
+    try {
+      const updated = validate(kind, kind === 'branches' ? { ...current, ...req.body } : req.body, req.params.id);
+      res.json(transaction(() => save(table, kind === 'branches' ? { ...current, ...updated } : updated)));
+    } catch (e) { res.status(400).json({ error: e.message }); }
   });
   router.delete(`/${kind}/:id`, (req, res) => res.status(remove(table, req.params.id) ? 204 : 404).end());
 }

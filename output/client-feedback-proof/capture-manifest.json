@@ -1,0 +1,206 @@
+{
+  "capturedAt": "2026-11-23T12:11:08.910Z",
+  "origin": "http://127.0.0.1:4174",
+  "viewport": {
+    "width": 1440,
+    "height": 960
+  },
+  "fixtureNote": "Isolated database includes the retained legacy story and slideshow fixtures; the approved explicit content update was applied before capture.",
+  "checks": {
+    "localApplicationAndDatabaseHealthy": true,
+    "emptyHeroRemoved": true,
+    "noHomepageVideo": true,
+    "zeroPublishedHeroSlides": true,
+    "allSevenModelFramesFillEightByFive": true,
+    "fourPublishedBranchCards": true,
+    "fourGoogleMapsAndFourWazeActions": true,
+    "proofAdminSessionAuthorized": true,
+    "retainedLegacySlidesHidden": true,
+    "legacyStoryRetainedHidden": true,
+    "legacyStoryAbsentFromPublicFeed": true,
+    "legacyStoryDirectRouteReturns404": true,
+    "legacyStoryAbsentFromPressArchive": true,
+    "socialFieldsInitiallyBlank": true,
+    "unconfiguredSocialIconsHidden": true,
+    "socialDemoConfigurationSaved": true,
+    "allThreeConfiguredIconsVisible": true,
+    "socialDemoUrlsCleared": true,
+    "overlayClearedOnArrival": true,
+    "finalPublicSocialStateRestoredBlank": true
+  },
+  "screenshots": [
+    {
+      "file": "03-home-opening.png",
+      "route": "/",
+      "caption": "Retained campaign artwork begins immediately below the header; no carousel or video.",
+      "sha256": "fab4d61f57483ff77f66156023f1b3815b40782ad8aef05eaace22145b1ee037"
+    },
+    {
+      "file": "01-model-menu-top.png",
+      "route": "/ with MODEL menu open",
+      "caption": "Two complete model rows including all photographs, titles and prices.",
+      "sha256": "ea7bb52407f08bf72e8cf581d5e36881a504b4acad112480671b7b26a71e6d27",
+      "viewport": {
+        "width": 1440,
+        "height": 649
+      },
+      "recapturedAt": "2026-11-23T13:24:32.002Z"
+    },
+    {
+      "file": "02-model-menu-next-row.png",
+      "route": "/ with MODEL menu open",
+      "caption": "Short desktop viewport with the seventh model reached using keyboard focus and independent menu scrolling.",
+      "sha256": "5a03986af145816ec3c78d2efdbf659f1a0273f7464dcad482e0c55aaa0a6112",
+      "recapturedAt": "2026-11-23T13:24:32.002Z",
+      "viewport": {
+        "width": 1265,
+        "height": 536
+      }
+    },
+    {
+      "file": "08-contact-desktop.png",
+      "route": "/contact",
+      "caption": "Contact page with uniform image frames and two desktop columns.",
+      "sha256": "0808a70f391f553731b362070bc1db3d0b204cc2dd7f0fd5a342068e57670f70"
+    },
+    {
+      "file": "09-contact-details.png",
+      "route": "/contact",
+      "caption": "Complete Cheras branch details and Google Maps and Waze actions.",
+      "sha256": "b0e4136e27b9026ffaab8960a8eb2e385b18ff3922310e3361ce9525405ab8bb",
+      "recapturedAt": "2026-11-23T12:17:24.673Z"
+    },
+    {
+      "file": "10-contact-all-branches.png",
+      "route": "/contact",
+      "caption": "All four published branch cards in the desktop grid.",
+      "sha256": "a5f8dca982557ee32120dec204e828a5beb4152c5f367defe8813b36a51aac13",
+      "recapturedAt": "2026-11-23T12:17:24.674Z"
+    },
+    {
+      "file": "11-contact-mobile.png",
+      "route": "/contact at 390px",
+      "caption": "One complete branch card in the phone layout.",
+      "sha256": "d282c4329f42d4594fed252a2450cf90a28c5fa762e6b8fa69652541a8551c46"
+    },
+    {
+      "file": "12-about-introduction.png",
+      "route": "/about",
+      "caption": "Authentic Cheras photograph and existing introduction in the new layout.",
+      "sha256": "d05e4fc19b852e351778744036a7274f4cf3825efa704f8dfee4b15ae097cdca"
+    },
+    {
+      "file": "13-about-services.png",
+      "route": "/about",
+      "caption": "Services section using the existing dealership facts.",
+      "sha256": "6a01cc847825f79e5f72985f706643070f18bf5fa9ca3611dce52334bfb48c5e"
+    },
+    {
+      "file": "14-about-values.png",
+      "route": "/about",
+      "caption": "Vision and mission followed by the six existing values.",
+      "sha256": "a71d20e2c2c1d10fa84bdc636cbea19de9a469e65e72b6653bb8b4beef33e03b"
+    },
+    {
+      "file": "15-about-enquiry.png",
+      "route": "/about",
+      "caption": "Enquiry action at the end of the redesigned About page.",
+      "sha256": "c26469215b9dc140ca106f326cd2cde512b598766d181199e93c3175647d1ca9"
+    },
+    {
+      "file": "04-hidden-slides.png",
+      "route": "/admin Homepage slides",
+      "caption": "Both retained legacy slideshow records are marked Hidden, including the video.",
+      "sha256": "f3674c220a1c6f1054351e7ae6e8e8971ffaf28715082cfcad37c263d9a4d409",
+      "recapturedAt": "2026-11-23T12:17:24.673Z",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    {
+      "file": "05-hidden-story.png",
+      "route": "/admin News & Events",
+      "caption": "The original story is retained and marked Hidden.",
+      "sha256": "38299e11bed031b6e8efe5eccf07a730711c299ef47773cdc26859efcc881426"
+    },
+    {
+      "file": "06-story-unavailable.png",
+      "route": "/stories/2",
+      "caption": "Public direct link to the hidden legacy story returns an unavailable page and HTTP 404.",
+      "sha256": "a9ce628c1ece696d07fdbddae1e0efda5ff24db74beba597e1e514b35380cc14"
+    },
+    {
+      "file": "07-news-archive.png",
+      "route": "/events/press",
+      "caption": "The public Press archive excludes the hidden story.",
+      "sha256": "84779e5e98cb559c138e399d23e32a3b5ac27205a0d6056d0d8576f10711ae41"
+    },
+    {
+      "file": "16-social-editor.png",
+      "route": "/admin Social Links",
+      "caption": "Optional destination fields are available and start blank.",
+      "sha256": "044ab3de2711793539c5a565a940bc2bf7d3a1da3ce05e57c73f36d8d7531bfe"
+    },
+    {
+      "file": "17-footer-default.png",
+      "route": "/about footer",
+      "caption": "Default state retains the existing social icons and hides unconfigured additions.",
+      "sha256": "991ee5df0fd187ca18202d2b354761769362b1d74fdc9aacf436fb2c08a1451b"
+    },
+    {
+      "file": "18-footer-demo.png",
+      "route": "/about footer temporary demo",
+      "caption": "Temporary example.com destinations demonstrate all three added icons. These are not official profile links.",
+      "sha256": "d7fb49f6284f2634ef1bb25c12d0e494c34f1e06784592c45fabf676959b529b"
+    },
+    {
+      "file": "19-logo-transition.png",
+      "route": "/about to /contact",
+      "caption": "Combined logo during the enforced one second loading interval, captured during ordinary internal navigation.",
+      "sha256": "7496b3c62e6d3ac115faff2a7da8200fa2ed2ce05ee7707f7915fb64cbb02b05",
+      "recapturedAt": "2026-11-23T13:17:26.760Z"
+    },
+    {
+      "file": "20-navigation-arrived.png",
+      "route": "/contact",
+      "caption": "The Contact page is revealed after the one second loading interval.",
+      "sha256": "9d0b6703c2d832c8b8e6470c83a78a535a61db4055f6aec8b23a80c22a6cfdb5",
+      "recapturedAt": "2026-11-23T13:17:26.760Z"
+    },
+    {
+      "file": "04-hidden-video-detail.png",
+      "route": "/admin Homepage slides",
+      "caption": "The retained legacy video record is marked Hidden.",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "sha256": "b2a2fa1877b30463b0c541592d7a787c0435352ca69b82d55cb5bd0478a32855"
+    }
+  ],
+  "loaderTiming": {
+    "minimumLogoDurationMs": 1000,
+    "measuredInternalNavigationMs": 1207,
+    "capturedAt": "2026-11-23T13:17:26.760Z",
+    "networkArtificiallyDelayed": false
+  },
+  "modelMenuGeometry": {
+    "capturedAt": "2026-11-23T13:24:32.002Z",
+    "desktop": {
+      "width": 1440,
+      "height": 649,
+      "menuHeight": 473,
+      "visibleFirstSix": true,
+      "secondRowBottom": 571,
+      "panelBottom": 587,
+      "padding": 16
+    },
+    "shortDesktop": {
+      "viewportHeight": 536,
+      "panelBottom": 504,
+      "lastModelFullyVisible": true,
+      "scrollTop": 312
+    }
+  }
+}
