@@ -1,0 +1,48 @@
+{
+  "contentGitCommit": "bcee40d6b8488ec17fa7d68139095cb868279f51",
+  "pages": 2,
+  "allPagesVisuallyInspected": true,
+  "documentHyperlinksVerified": true,
+  "files": [
+    {
+      "file": "BYD-Millennium-Social-Links-Update-20261123.docx",
+      "sha256": "8bea516dde4917e4551a22b565276a75ca53c3cfc7b05713717558060ac514d9"
+    },
+    {
+      "file": "BYD-Millennium-Social-Links-Update-20261123.pdf",
+      "sha256": "20888aa28e0ffc2f5da5f556469c423f8391d647245e941b114177edc5baf8d2"
+    },
+    {
+      "file": "local-verification.json",
+      "sha256": "9fc88109dd73972d31e1e4a8f86d3fd8c87037432eccc454838d1b9a8ddf230a"
+    },
+    {
+      "file": "production-browser-verification.json",
+      "sha256": "255fb209933a69b7afd4c38357306f9daa3ebaf4aecf06af4a9f5889696e813e"
+    },
+    {
+      "file": "production-verification.json",
+      "sha256": "b2389d1d0c0ad57fe58eb9264ba9def41cdc3cbb56a637e398764981b2b1c2d2"
+    },
+    {
+      "file": "screenshots/01-prefilled-editor.png",
+      "sha256": "55d475266325fe20dc6cf525868f7e79acc4c23bf9142879680cb1fbf3c6717a"
+    },
+    {
+      "file": "screenshots/02-footer-desktop.png",
+      "sha256": "55970b3050ae8793a7a34308f924579811403a7d2fd3ed24efd44c224f025a12"
+    },
+    {
+      "file": "screenshots/03-footer-mobile.png",
+      "sha256": "df0cafe3ce61360cbd453e14e0bd6115ad8a990244f4b79a6b0f6744d201a234"
+    },
+    {
+      "file": "screenshots/04-production-footer-desktop.png",
+      "sha256": "55970b3050ae8793a7a34308f924579811403a7d2fd3ed24efd44c224f025a12"
+    },
+    {
+      "file": "screenshots/05-production-footer-mobile.png",
+      "sha256": "df0cafe3ce61360cbd453e14e0bd6115ad8a990244f4b79a6b0f6744d201a234"
+    }
+  ]
+}

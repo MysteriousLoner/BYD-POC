@@ -1,0 +1,37 @@
+{
+  "verifiedAt": "2026-11-23T13:49:57.122603+00:00",
+  "contentGitCommit": "bcee40d6b8488ec17fa7d68139095cb868279f51",
+  "productionOrigin": "http://72.62.75.216:8082",
+  "applicationImage": "byd-production:2514af6",
+  "health": {
+    "status": "ok",
+    "database": "ok",
+    "aiConfigured": true
+  },
+  "dockerHealth": "healthy",
+  "links": {
+    "tiktokUrl": "https://www.tiktok.com/@bydmillenniumauto",
+    "xhsUrl": "",
+    "googleReviewUrl": "https://search.google.com/local/writereview?placeid=ChIJKV3cTlY1zDERz_EltbSQ7cA"
+  },
+  "rednoteHidden": true,
+  "checkedPublicRoutes": [
+    "/",
+    "/about",
+    "/contact",
+    "/models",
+    "/compare",
+    "/events",
+    "/events/press"
+  ],
+  "protectedTablesUnchanged": 12,
+  "existingProtectedDocumentsUnchanged": 5,
+  "uploadsUnchanged": true,
+  "allRunningContainersUnchanged": 10,
+  "applicationRestarted": false,
+  "portsAndMountsUnchanged": true,
+  "privateBackupVerified": true,
+  "backupDirectory": "/opt/byd-backups/releases/social-links-bcee40d",
+  "integrity": "ok",
+  "foreignKeyViolations": 0
+}

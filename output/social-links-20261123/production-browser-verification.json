@@ -1,0 +1,44 @@
+{
+  "verifiedAt": "2026-11-23T13:50:28.550Z",
+  "origin": "http://72.62.75.216:8082",
+  "publicRoutes": [
+    "/",
+    "/about",
+    "/contact",
+    "/events",
+    "/models"
+  ],
+  "configuredDestinationsMatched": true,
+  "rednoteHidden": true,
+  "externalLinksOpenSafely": true,
+  "mobileControls": [
+    {
+      "name": "Facebook",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Instagram",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "WhatsApp",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "TikTok",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "name": "Google reviews",
+      "width": 44,
+      "height": 44
+    }
+  ],
+  "noHorizontalOverflow": true,
+  "javaScriptDisabledFooterVerified": true,
+  "pageErrors": []
+}
